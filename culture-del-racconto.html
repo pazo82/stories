@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Culture del Racconto nel Mondo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0e0c0a;
+  --surface: #161410;
+  --surface2: #1e1b17;
+  --border: rgba(255,255,255,0.07);
+  --text: #e8e0d4;
+  --text-dim: rgba(232,224,212,0.55);
+  --text-dimmer: rgba(232,224,212,0.3);
+
+  /* culture accent colors */
+  --west:    #c8864a;
+  --africa:  #d4784a;
+  --japan:   #9b7fd4;
+  --india:   #d4a84a;
+  --indigen: #5aab7a;
+  --arabic:  #4a9abd;
+  --china:   #c84a6a;
+  --norse:   #7aabd4;
+  --greek:   #d4c84a;
+
+  --gold: #c8a04a;
+  --gold-dim: rgba(200,160,74,0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  overflow-x: hidden;
+}
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(200,134,74,0.08) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 70%, rgba(74,154,189,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(155,127,212,0.05) 0%, transparent 60%);
+}
+
+/* animated stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  width: 2px; height: 2px;
+  background: rgba(232,224,212,0.6);
+  border-radius: 50%;
+  animation: twinkle var(--d, 3s) var(--delay, 0s) infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.4); }
+}
+
+.hero-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.4rem, 6vw, 5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 1rem;
+  color: var(--text-dim);
+  max-width: 540px;
+  margin: 24px auto 48px;
+  position: relative;
+  font-weight: 300;
+}
+
+/* culture pill nav */
+.culture-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  position: relative;
+  max-width: 680px;
+}
+
+.cnav-pill {
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: 1px solid;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: 0.04em;
+}
+
+.cnav-pill:hover { opacity: 0.8; transform: translateY(-1px); }
+
+.pill-west    { color: var(--west);    border-color: rgba(200,134,74,0.4);    background: rgba(200,134,74,0.08); }
+.pill-africa  { color: var(--africa);  border-color: rgba(212,120,74,0.4);    background: rgba(212,120,74,0.08); }
+.pill-japan   { color: var(--japan);   border-color: rgba(155,127,212,0.4);   background: rgba(155,127,212,0.08); }
+.pill-india   { color: var(--india);   border-color: rgba(212,168,74,0.4);    background: rgba(212,168,74,0.08); }
+.pill-indigen { color: var(--indigen); border-color: rgba(90,171,122,0.4);    background: rgba(90,171,122,0.08); }
+.pill-arabic  { color: var(--arabic);  border-color: rgba(74,154,189,0.4);    background: rgba(74,154,189,0.08); }
+.pill-china   { color: var(--china);   border-color: rgba(200,74,106,0.4);    background: rgba(200,74,106,0.08); }
+.pill-norse   { color: var(--norse);   border-color: rgba(122,171,212,0.4);   background: rgba(122,171,212,0.08); }
+.pill-greek   { color: var(--greek);   border-color: rgba(212,200,74,0.4);    background: rgba(212,200,74,0.08); }
+
+.scroll-hint {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--text-dimmer);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  animation: bob 2s ease-in-out infinite;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ─── MAIN ─── */
+.main { max-width: 900px; margin: 0 auto; padding: 0 24px 100px; }
+
+/* ─── AXIS INTRO ─── */
+.axis-intro {
+  padding: 72px 0 20px;
+  text-align: center;
+}
+
+.axis-number {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.axis-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--text);
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+.axis-desc {
+  color: var(--text-dim);
+  font-size: 0.97rem;
+  max-width: 600px;
+  margin: 0 auto 56px;
+  font-weight: 300;
+}
+
+/* ─── CULTURE BLOCK ─── */
+.culture-block {
+  margin-bottom: 3px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.cb-header {
+  padding: 28px 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  user-select: none;
+  transition: background 0.2s;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.cb-header:hover { background: var(--surface2); }
+.cb-header.open { border-radius: 16px 16px 0 0; border-bottom-color: transparent; }
+
+.cb-accent-bar {
+  width: 4px;
+  height: 48px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.cb-meta { flex: 1; }
+
+.cb-region {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.cb-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cb-tagline {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+  font-weight: 300;
+  font-style: italic;
+}
+
+.cb-toggle {
+  font-size: 1.2rem;
+  color: var(--text-dimmer);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.cb-toggle.open { transform: rotate(180deg); }
+
+.cb-body {
+  display: none;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  padding: 0 32px 32px;
+}
+
+.cb-body.open { display: block; }
+
+/* ─── CONTENT INSIDE BLOCK ─── */
+.two-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 24px 0;
+}
+
+.content-card {
+  background: var(--bg);
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+
+.content-card .cc-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.content-card h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.content-card p {
+  font-size: 0.88rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* story quote */
+.story-quote {
+  margin: 20px 0;
+  padding: 20px 24px;
+  background: var(--bg);
+  border-radius: 12px;
+  border-left: 3px solid;
+}
+
+.sq-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.sq-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: rgba(232,224,212,0.8);
+  line-height: 1.8;
+}
+
+.sq-source {
+  margin-top: 10px;
+  font-size: 0.75rem;
+  color: var(--text-dimmer);
+}
+
+/* key insight */
+.key-insight {
+  margin-top: 20px;
+  padding: 16px 20px;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.65;
+  display: flex;
+  gap: 12px;
+}
+
+.ki-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+
+/* ─── COMPARISON MATRIX ─── */
+.matrix-section {
+  margin: 80px 0 40px;
+}
+
+.matrix-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.matrix-sub {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 36px;
+  font-weight: 300;
+}
+
+.matrix-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+}
+
+.matrix-table th {
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-dimmer);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border);
+}
+
+.matrix-table td {
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 300;
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+.matrix-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+.matrix-table td:first-child {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 500;
+  border: 1px solid;
+}
+
+/* ─── FRACTURES SECTION ─── */
+.fractures {
+  margin: 80px 0;
+}
+
+.frac-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.6rem, 3vw, 2.4rem);
+  font-weight: 300;
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.frac-sub {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.88rem;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.fracture-item {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  margin-bottom: 2px;
+  align-items: stretch;
+}
+
+.frac-side {
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.frac-side:first-child { border-radius: 14px 0 0 14px; border-right: none; }
+.frac-side:last-child  { border-radius: 0 14px 14px 0; border-left: none; }
+
+.frac-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  background: var(--surface2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-weight: 500;
+}
+
+.frac-culture {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.frac-point {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.frac-desc {
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ─── CLOSING THOUGHT ─── */
+.closing {
+  margin: 80px 0 0;
+  text-align: center;
+  padding: 56px 40px;
+  background: var(--surface);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.closing::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 200px; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.closing-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.closing-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--text);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.closing-text em { font-style: normal; color: var(--gold); }
+
+/* ─── SEPARATOR ─── */
+.sep {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 60px 0;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .two-cols { grid-template-columns: 1fr; }
+  .fracture-item { grid-template-columns: 1fr; }
+  .frac-vs { padding: 10px; }
+  .frac-side:first-child { border-radius: 14px 14px 0 0; border-right: 1px solid var(--border); border-bottom: none; }
+  .frac-side:last-child { border-radius: 0 0 14px 14px; border-left: 1px solid var(--border); border-top: none; }
+  .cb-header { padding: 20px; }
+  .cb-body { padding: 0 20px 20px; }
+  .matrix-table { font-size: 0.75rem; }
+  .matrix-table th, .matrix-table td { padding: 10px 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="stars" id="stars"></div>
+
+  <div class="hero-eyebrow">Disamina comparativa · Narratologia mondiale</div>
+  <h1>Le Culture<br>del <em>Racconto</em></h1>
+  <p class="hero-sub">Come ogni civiltà concepisce il tempo, la morale e il male nelle proprie storie — e cosa questo rivela della sua visione del mondo.</p>
+
+  <div class="culture-nav">
+    <a href="#occidente" class="cnav-pill pill-west">Occidente moderno</a>
+    <a href="#africa" class="cnav-pill pill-africa">Africa sub-sahariana</a>
+    <a href="#giappone" class="cnav-pill pill-japan">Giappone</a>
+    <a href="#india" class="cnav-pill pill-india">India</a>
+    <a href="#indigene" class="cnav-pill pill-indigen">Culture indigene americane</a>
+    <a href="#araba" class="cnav-pill pill-arabic">Mondo arabo-persiano</a>
+    <a href="#cina" class="cnav-pill pill-china">Cina</a>
+    <a href="#norse" class="cnav-pill pill-norse">Tradizione norrena</a>
+    <a href="#grecia" class="cnav-pill pill-greek">Grecia antica</a>
+  </div>
+
+  <div class="scroll-hint">↓ scorri</div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ASSE 1: STRUTTURA E TEMPO -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="axis-intro">
+  <div class="axis-number">Asse I di II</div>
+  <div class="axis-title">Struttura narrativa<br>e visione del tempo</div>
+  <div class="axis-desc">La forma di una storia non è mai neutrale. Il modo in cui una cultura immagina il tempo — lineare, ciclico, spirale, immobile — determina dove inizia la storia, dove finisce, e se esiste davvero un "finale".</div>
+</div>
+
+<!-- OCCIDENTE -->
+<div class="culture-block" id="occidente">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--west)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--west)">Europa e America del Nord · Modernità</div>
+      <div class="cb-name">Occidente moderno</div>
+      <div class="cb-tagline">Il tempo come freccia. L'eroe come individuo che conquista il proprio destino.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--west)">Struttura narrativa</div>
+        <h4>La linea retta del progresso</h4>
+        <p>La struttura dominante è quella di Aristotele riletta da Hollywood: inizio, crescita, climax, risoluzione. Il tempo è lineare e irreversibile. Ogni storia va da uno stato A a uno stato B — e B è migliore di A. Il protagonista deve <em>cambiare</em>: chi non si trasforma non è un eroe, è uno sfondo.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--west)">Visione del tempo</div>
+        <h4>Freccia, non cerchio</h4>
+        <p>Il tempo è risorsa finita e orientata verso il futuro. "Non c'è tempo da perdere." Il passato è superato, il futuro è costruibile. Questa visione cristiano-illuminista del tempo produce storie in cui il progresso è possibile, il cambiamento è buono, e tornare indietro significa fallire.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--west)">
+      <div class="sq-label" style="color:var(--west)">Esempio paradigmatico</div>
+      <div class="sq-text">"Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura..." — la discesa agli inferi, la purificazione, la risalita. Il viaggio trasforma. L'eroe che torna è diverso da quello che partì. Questo schema — dal Viaggio dell'Eroe di Campbell al film Marvel — è così profondo nell'Occidente da sembrare naturale. Non lo è.</div>
+      <div class="sq-source">Dante, <em>Inferno</em> (1321) — archetipo del viaggio trasformativo occidentale</div>
+    </div>
+    <div class="key-insight" style="background:rgba(200,134,74,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>L'Occidente moderno è l'unica grande tradizione in cui il protagonista <em>deve</em> cambiare per definizione. In molte altre culture, il saggio che rimane immobile di fronte al caos è il vero eroe.</div>
+    </div>
+  </div>
+</div>
+
+<!-- AFRICA -->
+<div class="culture-block" id="africa">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--africa)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--africa)">Africa sub-sahariana · Tradizioni orali</div>
+      <div class="cb-name">Africa sub-sahariana</div>
+      <div class="cb-tagline">Il tempo come respiro della comunità. La storia come atto collettivo e vivo.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--africa)">Struttura narrativa</div>
+        <h4>La spirale comunitaria</h4>
+        <p>Le storie africane (in particolare quelle dei <em>griots</em> dell'Africa occidentale) non hanno struttura fissa: si dilatano, si contraggono, incorporano il pubblico. Chi ascolta risponde, completa, suggerisce. Non c'è confine netto tra narratore e ascoltatore. La storia non è un oggetto trasmesso — è un evento che accade.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--africa)">Visione del tempo</div>
+        <h4>Sasa e Zamani: il tempo che respira</h4>
+        <p>Nella filosofia bantu il tempo ha due dimensioni: <em>Sasa</em> (il presente vissuto, il recente) e <em>Zamani</em> (il passato profondo, dove i morti diventano antenati). Le storie mantengono i morti nel Sasa: finché se ne parla, esistono. Quando il loro nome smette di essere pronunciato, muoiono davvero. Il narratore è custode dell'immortalità.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--africa)">
+      <div class="sq-label" style="color:var(--africa)">Esempio paradigmatico</div>
+      <div class="sq-text">Ananse il ragno (Ghana/Ashanti) è furbo, ingannatore, a volte crudele — ma non è il villain. È il protagonista. Ruba le storie al dio del cielo Nyame e le porta agli uomini. La morale non è "il furto è sbagliato": è "la conoscenza appartiene a chi ha il coraggio di prenderla." La storia stessa — quel racconto che stai sentendo — è una di quelle storie rubate.</div>
+      <div class="sq-source">Ciclo di Ananse · tradizione Ashanti, Ghana</div>
+    </div>
+    <div class="key-insight" style="background:rgba(212,120,74,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>Il concetto ubuntu — "io sono perché noi siamo" — si riflette nella struttura: il protagonista non trionfa da solo. Trionfa perché la comunità esiste. Una vittoria solitaria in molte tradizioni africane non è una vittoria: è un lutto.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GIAPPONE -->
+<div class="culture-block" id="giappone">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--japan)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--japan)">Giappone · Tradizione estetica e zen</div>
+      <div class="cb-name">Giappone</div>
+      <div class="cb-tagline">Il tempo come stagione che passa. La bellezza del non-finito e dell'impermanenza.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--japan)">Struttura narrativa</div>
+        <h4>Ki-shō-ten-ketsu: la svolta senza conflitto</h4>
+        <p>La struttura narrativa tradizionale giapponese — ki (introduzione), shō (sviluppo), ten (svolta inaspettata), ketsu (riconciliazione) — non richiede conflitto. La "ten" non è un problema da risolvere: è una prospettiva nuova che illumina ciò che già c'era. Il lettore non è sorpreso da un colpo di scena — è trasformato da una rivelazione silenziosa.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--japan)">Visione del tempo</div>
+        <h4>Mono no aware: il pathos delle cose</h4>
+        <p>Il tempo è impermanenza. I fiori di ciliegio sono belli <em>perché</em> cadono. Le storie giapponesi spesso non hanno lieto fine — hanno un <em>aware</em>, una dolce malinconia. L'autunno è la stagione più narrativa. Il silenzio tra le parole vale quanto le parole. Una storia può finire senza che il problema sia risolto: basta che sia stato <em>sentito</em>.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--japan)">
+      <div class="sq-label" style="color:var(--japan)">Esempio paradigmatico</div>
+      <div class="sq-text">Nel racconto La storia del tagliabambù (Taketori Monogatari), Kaguya-hime — la principessa nata da un bambù luminoso — alla fine torna sulla Luna, da dove viene. Non c'è colpa, non c'è villain. Quelli che l'amano soffrono. Lei soffre di doverli lasciare. Ma torna. La storia non risolve il dolore: lo illumina. Il finale lascia il lettore in sospeso, come al tramonto — né giorno, né notte.</div>
+      <div class="sq-source"><em>Taketori Monogatari</em>, X sec. · il più antico racconto giapponese</div>
+    </div>
+    <div class="key-insight" style="background:rgba(155,127,212,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>Nelle storie miyazakiane — erede diretto di questa tradizione — i "villain" diventano spesso spiriti della natura offesi, non incarnazioni del male. La soluzione non è sconfiggerli: è <em>capirli</em> e riconciliarsi. Il conflitto stesso è un malinteso.</div>
+    </div>
+  </div>
+</div>
+
+<!-- INDIA -->
+<div class="culture-block" id="india">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--india)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--india)">India · Tradizione vedica e purāṇica</div>
+      <div class="cb-name">India</div>
+      <div class="cb-tagline">Il tempo come ciclo cosmico. La storia come contenitore infinito di storie.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--india)">Struttura narrativa</div>
+        <h4>La storia dentro la storia dentro la storia</h4>
+        <p>Il Mahābhārata e il Pañcatantra usano la struttura a scatole cinesi (<em>kathā-mukha</em>): un personaggio racconta una storia in cui un personaggio racconta un'altra storia. Non è un espediente letterario — è una visione del mondo. La realtà stessa è stratificata, e ogni livello è ugualmente reale. Il narratore non sta fuori dalla storia: ci è dentro, come tutti gli altri.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--india)">Visione del tempo</div>
+        <h4>Il kalpa: tempo ciclico su scala cosmica</h4>
+        <p>Un giorno di Brahma dura 4,32 miliardi di anni. L'universo nasce, muore, rinasce. Le storie riflettono questo: i personaggi reincarnano, i cicli si ripetono con variazioni. Il Ramayana che leggi oggi è una delle infinite versioni di una storia che è sempre esistita. Non c'è "originale" — solo variazioni di un eterno pattern.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--india)">
+      <div class="sq-label" style="color:var(--india)">Esempio paradigmatico</div>
+      <div class="sq-text">Il Mahābhārata non ha un protagonista singolo. Ha 18 libri, centinaia di personaggi, storie dentro storie. Il "villain" Duryodhana è coraggioso, leale agli amici, ingiusto verso i Pandava. Il "giusto" Yudhiṣṭhira mente una volta — e quella menzogna causa la morte di Drona. Il bene e il male non sono categorie, sono forze che agiscono attraverso ogni persona in proporzioni mutevoli, secondo il proprio dharma e karma.</div>
+      <div class="sq-source"><em>Mahābhārata</em> · redazione attuale IV sec. a.C. – IV sec. d.C.</div>
+    </div>
+    <div class="key-insight" style="background:rgba(212,168,74,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>Il concetto di <em>dharma</em> rende impossibile una morale universale: la stessa azione può essere giusta per un guerriero e sbagliata per un brahmino. Non esiste "cosa giusta da fare in assoluto" — esiste cosa è giusto per <em>me, ora, in questa vita, in questo ruolo</em>. Le storie non insegnano principi: insegnano a navigare la complessità.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CULTURE INDIGENE -->
+<div class="culture-block" id="indigene">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--indigen)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--indigen)">Americhe · Tradizioni indigene</div>
+      <div class="cb-name">Culture indigene americane</div>
+      <div class="cb-tagline">Il tempo come terra. La storia come equilibrio, non come progresso.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--indigen)">Struttura narrativa</div>
+        <h4>Il cerchio e il ritorno all'equilibrio</h4>
+        <p>Nelle tradizioni Navajo, Lakota, Ojibwe e molte altre, la struttura narrativa non è un arco ma un cerchio. Il protagonista non conquista — ripristina. L'equilibrio (<em>hózhó</em> per i Navajo, "bellezza/armonia") è lo stato naturale del mondo, e la storia racconta come si è spezzato e come si ricuce. Non c'è "futuro migliore" — c'è il ritorno a ciò che era già giusto.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--indigen)">Visione del tempo</div>
+        <h4>Il tempo come terra: sempre presente</h4>
+        <p>In molte lingue indigene americane non esistono i tempi verbali come in Occidente. Il passato mitico non è "lontano" — è strutturalmente presente, accessibile attraverso i riti e i racconti. I Coyote e i Corvo delle storie non sono personaggi storici: sono forze attive ancora oggi. Raccontare una storia è convocare quella forza nel presente.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--indigen)">
+      <div class="sq-label" style="color:var(--indigen)">Esempio paradigmatico</div>
+      <div class="sq-text">Coyote ruba il fuoco e lo porta agli uomini — ma nel farlo causa disastri, si comporta in modo sciocco, viene spesso sconfitto e umiliato. Eppure è l'eroe. Nelle tradizioni del Grande Bacino americano il <em>trickster</em> non è morale né immorale: è la forza del cambiamento necessario, del confine che viene attraversato. La sua stupidità è saggezza mascherata. Il suo caos produce ordine. Non si può capirlo con le categorie del bene e del male — solo con quelle dell'equilibrio e del movimento.</div>
+      <div class="sq-source">Ciclo del Coyote · tradizioni Plateau e Gran Bacino, Nord America</div>
+    </div>
+    <div class="key-insight" style="background:rgba(90,171,122,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>In molte tradizioni indigene le storie sono stagionali: si raccontano solo d'inverno, quando i serpenti dormono. Raccontarle d'estate è pericoloso — non metaforicamente. Il tempo della narrazione non è scelto dal narratore: è prescritto dal cosmo. La storia non è intrattenimento. È un atto rituale con conseguenze reali.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ARABO-PERSIANO -->
+<div class="culture-block" id="araba">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--arabic)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--arabic)">Mondo arabo e persiano · Tradizione classica</div>
+      <div class="cb-name">Mondo arabo-persiano</div>
+      <div class="cb-tagline">Il tempo come labirinto. La storia come sopravvivenza e seduzione del destino.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--arabic)">Struttura narrativa</div>
+        <h4>La storia che salva la vita</h4>
+        <p>Le <em>Mille e una notte</em> non sono una raccolta di fiabe: sono una struttura filosofica. Shahrazād racconta storie per non morire — e ogni storia rimanda alla successiva, in un labirinto senza uscita che è esattamente il punto. La narrazione è un atto di sopravvivenza. Il narratore che smette di raccontare, muore. La storia è vita che si difende con se stessa.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--arabic)">Visione del tempo</div>
+        <h4>Il destino scritto e la volontà umana</h4>
+        <p>La tensione tra <em>qadar</em> (destino divino) e scelta umana attraversa tutta la narrativa arabo-persiana. Il fato è scritto — ma i personaggi agiscono come se non lo fosse. Questa ambiguità è fertile: produce storie in cui le profezie si avverano proprio perché i personaggi cercano di evitarle. L'ironia tragica non è greca — è universale.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--arabic)">
+      <div class="sq-label" style="color:var(--arabic)">Esempio paradigmatico</div>
+      <div class="sq-text">Ali Baba non è coraggioso, non è forte, non è saggio. È fortunato, e sa riconoscere la fortuna quando arriva. La sua virtù è la <em>percezione del momento giusto</em>. Nell'etica narrativa araba classica questo vale più dell'eroismo fisico. Il mondo è pieno di porte magiche — il problema è accorgersi che esistono, e avere il coraggio di sussurrare le parole giuste.</div>
+      <div class="sq-source"><em>Ali Baba e i quaranta ladroni</em> · <em>Mille e una notte</em>, VIII-XIII sec.</div>
+    </div>
+    <div class="key-insight" style="background:rgba(74,154,189,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>La tradizione persiana aggiunge una dimensione mistica: il <em>Masnavi</em> di Rumi usa storie dentro storie per avvicinarsi all'indicibile. Ogni racconto è un velo — lo strappi per trovarne un altro. La storia non spiega la verità: la nasconde nella giusta forma, così che solo chi è pronto possa trovarla.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CINA -->
+<div class="culture-block" id="cina">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--china)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--china)">Cina · Tradizione confuciana e taoista</div>
+      <div class="cb-name">Cina</div>
+      <div class="cb-tagline">Il tempo come trasformazione continua. La storia come specchio dell'ordine cosmico e sociale.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--china)">Struttura narrativa</div>
+        <h4>Qi-cheng-zhuan-he: il flusso che gira</h4>
+        <p>La struttura classica cinese (analoga al ki-shō-ten-ketsu giapponese, ma precedente) non tende alla risoluzione del conflitto ma alla trasformazione del contesto. Il finale non risponde alla domanda iniziale — la trasforma. Il protagonista cinese classico non vince o perde: <em>diventa</em>. La parabola taoista non ha morale esplicita — lascia il lettore con una domanda più grande di quella con cui aveva cominciato.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--china)">Visione del tempo</div>
+        <h4>Yin e Yang: il tempo come alternanza</h4>
+        <p>Il tempo cinese classico è ciclico ma non ripetitivo: ogni ciclo porta con sé qualcosa di nuovo. Come lo yin e lo yang, ogni estremo contiene il seme del suo opposto. Le storie riflettono questo: il momento di massima gloria contiene già il seme della caduta. Il momento più buio contiene già la luce che verrà. Non c'è vittoria definitiva — solo movimento perpetuo.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--china)">
+      <div class="sq-label" style="color:var(--china)">Esempio paradigmatico</div>
+      <div class="sq-text">Zhuangzi sogna di essere una farfalla. Si sveglia. Ora non sa: è Zhuangzi che sognava di essere farfalla, o è una farfalla che sogna di essere Zhuangzi? Non è un paradosso da risolvere — è la struttura stessa della realtà. Nella tradizione taoista questa ambiguità non è un problema: è la risposta. Le storie non chiariscono i confini tra le cose — li rendono permeabili.</div>
+      <div class="sq-source">Zhuangzi · <em>Zhuangzi</em>, IV-III sec. a.C.</div>
+    </div>
+    <div class="key-insight" style="background:rgba(200,74,106,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>La tradizione confuciana aggiunge una dimensione politica: le storie hanno il compito di mostrare l'ordine corretto dei rapporti umani (figlio-padre, suddito-sovrano, moglie-marito). Una storia in cui l'ordine viene violato senza conseguenze non è immorale — è <em>pericolosa</em>. La narrativa è uno strumento di coesione sociale tanto quanto di intrattenimento.</div>
+    </div>
+  </div>
+</div>
+
+<!-- NORRENA -->
+<div class="culture-block" id="norse">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--norse)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--norse)">Scandinavia medievale · Tradizione vichinga</div>
+      <div class="cb-name">Tradizione norrena</div>
+      <div class="cb-tagline">Il tempo come conto alla rovescia. La storia come preparazione alla sconfitta dignitosa.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--norse)">Struttura narrativa</div>
+        <h4>Verso il Ragnarök: la fine come destino noto</h4>
+        <p>La narrativa norrena è unica: gli dei sanno che perderanno. Il Ragnarök — la battaglia finale — è previsto, inevitabile, già raccontato. Eppure Thor combatte, Odino raccoglie eroi, Freyr forgia armi. La domanda non è "vinceranno?" — è "come si comporteranno sapendo che perderanno?" La struttura narrativa è costruita sulla dignità di fronte alla fine certa.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--norse)">Visione del tempo</div>
+        <h4>Lineare verso la fine — non verso la salvezza</h4>
+        <p>Il tempo norreno è lineare come quello cristiano, ma punta verso la distruzione, non verso la redenzione. Dopo il Ragnarök c'è un nuovo mondo — ma chi combatte oggi non ci vivrà. Questo produce un'etica eroica pura: agisci bene perché è giusto, non perché sarai ricompensato. La virtù non è strumentale al paradiso — è fine a se stessa.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--norse)">
+      <div class="sq-label" style="color:var(--norse)">Esempio paradigmatico</div>
+      <div class="sq-text">Odino si strappa un occhio per bere alla fonte della saggezza. Si impicca all'Yggdrasil per nove giorni per conquistare le rune. Ogni dono ha un costo sproporzionato — e lui lo paga senza esitare. Non è un martire: è un calcolatore dell'impossibile. Sa che perderà. Raccoglie conoscenza per ritardare la fine il più possibile, e forse — forse — per rendere il mondo nuovo migliore di quello che brucia.</div>
+      <div class="sq-source">Ciclo di Odino · <em>Edda poetica</em>, XIII sec.</div>
+    </div>
+    <div class="key-insight" style="background:rgba(122,171,212,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>Tolkien — profondo studioso della tradizione norrena — ha trasferito questa struttura nella Terra di Mezzo: i personaggi più nobili sanno che il loro mondo finirà. Gli Elfi lasciano la Terra di Mezzo. Gandalf non vince — aiuta gli altri a vincere, poi scompare. La malinconia della grandezza che tramonta è pura estetica norrena.</div>
+    </div>
+  </div>
+</div>
+
+<!-- GRECIA -->
+<div class="culture-block" id="grecia">
+  <div class="cb-header" onclick="toggle(this)">
+    <div class="cb-accent-bar" style="background:var(--greek)"></div>
+    <div class="cb-meta">
+      <div class="cb-region" style="color:var(--greek)">Grecia antica · Tragedia e mito</div>
+      <div class="cb-name">Grecia antica</div>
+      <div class="cb-tagline">Il tempo come arena degli dei. La storia come specchio dell'hybris umana.</div>
+    </div>
+    <div class="cb-toggle">▾</div>
+  </div>
+  <div class="cb-body">
+    <div class="two-cols">
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--greek)">Struttura narrativa</div>
+        <h4>Hamartia, nemesi, catarsi</h4>
+        <p>La tragedia greca ha una struttura precisa: il protagonista eccelle — poi commette un errore (hamartia) che è spesso la sua stessa eccellenza portata all'eccesso. Gli dei o il destino rispondono con la nemesi. Il pubblico, assistendo alla caduta, sperimenta la catarsi — una purificazione emotiva. La storia non serve a intrattenere: serve a svuotare il pubblico di ciò che lo intossica.</p>
+      </div>
+      <div class="content-card">
+        <div class="cc-label" style="color:var(--greek)">Visione del tempo</div>
+        <h4>Kairos e Chronos: il momento giusto e il tempo che consuma</div>
+        <p>I Greci distinguevano due tipi di tempo: <em>Chronos</em>, il tempo quantitativo che scorre e consuma, e <em>Kairos</em>, il momento qualitativo — l'istante irripetibile in cui l'azione è possibile. L'eroe greco deve saper cogliere il kairos. Chi agisce nel momento sbagliato — troppo presto o troppo tardi — fallisce indipendentemente dal valore. Il tempo non è neutro: ha una texture.</p>
+      </div>
+    </div>
+    <div class="story-quote" style="border-color:var(--greek)">
+      <div class="sq-label" style="color:var(--greek)">Esempio paradigmatico</div>
+      <div class="sq-text">Edipo indaga l'assassino del re. L'indagine è brillante, meticolosa, coraggiosa. Trova la risposta. L'assassino è lui stesso. L'eccellenza investigativa lo porta esattamente alla verità che lo distrugge. Non c'è villain. Non c'è errore morale nel cercare la verità. Eppure il risultato è la rovina totale. La struttura tragica greca non ha bisogno del male per produrre la catastrofe — le basta l'uomo che eccelle nel suo campo.</div>
+      <div class="sq-source">Sofocle, <em>Edipo Re</em>, 429 a.C.</div>
+    </div>
+    <div class="key-insight" style="background:rgba(212,200,74,0.08); border-radius:10px;">
+      <div class="ki-icon">◆</div>
+      <div>Il mito greco a differenza della fiaba non ha morale pedagogica semplice. Zeus è lussurioso e capriccioso. Era è vendicativa. Apollo è crudele. Gli dei non sono modelli — sono forze da negoziare. La "morale" della tragedia greca è sofisticata: non "sii buono", ma "conosci i tuoi limiti, perché l'eccesso — in qualsiasi direzione — attrae la nemesi."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- ASSE 2: MORALE E MALE -->
+<!-- ═══════════════════════════════════════════════ -->
+
+<div class="sep"></div>
+
+<div class="axis-intro">
+  <div class="axis-number">Asse II di II</div>
+  <div class="axis-title">Morale, male<br>e visione del mondo</div>
+  <div class="axis-desc">Come ogni cultura risponde alle domande più difficili: il male esiste? È separabile dal bene? Chi lo incarna? Può essere redento, distrutto, o semplicemente compreso?</div>
+</div>
+
+<!-- MATRICE COMPARATIVA -->
+<div class="matrix-section">
+  <div class="matrix-title">Il male nelle culture del mondo</div>
+  <div class="matrix-sub">Come ogni tradizione concepisce la natura del male e il suo ruolo nella storia</div>
+
+  <table class="matrix-table">
+    <thead>
+      <tr>
+        <th>Cultura</th>
+        <th>Natura del male</th>
+        <th>Il villain può essere redento?</th>
+        <th>La morale è universale?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span style="color:var(--west)">Occidente moderno</span></td>
+        <td>Forza esterna, personificabile. Il villain ha una causa — spesso un trauma o una scelta sbagliata.</td>
+        <td>Sì, sempre più spesso. Il villain redento è il tropo dominante del cinema contemporaneo.</td>
+        <td>Sì. Esiste un bene oggettivo che la storia difende. Chi lo viola è "il cattivo".</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--africa)">Africa sub-sahariana</span></td>
+        <td>Squilibrio nella rete delle relazioni. Il male non è una persona — è una rottura dell'armonia comunitaria.</td>
+        <td>La domanda non ha senso: si ripristina l'armonia, non si punisce il colpevole.</td>
+        <td>Dipende dalla comunità. Ciò che spezza il gruppo è male. Ciò che lo tiene unito è bene.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--japan)">Giappone</span></td>
+        <td>Spesso assente o ambiguo. I mostri (<em>yōkai</em>) sono spiriti offesi, non incarnazioni del male.</td>
+        <td>Sì — ma più spesso vengono compresi e pacificati. La redenzione è un malinteso risolto.</td>
+        <td>No. L'etica situazionale (<em>giri</em> vs <em>ninjō</em>) produce conflitti morali senza soluzione chiara.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--india)">India</span></td>
+        <td>Forza cosmica necessaria. Ravana è un grande devoto di Shiva — il suo male è eccesso di ego, non assenza di valore.</td>
+        <td>Spesso sì — attraverso la morte stessa, che purifica e permette la reincarnazione.</td>
+        <td>No. Il dharma è individuale. La stessa azione può essere giusta o sbagliata secondo chi la compie.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--indigen)">Culture indigene</span></td>
+        <td>Squilibrio cosmico. Il "male" è la separazione dall'ordine naturale.</td>
+        <td>Il trickster non è redento — è necessario. Il caos crea lo spazio per il nuovo ordine.</td>
+        <td>No. L'equilibrio con il proprio ecosistema è il valore centrale. Universalità = colonialismo.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--arabic)">Mondo arabo-persiano</span></td>
+        <td>Iblis (Satana) è un angelo caduto per rifiuto di inchinarsi ad Adamo. Il suo orgoglio lo rende tragico.</td>
+        <td>No nella tradizione coranica. Ma nella poesia sufi il male è spesso velo dell'amore divino incompreso.</td>
+        <td>Sì nella tradizione religiosa. No nella tradizione poetica e mistica.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--china)">Cina</span></td>
+        <td>Squilibrio dello yin-yang. Il male assoluto è raro — più comune il male come eccesso di una virtù.</td>
+        <td>Sì, spesso. La trasformazione è il principio cosmico fondamentale.</td>
+        <td>Confucio: sì, esiste un ordine morale corretto. Laozi: la morale stessa è una costruzione che distorce il Dao.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--norse)">Tradizione norrena</span></td>
+        <td>Loki è intelligenza senza lealtà. Non è malvagio per natura — lo diventa per esclusione progressiva.</td>
+        <td>No. Loki viene incatenato. Il destino è destino. La redenzione non è un concetto norreno.</td>
+        <td>Sì: coraggio, lealtà, onore. Ma questi valori si applicano al gruppo, non all'umanità.</td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--greek)">Grecia antica</span></td>
+        <td>Gli dei sono ammorali. Il "male" umano è spesso hybris — eccesso, dismisura, superamento dei propri limiti.</td>
+        <td>Non esiste la categoria. Gli dei non giudicano moralmente — rispondono a violazioni di equilibrio.</td>
+        <td>No. La giustizia (<em>dike</em>) è equilibrio cosmico, non bene morale. I Greci non avevano il concetto di "peccato".</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FRATTURE CULTURALI -->
+<div class="fractures">
+  <div class="frac-title">Le grandi fratture</div>
+  <div class="frac-sub">I punti in cui le visioni del mondo divergono più profondamente — e più fertilmente</div>
+
+  <div class="fracture-item">
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--west)">Occidente moderno</div>
+      <div class="frac-point">Il protagonista deve trasformarsi</div>
+      <div class="frac-desc">Chi non cambia non cresce. L'arco del personaggio è la misura del valore narrativo. La storia è uno strumento di evoluzione individuale.</div>
+    </div>
+    <div class="frac-vs">VS</div>
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--japan)">Giappone / India / Cina</div>
+      <div class="frac-point">Il saggio rimane immobile</div>
+      <div class="frac-desc">La vera saggezza è imperturbabilità di fronte al caos. Il maestro zen, il bodhisattva, il saggio taoista: non cambiano. Il mondo cambia intorno a loro. La trasformazione è del contesto, non del sé.</div>
+    </div>
+  </div>
+
+  <div class="fracture-item">
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--west)">Tradizione abramitica</div>
+      <div class="frac-point">Il male è una forza reale e personificata</div>
+      <div class="frac-desc">Satana, Iblis, il Diavolo: il male ha un nome, un'intenzione, una storia. Combatterlo è il senso della vita morale. Il bene e il male sono entità separate, in guerra.</div>
+    </div>
+    <div class="frac-vs">VS</div>
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--indigen)">Culture indigene / Taoismo</div>
+      <div class="frac-point">Il male non esiste — esiste solo lo squilibrio</div>
+      <div class="frac-desc">Nulla è intrinsecamente cattivo: il fuoco brucia e scalda. Il veleno guarisce e uccide. Il male è una relazione sbagliata tra le forze, non una forza in sé. Questa visione produce storie senza villain — solo forze da riallineare.</div>
+    </div>
+  </div>
+
+  <div class="fracture-item">
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--norse)">Tradizione norrena / Greca</div>
+      <div class="frac-point">Gli eroi sanno che perderanno</div>
+      <div class="frac-desc">La virtù non è strumentale alla vittoria. Si combatte bene anche sapendo di perdere, perché il modo in cui si cade definisce chi si era. La morte dignitosa vale più della vittoria disonorevole.</div>
+    </div>
+    <div class="frac-vs">VS</div>
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--west)">Occidente moderno</div>
+      <div class="frac-point">Gli eroi vincono — o la storia è un fallimento</div>
+      <div class="frac-desc">Il pubblico di massa si aspetta la risoluzione positiva. Le storie in cui l'eroe perde senza redenzione vengono percepite come "nichiliste". Il lieto fine non è un cliché — è una visione del mondo: il bene ha potere sufficiente a prevalere sul male.</div>
+    </div>
+  </div>
+
+  <div class="fracture-item">
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--africa)">Africa / Culture indigene</div>
+      <div class="frac-point">La storia appartiene a tutti — e cambia ogni volta</div>
+      <div class="frac-desc">Non esiste versione "originale" corretta. Il narratore è co-autore. Ogni sera la storia è diversa perché il pubblico è diverso, il momento è diverso, il narratore è diverso. La variazione non è errore — è vita.</div>
+    </div>
+    <div class="frac-vs">VS</div>
+    <div class="frac-side">
+      <div class="frac-culture" style="color:var(--india)">India vedica / Tradizioni scritte</div>
+      <div class="frac-point">La storia sacra deve essere trasmessa identica</div>
+      <div class="frac-desc">I Veda sono stati tramandati oralmente per millenni con una precisione fonetica assoluta — ogni sillaba conta. Cambiare una parola è un'eresia. La storia sacra non appartiene al narratore: lui è solo il vettore di qualcosa di eterno e immutabile.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CLOSING -->
+<div class="closing">
+  <div class="closing-eyebrow">Pensiero conclusivo</div>
+  <div class="closing-text">
+    Ogni cultura racconta storie perché non può fare altrimenti.<br><br>
+    La differenza sta in <em>cosa teme di dimenticare</em>:<br>
+    chi teme di perdere l'individuo racconta eroi solitari.<br>
+    Chi teme di perdere la comunità racconta circoli.<br>
+    Chi teme la morte racconta cicli.<br>
+    Chi teme il caos racconta ordine.<br><br>
+    <em>Le storie sono mappe della paura — e della speranza.</em>
+  </div>
+</div>
+
+</div><!-- /main -->
+
+<script>
+// Stars
+const starsEl = document.getElementById('stars');
+for (let i = 0; i < 80; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.setProperty('--d', (2 + Math.random() * 4) + 's');
+  s.style.setProperty('--delay', (Math.random() * 4) + 's');
+  s.style.opacity = Math.random() * 0.7 + 0.1;
+  starsEl.appendChild(s);
+}
+
+// Accordion
+function toggle(header) {
+  const body = header.nextElementSibling;
+  const arrow = header.querySelector('.cb-toggle');
+  const isOpen = body.classList.contains('open');
+
+  // Close all
+  document.querySelectorAll('.cb-body.open').forEach(b => b.classList.remove('open'));
+  document.querySelectorAll('.cb-header.open').forEach(h => h.classList.remove('open'));
+  document.querySelectorAll('.cb-toggle.open').forEach(a => a.classList.remove('open'));
+
+  if (!isOpen) {
+    body.classList.add('open');
+    header.classList.add('open');
+    arrow.classList.add('open');
+    setTimeout(() => header.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+  }
+}
+</script>
+</body>
+</html>
