@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India · La Cultura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0e3;
+    --paper-deep: #ede3cd;
+    --paper-warm: #f4e8d0;
+    --ink: #2b1f17;
+    --ink-soft: #4d3b2c;
+    --ink-faint: #8a7558;
+    --rule: #d4c5a7;
+    --vermilion: #b73c2e;
+    --vermilion-soft: #d66954;
+    --indigo: #2d3a6b;
+    --gold: #a87c2b;
+    --highlight: #ecdcb6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 90% 5%, rgba(183, 60, 46, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 5% 95%, rgba(45, 58, 107, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(168, 124, 43, 0.025) 0%, transparent 70%);
+    color: var(--ink);
+    font-family: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  /* Texture manoscritto su foglia di palma */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.12 0 0 0 0 0.09 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4rem 0 2rem;
+    position: relative;
+  }
+
+  /* Ornamento d'angolo in stile manoscritto */
+  header::before {
+    content: '';
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 5 5 L 75 5 M 75 5 L 75 30 M 5 5 L 5 30' stroke='%23b73c2e' stroke-width='1' fill='none' opacity='0.4'/%3E%3Ccircle cx='5' cy='5' r='2' fill='%23a87c2b' opacity='0.5'/%3E%3Ccircle cx='75' cy='5' r='2' fill='%23a87c2b' opacity='0.5'/%3E%3Cpath d='M 40 12 Q 50 22, 40 32 Q 30 22, 40 12 Z' fill='%23b73c2e' opacity='0.25'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .devanagari-mark {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 3.2rem;
+    color: var(--vermilion);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  h1.title {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--vermilion);
+  }
+
+  .subtitle {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--vermilion);
+    border-bottom: 1px solid var(--vermilion);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--vermilion);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--vermilion);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '◆';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--vermilion);
+    font-size: 0.5rem;
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3.5rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--vermilion);
+    border-right: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .lead p + p { margin-top: 1.1rem; }
+
+  .lead::before {
+    content: '❦';
+    position: absolute;
+    top: -0.6rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.6rem;
+    color: var(--vermilion);
+    font-size: 1rem;
+    font-style: normal;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: var(--vermilion);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .section-kicker {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  section p {
+    margin-bottom: 1.3rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  section p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* Drop cap stile manoscritto */
+  section:first-of-type > p:first-of-type::first-letter {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: 4.2rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.3rem 0.7rem 0 0;
+    color: var(--vermilion);
+    background: var(--paper-warm);
+    padding: 0.3rem 0.5rem 0.1rem;
+    border: 1px solid var(--rule);
+  }
+
+  /* ===== SANSKRIT TERM ===== */
+  .skt {
+    font-style: italic;
+    color: var(--vermilion);
+    font-weight: 500;
+  }
+
+  .skt-deva {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-style: normal;
+    color: var(--indigo);
+    font-size: 0.95em;
+    margin-left: 0.2em;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    background: var(--highlight);
+    padding: 0.05em 0.3em;
+    font-style: italic;
+    border-bottom: 1px solid var(--vermilion);
+    color: var(--ink);
+  }
+
+  /* ===== ORNAMENTAL QUOTE ===== */
+  .ornamental {
+    margin: 3rem -1rem;
+    padding: 2.2rem 2rem;
+    background: var(--paper-deep);
+    border-top: 2px double var(--vermilion);
+    border-bottom: 2px double var(--vermilion);
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .ornamental::before,
+  .ornamental::after {
+    content: '◆';
+    display: block;
+    color: var(--vermilion);
+    font-size: 0.8rem;
+    font-style: normal;
+    margin: 0 auto 1rem;
+  }
+
+  .ornamental::after {
+    margin: 1rem auto 0;
+  }
+
+  /* ===== KALPA DIAGRAM ===== */
+  .kalpa-diagram {
+    margin: 2.5rem 0;
+    padding: 2.5rem 1rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .kalpa-svg {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1rem;
+  }
+
+  .kalpa-caption {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  /* ===== NESTED STORY DIAGRAM ===== */
+  .nested {
+    margin: 2.5rem 0;
+    padding: 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .nested-label {
+    position: absolute;
+    top: -0.6rem;
+    left: 1.5rem;
+    background: var(--paper);
+    padding: 0 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .frame {
+    border: 1px solid var(--vermilion);
+    padding: 1rem 1.2rem;
+    background: var(--paper);
+    margin-bottom: 0;
+  }
+
+  .frame-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .frame-text {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+
+  .frame-inner {
+    margin: 0.8rem 0 0 1rem;
+    border-color: var(--gold);
+  }
+
+  .frame-inner .frame-label { color: var(--gold); }
+
+  .frame-inner-2 {
+    margin: 0.8rem 0 0 1rem;
+    border-color: var(--indigo);
+  }
+
+  .frame-inner-2 .frame-label { color: var(--indigo); }
+
+  /* ===== CONTRAST ===== */
+  .contrast {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .contrast > div {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .contrast > div:first-child {
+    border-right: 1px solid var(--rule);
+  }
+
+  .contrast h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .contrast p {
+    font-size: 0.93rem;
+    margin: 0;
+    line-height: 1.6;
+    text-align: left;
+    hyphens: none;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(183, 60, 46, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--vermilion);
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'Spectral', serif;
+    color: var(--vermilion);
+    font-size: 1.4rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.65; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 2.5rem 0 1.5rem; }
+    header::before { display: none; }
+    .devanagari-mark { font-size: 2.6rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.1rem; padding: 1.5rem 1.4rem 1.5rem 1.6rem; }
+    h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .ornamental { font-size: 1.15rem; margin: 2rem 0; }
+    .contrast { grid-template-columns: 1fr; }
+    .contrast > div:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+    .frame-inner, .frame-inner-2 { margin-left: 0.4rem; }
+    section p { text-align: left; }
+    section { margin: 3.5rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, section { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+  section:nth-of-type(5) { animation-delay: 0.4s; }
+  section:nth-of-type(6) { animation-delay: 0.45s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume III</div>
+    <div class="devanagari-mark">कथा</div>
+    <h1 class="title">India —<br><em>storie dentro storie<br>dentro storie</em></h1>
+    <p class="subtitle">Una cultura che ha pensato il tempo come kalpa di kalpa, l'individuo come una vita tra molte, e la storia come una scatola che ne contiene altre — all'infinito, finché qualcuno non si ferma ad ascoltare.</p>
+    <div class="meta-row">
+      <span>Documento 1 di 4</span>
+      <span>La Cultura</span>
+      <span>Tono saggistico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="#" class="active">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="india_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="india_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="india_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Nelle culture occidentali una storia è un viaggio. In Giappone è un momento. In India è una <span class="skt">katha</span><span class="skt-deva">कथा</span> — un racconto — che dentro contiene un'altra <span class="skt">katha</span>, e dentro quella un'altra ancora.</p>
+    <p>Quando finisci di srotolare l'ultima, sei diverso. Non perché sei stato da qualche parte. Perché hai camminato in un labirinto fatto di significati che si rispondono.</p>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — Il terreno</span>
+      <h2>La visione del mondo che genera questo tipo di storie</h2>
+      <p class="section-kicker">Tre fondamenta antichissime: il tempo cosmico smisurato, la reincarnazione come continuum dell'anima, il <span class="skt">dharma</span> come legge situata.</p>
+    </div>
+
+    <p>La cultura narrativa indiana è la più antica continuamente attiva sul pianeta. I <em>Veda</em> più antichi sono di tremilacinquecento anni fa. Il <em>Mahabharata</em> e il <em>Ramayana</em> hanno duemila e cinquecento anni, e ancora oggi sono raccontati ogni sera in qualche villaggio. Il <em>Panchatantra</em>, raccolta di favole, ha attraversato Persia, mondo arabo, Spagna medievale, e ha influenzato La Fontaine. Quando in India si racconta, si attinge a un serbatoio di racconti che è molto più vasto e stratificato di quello di qualsiasi altra cultura. Per capire da dove vengono le sue forme narrative bisogna partire da tre fondamenta filosofico-religiose che lavorano insieme da almeno tremila anni.</p>
+
+    <p>La prima è la <strong>concezione cosmica del tempo</strong>. L'India ha pensato il tempo in scale che a noi sembrano vertiginose. Un <span class="skt">kalpa</span><span class="skt-deva">कल्प</span> — un giorno di Brahma — dura 4,32 miliardi di anni umani. Una notte di Brahma altrettanto. La vita di Brahma è di cento anni di Brahma, ovvero circa 311 trilioni di anni umani. Dopo, l'universo si dissolve, e poi ricomincia. <strong>Sempre. Da sempre. Per sempre</strong>. In questa cosmologia, una vita umana è meno di una scintilla. Quando una storia indiana inizia con "molti kalpa fa", non sta usando una formula vaga: sta collocando l'evento in una scala temporale che relativizza qualsiasi urgenza terrena. Una cultura che pensa così non può raccontare storie con la stessa fretta dell'Occidente moderno — l'urgenza, semplicemente, non c'è.</p>
+
+    <p>La seconda fondamenta è la <strong>reincarnazione</strong> (<span class="skt">samsara</span><span class="skt-deva">संसार</span>) e la <strong>legge del karma</strong>. Un'anima — l'<span class="skt">atman</span> — non vive una sola vita: ne attraversa migliaia, in forme diverse, finché non raggiunge la liberazione (<span class="skt">moksha</span>). Ogni vita è collegata alle precedenti dal karma — la traccia delle azioni passate che modella le condizioni attuali. Questa concezione cambia profondamente cosa significa "personaggio" in una storia. <strong>Un personaggio indiano non è limitato alla sua vita presente</strong>: dietro di lui ci sono vite, davanti ce ne sono altre, e ciò che gli accade ora ha ramificazioni che si estendono in entrambe le direzioni. Una storia su un re può contenere una digressione su <em>chi era quel re cento vite fa</em> — e quella digressione non è una distrazione, è il senso stesso di ciò che gli accade ora.</p>
+
+    <p>La terza fondamenta è il <strong><span class="skt">dharma</span></strong><span class="skt-deva">धर्म</span>. Tradurre questa parola è impossibile: non è "la legge", non è "il dovere", non è "la morale". È più simile a <em>"l'ordine giusto delle cose, in questa situazione, per questa persona, in questo momento"</em>. Il dharma di un re non è il dharma di un asceta. Il dharma di un padre cambia quando diventa nonno. Il dharma in tempo di pace è diverso da quello in tempo di guerra. Questa è una concezione della morale <strong>radicalmente situata</strong>: non c'è un principio universale come nel kantismo, non c'è un comandamento come nel monoteismo abramitico — c'è una rete di obblighi specifici che dipendono da chi sei, da dove sei, e da quando sei. Le storie indiane sono spesso, tecnicamente, <em>esplorazioni del dharma</em>: messe in scena di situazioni in cui non è ovvio cosa sia giusto fare, e in cui la storia stessa serve a illuminare la complessità del problema.</p>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sull'identità di "India"</span>
+      Quando diciamo "India narrativa" stiamo necessariamente semplificando. Il subcontinente indiano contiene tradizioni hindu, buddhiste, jainiste, sikh, musulmane (con il loro cuore in poesia sufi e adab indo-persiano), e oggi cristiane. Ognuna ha forme narrative proprie. Ci concentriamo sulla <strong>tradizione hindu-buddhista classica</strong> — quella delle grandi epiche, dei Jataka, del Panchatantra — perché è quella che ha prodotto i meccanismi narrativi più peculiari (storie incassate, reincarnazione come dispositivo, dharma come morale situata). Ma è una scelta, non un'esclusione.
+    </div>
+
+    <p>Da queste tre fondamenta nasce una visione del mondo radicalmente diversa da quella occidentale e da quella giapponese. Se l'Occidente racconta <em>"un individuo, in un tempo che non torna, attraverso uno sforzo morale, migliora la propria condizione"</em>, e il Giappone racconta <em>"alcune cose accadono in un mondo che cambia stagione, e qualcuno le osserva"</em>, l'India racconta qualcosa che potremmo provare a formulare così: <strong>"in un universo immenso, dove ogni essere ha già vissuto molte vite e ne vivrà molte altre, una situazione si presenta — e chi vi è dentro deve scoprire qual è il dharma giusto per affrontarla, sapendo che la risposta non è mai semplice e quasi mai unica"</strong>. È una grammatica narrativa che ha bisogno di tempo, di ramificazioni, di paralleli — e che diffida sempre della soluzione facile.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La forma</span>
+      <h2>Struttura narrativa — <em>la scatola dentro la scatola</em></h2>
+      <p class="section-kicker">Il dispositivo più caratteristico della narrativa indiana classica: la <span class="skt">katha</span> incassata. Una cornice contiene un racconto, che contiene un racconto, che contiene un racconto.</p>
+    </div>
+
+    <p>Aristotele ha detto che una storia ha un inizio, una metà, e una fine. Per duemila anni la narrativa occidentale gli ha dato ragione. La narrativa indiana classica ha sempre fatto una cosa diversa, e più strana: <strong>ogni storia è la cornice di altre storie, e ogni racconto può aprire un mondo dentro di sé</strong>. È il principio della <span class="keyterm">narrazione incassata</span> — quello che gli studiosi chiamano <em>frame story</em> o <em>nested narrative</em>.</p>
+
+    <p>Il Panchatantra ne è l'esempio più puro. Un re affida i suoi figli scapestrati a un saggio, perché li educhi. Il saggio, invece di tenere lezioni, racconta loro storie. Le storie hanno protagonisti animali. Ma dentro ogni storia, ad un certo punto, un animale comincia a raccontarne un'altra a un altro animale. E dentro quella seconda storia, qualcuno ne racconta una terza. Per il lettore moderno questo può essere disorientante — ci si chiede a che livello siamo, cosa stiamo ascoltando. Per l'ascoltatore indiano tradizionale è la cosa più naturale del mondo: <strong>il senso si forma nel rapporto tra i livelli</strong>, non nella linea narrativa di uno solo di essi.</p>
+
+    <div class="nested">
+      <span class="nested-label">Esempio · struttura tipica</span>
+      <div class="frame">
+        <div class="frame-label">Cornice esterna</div>
+        <div class="frame-text">Un re affida i suoi figli a un saggio per educarli. Il saggio comincia a raccontare...</div>
+        <div class="frame frame-inner">
+          <div class="frame-label">Storia 1 (animali)</div>
+          <div class="frame-text">Un leone e un toro diventano amici, ma uno sciacallo geloso vuole separarli. Lo sciacallo dice al leone: "Lascia che ti racconti la storia di..."</div>
+          <div class="frame frame-inner-2">
+            <div class="frame-label">Storia 2 (favola morale)</div>
+            <div class="frame-text">Una scimmia prudente e una scimmia avventata. La avventata cade in un pozzo. La storia illustra al leone perché diffidare del toro. Lo sciacallo ne ricava il proprio scopo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>Notare cosa fa questa struttura. <strong>La storia interna non è una digressione</strong>: è il <em>vero argomento</em> in quel momento. Lo sciacallo usa la favola della scimmia per persuadere il leone — la favola è uno strumento, non un divertimento. E la cornice (il saggio che educa i figli del re) usa tutto il complesso per insegnare ai principini come si conduce un regno. Sono strati che si rinforzano: ognuno illumina gli altri. La storia diventa un <em>oggetto stratificato</em>, simile a un manoscritto miniato in cui margini, illustrazioni e testo si commentano reciprocamente.</p>
+
+    <p>Ma le storie incassate non sono solo un dispositivo del Panchatantra. Sono la <strong>forma costitutiva delle grandi epiche</strong>. Il Mahabharata — diciotto libri, centomila distici, otto volte la Bibbia — è strutturalmente un racconto incorniciato da un altro racconto incorniciato da un altro: un saggio racconta la storia a un re, che la sente raccontare da qualcuno che l'ha sentita raccontare da qualcun altro. E dentro la storia principale, decine, centinaia di sotto-storie: l'origine di un fiume, la vita passata di un personaggio, la disputa di due asceti, un'antica genealogia. Per chi viene dall'Occidente, la prima reazione è disorientamento. Per l'India questa è semplicemente <em>come sono fatte le cose importanti</em>: il vero non si dice mai in linea retta, perché il vero non ha forma di linea retta.</p>
+
+    <div class="ornamental">
+      Una storia che vuole dire qualcosa di profondo<br>non si racconta — si dispiega.
+    </div>
+
+    <p>Ci sono <strong>tre tratti</strong> che definiscono questa struttura in opposizione a quelle viste finora.</p>
+
+    <p>Il <strong>protagonista è plurale, o spostato, o ridiscusso</strong>. Le storie indiane raramente hanno un solo eroe identificabile come fulcro. Il Mahabharata ha cinque fratelli protagonisti, decine di personaggi maggiori, e — punto cruciale — il "vero" protagonista non è mai pacificamente uno: a seconda di chi racconta la storia, può essere Yudhishthira (il re giusto), Krishna (il dio incarnato), Karna (l'eroe tragico nemico), o anche Draupadi (la regina condivisa tra i cinque fratelli, e umiliata pubblicamente). La domanda <em>"di chi è la storia?"</em> ha sempre più di una risposta legittima, e la cultura indiana è felice di questa ambiguità — la considera segno di profondità, non di confusione.</p>
+
+    <p>Il <strong>conflitto esiste, ma non è dualistico</strong>. Le storie indiane hanno guerre, scontri, drammi. Ma raramente si lasciano leggere come "i buoni contro i cattivi". Il Mahabharata è la guerra tra due rami della stessa famiglia: i Pandava e i Kaurava. I Pandava sono i "buoni", certo. Ma vincono attraverso astuzie, tradimenti, e atti che il dharma stesso fatica a giustificare. I Kaurava sono i "cattivi", ma alcuni di loro — Bhishma, Karna, Drona — sono tra i personaggi moralmente più nobili dell'intera epopea. La storia non offre un giudizio facile. <strong>Offre un campo di tensioni etiche</strong> che il lettore deve abitare per decenni.</p>
+
+    <p>Il <strong>finale non chiude — apre</strong>. Le grandi storie indiane si concludono con un'apertura cosmica, non con una risoluzione terrena. Il Ramayana finisce con Rama che ritrova il regno e Sita che torna nella terra (nel senso letterale: la terra si apre e la riprende). Il Mahabharata finisce con i fratelli vincitori che salgono sul Monte Meru e uno per uno cadono morti durante la salita, finché solo Yudhishthira arriva — e scopre l'ultima verità sull'aldilà. Le epiche indiane terminano con uno <em>zoom-out cosmologico</em>: la storia umana si dissolve nella scala più grande del kalpa. Anche le piccole storie del Panchatantra spesso finiscono con un detto sentenzioso, o con una storia ulteriore — non con una chiusura netta.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — Il tempo</span>
+      <h2>Il tempo come oceano</h2>
+      <p class="section-kicker">Né freccia né cerchio: una distesa smisurata in cui tutto è già accaduto, sta accadendo, e accadrà di nuovo.</p>
+    </div>
+
+    <p>La concezione indiana del tempo è probabilmente la più radicale di tutte le culture umane. Non solo il tempo è ciclico — è ciclico <strong>in scale che fanno apparire piccolo persino il ciclo</strong>. I quattro <span class="skt">yuga</span><span class="skt-deva">युग</span> (le ere del mondo) si succedono — età dell'oro, dell'argento, del bronzo, del ferro — per un totale di 4.320.000 anni. Mille volte questo ciclo formano un kalpa, un giorno di Brahma. Mille kalpa formano una vita di Brahma. Dopo, Brahma stesso muore, e un nuovo Brahma nasce. Il tempo, in India, non è un ciclo: è un <span class="keyterm">oceano di cicli dentro cicli</span>.</p>
+
+    <div class="kalpa-diagram">
+      <svg class="kalpa-svg" viewBox="0 0 600 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- Tre cerchi concentrici per illustrare gli yuga, kalpa, vita di brahma -->
+        <circle cx="300" cy="110" r="100" fill="none" stroke="#b73c2e" stroke-width="1" opacity="0.4"/>
+        <circle cx="300" cy="110" r="65" fill="none" stroke="#a87c2b" stroke-width="1" opacity="0.5"/>
+        <circle cx="300" cy="110" r="32" fill="none" stroke="#2d3a6b" stroke-width="1" opacity="0.6"/>
+        <circle cx="300" cy="110" r="6" fill="#b73c2e" opacity="0.8"/>
+
+        <!-- Etichette -->
+        <text x="300" y="35" text-anchor="middle" font-family="Spectral" font-size="11" font-style="italic" fill="#2b1f17">vita di Brahma · 311 trilioni di anni</text>
+        <text x="300" y="74" text-anchor="middle" font-family="Spectral" font-size="10" font-style="italic" fill="#2b1f17">kalpa · 4,32 miliardi di anni</text>
+        <text x="300" y="103" text-anchor="middle" font-family="Spectral" font-size="9" font-style="italic" fill="#2b1f17">yuga · 4,32 milioni</text>
+        <text x="300" y="120" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#b73c2e">vita umana</text>
+
+        <!-- Linee guida verso etichette -->
+        <line x1="300" y1="200" x2="300" y2="215" stroke="#8a7558" stroke-width="0.5"/>
+      </svg>
+      <div class="kalpa-caption">
+        Il tempo indiano non si misura in vite umane — si misura in cosmologie. Una vita è un punto, un kalpa è un cerchio, e oltre il cerchio ci sono altri cerchi sempre più grandi.
+      </div>
+    </div>
+
+    <p>Per la narrazione, questa concezione produce conseguenze tecniche specifiche, e profondamente diverse da quelle che abbiamo visto.</p>
+
+    <p>Il <strong>passato è abitabile, non chiuso</strong>. In una cultura della reincarnazione, il passato non è dietro di noi — è <em>dentro di noi</em>. Le vite passate dei personaggi possono essere narrate, esplorate, citate come spiegazione di ciò che accade ora. Le storie indiane usano spesso un dispositivo che potremmo chiamare <em>flashback ontologico</em>: non "ricordo che..." ma "in una vita precedente, costui era...". Il Mahabharata è pieno di rivelazioni di questo tipo: questo eroe era stato in passato un asceta offeso, quindi soffre questa maledizione; quel guerriero era stato in passato un demone redento, quindi ha questo destino. Il <em>passato remoto</em> è materia narrativa attiva, non sfondo.</p>
+
+    <p>Il <strong>futuro è già scritto, ma in un modo strano</strong>. La cultura indiana ha un forte senso del destino (<span class="skt">prarabdha</span>) — ciò che è inevitabile a causa del karma accumulato. Eppure non è fatalismo cieco: il libero arbitrio esiste, ma agisce dentro una cornice già delineata. Le profezie, nelle storie indiane, sono frequenti e quasi sempre si avverano — ma il modo in cui si avverano è quasi sempre sorprendente. Il personaggio non può evitare il proprio destino, ma può scoprire <em>chi è</em> mentre lo affronta. Il futuro non è "aperto" in senso occidentale, ma non è neanche bloccato.</p>
+
+    <p>Il <strong>presente è il punto di intersezione</strong>. È qui che il karma passato si manifesta, qui che si seminano le condizioni per le vite future, qui che si presenta il dharma come domanda concreta. Il presente non è insufficiente (come nell'Occidente proteso al futuro) e non è sufficiente in sé (come nel Giappone contemplativo): è il <em>punto attivo</em> in cui si fa qualcosa che ha conseguenze ben oltre la vita presente.</p>
+
+    <div class="contrast">
+      <div>
+        <h4>Tempo lineare occidentale</h4>
+        <p>Una vita, un'occasione, un risultato. Il passato è perduto, il futuro è da costruire, il presente è da superare. Urgenza.</p>
+      </div>
+      <div>
+        <h4>Tempo oceanico indiano</h4>
+        <p>Molte vite, molti cicli, molti livelli. Il passato è dentro, il futuro è già delineato, il presente è il punto in cui si compongono. Pazienza cosmica.</p>
+      </div>
+    </div>
+
+    <p>Per il narratore questa concezione del tempo offre uno strumento potentissimo: <strong>la possibilità di aprire la storia all'indietro o all'infuori senza perdere coerenza</strong>. In una storia occidentale, una digressione sul passato lontano del personaggio è un rallentamento della trama. In una storia indiana è un <em>approfondimento</em>: ci dice <em>perché</em> ciò che accade adesso ha proprio questa forma. Non c'è il problema dell'<em>infodump</em>: dare informazioni sul passato è già fare progredire la storia, perché la storia non è la trama — è l'illuminazione progressiva di una situazione presente attraverso i suoi precedenti cosmici.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Il senso</span>
+      <h2>Morale, valori e insegnamenti tipici</h2>
+      <p class="section-kicker">Non principi universali, ma situazioni in cui scoprire qual è il proprio dharma. Un'etica radicalmente contestuale.</p>
+    </div>
+
+    <p>Le storie indiane trasmettono un sistema di valori coerente, ma costruito su presupposti talmente diversi dai nostri che spesso ci appaiono ambigui o addirittura contraddittori. Vale la pena nominarne i nuclei, perché senza di essi le storie restano opache.</p>
+
+    <p>Il primo valore è il <strong><span class="skt">dharma</span> come bussola situata</strong>. Abbiamo già detto che il dharma non è un principio universale ma una rete di obblighi che dipendono da chi sei e dove sei. Tradotto in termini narrativi, questo significa che <strong>il dilemma morale è il vero motore di moltissime storie indiane</strong>. Il <em>Bhagavad Gita</em>, una delle parti più studiate del Mahabharata, è un dialogo di seicento versi tra il principe Arjuna e il dio Krishna sul problema: <em>il mio dharma di guerriero mi obbliga a uccidere i miei stessi parenti in battaglia. Il mio dharma di parente mi obbliga a non farlo. Cosa devo fare?</em> Questa è una domanda senza risposta facile, e l'intero Gita serve a illuminarla — non a risolverla in senso occidentale.</p>
+
+    <p>Il secondo valore è il <strong>distacco</strong> (<span class="skt">vairagya</span>) come saggezza suprema. In una cultura della reincarnazione, attaccarsi alle cose è una forma di errore cognitivo: tutte le cose passano, ogni vita finisce, ogni regno cade. Le storie indiane premiano spesso personaggi che <strong>sanno lasciar andare</strong> — il re che diventa eremita, il guerriero che depone le armi, l'amante che accetta la separazione. Questa non è rassegnazione: è saggezza pratica nel quadro del karma. Il personaggio che si attacca disperatamente è quasi sempre quello che soffre di più — non perché sia punito, ma perché ha capito male le regole del gioco.</p>
+
+    <p>Il terzo valore è la <strong><span class="skt">ahimsa</span></strong><span class="skt-deva">अहिंसा</span>, il principio del non-nuocere. Centrale nel buddhismo e nel jainismo, ma presente anche nella tradizione hindu, è l'idea che ogni essere vivente — uomo, animale, insetto, pianta in alcuni casi — abbia diritto al rispetto. Non perché lo dica una legge esterna, ma perché in quell'essere c'è un <em>atman</em>, una scintilla d'anima identica alla nostra. Le storie indiane sono piene di animali parlanti, non come trovata fiabesca, ma come <strong>conseguenza ontologica della reincarnazione</strong>: quel topo potrebbe essere stato tuo padre in una vita passata, quella tigre potrebbe essere un saggio caduto in disgrazia. Trattarli con rispetto non è gentilezza: è realismo metafisico.</p>
+
+    <p>Il quarto valore è la <strong><span class="skt">bhakti</span></strong><span class="skt-deva">भक्ति</span>, la devozione amorosa. Specialmente nelle tradizioni più popolari (vaishnavismo, shaivismo), il rapporto col divino non è obbedienza a una legge ma <em>relazione amorosa</em>. Le storie di Krishna e Radha, di Rama e Sita, di Shiva e Parvati, sono storie d'amore — divine, certo, ma raccontate con il calore e l'erotismo del legame umano. Questa è una delle differenze più potenti rispetto all'austero monoteismo abramitico: nella narrativa indiana il sacro si manifesta spesso attraverso <strong>l'intensità affettiva</strong>, non attraverso l'autorità.</p>
+
+    <p>Sul <strong>male</strong>, infine, una nota importante. La narrativa indiana ha personaggi terribili — Ravana che rapisce Sita, Duryodhana che persegue gli amici di sempre, Kamsa che vuole uccidere Krishna neonato. Ma <strong>il male, nella cosmologia indiana, è quasi sempre uno squilibrio cosmico in via di correzione</strong>. Ravana non è semplicemente cattivo: è un grande devoto di Shiva caduto nell'orgoglio, e la sua sconfitta restaura il <em>dharma</em> ferito. I demoni (<span class="skt">asura</span>) non sono il "lato oscuro" come in un dualismo manicheo: sono fratelli degli dèi, parte dello stesso processo cosmico. Questa concezione produce una narrativa in cui anche i personaggi più malvagi hanno una <em>logica interna comprensibile</em>, e in cui la sconfitta del male è quasi sempre <strong>anche la sua redenzione</strong> — Ravana muore meditando su Rama, e raggiunge in quel modo una forma di liberazione.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 05 — La tecnica</span>
+      <h2>Come la morale entra nella storia</h2>
+      <p class="section-kicker">Esplicita ma stratificata: dichiarata sì, ma in più voci, da più angolazioni, con molte sentenze che si parlano addosso.</p>
+    </div>
+
+    <p>Se l'Occidente arcaico dichiara la morale alla fine, l'Occidente moderno la incarna nell'arco del personaggio, e il Giappone la lascia emergere nel silenzio, l'India fa qualcosa che non è nessuna di queste tre cose. Le storie indiane <strong>dichiarano la morale, sì — ma molte volte, da molte angolazioni, in molte voci</strong>. La pedagogia non è un singolo messaggio chiaro, ma un <em>cluster</em> di insegnamenti che si commentano e si correggono a vicenda.</p>
+
+    <p>Il dispositivo tecnico più comune è la <span class="keyterm">sentenza</span> (<span class="skt">subhashita</span><span class="skt-deva">सुभाषित</span>) — un detto sapienziale, di solito in forma poetica concisa, inserito nel flusso narrativo. Il Panchatantra ne è letteralmente costellato: praticamente ogni episodio termina con una sentenza, ogni dialogo importante ne contiene una, e i personaggi le citano l'uno all'altro come argomento. <em>"Chi ascolta i nemici travestiti da amici è come l'uccello che si fida del cacciatore"</em>. Queste sentenze sono morali esplicite — ma <strong>stratificate</strong>: in una stessa storia possono comparire sentenze che si contraddicono, perché situazioni diverse richiedono saggezze diverse. Il lettore è chiamato non a memorizzare un'unica lezione, ma a <em>navigare un repertorio di lezioni concorrenti</em>.</p>
+
+    <p>Il secondo dispositivo è il <strong>commento esplicito del narratore o di un saggio interno alla storia</strong>. A differenza del romanzo moderno, che evita il narratore onnisciente che giudica, le storie indiane spesso fermano la narrazione per permettere a una voce autoriale (un saggio, un asceta, un dio incarnato) di <em>spiegare</em> cosa significa quello che è appena accaduto. Krishna nel Bhagavad Gita ferma una battaglia per spiegare ad Arjuna l'intera filosofia dell'azione disinteressata. Questo a un orecchio moderno sembra una pausa pedagogica esagerata. Per la cultura indiana è il cuore stesso della narrazione: la storia <em>è</em> l'occasione per l'insegnamento, non il suo veicolo.</p>
+
+    <div class="ornamental">
+      In una storia indiana, ogni evento è una domanda<br>e ogni saggio una risposta — diversa dalle altre.
+    </div>
+
+    <p>Il terzo dispositivo è la <strong>storia incassata come argomento morale</strong>. Quando un personaggio non sa cosa fare, un altro personaggio gli racconta una storia che illustra un principio. Quella storia, dentro la storia principale, è <em>la lezione</em> — incarnata in nuovi personaggi, in nuovi eventi, ma applicabile alla situazione presente. Le storie del Panchatantra funzionano quasi tutte così. La favola interna è l'argomento. È una pedagogia <strong>per parallelismo</strong>: <em>"come quel topo nella favola, anche tu adesso..."</em>. Il bambino indiano cresce ascoltando questa modalità — e impara a pensare per analogie strutturate, una forma di intelligenza che la cultura occidentale ha quasi perso.</p>
+
+    <div class="callout">
+      <span class="callout-label">Per il narratore</span>
+      Per un bambino di 2-3 anni la stratificazione massima della morale indiana — sentenze multiple, commenti dei saggi, storie incassate complesse — è troppo. Ma una versione semplificata funziona benissimo: <strong>finire la storia con un piccolo detto rituale</strong>, una formula sentenziosa che torna sempre uguale ("e così le cose piccole vincono sulle grandi", "e chi ascolta impara"). Anche un solo livello di "storia dentro storia" — il nonno racconta che una volta un topolino — diventa per un bambino piccolo un piccolo viaggio cognitivo, una "scatola aperta" molto piacevole. La grammatica indiana è scalabile.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 06 — La funzione</span>
+      <h2>Scopo e funzione sociale</h2>
+      <p class="section-kicker">Trasmettere il <span class="skt">dharma</span>, illuminare il karma, formare l'anima attraverso le vite. Una funzione cosmica, non solo sociale.</p>
+    </div>
+
+    <p>Nelle culture che abbiamo visto finora, le storie servono a cose <em>terrestri</em>: educare i bambini, ricordare i morti, costruire identità, intrattenere, esercitare l'attenzione. In India le storie servono anche a queste cose, ma sopra di tutto servono a una funzione che le altre culture quasi non hanno: la <strong>formazione spirituale</strong>. Una storia indiana classica non è semplicemente un racconto bello, o utile, o memorabile. È un <em>esercizio di trasformazione interiore</em>, e il suo scopo ultimo è aiutare l'ascoltatore a procedere lungo il cammino che porta dalla schiavitù del samsara alla liberazione.</p>
+
+    <p>La <strong>funzione di trasmissione del <span class="skt">dharma</span></strong> è quella più esplicita. Le grandi epiche e i Purana sono testi sacri tanto quanto narrativi: contengono il sapere su come si vive, come si governa, come si muore, come si tratta una moglie, un nemico, un brahmano, un servo. Il Mahabharata stesso contiene un'opera intera (l'<em>Anushasana Parva</em>) dedicata a Bhishma morente che spiega a Yudhishthira la totalità del dharma. <strong>Le storie sono manuali pratici di vita giusta</strong> — ma manuali sotto forma narrativa, perché solo la narrazione può rendere visibile quanto il dharma è situato.</p>
+
+    <p>La <strong>funzione devozionale</strong> attraversa tutta la cultura indiana classica e popolare. Raccontare le storie di Krishna, di Rama, di Shiva, di Durga è un atto religioso. Ascoltarle è una pratica spirituale (<span class="skt">shravana</span>, "ascoltare"). Non è solo intrattenimento — è una forma di adorazione partecipata. Per questo le grandi storie vengono raccontate continuamente, ad ogni festa, per generazioni: <strong>il valore non sta nella novità, ma nel ri-ascolto</strong>. Una storia sentita per la centesima volta non è inflazionata: è approfondita.</p>
+
+    <p>La <strong>funzione di esplorazione del karma</strong> è più sottile ma fondamentale. Le storie indiane mostrano in azione la legge del karma — come le azioni di una vita producano i frutti di un'altra, come scelte minute possano avere ramificazioni cosmiche. Questo è un insegnamento metafisico, ma trasmesso attraverso esempi narrativi concreti. <strong>Una favola del Panchatantra non è solo un'illustrazione di prudenza</strong>: è una piccola dimostrazione di come il mondo funziona — di come una scelta produce conseguenze, e quelle conseguenze altre conseguenze, in catene che attraversano vite.</p>
+
+    <p>La <strong>funzione di educazione politica</strong> è particolarmente forte nel Panchatantra e nei testi correlati (il <em>Hitopadesha</em>, l'<em>Arthashastra</em>). Queste opere sono esplicitamente concepite per <strong>l'educazione dei principi</strong>: insegnano l'arte di governare, scegliere consiglieri, riconoscere nemici, allearsi con saggezza. Non sono favole moralistiche da bambini come spesso si crede in Occidente — sono <em>realpolitik in forma narrativa</em>, frequentemente cinica, e spesso più simile a Machiavelli che a Esopo. Una favola del Panchatantra può insegnare <em>che a volte è giusto tradire un'alleanza</em>. Questo aspetto è quello che si è perso nelle traduzioni europee, che hanno tentato di rendere queste storie "morali" nel senso cristiano.</p>
+
+    <p>Per chi racconta a un bambino di 2-3 anni questa pluralità di funzioni offre uno strumento potente: <strong>la stessa storia può servire a cose diverse a seconda di come la si racconta</strong>. La favola del topolino e del leone può essere educativa (la prudenza paga), spirituale (anche i piccoli hanno valore), affettiva (vediamo come sono buoni l'uno con l'altro), pratica (impariamo a riconoscere chi può aiutarci). La cultura indiana è straordinariamente esperta in questo: una stessa storia, raccontata da un saggio diverso a un bambino diverso in un giorno diverso, è una storia diversa. Questa è la più grande lezione che la grammatica narrativa indiana offre — e a cui torneremo nel Doc 4.</p>
+
+    <div class="ornamental">
+      Una storia non si racconta una volta sola.<br>Si racconta finché non diventa parte dell'anima di chi ascolta.
+    </div>
+  </section>
+
+  <div class="end-mark">❦ ❦ ❦</div>
+
+  <footer>
+    <span>Volume III · Documento 1 di 4</span>
+    <span>Prossimo: Le storie classiche →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

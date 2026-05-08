@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giappone · La Storia per Bambini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf7f2;
+    --paper-deep: #f0ebe1;
+    --ink: #2a2620;
+    --ink-soft: #4a443c;
+    --ink-faint: #8a8278;
+    --rule: #d8d2c4;
+    --accent: #6b3a3a;
+    --accent-soft: #9a6464;
+    --sumi: #3d3540;
+    --highlight: #ede5d3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 80% 10%, rgba(107, 58, 58, 0.025) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, rgba(61, 53, 64, 0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Noto Serif', 'Shippori Mincho', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 300;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 5rem 0 2.5rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    font-weight: 400;
+  }
+
+  .kanji-mark {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  h1.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6.5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sumi);
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 540px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 3rem;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover { color: var(--ink); }
+
+  nav.tabs a.active { color: var(--accent); }
+
+  nav.tabs a.active .tab-num {
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 5rem 0 4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.45rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 580px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  .lead::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 6rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--sumi);
+  }
+
+  .section-kicker {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 560px;
+  }
+
+  section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin: 3rem 0 1.2rem;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+  }
+
+  section p strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== JAPANESE TERM ===== */
+  .jp {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .jp-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-style: normal;
+    color: var(--sumi);
+    font-size: 0.95em;
+    margin-left: 0.15em;
+  }
+
+  /* ===== TRADUZIONE ===== */
+  .traduzione {
+    margin: 2rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .traduzione-row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    border-bottom: 1px solid var(--rule);
+    padding: 1.4rem 0;
+  }
+
+  .traduzione-row:last-child { border-bottom: none; }
+
+  .traduzione-cell {
+    padding: 0 1.4rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .traduzione-cell.label {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--ink);
+    padding-left: 0;
+  }
+
+  .traduzione-cell.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  .traduzione-cell.translation {
+    font-style: italic;
+    color: var(--ink-soft);
+    padding-right: 0;
+  }
+
+  .traduzione-cell.translation.discard {
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+
+  .traduzione-cell.translation.discard::before {
+    content: '× ';
+    color: var(--accent);
+    font-style: normal;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ===== STORY BLOCK ===== */
+  .story-block {
+    margin: 3rem 0 4rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+    position: relative;
+  }
+
+  .story-label {
+    position: absolute;
+    top: -0.7rem;
+    left: 0;
+    background: var(--paper);
+    padding-right: 1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .story-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.9rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.15;
+    font-style: italic;
+  }
+
+  .story-title em {
+    font-style: normal;
+    color: var(--sumi);
+  }
+
+  .story-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  .story-block p {
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .story-block p em {
+    font-style: italic;
+    color: var(--sumi);
+  }
+
+  .story-block p.beat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 2.2rem;
+    margin-bottom: 0.8rem;
+    font-weight: 400;
+  }
+
+  .story-block p.beat-label::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 1px;
+    background: var(--accent);
+    margin-top: 0.6rem;
+    opacity: 0.5;
+  }
+
+  .story-block p.beat-label:first-child {
+    margin-top: 0;
+  }
+
+  .story-block p.refrain {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .story-block p.refrain::before,
+  .story-block p.refrain::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    margin: 0.8rem auto;
+    opacity: 0.4;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    border-bottom: 1px solid var(--accent);
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ===== BREATHING QUOTE ===== */
+  .breath {
+    margin: 3rem auto;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--accent);
+    max-width: 540px;
+  }
+
+  .breath::before,
+  .breath::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    margin: 1.5rem auto;
+    opacity: 0.5;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2.5rem 0;
+    padding: 1.6rem 0 1.6rem 1.8rem;
+    border-left: 1px solid var(--accent);
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  /* ===== KISHOTENKETSU MAPPED ===== */
+  .kt-mapped {
+    margin: 2.5rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0;
+  }
+
+  .kt-row {
+    display: grid;
+    grid-template-columns: 70px 1fr 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .kt-row:last-child { border-bottom: none; }
+
+  .kt-kanji-cell {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.8rem;
+    color: var(--accent);
+    line-height: 1;
+    text-align: center;
+    padding-top: 0.2rem;
+  }
+
+  .kt-romaji-cell {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+  }
+
+  .kt-romaji-cell strong {
+    display: block;
+    font-style: normal;
+    font-weight: 500;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+
+  .kt-content-cell {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    font-style: italic;
+  }
+
+  /* ===== VARIANTI ===== */
+  .variant {
+    margin: 2rem 0;
+    padding: 1.6rem 0 1.6rem 1.8rem;
+    border-left: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .variant-num {
+    position: absolute;
+    top: 0;
+    left: 1.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--accent);
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: var(--paper);
+    padding-right: 0.8rem;
+  }
+
+  .variant h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin: 1.4rem 0 0.6rem;
+    color: var(--ink);
+    line-height: 1.25;
+  }
+
+  .variant p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    text-align: left;
+  }
+
+  .variant p em {
+    color: var(--ink-faint);
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 6rem 0 2rem;
+    font-family: 'Shippori Mincho', serif;
+    color: var(--accent);
+    font-size: 1.8rem;
+    opacity: 0.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-weight: 400;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    .kanji-mark { font-size: 3rem; }
+    h1.title { font-size: 2.2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .lead { font-size: 1.2rem; }
+    h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .breath { font-size: 1.25rem; }
+    .traduzione-row { grid-template-columns: 1fr; gap: 0.5rem; padding: 1.2rem 0; }
+    .traduzione-cell.arrow { display: none; }
+    .traduzione-cell { padding: 0; }
+    .story-block p { font-size: 1.05rem; }
+    .story-title { font-size: 1.5rem; }
+    .kt-row { grid-template-columns: 50px 1fr; gap: 1rem; }
+    .kt-content-cell { grid-column: 1 / -1; padding-left: 0; }
+    section { margin: 4rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, section { animation: fadeIn 0.9s ease both; }
+  .lead { animation-delay: 0.15s; }
+  section:nth-of-type(1) { animation-delay: 0.25s; }
+  section:nth-of-type(2) { animation-delay: 0.3s; }
+  section:nth-of-type(3) { animation-delay: 0.35s; }
+  section:nth-of-type(4) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume II</div>
+    <div class="kanji-mark">子供</div>
+    <h1 class="title">La storia<br><em>per bambini</em></h1>
+    <p class="subtitle">Come tradurre il <span class="jp">ki-shō-ten-ketsu</span>, il <span class="jp">mono no aware</span> e l'arte del placamento per un bambino di tre anni — senza tradire la cultura, senza chiedergli troppo.</p>
+    <div class="meta-row">
+      <span>Documento 3 di 4</span>
+      <span>Per bambini 2-3 anni</span>
+      <span>Tono creativo + pedagogico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="giappone_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="giappone_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="giappone_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Il Giappone tradizionale racconta in un modo che spesso non funziona neanche per gli adulti occidentali. Eppure, paradossalmente, alcune sue cose funzionano benissimo per i bambini di tre anni — meglio che per noi.</p>
+    <p>I bambini piccoli sanno già stare nel <span class="jp">mono no aware</span>. Sentono già lo spirito offeso che chiede ascolto. Hanno già la pazienza per una storia che non corre. Siamo noi adulti che dobbiamo imparare di nuovo.</p>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — La traduzione</span>
+      <h2>Cosa funziona, cosa va adattato, cosa va lasciato perdere</h2>
+      <p class="section-kicker">Sei principi della cultura giapponese tradizionale passati al filtro di un cervello di tre anni. Una sorpresa: ne sopravvive più di quanto si pensi.</p>
+    </div>
+
+    <p>La sfida del Giappone è opposta a quella dell'Occidente. Per l'Occidente moderno dovevamo <em>semplificare</em> una cultura che funziona già naturalmente per i bambini — il viaggio dell'eroe è in fondo una struttura facile da seguire. Per il Giappone, invece, dobbiamo chiederci se principi così sottili — il vuoto, la stagione, lo spirito da placare — possano davvero atterrare a tre anni. La risposta sorprendente è: sì, molti possono. Ma con accorgimenti precisi.</p>
+
+    <h3>Cosa funziona naturalmente</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Storia senza conflitto esplicito</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona benissimo. I bambini di 2-3 anni non hanno bisogno di un cattivo per essere coinvolti — anzi, i cattivi spesso li disturbano. Una storia che osserva, che descrive, che si lascia accadere, è perfettamente sostenibile a quell'età. Forse l'unica età in cui lo è del tutto.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Attenzione alle cose piccole</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona. I bambini piccoli sono già <em>mono no aware</em> in forma pura: si fermano davanti a una formica, restano incantati da una foglia che cade. La cultura giapponese non gli sta chiedendo qualcosa di nuovo — gli sta restituendo qualcosa che gli adulti hanno disimparato.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Stagione come cornice</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona. "Era estate" o "stava per nevicare" è una collocazione che il bambino capisce e ama — gli dà la sensazione di un mondo grande in cui la storia accade. Le stagioni sono uno dei primi schemi cognitivi stabili del cervello di un bambino.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Onomatopee e suoni</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona splendidamente. Il giapponese tradizionale è una lingua piena di onomatopee (<em>poto poto</em> per le gocce, <em>shin-shin</em> per la neve che cade in silenzio, <em>kira kira</em> per qualcosa che brilla). Sono esattamente il livello giusto per un bambino piccolo — e una storia "in stile giapponese" può guadagnare moltissimo a inserirne.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va adattato</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Il <span class="jp">ten</span> (la svolta)</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Va reso <em>dolce e visibile</em>. La svolta del <span class="jp">ki-shō-ten-ketsu</span> nella forma adulta richiede un cambio di prospettiva astratto. Per un bambino piccolo, deve essere un piccolo evento concreto e sorprendente — un animale che appare, una luce che si accende, qualcosa che cambia. Non rinunciare al <span class="jp">ten</span>: trasformalo in un piccolo evento meraviglioso.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Il finale aperto</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Va reso <em>tenero, non ambiguo</em>. Un bambino di tre anni può sostenere un finale che non risolve, ma non un finale che lo lascia inquieto. La differenza è sottile: "la lucciola se ne andò e lui rimase a guardare il cielo, contento di averla incontrata" funziona; "la lucciola se ne andò e nessuno seppe mai dove" non funziona.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Lo spirito offeso</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Va trasformato in <em>presenza che chiede attenzione</em>. Non fantasmi, non yōkai, non torti karmici — ma il rumore nella stanza che ha bisogno di essere ascoltato per smettere di fare paura, l'oggetto perso che vuole essere trovato, il pianto del vento che si placa quando lo si nota. È il principio del placamento, in versione domestica.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va lasciato perdere</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Il <span class="jp">yūgen</span> e l'ambiguità</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile. La profondità misteriosa del non-detto adulto richiede un ascoltatore con strumenti interpretativi che a tre anni non ci sono. Tenere il pudore (non spiegare troppo), ma rinunciare all'ambiguità vera.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Il <span class="jp">mono no aware</span> doloroso</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile. La versione adulta del <span class="jp">mono no aware</span> — Urashima che muore vecchio sulla spiaggia — non è per quest'età. Tenere solo la parte luminosa: "le cose belle finiscono, ed è bello che siano accadute". Mai la disperazione, mai l'irreparabile.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">L'impermanenza come dottrina</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile come concetto. Si trasmette solo per <em>esperienza</em>: storie in cui qualcosa di bello accade e poi finisce, ripetute molte volte, costruiscono nel tempo una sensibilità all'impermanenza. Mai dichiararla, mai filosofarla.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Il principio guida</span>
+      Tradurre il Giappone per un bambino di tre anni significa tenere <strong>la grammatica</strong> (struttura quaternaria, attenzione, stagione, onomatopee, presenza da placare) e ammorbidire <strong>la temperatura emotiva</strong>. Una storia giapponese adulta può lasciare struggimento profondo. Una storia giapponese per bambini deve lasciare un sorriso quieto. Non è un compromesso — è la versione pediatrica autentica della stessa estetica.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La storia</span>
+      <h2>Il bambino e la lucciola</h2>
+      <p class="section-kicker">Una storia inventata, costruita secondo la grammatica giapponese in versione 2-3 anni: stagione precisa, struttura quaternaria, niente conflitto, presenza fragile da rispettare, finale aperto e tenero.</p>
+    </div>
+
+    <div class="story-block">
+      <span class="story-label">Storia per bambini</span>
+      <h3 class="story-title">Il bambino e la <em>lucciola</em></h3>
+      <div class="story-meta">Durata: 4-5 minuti · Età: 2-3 anni · Stagione: estate</div>
+
+      <p class="beat-label">起 ki · l'apertura</p>
+      <p>Era una sera d'estate. Il sole era andato a dormire dietro le montagne. L'aria era calda, calda. Le cicale cantavano <em>shaa, shaa, shaa</em>, e nel cielo si vedeva la prima stella.</p>
+      <p>Un bambino piccolo — si chiamava Haru — era seduto sul gradino di casa. La mamma stava in cucina, e il bambino guardava il giardino diventare buio.</p>
+
+      <p class="beat-label">承 shō · lo sviluppo</p>
+      <p>Tutto era buio adesso. L'erba era buia. L'albero era buio. La pietra era buia. Solo la luna, sopra il tetto, era bianca e tonda come una palla di riso. Haru guardava la luna. Stava in silenzio. Sentiva le cicale: <em>shaa, shaa</em>. Sentiva il vento muovere appena le foglie: <em>sara, sara</em>. Non c'era niente da fare. Solo guardare.</p>
+
+      <p class="beat-label">転 ten · la svolta</p>
+      <p>E poi — <em>kira</em>. Una piccola luce. Lì, vicino al cespuglio.</p>
+      <p>Haru si fermò di colpo. La luce si era spenta. Aspettò. <em>Kira.</em> Ancora. Si accese, si spense, si accese.</p>
+      <p>Era una lucciola. Una lucciola sola, in mezzo al giardino, che faceva luce e poi non faceva più luce, e poi di nuovo. Volava piano, su e giù, su e giù, come se ballasse.</p>
+
+      <p class="refrain">Haru non si mosse. Non parlò. Solo guardò.</p>
+
+      <p>La lucciola si avvicinò. <em>Kira, kira.</em> Passò vicino al naso di Haru. Haru sentì la sua piccola luce sul viso, fredda e dolce come una goccia. Non allungò la mano. Non la prese. Sapeva che era piccola, e che le cose piccole non si prendono.</p>
+
+      <p>La lucciola volò sopra l'erba, sopra la pietra, sopra il cespuglio. <em>Kira, kira, kira.</em> E poi, piano piano, salì in alto, sempre più in alto, e si confuse con le stelle del cielo.</p>
+
+      <p class="beat-label">結 ketsu · la chiusura</p>
+      <p>Adesso Haru guardava il cielo. C'erano molte stelle. Una di quelle stelle era la lucciola? Forse sì. Forse no. Le stelle non si spegnevano e non si accendevano. Le stelle stavano e basta.</p>
+      <p>La mamma uscì dalla cucina. <em>Haru, è ora di andare a dormire.</em></p>
+      <p>Haru si alzò dal gradino. Diede un'ultima occhiata al giardino. Le cicale cantavano ancora. <em>Shaa, shaa.</em> L'erba era ancora buia. Il cespuglio era ancora buio. Ma adesso Haru sapeva una cosa che prima non sapeva: che nel buio, qualche volta, c'è una piccola luce che balla. E che è bello averla vista.</p>
+      <p>Andò a letto. Sentì la mamma cantare piano. E si addormentò pensando alla lucciola.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — L'analisi</span>
+      <h2>Cosa è rimasto della cultura, cosa è stato adattato</h2>
+      <p class="section-kicker">Decostruire la storia per vedere come la grammatica giapponese si è accomodata in un cervello di tre anni — e cosa, esattamente, è stato cambiato.</p>
+    </div>
+
+    <h3>La struttura: il <span class="jp">ki-shō-ten-ketsu</span> in versione bambino</h3>
+
+    <p>La storia segue rigorosamente i quattro tempi giapponesi. Vale la pena vederli mappati uno per uno, perché è l'aspetto più radicalmente diverso da una storia occidentale per bambini. <strong>Non c'è problema da risolvere</strong>. Non c'è obiettivo da raggiungere. Non c'è ostacolo da superare. Eppure la storia ha una forma compiuta, perché ha quattro battiti netti.</p>
+
+    <div class="kt-mapped">
+      <div class="kt-row">
+        <div class="kt-kanji-cell">起</div>
+        <div class="kt-romaji-cell"><em>ki</em><strong>introduzione</strong></div>
+        <div class="kt-content-cell">Sera d'estate, cicale, bambino sul gradino, casa, mamma in cucina. Si stabilisce lo <em>scenario</em> — non il problema.</div>
+      </div>
+      <div class="kt-row">
+        <div class="kt-kanji-cell">承</div>
+        <div class="kt-romaji-cell"><em>shō</em><strong>sviluppo</strong></div>
+        <div class="kt-content-cell">Il buio si fa pieno, la luna sale, i suoni si dispiegano. Il quadro si <em>approfondisce</em>. Niente accade — e questo "niente accade" è il cuore della tradizione giapponese.</div>
+      </div>
+      <div class="kt-row">
+        <div class="kt-kanji-cell">転</div>
+        <div class="kt-romaji-cell"><em>ten</em><strong>svolta</strong></div>
+        <div class="kt-content-cell">La lucciola appare. Non è un problema, non è un nemico, non è un mentore: è un <em>elemento nuovo</em> che entra nel quadro e lo cambia. Il <span class="jp">ten</span> in versione bambino: un piccolo evento meraviglioso.</div>
+      </div>
+      <div class="kt-row">
+        <div class="kt-kanji-cell">結</div>
+        <div class="kt-romaji-cell"><em>ketsu</em><strong>chiusura</strong></div>
+        <div class="kt-content-cell">La lucciola se ne va, il bambino guarda il cielo, va a letto. Tutti gli elementi (sera, buio, luna, lucciola, mamma) si <em>compongono</em> in un'immagine finale che non risolve ma chiude.</div>
+      </div>
+    </div>
+
+    <p>Notare cosa <strong>non</strong> succede. Haru non vuole prendere la lucciola. Non cerca di catturarla. Non sviluppa un attaccamento che gli viene poi negato. Non c'è desiderio frustrato, perché non c'è desiderio. C'è <strong>incontro</strong>, e poi <strong>congedo</strong>, e tra l'uno e l'altro c'è solo <em>presenza condivisa</em>. Questo è strutturalmente quello che le storie giapponesi fanno meglio, e che le storie occidentali quasi non fanno mai.</p>
+
+    <h3>L'assenza di conflitto e di villain</h3>
+
+    <p>Nella storia non c'è nessuno da sconfiggere. Non c'è nessuno da temere. Non c'è nessuno che sbaglia. La lucciola non è un'amica perduta, non è un'anima che deve passare oltre, non è un test morale. È <strong>una presenza</strong>. Arriva, sta, se ne va.</p>
+
+    <p>Questa è probabilmente la differenza più potente rispetto alla storia occidentale dell'Orsetto Nino del primo volume. Nino aveva un problema (il palloncino caduto) e lo doveva risolvere. Haru non ha problemi. Haru è seduto su un gradino. La storia funziona perché la <strong>quiete è già contenuto</strong> — il bambino di tre anni che ascolta non si annoia, perché sta vivendo, dentro la storia, una pausa di attenzione condivisa con il narratore.</p>
+
+    <div class="breath">
+      Una storia per bambini può non avere problema da risolvere.<br>Può essere solo un momento, raccontato bene.
+    </div>
+
+    <h3>Lo spirito da rispettare, in versione domestica</h3>
+
+    <p>La lucciola è la versione mite e domestica del principio dello spirito da placare visto in Hōichi senza orecchie. Ovviamente non è uno spirito offeso — sarebbe sproporzionato per quest'età. Ma è <strong>una presenza fragile che funziona secondo le proprie regole</strong>, e Haru lo sa istintivamente. <em>"Non allungò la mano. Non la prese. Sapeva che era piccola, e che le cose piccole non si prendono."</em></p>
+
+    <p>Questa frase è il cuore pedagogico della storia, ed è importante che sia <strong>una constatazione, non un comando</strong>. Non è "non si devono prendere", non è "non bisogna prendere". È <em>"sapeva che le cose piccole non si prendono"</em>. È un sapere già acquisito, presentato come naturale. La pedagogia avviene non per istruzione ma per <strong>identificazione</strong>: il bambino che ascolta capisce che Haru sa una cosa, e implicitamente la impara con lui.</p>
+
+    <p>Questa è una traduzione fedele della logica giapponese del <span class="jp">en</span> e del rispetto della delicatezza. La gru poteva essere ascoltata ma non guardata. La lucciola può essere ammirata ma non presa. Il principio è lo stesso: <strong>certi esseri si possono incontrare solo se si sa stare al loro posto giusto</strong>. È una lezione che a tre anni si sente prima di comprenderla — e alla quale si tornerà tutta la vita.</p>
+
+    <h3>Il <span class="jp">mono no aware</span> in dose pediatrica</h3>
+
+    <p>La lucciola se ne va, e Haru non la rivede più. Per un orecchio occidentale questo potrebbe sembrare malinconico — quasi triste. Ma se la storia è raccontata bene, non lo è. È <strong>tenera</strong>. Haru va a letto pensando alla lucciola, non piangendola. La frase chiave è: <em>"adesso Haru sapeva una cosa che prima non sapeva: che nel buio, qualche volta, c'è una piccola luce che balla. E che è bello averla vista."</em></p>
+
+    <p>Questo è <span class="jp">mono no aware</span> ridotto alla sua essenza luminosa: <strong>le cose belle finiscono, e l'aver visto qualcosa di bello è già qualcosa che resta</strong>. Non è la versione adulta dolorosa — Urashima che muore vecchio. È la versione pediatrica luminosa — un bambino contento di aver incontrato qualcosa che adesso non c'è più.</p>
+
+    <p>Crescendo, il bambino si abituerà a questo tipo di chiusura. Sentirà tante storie con questa forma, e accumulerà una sensibilità che gli adulti chiamano <em>mono no aware</em> e che è in fondo <strong>la capacità di stare contenti delle cose anche quando finiscono</strong>. È una delle migliori cose che la cultura giapponese può regalare a un bambino.</p>
+
+    <h3>I dispositivi tecnici</h3>
+
+    <p>Tre cose lavorano sotto la superficie della storia:</p>
+
+    <p>Primo: le <strong>onomatopee giapponesi</strong>. <em>Shaa, shaa</em> per le cicale, <em>sara, sara</em> per le foglie, <em>kira</em> per la luce della lucciola. Ho usato suoni effettivamente giapponesi — non per esotismo, ma perché funzionano: sono morbidi, ripetibili, e il bambino li imita. <em>Kira</em> in particolare è uno dei suoni-icona della cultura visiva giapponese (<em>kira kira</em> = qualcosa che brilla), ed è una parola che il bambino imparerà a dire quando vede luci.</p>
+
+    <p>Secondo: il <strong>ritornello "Haru non si mosse. Non parlò. Solo guardò"</strong>. Compare una volta, in posizione decisiva. È un ritornello breve, quasi un haiku interno alla storia. Insegna implicitamente al bambino che <em>guardare</em> è un'azione legittima — non bisogna sempre fare qualcosa.</p>
+
+    <p>Terzo: la <strong>chiusura non rituale</strong>. Notare che la storia <em>non</em> chiude con "e vissero felici e contenti". È una scelta deliberata: la formula occidentale chiuderebbe troppo. La storia giapponese deve sciogliersi, non sigillarsi. La chiusura avviene per progressivo rallentamento ("andò a letto. Sentì la mamma cantare piano. E si addormentò pensando alla lucciola") — un dissolvimento, non un sigillo. Anche per un bambino piccolo, questa forma di chiusura morbida funziona se la voce del narratore si fa più lenta e più bassa nelle ultime frasi.</p>
+
+    <div class="breath">
+      Una storia giapponese non finisce.<br>Si addormenta.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Le varianti</span>
+      <h2>Tre modi di raccontare la stessa cultura</h2>
+      <p class="section-kicker">Stessa grammatica giapponese, presenze diverse, stagioni diverse. Il telaio resta — ed è un telaio molto flessibile.</p>
+    </div>
+
+    <p>La storia di Haru e la lucciola è un caso particolare di una matrice più ampia: <strong>bambino tranquillo + stagione precisa + presenza che appare e se ne va + congedo tenero</strong>. Una volta capita la matrice, si possono costruire molte storie con questa struttura — una per stagione, ad esempio. Tre varianti, da usare sere diverse o seguendo il calendario.</p>
+
+    <div class="variant">
+      <span class="variant-num">Variante 1 · Autunno</span>
+      <h4>Il bambino e la foglia rossa</h4>
+      <p>Stessa struttura. Haru è in giardino in autunno. Tutto è arancione e rosso. Sta seduto sul prato. Una foglia rossa cade dall'albero, piano piano, e gli atterra sulla mano. Haru la guarda — <em>è leggera, è rossa, è bella</em>. Non la stringe. Aspetta. Una piccola folata di vento la solleva e la porta via, lontano, oltre il muro. Haru guarda l'albero. Sa che presto tutte le foglie cadranno. Va a cena pensando alla foglia rossa che ha tenuto in mano per un momento. <em>Stessa morale del rispetto e dell'incontro fugace, ma con un elemento autunnale che parla delle stagioni.</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 2 · Inverno</span>
+      <h4>Il bambino e il fiocco di neve</h4>
+      <p>Inverno. Haru è alla finestra. Fuori cade la neve, <em>shin shin</em> (l'onomatopea giapponese per la neve che cade silenziosa). Un fiocco si posa sul vetro. Haru avvicina il dito. Il fiocco è bianco, ha sei punte, è perfetto. Haru lo guarda. Il calore del dito attraversa il vetro e il fiocco, piano piano, si trasforma in una goccia. La goccia scivola giù. Haru capisce che il fiocco non c'è più — ma c'era. Era bellissimo. Va dalla mamma a chiedere una cioccolata calda. <em>Versione invernale del </em>mono no aware<em>: il bello che si scioglie, e che continua a esistere nel ricordo.</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 3 · Il rumore da ascoltare</span>
+      <h4>Il bambino e il rumore nella stanza</h4>
+      <p>Variante più "kaidan" — la versione mitissima del principio dello spirito da placare. È notte. Haru è a letto. Sente un rumore strano dietro l'armadio: <em>tic, tic, tic</em>. La mamma è di là. Haru ha un po' paura, ma poi pensa: <em>forse è un rumore che ha bisogno che qualcuno lo ascolti</em>. Sta in silenzio e ascolta. <em>Tic, tic, tic.</em> Lo ascolta per un po'. Pian piano il rumore diventa più piccolo. Poi si ferma. Haru si addormenta sapendo che il rumore aveva avuto il suo ascolto. <em>Da usare con cautela: solo se il bambino non ha già paura del buio. Insegna il principio del placamento — i rumori inquieti si calmano se ascoltati, non se combattuti.</em></p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sul telaio</span>
+      Il telaio giapponese per i 2-3 anni è straordinariamente flessibile. Si può applicare a qualsiasi <strong>incontro tra il bambino e una piccola presenza</strong> — un animale, un fenomeno naturale, un suono, una luce, una cosa che cambia. La struttura è sempre: <em>scenario quieto → approfondimento del quieto → arrivo della presenza → congedo</em>. Una volta presa la mano, queste storie si possono costruire osservando il giardino di casa, la finestra, la stagione del momento. Sono particolarmente adatte alle sere d'estate (lucciole, cicale), alle prime nevi (fiocchi, neve), ai giorni di pioggia (gocce, ranocchi) — momenti in cui qualcosa di stagionale e specifico bussa alla porta.
+    </div>
+  </section>
+
+  <div class="end-mark">⌘</div>
+
+  <footer>
+    <span>Volume II · Documento 3 di 4</span>
+    <span>Prossimo: La guida pratica →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

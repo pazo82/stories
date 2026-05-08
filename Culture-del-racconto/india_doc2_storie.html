@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India · Le Storie Classiche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0e3;
+    --paper-deep: #ede3cd;
+    --paper-warm: #f4e8d0;
+    --ink: #2b1f17;
+    --ink-soft: #4d3b2c;
+    --ink-faint: #8a7558;
+    --rule: #d4c5a7;
+    --vermilion: #b73c2e;
+    --vermilion-soft: #d66954;
+    --indigo: #2d3a6b;
+    --gold: #a87c2b;
+    --highlight: #ecdcb6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 90% 5%, rgba(183, 60, 46, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 5% 95%, rgba(45, 58, 107, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(168, 124, 43, 0.025) 0%, transparent 70%);
+    color: var(--ink);
+    font-family: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.12 0 0 0 0 0.09 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .devanagari-mark {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 3.2rem;
+    color: var(--vermilion);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  h1.title {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--vermilion);
+  }
+
+  .subtitle {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--vermilion);
+    border-bottom: 1px solid var(--vermilion);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--vermilion);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--vermilion);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '◆';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--vermilion);
+    font-size: 0.5rem;
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--vermilion);
+    border-right: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .lead p + p { margin-top: 1.1rem; }
+
+  .lead::before {
+    content: '❦';
+    position: absolute;
+    top: -0.6rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.6rem;
+    color: var(--vermilion);
+    font-size: 1rem;
+    font-style: normal;
+  }
+
+  /* ===== STORY OVERVIEW ===== */
+  .story-overview {
+    margin: 3rem 0 4rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .story-overview > div {
+    padding: 1.5rem 1.4rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story-overview > div:nth-child(2n) {
+    border-right: none;
+  }
+
+  .story-overview > div:nth-child(n+3) {
+    border-bottom: none;
+  }
+
+  .story-overview .story-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .story-overview h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .story-overview p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ===== STORY SECTIONS ===== */
+  .story {
+    margin: 5.5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .story-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .story-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: var(--vermilion);
+  }
+
+  .story-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    font-weight: 400;
+  }
+
+  .story-mark .num {
+    font-family: 'Spectral', serif;
+    font-size: 1.6rem;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-style: italic;
+  }
+
+  .story h2 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .story h2 em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .story-source {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  /* ===== INTERIOR HEADINGS ===== */
+  .story h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: 2.8rem 0 1.2rem;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+
+  .story h3::before {
+    content: '◆';
+    color: var(--vermilion);
+    font-size: 0.7rem;
+  }
+
+  .story p {
+    margin-bottom: 1.3rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  .story p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .story p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== NARRATIVE BLOCK ===== */
+  .narrative {
+    margin: 1.5rem 0 2.5rem;
+    padding: 2rem 2.2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ink);
+    position: relative;
+  }
+
+  .narrative::before {
+    content: 'racconto';
+    position: absolute;
+    top: -0.6rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .narrative p {
+    text-align: left;
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.1rem;
+  }
+
+  .narrative p em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .narrative p:first-of-type::first-letter {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.2rem 0.5rem 0 0;
+    color: var(--vermilion);
+  }
+
+  /* ===== SANSKRIT TERM ===== */
+  .skt {
+    font-style: italic;
+    color: var(--vermilion);
+    font-weight: 500;
+  }
+
+  .skt-deva {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-style: normal;
+    color: var(--indigo);
+    font-size: 0.95em;
+    margin-left: 0.2em;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    background: var(--highlight);
+    padding: 0.05em 0.3em;
+    font-style: italic;
+    border-bottom: 1px solid var(--vermilion);
+    color: var(--ink);
+  }
+
+  /* ===== ORNAMENTAL QUOTE ===== */
+  .ornamental {
+    margin: 3rem -1rem;
+    padding: 2.2rem 2rem;
+    background: var(--paper-deep);
+    border-top: 2px double var(--vermilion);
+    border-bottom: 2px double var(--vermilion);
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .ornamental::before,
+  .ornamental::after {
+    content: '◆';
+    display: block;
+    color: var(--vermilion);
+    font-size: 0.8rem;
+    font-style: normal;
+    margin: 0 auto 1rem;
+  }
+
+  .ornamental::after {
+    margin: 1rem auto 0;
+  }
+
+  /* ===== ANALYSIS ===== */
+  .analysis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  /* ===== WHY THIS STORY ===== */
+  .why-this {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.7rem;
+    border: 1px solid var(--vermilion);
+    background: rgba(183, 60, 46, 0.03);
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .why-this strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.66rem;
+    display: block;
+    margin-bottom: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(183, 60, 46, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--vermilion);
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== NESTED FRAMES (per Markandeya) ===== */
+  .frames-display {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+  }
+
+  .frames-display .frame {
+    border: 1px solid var(--vermilion);
+    padding: 0.9rem 1.1rem;
+    background: var(--paper);
+  }
+
+  .frames-display .frame-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .frames-display .frame-text {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 0.8rem;
+  }
+
+  .frames-display .frame-text:last-child { margin-bottom: 0; }
+
+  .frames-display .frame-inner {
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+    border-color: var(--gold);
+  }
+
+  .frames-display .frame-inner .frame-label { color: var(--gold); }
+
+  .frames-display .frame-inner-2 {
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+    border-color: var(--indigo);
+  }
+
+  .frames-display .frame-inner-2 .frame-label { color: var(--indigo); }
+
+  /* ===== SYNTHESIS ===== */
+  .synthesis {
+    margin: 6rem 0 3rem;
+    padding: 2.5rem 0;
+    border-top: 2px double var(--vermilion);
+    border-bottom: 2px double var(--vermilion);
+  }
+
+  .synthesis h2 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: 1.9rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .synthesis-kicker {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
+  }
+
+  .synthesis p {
+    text-align: justify;
+    margin-bottom: 1.3rem;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-family: 'Spectral', serif;
+    color: var(--vermilion);
+    font-size: 1.4rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.65; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 2.5rem 0 1.5rem; }
+    .devanagari-mark { font-size: 2.6rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.1rem; padding: 1.5rem 1.4rem 1.5rem 1.6rem; }
+    .story h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .ornamental { font-size: 1.15rem; margin: 2rem 0; }
+    .story-overview { grid-template-columns: 1fr; }
+    .story-overview > div { border-right: none; border-bottom: 1px solid var(--rule); }
+    .story-overview > div:last-child { border-bottom: none; }
+    .narrative { padding: 1.5rem 1.4rem; }
+    .frames-display .frame-inner, .frames-display .frame-inner-2 { margin-left: 0.5rem; }
+    .story p, .synthesis p { text-align: left; }
+    .story { margin: 4rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .story-overview, .story, .synthesis { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .story-overview { animation-delay: 0.15s; }
+  .story:nth-of-type(1) { animation-delay: 0.2s; }
+  .story:nth-of-type(2) { animation-delay: 0.25s; }
+  .story:nth-of-type(3) { animation-delay: 0.3s; }
+  .story:nth-of-type(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume III</div>
+    <div class="devanagari-mark">चार कथाएँ</div>
+    <h1 class="title">Le storie<br><em>classiche</em></h1>
+    <p class="subtitle">Quattro racconti dell'India tradizionale, ordinati come una progressione dello sguardo: dal momento di una scelta, al destino di una vita, alle vite di tutti gli esseri, fino al kalpa intero.</p>
+    <div class="meta-row">
+      <span>Documento 2 di 4</span>
+      <span>Storie classiche</span>
+      <span>Tono narrativo + analitico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="india_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="india_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="india_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Quattro storie indiane, lette in scala crescente. Arjuna sul carro di guerra è un istante. Nala e Damayanti sono una vita. Il cervo dorato è il destino di tutti gli esseri viventi. Markandeya è il kalpa intero.</p>
+    <p>Ognuna è uno zoom della precedente — fino al punto in cui le storie cominciano a contenersi a vicenda, e si capisce perché in India una storia è sempre una scatola dentro un'altra scatola.</p>
+  </div>
+
+  <div class="story-overview">
+    <div>
+      <div class="story-num">Storia I</div>
+      <h3>Il dilemma di Arjuna</h3>
+      <p>Il dharma situato e il dilemma morale come motore della storia</p>
+    </div>
+    <div>
+      <div class="story-num">Storia II</div>
+      <h3>Nala e Damayanti</h3>
+      <p>Il prarabdha vissuto e l'atman che si riconosce sotto le forme</p>
+    </div>
+    <div>
+      <div class="story-num">Storia III</div>
+      <h3>Il cervo dalla pelliccia d'oro</h3>
+      <p>L'atman in tutti gli esseri, e l'ahimsa come riconoscimento</p>
+    </div>
+    <div>
+      <div class="story-num">Storia IV</div>
+      <h3>Markandeya nell'oceano</h3>
+      <p>La narrazione incassata e la storia come argomento di consolazione</p>
+    </div>
+  </div>
+
+  <!-- ============ STORIA I ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">I</span> Mahabharata · <span class="skt">Bhagavad Gita</span></div>
+      <h2>Il dilemma di Arjuna —<br><em>il dharma sul campo di battaglia</em></h2>
+      <p class="story-source">Mahabharata, libro VI · composizione tra il IV sec. a.C. e il IV sec. d.C. · setecento versi al cuore dell'epica</p>
+    </div>
+
+    <div class="narrative">
+      <p>Per capire l'episodio bisogna sapere come si è arrivati lì. Due rami della stessa famiglia — i Pandava (cinque fratelli) e i Kaurava (cento fratelli) — si contendono il regno di Hastinapura. Per anni hanno tentato la pace. Ogni tentativo è fallito per l'arroganza dei Kaurava. Adesso è guerra. Sul campo di Kurukshetra si fronteggiano due eserciti enormi. Arjuna, il più grande arciere del mondo, è il principale guerriero dei Pandava. Il suo auriga è Krishna, suo cugino — ma Krishna è anche un'incarnazione del dio Vishnu, e questa cosa è nota solo a pochi.</p>
+
+      <p>L'esercito dei Pandava è schierato. L'esercito dei Kaurava è schierato. Le conchiglie da guerra hanno suonato. Manca solo il primo lancio di freccia. Arjuna chiede a Krishna di portare il carro tra i due eserciti, perché vuole vedere bene chi sta combattendo dall'altra parte.</p>
+
+      <p>Krishna conduce il carro al centro del campo. Arjuna guarda l'esercito nemico.</p>
+
+      <p>Vede suo nonno Bhishma, l'uomo che lo ha cresciuto, che gli ha insegnato il dharma quando era bambino. Vede il suo maestro d'armi Drona, l'uomo che gli ha insegnato a tirare con l'arco. Vede zii. Vede cugini. Vede compagni di gioventù. Vede maestri venerati. Tutti adesso sono qui per uccidere o essere uccisi.</p>
+
+      <p>Le mani di Arjuna cominciano a tremare. La pelle gli brucia. La bocca gli si secca. Lascia cadere l'arco — il grande arco Gandiva, che nessun altro uomo riesce a tendere — e si siede sul carro, fra le due armate.</p>
+
+      <p><em>Krishna</em>, dice. <em>Non posso. Vedo i miei stessi parenti pronti a morire. Anche se mi uccidessero loro, anche se mi prendessero il regno, non potrei sollevare quest'arco contro di loro. Cosa vale il regno? Cosa vale la vittoria? Se per ottenerli devo uccidere chi mi ha cresciuto, preferisco essere ucciso disarmato. Il mio dharma di guerriero mi dice di combattere. Il mio dharma di parente mi dice di non uccidere chi amo. Sono perso. Tu sei mio amico. Insegnami. Cosa devo fare?</em></p>
+
+      <p>Krishna lo guarda. Sorride leggermente. E comincia a parlare. Parlerà per settecento versi.</p>
+
+      <p>Gli dice: <em>tu pensi di essere quello che uccide e quello che è ucciso. Ma né tu né loro siete questi corpi. Voi siete atman, scintille eterne dell'anima, che attraversano molte vite. Quello che cade in battaglia oggi nascerà di nuovo domani. Quello che vince oggi domani perderà altre cose. Tu non puoi uccidere l'atman, e nessuno può ucciderlo a te.</em></p>
+
+      <p>Gli dice: <em>il tuo dharma è quello che è — sei un guerriero, sei stato addestrato per questo, questa guerra è giusta. Non puoi rinunciare al tuo dharma per pietà personale. Ma puoi compierlo in un modo nuovo: senza attaccamento ai frutti dell'azione. Combatti perché è il tuo dharma combattere. Non combattere per la vittoria, non combattere per il regno, non combattere per vendetta. Combatti come si fa la respirazione: perché è ciò che bisogna fare ora.</em></p>
+
+      <p>E poi, perché Arjuna ancora vacilla, Krishna gli mostra qualcosa. Si rivela come la sua forma divina — Vishvarupa, la forma cosmica. In quella forma Arjuna vede tutto l'universo dentro Krishna: pianeti, dèi, esseri, tempi passati e futuri. Vede tutti i guerrieri di entrambi gli eserciti già morti, già inghiottiti dalle bocche del Tempo divino. La battaglia è già accaduta nell'eternità. Quello che Arjuna deve fare è solo accadere come uno strumento di ciò che è già stato.</p>
+
+      <p>Arjuna vede, e capisce. Ringrazia Krishna. Riprende l'arco. La guerra comincia.</p>
+
+      <p>Durerà diciotto giorni. Alla fine i Pandava avranno vinto, ma quasi tutti i loro figli, parenti e maestri saranno morti, su entrambi i fronti. Yudhishthira, il fratello maggiore, salirà sul trono di un regno coperto di ceneri. Per molti anni dopo si chiederà se la vittoria valeva il prezzo. La risposta, nelle migliaia di versi che seguiranno, non sarà mai data una volta per tutte.</p>
+    </div>
+
+    <h3>Il dharma situato come motore della storia</h3>
+
+    <p>Il <em>Bhagavad Gita</em> è probabilmente il testo che meglio mostra <strong>cosa significa "dharma situato" come motore narrativo</strong>. Una storia occidentale moderna costruirebbe il momento della scelta di Arjuna in un modo riconoscibile: un eroe esita davanti a un dilemma morale, riceve consiglio, prende una decisione, agisce, le conseguenze ci diranno se aveva ragione. È la struttura che abbiamo visto nel Volume I. Il Gita fa qualcosa di completamente diverso, e vale la pena vedere ogni passaggio.</p>
+
+    <p>Il primo punto è la <strong>natura del dilemma</strong>. Per la cultura occidentale moderna, "i miei parenti contro la giustizia del regno" si risolverebbe quasi automaticamente: si sceglie la giustizia universale (è il principio kantiano, è la posizione che premia la maggior parte delle storie occidentali). La rivelazione di Arjuna sarebbe: <em>"capisco, i miei sentimenti personali non possono prevalere sul bene comune"</em>. <strong>Ma il Gita rifiuta questa soluzione</strong>. Arjuna ha ragione a esitare. I suoi parenti non sono "sentimenti personali da superare": sono parte del suo <em>dharma</em>. Il dharma di parente è reale, non illusorio. Il problema non è scegliere tra <em>vero dharma</em> e <em>falso dharma</em>: è scegliere tra <em>due dharma reali in conflitto</em>.</p>
+
+    <p>Questo è il secondo punto: <strong>il dharma situato non offre risposte uniche</strong>. La situazione di Arjuna non ha una soluzione "giusta" nel senso occidentale. Krishna non dice: "il dharma di guerriero è più importante del dharma di parente". Dice qualcosa di più sottile: <em>"in questa situazione specifica, in questo momento storico, per te che sei questa persona con questa storia, è il dharma di guerriero che parla — ma non perché sia gerarchicamente superiore, bensì perché è ciò che la situazione chiama"</em>. Cambia la situazione, e il dharma cambia. Un altro Arjuna in un altro contesto potrebbe avere ragione a deporre l'arco.</p>
+
+    <div class="ornamental">
+      Il dilemma morale non si risolve.<br>Si abita finché non si scopre cosa la situazione chiama.
+    </div>
+
+    <p>Il terzo punto è il <strong>dispositivo del distacco</strong> (<span class="skt">nishkama karma</span>, "azione senza desiderio dei frutti"). È la grande invenzione concettuale del Gita, e il modo in cui risolve l'apparente paradosso. Arjuna non deve scegliere tra "agire o non agire" — deve scoprire <em>come</em> agire. La risposta è: agisci, ma senza attaccarti al risultato. Combatti senza bisogno di vincere. Compi il tuo dharma come un fiume compie il proprio corso — non perché vuole arrivare al mare, ma perché è la sua natura. Questo concetto non ha un equivalente preciso nelle altre culture che abbiamo visto. Non è la rassegnazione stoica, non è l'accettazione buddhista, non è la libertà esistenzialista. È <em>azione piena ma senza ego</em>.</p>
+
+    <p>Il quarto punto è la <strong>visione cosmica come argomento finale</strong>. Quando Arjuna ancora dubita, Krishna non insiste con la logica: gli mostra la propria forma divina. Arjuna vede l'universo dentro Krishna. Vede che la battaglia è già accaduta — che esiste già nell'eternità del Tempo divino. Da quella prospettiva, la sua scelta non è "se uccidere o no", ma "se essere lo strumento di un evento già reale". Questo è il <span class="skt">prarabdha</span> in azione: il destino non come fato cieco, ma come <em>cornice cosmica</em> che il personaggio scopre mentre la attraversa. Arjuna non viene reso passivo: viene reso <em>partecipe consapevole</em>. Combatte sapendo che ciò che combatte è già parte di una struttura più grande.</p>
+
+    <h3>Cosa fa di questo il primo dei quattro racconti</h3>
+
+    <p>Ho messo Arjuna come prima storia perché è la più <strong>concentrata</strong>: tutto il dilemma indiano del dharma in un solo istante, sul carro tra i due eserciti. È anche la più <strong>verbale</strong>: la storia è quasi tutta dialogo, e dimostra subito che la cultura indiana ama l'argomentazione esplicita — Krishna non lascia che Arjuna "intuisca", gli espone la dottrina punto per punto. Questa è una marca distintiva: dove il Giappone tace, l'India parla, e parla molto. Il <strong>commento esplicito del saggio interno alla storia</strong> — che abbiamo nominato come dispositivo nel Doc 1 — è qui in azione nella forma più pura.</p>
+
+    <p>E c'è un dettaglio cruciale per il tuo progetto: il Gita è nominalmente un episodio in una storia molto più grande. Quando Arjuna riprende l'arco, la guerra ricomincia. La narrazione non si ferma per il discorso di Krishna — il discorso di Krishna <em>è</em> la narrazione, in quel momento. <strong>L'India non vede contraddizione tra "fare avanzare la storia" e "spiegare cosa significa"</strong>. Sono la stessa cosa.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere il dharma situato in azione nella sua forma più pura: una scelta concreta, due dharma in conflitto reale, una soluzione che non è "uno dei due ha ragione" ma "in questo contesto questa è la via". E per vedere come il prarabdha funziona — non come fatalismo, ma come cornice cosmica dentro cui il personaggio scopre chi è.
+    </div>
+  </section>
+
+  <!-- ============ STORIA II ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">II</span> Mahabharata · <span class="skt">Nala-upakhyana</span></div>
+      <h2>Nala e Damayanti —<br><em>il destino vissuto, l'anima riconosciuta</em></h2>
+      <p class="story-source">Mahabharata, libro III · una delle "storie incassate" più amate dell'epica · raccontata a Yudhishthira durante l'esilio per consolarlo</p>
+    </div>
+
+    <div class="narrative">
+      <p>Nala era re di Nishadha. Era bello, valoroso, giusto. Damayanti era principessa di Vidarbha. Era così bella che persino gli dèi la desideravano. Quando Damayanti fu in età di sposarsi, suo padre indisse uno <em>svayamvara</em> — la cerimonia in cui la principessa sceglieva il marito da sé, tra i pretendenti. Nala viaggiò per parteciparvi.</p>
+
+      <p>Sulla strada Nala incontrò quattro dèi — Indra, Agni, Yama, Varuna — che andavano anche loro. Avevano sentito parlare di Damayanti e volevano sposarla. Chiesero a Nala di andare prima da lei, in segreto, e convincerla a scegliere uno di loro. Nala, fedele al suo dharma di rispettare gli dèi, accettò — anche se questo significava perorare la causa dei propri rivali.</p>
+
+      <p>Andò da Damayanti. Le disse chi lo mandava. Le disse: <em>quattro dèi ti chiedono in sposa. Considera bene</em>. Damayanti lo guardò. Disse: <em>io ho già scelto te. Solo te.</em></p>
+
+      <p>Allo svayamvara accadde una cosa strana. Quando Damayanti entrò nella sala, vide cinque uomini identici a Nala. I quattro dèi avevano preso la sua forma. Damayanti chiuse gli occhi e pregò: <em>se ho davvero scelto Nala con cuore puro, fammi riconoscere quale dei cinque è lui</em>. Quando aprì gli occhi, vide: i quattro dèi non sudavano, non sbattevano le palpebre, non proiettavano ombra, e i loro piedi non toccavano la terra. Solo Nala era visibilmente umano. Damayanti gli passò la ghirlanda al collo. Gli dèi, riconoscendo la fedeltà del suo cuore, benedissero la coppia.</p>
+
+      <p>Nala e Damayanti vissero felici. Ebbero due figli. Erano amati, prosperi, giusti.</p>
+
+      <p>Ma c'era un demone, Kali — non la dea, un'entità maschile della discordia — che era arrivato troppo tardi allo svayamvara, e aveva visto come gli dèi venerati erano stati respinti per Nala. Si era infuriato. Aveva giurato di rovinare il re. Per dodici anni Kali aspettò. Spiò Nala. Aspettò un momento di debolezza rituale — un giorno in cui Nala compì le abluzioni del mattino senza lavarsi i piedi del tutto. In quel momento Kali entrò in lui.</p>
+
+      <p>Da allora Nala fu posseduto da una passione folle per il gioco dei dadi. Giocò contro suo fratello Pushkara. Perse una partita. Perse l'altra. Damayanti gli implorò di smettere. Nala non riusciva a smettere. Perse i gioielli. Perse l'oro. Perse i cavalli. Perse i carri. Perse il regno. Perse tutto. Damayanti riuscì a far portare via i due figli prima che Nala perdesse anche loro.</p>
+
+      <p>Nala e Damayanti, in due semplici vesti, lasciarono il palazzo. Camminarono nella foresta. Dormivano sotto gli alberi. Una notte Nala, mezzo posseduto, decise che Damayanti sarebbe sopravvissuta meglio senza di lui. Le tagliò mezzo del sari mentre dormiva, lo prese per coprirsi, e fuggì nella foresta. La lasciò.</p>
+
+      <p>Damayanti si svegliò sola. Vagò per anni, cercando notizie del marito. Servì come dama di compagnia in una corte straniera. Mantenne sempre un solo amore. Non si risposò mai.</p>
+
+      <p>Nala, intanto, cammin facendo aveva salvato dalla morte un piccolo serpente. Il serpente si era rivelato come Karkotaka, re dei naga. Per ringraziarlo, Karkotaka gli aveva morso la mano — un morso magico, che aveva due effetti. Trasformò il corpo di Nala: ora era piccolo, deforme, brutto, irriconoscibile come l'antico re. Ma allo stesso tempo, il veleno avrebbe lentamente bruciato Kali dentro di lui. <em>Sopporta la trasformazione</em>, disse Karkotaka, <em>e quando il veleno avrà fatto il suo lavoro, tornerai te stesso</em>.</p>
+
+      <p>Nala, irriconoscibile, prese servizio presso un re lontano come auriga e cuoco. Si chiamava ora Bahuka. Nessuno lo conosceva. Aspettava.</p>
+
+      <p>Damayanti, attraverso un brahmino-spia, scoprì che da qualche parte c'era un cuoco straordinario, brutto e piccolo, che cucinava il riso come solo Nala sapeva fare, e che guidava i cavalli come solo Nala sapeva guidarli. Damayanti capì. Indisse un finto secondo svayamvara. Fece sapere ovunque che, perduta la speranza in Nala, avrebbe scelto un nuovo marito, e che la cerimonia sarebbe avvenuta il giorno dopo l'annuncio — un solo giorno di tempo. Il re lontano, per arrivare in tempo, ebbe bisogno del miglior auriga del mondo. Bahuka guidò i cavalli. Coprì in un giorno la distanza di una settimana.</p>
+
+      <p>Quando arrivarono, Damayanti mandò la sua dama a parlare in segreto con l'auriga deforme. Gli fece domande precise — su una notte nella foresta, su un sari tagliato. Bahuka pianse senza rispondere. Damayanti capì. Mandò a chiamare i propri figli, fatti crescere da sua madre. Li portò davanti a Bahuka. Bahuka li abbracciò entrambi piangendo.</p>
+
+      <p>Damayanti gli disse: <em>so chi sei. Nessuna trasformazione del corpo cambia chi sei. Ti ho riconosciuto.</em></p>
+
+      <p>Il veleno di Karkotaka completò il suo lavoro. Kali fuggì da Nala. Il corpo di Nala tornò quello che era stato. Tornarono a Nishadha. Nala sfidò di nuovo Pushkara al gioco dei dadi — ma questa volta senza Kali dentro. Vinse. Riprese il regno. Non fece torto al fratello: gli lasciò la sua parte.</p>
+
+      <p>Il re cantore che racconta questa storia a Yudhishthira nella foresta, durante l'esilio dei Pandava, conclude così: <em>i grandi cadono. I giusti soffrono. I dèi stessi non sempre proteggono. Ma chi sopporta il proprio prarabdha senza tradire il proprio dharma, alla fine è riconosciuto.</em></p>
+    </div>
+
+    <h3>Il prarabdha vissuto: il destino come prova in cui scoprirsi</h3>
+
+    <p>Nala e Damayanti è una delle storie più amate del Mahabharata, e ha un dispositivo specifico che la rende decisiva per capire il <span class="skt">prarabdha</span>. <strong>Il destino di Nala è già scritto — eppure tutta la storia è ciò che lui scopre dentro quel destino</strong>. Vale la pena vedere come funziona, perché è radicalmente diverso dal fatalismo greco con cui spesso lo confondiamo.</p>
+
+    <p>Il primo punto è che il prarabdha <strong>non sospende la moralità</strong>. Nala è destinato a perdere il regno. Ma il modo in cui lo perde — al gioco dei dadi, posseduto da Kali — è ancora una sua azione, e ne porta le conseguenze. Damayanti è destinata a essere abbandonata nella foresta. Ma il modo in cui sopporta l'abbandono — restando fedele a Nala anche quando il destino l'ha trasformato — è ancora una sua scelta, e ne riceve i frutti. <strong>Il destino è la cornice; il dharma è ciò che fai dentro la cornice</strong>. Questa è la formulazione tecnica più precisa che la cultura indiana abbia prodotto su un problema che in Occidente facciamo sempre fatica a risolvere.</p>
+
+    <p>Il secondo punto è la <strong>doppia trasformazione</strong>. Nala perde il regno (la sua condizione esterna), e poi perde anche il proprio corpo (la sua forma fisica). Damayanti perde il marito, perde il regno, perde i figli, perde la propria identità sociale (deve servire come dama in corte straniera). Tutto ciò che li definiva esteriormente <em>scompare</em>. Eppure entrambi rimangono <em>sé stessi</em>. La storia chiede esplicitamente: cos'è l'identità, se non è il corpo, non è il ruolo sociale, non è la condizione? La risposta è data dall'azione di Damayanti nel finale.</p>
+
+    <h3>L'atman che si riconosce sotto le forme</h3>
+
+    <p>Il momento decisivo della storia — il riconoscimento — è il punto tecnico in cui appare l'<span class="skt">atman</span>. Damayanti riconosce Nala quando Nala non è più Nala: ha un altro corpo, un altro nome, un altro lavoro. Le cose che lo identificavano ai suoi sudditi non ci sono più. Eppure Damayanti lo riconosce. <strong>Come?</strong></p>
+
+    <p>La storia è precisa su questo. Damayanti riconosce Nala attraverso <strong>cose minute che solo lui può fare</strong>: il modo di cuocere il riso, il modo di guidare i cavalli, certe risposte a certe domande che solo chi ha vissuto certi momenti può dare. Sono <em>tracce</em>, in un senso quasi materiale. Ma queste tracce non sono il "carattere" di Nala in senso psicologico moderno. Sono la sua <span class="skt">samskara</span> — l'impronta che le sue molte vite hanno lasciato nel suo atman, e che si manifesta in qualunque corpo lui prenda. Il riso cucinato come Nala lo cuoce non è una tecnica appresa: è <em>un modo d'essere</em> che la sua anima ha sviluppato attraverso il tempo cosmico.</p>
+
+    <p>Damayanti, per riconoscerlo, ha dovuto <strong>guardare oltre il corpo, oltre il nome, oltre la condizione</strong>. Ha dovuto vedere l'atman. Questa è la grande lezione dell'amore secondo la tradizione indiana classica: non si ama una persona per come appare, per cosa fa, per quale posizione ha — si ama l'atman dietro tutto questo. Ed è un amore che ha senso anche attraverso le vite, anche attraverso le trasformazioni, anche attraverso la morte. Nella tradizione indiana è frequente il motivo dei <em>jati-smara</em> — gli amanti che si riconoscono attraverso vite successive perché le loro anime hanno una storia comune.</p>
+
+    <div class="ornamental">
+      Damayanti non riconosce Nala perché è bello.<br>Lo riconosce perché lui è quello.
+    </div>
+
+    <p>Il terzo punto è la <strong>consolazione come funzione narrativa</strong>. Notare la cornice della storia: viene raccontata a Yudhishthira durante l'esilio dei Pandava nella foresta. Yudhishthira ha appena perso il regno al gioco dei dadi (lo stesso meccanismo con cui Nala lo perde), e sta soffrendo. Il saggio Brihadashva gli racconta questa storia, e finisce dicendo: <em>"come Nala ha perso e poi riavuto, anche tu attraverserai e poi tornerai"</em>. La storia è uno <strong>strumento di consolazione esplicito</strong>: serve a dire a chi soffre che il dolore presente fa parte di un disegno più grande, e che la fedeltà al proprio dharma è ricompensata anche quando il prarabdha sembra schiacciante.</p>
+
+    <p>Questa è la <strong>storia incassata che funziona come argomento morale</strong> nella sua forma più chiara. Il narratore principale del Mahabharata sta raccontando dell'esilio dei Pandava. Per consolarli, fa intervenire un saggio. Il saggio racconta Nala e Damayanti. La storia di Nala e Damayanti <em>è</em> il consiglio. Il consiglio non viene dato in forma esplicita ("siate forti"): viene dato in forma narrativa, e la narrazione è più potente di qualsiasi sentenza diretta. È il dispositivo che vedremo in forma compiuta nella quarta storia, ma qui appare già nella sua logica essenziale.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere il prarabdha non come fato cieco ma come prova in cui scoprirsi, e per vedere l'atman in azione attraverso il riconoscimento — la fedeltà di un amore che vede oltre le forme. È anche la storia che mostra, in modo organico, come una storia incassata possa funzionare come consolazione: viene raccontata a chi soffre per dirgli, attraverso un'altra storia, ciò che non si potrebbe dire direttamente.
+    </div>
+  </section>
+
+  <!-- ============ STORIA III ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">III</span> <span class="skt">Jataka</span> · Tradizione buddhista</div>
+      <h2>Il cervo dalla pelliccia d'oro —<br><em>l'atman in tutti gli esseri</em></h2>
+      <p class="story-source">Nigrodhamiga Jataka, n. 12 della raccolta canonica · una delle 547 storie delle vite passate del Buddha · tradizione pali, V sec. d.C., ma di origine orale ben più antica</p>
+    </div>
+
+    <div class="narrative">
+      <p>Per capire la storia bisogna sapere com'è incorniciata. Le storie Jataka raccontano le vite passate del Buddha — non quando era già il Buddha, ma quando era un Bodhisattva, un'anima in cammino verso l'illuminazione attraverso molte vite. In ogni Jataka, il Bodhisattva nasce in una forma diversa: un re, un mercante, un asceta, un albero, un coniglio, un elefante, un pesce. In ogni vita compie un atto di compassione o di saggezza che lo avvicina alla buddhità. Quando, alla fine, nasce come il principe Siddhartha e diventa il Buddha, le sue vite passate non sono dimenticate: sono il fondamento di chi è.</p>
+
+      <p>In una di queste vite, il Bodhisattva nacque come un cervo dalla pelliccia d'oro. Era enorme, splendido, con corna come l'argento e occhi come gemme. Era il re di una mandria di cinquecento cervi che vivevano nella grande foresta di Banyan vicino alla città di Benares. Si chiamava Nigrodha — "il cervo del banyan".</p>
+
+      <p>In un'altra parte della stessa foresta viveva un'altra mandria di cinquecento cervi, con un altro re — un cervo bello quasi quanto Nigrodha, di nome Sakha.</p>
+
+      <p>Il re di Benares amava la caccia. Veniva ogni settimana nella foresta con i suoi cacciatori, accerchiava un settore, e uccideva quanti cervi gli capitavano. Le mandrie vivevano nel terrore: ogni caccia, decine di cervi morivano, molti feriti vagavano e morivano dopo giorni di agonia. La mandria di Nigrodha e quella di Sakha vivevano sotto la stessa angoscia.</p>
+
+      <p>Un giorno il re catturò vivi entrambi i re-cervi, Nigrodha e Sakha. Vedendo la loro bellezza — la pelliccia d'oro di uno, la grazia dell'altro — si commosse e disse: <em>questi due li lascerò vivi. Possono vagare liberi nel mio parco di caccia.</em> E concesse loro di vivere, ma chiuse tutta la foresta nel parco reale recintato. Tutti i mille cervi delle due mandrie ora vivevano nel parco del re. Ogni giorno la cucina reale aveva bisogno di un cervo per il pranzo del re, e i cacciatori entravano nel parco per ucciderne uno.</p>
+
+      <p>Ma i cacciatori non sceglievano bene. Ogni giorno tiravano frecce in mezzo alla mandria, ferivano molti cervi prima di uccidere quello che portavano in cucina. Cervi feriti agonizzavano per giorni. Madri perdevano cuccioli. Cuccioli perdevano madri. La sofferenza era enorme — molto più di quanto sarebbe stato necessario per nutrire il re.</p>
+
+      <p>Nigrodha vide la sofferenza. Andò da Sakha. Disse: <em>questa caccia confusa fa molto più male di quanto serva al re. Propongo una cosa. Andiamo dal re e chiediamogli un patto. Ogni giorno un cervo si offrirà volontariamente per la cucina. Si presenterà al ceppo. Sarà ucciso con un solo colpo. Così solo uno morirà, e tutti gli altri vivranno in pace fino al loro turno.</em></p>
+
+      <p>Sakha esitò ma accettò. Andarono dal re. Il re acconsentì, stupito dalla saggezza dei due cervi.</p>
+
+      <p>Da allora, ogni giorno, i due re-cervi si alternavano: un giorno toccava alla mandria di Nigrodha, un giorno alla mandria di Sakha. All'interno di ogni mandria si tirava a sorte. Chi era estratto si presentava al ceppo, posava la testa, e veniva ucciso con un solo colpo. Il re aveva la sua carne. Tutti gli altri vivevano.</p>
+
+      <p>Un giorno, nella mandria di Sakha, la sorte cadde su una cerva. Era incinta. Stava per partorire. Andò da Sakha e disse: <em>signore, lasciami vivere finché non ho partorito. Quando il piccolo sarà nato, e sarà capace di camminare, io stessa andrò al ceppo.</em></p>
+
+      <p>Sakha rispose: <em>la regola è la regola. Non posso fare eccezioni. Se faccio per te, dovrei fare per altri. La sorte è caduta su di te. Vai.</em></p>
+
+      <p>La cerva pianse. Andò da Nigrodha — non era della sua mandria, ma era l'altro re. Ripeté la richiesta. Nigrodha la guardò.</p>
+
+      <p>Disse: <em>vai a dormire. Oggi non andrai al ceppo. Andrò io al posto tuo.</em></p>
+
+      <p>La cerva si oppose: <em>signore, non puoi. Tu sei il re. La tua vita non si può scambiare con la mia.</em></p>
+
+      <p>Nigrodha rispose: <em>se io non posso scambiare la mia vita con la tua, non sono un re. Sono solo un cervo più importante. Va' a partorire in pace.</em></p>
+
+      <p>Andò al ceppo. Posò la testa.</p>
+
+      <p>Il cuoco reale, vedendolo, si fermò. Era il re-cervo dalla pelliccia d'oro. Era il primo dei due risparmiati dal re. Non poteva ucciderlo senza ordini. Andò a riferire al re.</p>
+
+      <p>Il re venne al ceppo. Vide Nigrodha con la testa abbassata. Chiese: <em>perché sei qui? Tu sei tra i due risparmiati.</em></p>
+
+      <p>Nigrodha sollevò la testa e parlò. Raccontò della cerva incinta. Raccontò che Sakha non aveva voluto fare eccezione. Raccontò che lui aveva preso il posto della cerva, perché un re che non protegge i suoi sudditi non è un re. Disse: <em>uccidimi adesso, secondo il patto. La cerva avrà il suo piccolo.</em></p>
+
+      <p>Il re di Benares ascoltò.</p>
+
+      <p>Per molto tempo non parlò.</p>
+
+      <p>Poi disse: <em>cervo dalla pelliccia d'oro, in tutta la mia vita non ho conosciuto un essere umano capace di fare quello che hai fatto tu. Tu, che sei un animale, mi hai mostrato cos'è il dharma di un re meglio di qualsiasi mio maestro. Da oggi nessuno toccherà più te. Da oggi nessuno toccherà la cerva. Da oggi nessuno toccherà nessun cervo nel mio parco. Da oggi nessuno ucciderà nessun animale in tutto il mio regno. Va', e parla quando vuoi nella mia corte. Sarai onorato finché vivrai.</em></p>
+
+      <p>Nigrodha tornò al banyan. La cerva partorì. Il re di Benares mantenne la promessa. Per tutta la sua vita, in tutto il regno, non si uccise un animale. Quando morì, riferì il suo successore, e il suo successore mantenne la promessa. La memoria di Nigrodha, il cervo che aveva insegnato il dharma a un re, attraversò molte generazioni.</p>
+
+      <p>Qui finisce la storia. Ma il narratore aggiunge una cosa, perché è una storia Jataka: il cervo dalla pelliccia d'oro, in quella vita lontana, era il Bodhisattva — colui che molte vite dopo sarebbe nato come Siddhartha e sarebbe diventato il Buddha. La cerva incinta, in quella stessa vita, era una donna che molte vite dopo sarebbe stata Yashodhara, la moglie del Buddha. Il re di Benares era Ananda, il discepolo prediletto. Chi ascolta la storia non sente solo cosa è accaduto: sente <em>chi era chi</em>, e capisce che le grandi anime si incontrano e si riconoscono attraverso le vite, sempre.</p>
+    </div>
+
+    <h3>L'atman in tutti gli esseri: il fondamento dell'ahimsa</h3>
+
+    <p>Il Jataka del cervo è la storia che meglio illustra una delle convinzioni più profonde della cultura indiana classica — soprattutto nelle sue forme buddhiste e jainiste, ma presente anche nell'hinduismo: <strong>l'atman che vive in un essere umano è dello stesso tipo di quello che vive in un cervo, in un insetto, in un albero</strong>. Non c'è gerarchia ontologica. La forma è diversa, le possibilità di azione sono diverse, ma la scintilla è la stessa. Questo principio cambia tutto.</p>
+
+    <p>Notare come la storia <em>dimostra</em> questo principio invece di affermarlo. Il re di Benares, all'inizio, considera i cervi come carne. Sono prede. Sono cibo. Anche quando "risparmia" Nigrodha e Sakha, lo fa per il loro <em>aspetto</em> — perché sono belli — non perché siano persone. Trattengono lo statuto di ornamenti viventi. Ma quando Nigrodha parla, e parla con saggezza, e fa una cosa che il re stesso non saprebbe fare, qualcosa cambia nella percezione del re. <strong>Si accorge che dentro a quel cervo c'è qualcuno</strong>. Non un'astrazione metafisica: <em>qualcuno</em> con cui si può dialogare, e da cui si può imparare.</p>
+
+    <p>Questo è il senso preciso di <span class="skt">ahimsa</span><span class="skt-deva">अहिंसा</span>: non "non-violenza" come principio astratto, ma <strong>il riconoscimento della presenza dell'atman in ogni essere</strong>. L'ahimsa non è una regola morale che ci si impone — è una <em>conseguenza</em> di vedere bene. Quando vedi davvero l'atman in un cervo, non puoi più ucciderlo allegramente. Non perché te lo proibiscano: perché non ha più senso. Sarebbe come uccidere un fratello che ha un altro corpo.</p>
+
+    <h3>Il Bodhisattva: il passato dentro di noi</h3>
+
+    <p>La cornice Jataka introduce il quarto concetto della tua lista — <strong>il passato dentro di noi</strong> — in una forma molto specifica e potente. Il cervo dalla pelliccia d'oro <em>è</em> il Buddha, in una vita precedente. Quando ascoltatori buddhisti sentono questa storia, non sentono "una favola con un cervo": sentono <strong>una pagina della biografia profonda del loro maestro</strong>. La compassione di Nigrodha non è generica — è la stessa compassione che, molte vite dopo, porterà il Buddha a rinunciare al palazzo per cercare la liberazione di tutti gli esseri.</p>
+
+    <p>Questo è un dispositivo narrativo enormemente potente, e specifico della tradizione buddhista: <strong>una storia non è mai isolata, perché ogni protagonista ha già vissuto altre vite e ne vivrà altre</strong>. Il cervo che ascolti adesso era già qualcuno, sarà qualcun altro. Le sue azioni in questa vita non si esauriscono qui: si depositano come <em>samskara</em> nell'atman, e modelleranno le sue prossime forme. Il bambino che ascolta impara, senza che gli sia detto esplicitamente, che <em>chi sei adesso è il risultato di chi sei stato</em> — e che <em>chi sarai dipende da come agisci</em>. È un'intuizione profonda della responsabilità che attraversa le vite.</p>
+
+    <p>Notare il dispositivo finale: il narratore <em>nomina</em> chi era chi. Il cervo era il Bodhisattva. La cerva era Yashodhara. Il re era Ananda. Questa è una <strong>chiusura tipica delle Jataka</strong>, e svolge una funzione precisa. Trasforma la storia da favola in <em>memoria cosmica</em>. Non hai sentito un racconto: hai sentito qualcosa che è <em>realmente accaduto</em> nelle vite passate di esseri che ami e venera la tua tradizione. La grande mandria di cervi è ancora qui, in qualche forma. La cerva incinta è la madre del piccolo Rahula. Il re generoso è l'amico fedele del Buddha. La storia è continuata fino a oggi.</p>
+
+    <div class="ornamental">
+      Quando l'atman vede l'atman,<br>la violenza diventa impossibile.
+    </div>
+
+    <h3>Il dharma esteso a tutti gli esseri</h3>
+
+    <p>C'è un ultimo elemento che vale la pena nominare. La storia mostra il dharma situato della prima storia — il dilemma di Arjuna — esteso a un campo molto più ampio. Sakha agisce secondo <em>una versione</em> del dharma: la regola è la regola, le eccezioni distruggono il sistema, la cerva deve morire come ha deciso la sorte. Non è cinismo: è una posizione legittima nel dharma di un re che mantiene un patto. Nigrodha agisce secondo <em>un'altra versione</em>: il dharma di un re include la protezione individuale anche al di fuori della regola. Anche questa è legittima. <strong>Lo stesso dilemma di Arjuna è qui</strong>: non c'è una sola risposta giusta. C'è la situazione, ci sono i dharma in tensione, c'è chi sceglie come abitare la situazione.</p>
+
+    <p>La storia dà ragione a Nigrodha — ma non perché Sakha avesse torto. Gli dà ragione perché in <em>quella</em> situazione specifica, con <em>quella</em> cerva incinta, una compassione attiva era il dharma più alto disponibile. In un'altra situazione, la regola di Sakha avrebbe potuto essere la cosa giusta. Il dharma è sempre situato. La storia mostra come si fa a riconoscerlo.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere l'atman come scintilla in tutti gli esseri — fondamento dell'ahimsa concreta, non astratta — e per vedere il "passato dentro di noi" nella forma più potente: una storia che è anche memoria di chi era il Buddha. È anche, secondariamente, un altro esempio di dharma situato: due re-cervi, due dharma legittimi, una situazione che chiama il più alto.
+    </div>
+  </section>
+
+  <!-- ============ STORIA IV ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">IV</span> Mahabharata · <span class="skt">Vana Parva</span></div>
+      <h2>Markandeya nell'oceano —<br><em>la storia dentro la storia dentro la storia</em></h2>
+      <p class="story-source">Mahabharata, libro III, capitoli 186-188 · l'incontro tra il saggio immortale Markandeya e i Pandava in esilio · una delle pagine cosmologicamente più vertiginose della letteratura mondiale</p>
+    </div>
+
+    <div class="narrative">
+      <p>I Pandava erano in esilio nella foresta. Avevano perso il regno al gioco dei dadi — la stessa storia che Brihadashva ha provato a consolare con il racconto di Nala e Damayanti. Yudhishthira, il fratello maggiore, era spesso preso da una tristezza profonda: si interrogava sul senso del dharma, su cosa significhi giustizia in un mondo dove i giusti perdono.</p>
+
+      <p>Un giorno arrivò all'eremo dei Pandava un saggio molto particolare. Si chiamava Markandeya. Era immortale: per benedizione di Shiva, viveva attraverso i kalpa, mentre tutto il resto si dissolveva e si ricreava attorno a lui. Era così antico che non c'era domanda della creazione che non avesse già visto rispondersi.</p>
+
+      <p>Yudhishthira lo ricevette con tutto l'onore dovuto. Lo fece sedere. Gli portò acqua e cibo. E gli pose la domanda che lo tormentava: <em>maestro, ho perso il regno per un colpo di dadi. La nostra famiglia è stata umiliata pubblicamente. Mia moglie Draupadi è stata trascinata in catene davanti alla corte, e nessuno l'ha difesa. Adesso viviamo in esilio nella foresta. Tutto questo nonostante abbiamo cercato di rispettare il dharma. Dimmi: il dharma vale ancora qualcosa? Il bene viene mai ricompensato? O i giusti sono destinati a soffrire mentre i malvagi prosperano?</em></p>
+
+      <p>Markandeya sorrise. Disse: <em>i tuoi dolori, principe, sono vasti dal punto di vista di una sola vita. Lascia che ti racconti qualcosa che ho visto io stesso, molti kalpa fa.</em></p>
+
+      <p>E cominciò.</p>
+
+      <p><em>Ero giovane allora — giovane, naturalmente, è un termine relativo per uno come me. Avevo già attraversato tre kalpa quando, durante uno di essi, vidi la fine. Tutto ciò che è — montagne, città, mari, cieli, dèi, demoni, esseri viventi di ogni forma — cominciò a dissolversi. I venti cosmici soffiarono. Le acque salirono. Le acque coprirono le città. Coprirono le montagne. Coprirono i continenti. Salirono fino al cielo. In poco tempo non c'era più niente. Solo un oceano sterminato, nero, senza fine, senza sole, senza stelle, senza nessun riferimento. E io galleggiavo in quell'oceano, solo. Per quanto tempo? Non posso dirlo. Forse milioni di anni umani. Forse di più. Il tempo non aveva senso, perché non c'era nessun evento.</em></p>
+
+      <p><em>Galleggiavo, e nuotavo, e mi chiedevo se sarei mai giunto da qualche parte. Una grande tristezza mi prese. Pensavo: ecco, tutto è finito. L'universo è morto. Resterò qui per sempre, solo con la memoria di mondi che non esistono più.</em></p>
+
+      <p><em>Poi, in lontananza, vidi una luce. Mi avvicinai. Era una foglia di banyan — una semplice foglia, immensa, che galleggiava sulle acque cosmiche. Sulla foglia era sdraiato un bambino. Un bambino divino. Aveva la pelle azzurra, e brillava di una luce propria. Sorrideva nel sonno.</em></p>
+
+      <p><em>Mi avvicinai. Non sapevo chi fosse. Non avevo mai visto nulla di simile. Mi chinai per guardarlo meglio. E in quel momento, il bambino aprì la bocca e mi inghiottì.</em></p>
+
+      <p><em>Mi trovai dentro di lui. Non in uno stomaco buio: in un universo. Dentro a quel bambino c'era tutto. Vidi le galassie. Vidi le costellazioni. Vidi le terre e i mari di mille mondi. Vidi montagne che riconoscevo — quelle dei kalpa precedenti. Vidi città che avevo conosciuto. Vidi dèi che mi avevano benedetto. Vidi anime in viaggio attraverso le forme. E vidi — questa è la cosa che ti voglio dire, Yudhishthira — vidi me stesso, in molte vite passate. Vidi un giovane brahmino che ero stato, vidi un asceta che avevo dimenticato di essere stato, vidi un re che era morto in battaglia e di cui ero la prossima incarnazione. E vidi anche te, principe — non come ti vedo ora, ma in altre forme, in altre vite, sempre tu, l'anima che chiamo adesso Yudhishthira.</em></p>
+
+      <p><em>Ho cercato di capire dove fossi. Era chiaro: ero dentro Vishnu. Il bambino sulla foglia era Vishnu, il Conservatore, che durante la dissoluzione dell'universo dorme sull'oceano cosmico, e dentro di sé contiene tutto ciò che era e tutto ciò che sarà. Sono rimasto dentro di lui per molto tempo. Anche dentro, il tempo non aveva senso normale.</em></p>
+
+      <p><em>Poi, sentii uno scuotimento. Vishnu sbadigliò. E mi risputò fuori, sulla stessa foglia. Quando mi voltai per guardarlo, era cresciuto. Adesso era un giovane. Si stiracchiò. Aprì gli occhi. Mi vide. Sorrise. Disse: "Markandeya, hai visto tutto. Adesso comincia di nuovo."</em></p>
+
+      <p><em>Il vento cosmico cominciò a muoversi. Le acque iniziarono a ritirarsi. Da lontano vidi crescere le prime montagne del nuovo kalpa. Vidi il sole accendersi, le stelle disporsi nei loro pattern. Vidi nuove anime cominciare a prendere forma. La creazione ricominciava. Il kalpa ricominciava. E io ero lì, testimone.</em></p>
+
+      <p>Markandeya tacque. Yudhishthira lo ascoltava in silenzio.</p>
+
+      <p>Markandeya allora disse: <em>principe, il tuo dolore è vero. La perdita del regno è vera. L'umiliazione di Draupadi è vera. Non ti sto dicendo che non importano. Ti sto dicendo che esistono dentro un kalpa, dentro una creazione, dentro un sogno di Vishnu. Quello che hai perso, in altri kalpa l'hai avuto e l'avrai ancora. Quello che hai sofferto, altre anime stanno soffrendo, e altre ancora hanno già finito di soffrirlo. Il dharma è vero, ma agisce su scale che una sola vita non può misurare. Quello che a te sembra ingiustizia, su scala cosmica è pattern che si sta componendo. Non ti sto chiedendo di non soffrire. Ti sto chiedendo di sapere dove sei.</em></p>
+
+      <p>Yudhishthira non rispose subito. Restò in silenzio per molto tempo. Quando parlò, fu solo per ringraziare il maestro. Markandeya rimase ancora qualche giorno presso i Pandava, e poi se ne andò, come era venuto.</p>
+
+      <p>Yudhishthira non smise di soffrire. Ma da quel giorno la sua sofferenza ebbe una cornice diversa. Quando, anni dopo, vinse la guerra di Kurukshetra e poi salì sul Monte Meru per andare oltre la vita, una parte di lui ricordava ancora il bambino divino sulla foglia di banyan, e l'oceano nero che lo aveva preceduto.</p>
+    </div>
+
+    <h3>Le tre cornici, e cosa ognuna fa</h3>
+
+    <p>La storia di Markandeya è il punto in cui la cultura indiana mostra la sua firma più riconoscibile: la <strong>narrazione incassata su tre livelli</strong>, in cui ogni livello fa qualcosa di specifico e non solo decora. Vale la pena vedere la struttura visualizzata, perché è davvero una scatola dentro una scatola dentro una scatola.</p>
+
+    <div class="frames-display">
+      <div class="frame">
+        <div class="frame-label">Livello 1 · Cornice esterna</div>
+        <div class="frame-text">I Pandava sono in esilio. Yudhishthira soffre. Markandeya arriva e Yudhishthira gli pone la domanda: il dharma vale ancora qualcosa?</div>
+        <div class="frame frame-inner">
+          <div class="frame-label">Livello 2 · Markandeya racconta</div>
+          <div class="frame-text">Markandeya racconta in prima persona la sua esperienza della fine di un kalpa. Galleggiare nell'oceano cosmico, l'incontro con il bambino divino sulla foglia.</div>
+          <div class="frame frame-inner-2">
+            <div class="frame-label">Livello 3 · Dentro a Vishnu</div>
+            <div class="frame-text">Markandeya, inghiottito dal bambino, vede dentro di lui tutti gli universi, tutti i kalpa, le proprie vite passate, le vite passate di Yudhishthira. La storia esplode in mille storie potenziali.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>Ognuno dei tre livelli ha una <strong>funzione tecnica</strong> nella storia.</p>
+
+    <p>Il <strong>primo livello</strong> stabilisce la domanda. Yudhishthira non sta chiedendo nozioni: sta chiedendo se il senso esiste. È una domanda esistenziale data nella forma più cruda possibile. Una storia occidentale a questo punto darebbe una risposta — un consiglio, un argomento, una rivelazione. Markandeya invece <em>racconta</em>. Questo è il primo principio: <strong>quando la domanda è troppo grande per una risposta diretta, si racconta una storia</strong>.</p>
+
+    <p>Il <strong>secondo livello</strong> sposta la prospettiva. Markandeya racconta la propria esperienza personale della fine del mondo — un evento di scala cosmica, ma narrato in prima persona. Questo dispositivo è fondamentale: la cosmologia non viene esposta come dottrina ("c'è un kalpa, poi c'è una dissoluzione, poi un nuovo kalpa"), viene <em>vissuta narrativamente</em>. Yudhishthira non riceve una lezione: riceve un'esperienza per delega. Questo è il modo indiano di insegnare verità grandi: incarnandole in chi le ha vissute.</p>
+
+    <p>Il <strong>terzo livello</strong> è il colpo di scala. Dentro Vishnu, Markandeya vede tutti gli universi possibili — e vede sé stesso e Yudhishthira nelle loro vite passate. Questo è il momento in cui la storia <em>tocca</em> Yudhishthira direttamente. Yudhishthira sta sentendo Markandeya raccontare di averlo visto, in altre vite, in altre forme. <strong>Il livello più interno della scatola contiene il personaggio della cornice esterna</strong>. È un loop ontologico, e ha un effetto preciso: Yudhishthira capisce che la sua sofferenza presente è già stata vista, da fuori, da qualcuno — e che è solo una pagina di una storia molto più lunga.</p>
+
+    <h3>La storia come argomento morale</h3>
+
+    <p>Ed è qui che vediamo la <strong>storia incassata come argomento</strong> nella sua forma più piena. Markandeya non risponde mai esplicitamente alla domanda di Yudhishthira ("il dharma vale ancora qualcosa?"). Risponde <em>raccontando</em>. Ma il suo racconto <strong>è</strong> la risposta, ed è una risposta che nessuna formulazione diretta avrebbe potuto eguagliare. Una risposta diretta sarebbe stata un'astrazione: <em>"sì, il dharma vale, ma su scale cosmiche"</em>. Detta così, sarebbe consolazione vuota. Ma raccontata come l'esperienza di un uomo che ha realmente visto il kalpa dissolversi e ricomporsi — diventa <em>verità incarnata</em>. Yudhishthira non viene convinto: viene <em>spostato</em>.</p>
+
+    <p>Questa è la vera lezione tecnica della cultura indiana sull'arte di consolare e insegnare: <strong>quando vuoi dire qualcosa di profondo, non dirlo. Racconta una storia in cui qualcuno l'ha visto</strong>. La storia incassata non è un ornamento del messaggio — è il <em>veicolo</em> del messaggio, perché certe verità non possono essere ridotte a proposizioni senza perdere la loro forza.</p>
+
+    <div class="ornamental">
+      Quello che si può dire direttamente<br>è poco. Quello che si può raccontare<br>è quasi tutto.
+    </div>
+
+    <h3>Il tempo cosmico come consolazione</h3>
+
+    <p>L'ultima cosa che la storia fa — ed è forse la più potente — è dare a Yudhishthira <strong>una nuova scala su cui misurare il proprio dolore</strong>. Non sta rendendo il dolore più piccolo: lo sta collocando in una cornice più grande. Yudhishthira ha perso il regno. Vero. Ma il regno fa parte di un kalpa che si dissolverà. La sua famiglia è stata umiliata. Vero. Ma il pattern delle umiliazioni e delle restituzioni si ripete attraverso le vite. La sua sofferenza è reale. Ma è una <em>pagina</em>, non il libro intero.</p>
+
+    <p>Notare che questa non è anestesia. Yudhishthira "non smette di soffrire". La storia lo dice esplicitamente. La cornice cosmica non cancella il dolore — gli dà <strong>un contesto in cui essere abitato</strong>. Questa è una funzione che la cultura occidentale moderna ha quasi perso, e che la cultura indiana ha sempre saputo mantenere: la <em>consolazione attraverso l'ampliamento dello sguardo</em>. Non "non soffrire", ma "soffri sapendo dove sei". Per chi racconta a un bambino piccolo che ha perso un giocattolo, o si è graffiato un ginocchio, o è triste perché i nonni se ne sono andati, questa è una lezione preziosa: la consolazione non è la negazione del dolore, è collocarlo in un contesto più grande in cui possa stare.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere la narrazione incassata nella sua forma più piena (tre livelli, ognuno con una funzione precisa), e per vedere come una storia possa essere usata come argomento morale e come strumento di consolazione. È anche la storia che meglio mostra il tempo cosmico come ampliamento della prospettiva: il dharma è vero, ma agisce su scale che una sola vita non può misurare.
+    </div>
+  </section>
+
+  <!-- ============ SINTESI ============ -->
+  <div class="synthesis">
+    <h2>Quattro storie, una grammatica</h2>
+    <p class="synthesis-kicker">Cosa emerge quando le quattro storie si guardano insieme</p>
+
+    <p>Arjuna sul carro, Nala in esilio, il cervo dorato al ceppo, Markandeya nell'oceano cosmico. Quattro situazioni diversissime, lette nell'ordine in cui le abbiamo presentate, mostrano un'unica cosa: <strong>la grammatica indiana del racconto è uno zoom progressivo</strong>. Un istante di scelta, una vita di prove, una vita tra le vite di tutti gli esseri, un kalpa che contiene tutti i kalpa. La cultura indiana è felice di abitare ognuno di questi livelli, e ancora più felice di farli incontrare in una stessa storia.</p>
+
+    <p>I quattro concetti che ti hanno colpito sono ora tutti incarnati in storie reali. <strong>Il dharma situato</strong> agisce in Arjuna che non sa quale obbligo seguire, e nei due re-cervi che leggono diversamente la stessa situazione. <strong>Il prarabdha</strong> agisce in Nala che non può evitare la propria caduta ma può scegliere come abitarla, e in Yudhishthira che vede il proprio dolore inserito in una scala cosmica. <strong>L'atman in tutti gli esseri</strong> è il fondamento dell'ahimsa di Nigrodha, ma anche del riconoscimento di Damayanti che ama Nala oltre il corpo. <strong>Il passato dentro di noi</strong> è la cornice Jataka — ogni vita è una pagina di una biografia profonda — e l'esperienza di Markandeya che vede sé stesso e Yudhishthira nelle vite passate.</p>
+
+    <p>Ma c'è una cosa che le quattro storie insegnano insieme, e che nessuna insegna da sola: <strong>l'India non separa la trama dalla riflessione, l'evento dal commento, la storia dalla saggezza che ne ricava</strong>. Krishna parla mentre la guerra aspetta. Brihadashva racconta Nala mentre Yudhishthira soffre. Il cervo dorato pronuncia un piccolo discorso al re. Markandeya racconta dentro Vishnu. La narrazione e la sapienza sono sempre insieme. Una storia indiana è simultaneamente un racconto avvincente, un commento al racconto, una sentenza sul commento, e un'altra storia che illustra la sentenza. Per chi viene da una cultura che separa "trama" e "morale", questa simultaneità sembra all'inizio confusa. Diventa, con il tempo, una delle cose più ricche che la narrazione possa offrire.</p>
+
+    <p>Il prossimo documento — Doc 3 — proverà a tradurre tutto questo per un bambino di 2-3 anni. Spoiler onesto: l'India è la più difficile da tradurre per quell'età. Le storie incassate richiedono memoria di lavoro che a tre anni non c'è ancora. La complessità dei dilemmi etici è sproporzionata. Le scale cosmiche sono fuori portata. Ma alcune cose passano benissimo: il rispetto per gli animali e gli esseri piccoli, l'idea che dietro ai cambiamenti c'è qualcosa che resta, il "una volta dentro un'altra volta" come piccolo gioco narrativo. Vedremo cosa si può fare.</p>
+  </div>
+
+  <div class="end-mark">❦ ❦ ❦</div>
+
+  <footer>
+    <span>Volume III · Documento 2 di 4</span>
+    <span>Prossimo: La storia per bambini →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

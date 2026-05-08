@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India · La Guida Pratica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;600&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0e3;
+    --paper-deep: #ede3cd;
+    --paper-warm: #f4e8d0;
+    --ink: #2b1f17;
+    --ink-soft: #4d3b2c;
+    --ink-faint: #8a7558;
+    --rule: #d4c5a7;
+    --vermilion: #b73c2e;
+    --vermilion-soft: #d66954;
+    --indigo: #2d3a6b;
+    --gold: #a87c2b;
+    --highlight: #ecdcb6;
+    --warning: #8b3a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 90% 5%, rgba(183, 60, 46, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 5% 95%, rgba(45, 58, 107, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(168, 124, 43, 0.025) 0%, transparent 70%);
+    color: var(--ink);
+    font-family: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.65;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.12 0 0 0 0 0.09 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .devanagari-mark {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 3.2rem;
+    color: var(--vermilion);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  h1.title {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--vermilion);
+  }
+
+  .subtitle {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--vermilion);
+    border-bottom: 1px solid var(--vermilion);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--vermilion);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--vermilion);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '◆';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--vermilion);
+    font-size: 0.5rem;
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 1.8rem 2rem 1.8rem 2.2rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--vermilion);
+    border-right: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .lead::before {
+    content: '❦';
+    position: absolute;
+    top: -0.6rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.6rem;
+    color: var(--vermilion);
+    font-size: 1rem;
+    font-style: normal;
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    margin: 2rem 0 4rem;
+    padding: 1.5rem 1.8rem;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+  }
+
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 2rem;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    font-family: 'Spectral', serif;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--vermilion);
+    letter-spacing: 0.1em;
+  }
+
+  .toc a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .toc a:hover { border-bottom-color: var(--vermilion); }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .section-kicker {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    margin-bottom: 2.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  /* ===== LESSONS ===== */
+  .lesson {
+    margin: 1.8rem 0;
+    padding: 1.6rem 1.8rem 1.6rem 5rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--vermilion);
+    position: relative;
+  }
+
+  .lesson-num {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.5rem;
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--vermilion);
+    font-style: italic;
+  }
+
+  .lesson h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.22rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+  }
+
+  .lesson p {
+    font-size: 0.97rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .lesson p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .lesson p em {
+    font-style: italic;
+  }
+
+  /* ===== SANSKRIT TERM ===== */
+  .skt {
+    font-style: italic;
+    color: var(--vermilion);
+    font-weight: 500;
+  }
+
+  .skt-deva {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-style: normal;
+    color: var(--indigo);
+    font-size: 0.95em;
+    margin-left: 0.2em;
+  }
+
+  /* ===== FORMULA - SCATOLA DENTRO SCATOLA ===== */
+  .formula {
+    margin: 3rem 0;
+    padding: 2.5rem 1.5rem;
+    background: var(--paper-warm);
+    border-top: 2px double var(--vermilion);
+    border-bottom: 2px double var(--vermilion);
+  }
+
+  .formula-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 1.8rem;
+    display: block;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  /* La scatola esterna */
+  .formula-outer {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 1.8rem 1.5rem;
+    background: var(--paper);
+    border: 2px solid var(--vermilion);
+    position: relative;
+  }
+
+  .formula-outer-label {
+    position: absolute;
+    top: -0.6rem;
+    left: 1.5rem;
+    background: var(--paper-warm);
+    padding: 0 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .formula-outer-text {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 0.8rem;
+  }
+
+  .formula-outer-text strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--vermilion);
+  }
+
+  /* La transizione */
+  .formula-transition {
+    text-align: center;
+    margin: 1rem 0;
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .formula-transition::before,
+  .formula-transition::after {
+    content: '◆';
+    margin: 0 0.6rem;
+    font-style: normal;
+    font-size: 0.65rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* La scatola interna */
+  .formula-inner {
+    margin: 1rem 0.5rem 0.8rem;
+    padding: 1.4rem 1.3rem;
+    background: var(--paper-warm);
+    border: 2px solid var(--gold);
+    position: relative;
+  }
+
+  .formula-inner-label {
+    position: absolute;
+    top: -0.55rem;
+    left: 1.2rem;
+    background: var(--paper);
+    padding: 0 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .formula-inner-text {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .formula-inner-text strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--gold);
+  }
+
+  /* Il ritorno alla cornice esterna */
+  .formula-return {
+    text-align: center;
+    margin: 1rem 0 0.6rem;
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+  }
+
+  /* La sentenza finale, fuori dalla scatola */
+  .formula-subhashita {
+    max-width: 580px;
+    margin: 1.8rem auto 0;
+    padding: 1.2rem 1.5rem;
+    text-align: center;
+    border-top: 2px double var(--vermilion);
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--vermilion);
+    font-weight: 400;
+  }
+
+  .formula-subhashita-label {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .formula-tagline {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    margin: 2rem 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.6rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--vermilion);
+    text-align: center;
+    padding-top: 0.2rem;
+    font-style: italic;
+  }
+
+  .step-content h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .step-content p {
+    font-size: 0.97rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-content p:last-child { margin-bottom: 0; }
+
+  .step-content em.example {
+    display: block;
+    margin-top: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--vermilion);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .step-content em.example::before {
+    content: 'esempio · ';
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-right: 0.4em;
+  }
+
+  /* ===== INCIPIT ===== */
+  .incipits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+    margin: 2rem 0;
+  }
+
+  .incipit {
+    padding: 1.5rem 1.7rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--vermilion);
+  }
+
+  .incipit-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .incipit p {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .incipit-note {
+    font-family: 'Source Serif 4', serif;
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  /* ===== ERRORS ===== */
+  .error {
+    margin: 1.6rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(139, 58, 26, 0.04);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--warning);
+  }
+
+  .error-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--warning);
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .error h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.18rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 0.7rem;
+  }
+
+  .error p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .error p:last-child { margin-bottom: 0; }
+
+  .error p.fix {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed rgba(139, 58, 26, 0.3);
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .error p.fix::before {
+    content: '→ ';
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--vermilion);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    background: var(--highlight);
+    padding: 0.05em 0.3em;
+    font-style: italic;
+    border-bottom: 1px solid var(--vermilion);
+    color: var(--ink);
+  }
+
+  /* ===== FINAL CARD ===== */
+  .final-card {
+    margin: 5rem 0 3rem;
+    padding: 2.5rem 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-top: 2px double var(--vermilion);
+    border-bottom: 2px double var(--vermilion);
+    text-align: center;
+  }
+
+  .final-card-mark {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 2.4rem;
+    color: var(--vermilion);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .final-card h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 1.3rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-card p {
+    font-family: 'Source Serif 4', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-family: 'Spectral', serif;
+    color: var(--vermilion);
+    font-size: 1.4rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.6; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 2.5rem 0 1.5rem; }
+    .devanagari-mark { font-size: 2.6rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.1rem; padding: 1.4rem 1.4rem 1.4rem 1.5rem; }
+    h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .toc ol { grid-template-columns: 1fr; }
+    .lesson { padding: 1.4rem 1.4rem 1.4rem 4rem; }
+    .lesson-num { font-size: 2rem; left: 1rem; top: 1.3rem; }
+    .formula { padding: 1.8rem 0.8rem; }
+    .formula-outer { padding: 1.4rem 1.1rem; }
+    .formula-inner { margin: 1rem 0.2rem 0.8rem; padding: 1.1rem 1rem; }
+    .step { grid-template-columns: 45px 1fr; gap: 1rem; }
+    .step-num { font-size: 1.9rem; }
+    .final-card { padding: 1.8rem 1.4rem; }
+    .final-card h3 { font-size: 1.2rem; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .toc, section, .final-card { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .toc { animation-delay: 0.15s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+  section:nth-of-type(5) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume III</div>
+    <div class="devanagari-mark">हस्तावलंब</div>
+    <h1 class="title">La guida<br><em>pratica</em></h1>
+    <p class="subtitle">Da tenere aperta sul telefono mentre racconti, o da rileggere cinque minuti prima della nanna. Versione indiana: si lavora sull'incasso e sulla generosità ontologica.</p>
+    <div class="meta-row">
+      <span>Documento 4 di 4</span>
+      <span>Operativo</span>
+      <span>Consultabile</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="india_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="india_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="india_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Una guida indiana alla narrazione non insegna a inventare — insegna ad aprire. Una storia, dentro, ne contiene un'altra. E la sentenza che chiude resta dopo, indipendente.</p>
+  </div>
+
+  <div class="toc">
+    <span class="toc-label">In questo documento</span>
+    <ol>
+      <li><a href="#lezioni">Le quattro lezioni chiave</a></li>
+      <li><a href="#formula">La formula — la scatola dentro la scatola</a></li>
+      <li><a href="#passi">Costruire una storia in sei passi</a></li>
+      <li><a href="#incipit">Quattro incipit pronti</a></li>
+      <li><a href="#errori">Cinque errori da evitare</a></li>
+    </ol>
+  </div>
+
+  <!-- ============ LEZIONI ============ -->
+  <section id="lezioni">
+    <span class="section-num">§ 01 — Le lezioni</span>
+    <h2>Le quattro lezioni chiave</h2>
+    <p class="section-kicker">I principi della cultura indiana classica che cambiano davvero il modo di raccontare a un bambino di 2-3 anni.</p>
+
+    <div class="lesson">
+      <span class="lesson-num">i</span>
+      <h3>Una storia può aprirne un'altra</h3>
+      <p>La rivoluzione concettuale dell'India è questa: <strong>una storia non è un blocco compatto, è una scatola che dentro può contenere un'altra storia</strong>. Per un bambino di 2-3 anni un solo livello di incasso è alla portata, ed è un piccolo gioco cognitivo divertente. Quando un personaggio nella storia dice <em>"lascia che ti racconti..."</em>, tuo figlio impara che le storie possono aprirsi dentro le storie. Questo gli rimarrà per tutta la vita come modo di pensare.</p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">ii</span>
+      <h3>Ogni piccolo essere ha una sua storia</h3>
+      <p>La generosità ontologica dell'India: il topolino, la formica, il merlo, il fiore non sono <em>figure</em> nelle storie — sono <strong>esseri con storie proprie</strong>. La cultura indiana classica chiama questo l'<span class="skt">atman</span> in tutti gli esseri. Per un bambino di 2-3 anni si traduce in un'intuizione potente: <em>quando incontri qualcuno di piccolo, anche un insetto, anche un animale, dietro di lui c'è qualcuno con la sua storia</em>. È una pedagogia del rispetto che nessun'altra cultura insegna così direttamente.</p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">iii</span>
+      <h3>Il passato vive nel presente</h3>
+      <p>Le grandi epiche indiane sono piene di personaggi che spiegano il presente raccontando il proprio passato. Per un bambino di 2-3 anni questo si traduce in una formula semplicissima e potente: <strong>"una volta, quando io ero piccolo come te..."</strong>, detta da un personaggio dentro la storia (il merlo, il nonno, l'orsetto) o da un parente reale (la nonna, lo zio). Il passato non è dietro: è una risorsa che chi parla porta con sé, e che usa per illuminare il presente.</p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">iv</span>
+      <h3>La sentenza finale è autonoma</h3>
+      <p>A differenza della morale occidentale ("e così imparò che..."), la <span class="skt">subhashita</span> indiana non spiega la storia: <strong>è una formula che si stacca dalla storia e cammina da sola</strong>. Sette parole, due tempi paralleli, ritmo memorizzabile. <em>"Chi ha poco e dà, ha già abbastanza." "Aiutare non è portare via." "Più amici, più gioco."</em> Tuo figlio comincerà a ripeterla in altri contesti, fuori dalla nanna. Questo è il vero potere della <span class="skt">subhashita</span>: vive dopo, fuori, indipendente.</p>
+    </div>
+  </section>
+
+  <!-- ============ FORMULA ============ -->
+  <section id="formula">
+    <span class="section-num">§ 02 — La formula</span>
+    <h2>La <em>scatola dentro la scatola</em></h2>
+    <p class="section-kicker">Non un'equazione lineare (Occidente), non quattro stanze affiancate (Giappone): una struttura di contenimento. La cornice contiene la storia, la storia contiene la sentenza. È la grammatica indiana resa visibile.</p>
+
+    <div class="formula">
+      <span class="formula-label">La forma indiana</span>
+
+      <div class="formula-outer">
+        <span class="formula-outer-label">Cornice esterna</span>
+        <div class="formula-outer-text">
+          <strong>Protagonista</strong> in una piccola situazione che chiede una scelta gentile. Aspetta, esita, non sa.
+        </div>
+
+        <div class="formula-transition">e allora un personaggio dice: «lascia che ti racconti…»</div>
+
+        <div class="formula-inner">
+          <span class="formula-inner-label">Storia interna</span>
+          <div class="formula-inner-text">
+            <strong>Un breve "una volta"</strong> — pochi paragrafi, una scena sola. Mostra qualcosa che illumina la situazione esterna. Niente sotto-cornici.
+          </div>
+        </div>
+
+        <div class="formula-return">il protagonista ascolta, capisce, sceglie</div>
+      </div>
+
+      <div class="formula-subhashita">
+        <span class="formula-subhashita-label">Subhashita finale</span>
+        Una sentenza di sei-sette parole, ritmica, indipendente.
+      </div>
+
+      <div class="formula-tagline">
+        Due scatole, una sentenza. La scatola interna è l'argomento; la sentenza è il fiore.
+      </div>
+    </div>
+
+    <p style="font-size: 0.95rem; color: var(--ink-faint); font-style: italic; text-align: center; margin-top: 1.5rem;">
+      Memorizza la struttura come due scatole concentriche più una formula sospesa fuori. La storia avanza aprendo la scatola interna, chiudendola, e posando la sentenza alla fine.
+    </p>
+  </section>
+
+  <!-- ============ PASSI ============ -->
+  <section id="passi">
+    <span class="section-num">§ 03 — La costruzione</span>
+    <h2>Costruire una storia in sei passi</h2>
+    <p class="section-kicker">Da fare in trenta secondi mentale prima di iniziare. Più impegnativo dei sei passi di Occidente e Giappone perché c'è una scatola in più — ma con la pratica diventa naturale.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">i</div>
+        <div class="step-content">
+          <h3>Trova una piccola situazione di scelta gentile</h3>
+          <p>Non un dilemma morale serio. <strong>Una scelta minima di compassione</strong>: a chi dare l'ultimo pezzo, se aiutare un piccolo essere in difficoltà, se condividere o tenere. La situazione deve essere immediatamente visualizzabile, e il "problema" deve essere lieve — non drammatico.</p>
+          <em class="example">L'ultimo pezzo di pane tra due animali. Un fiore appassito che si vorrebbe strappare. Un giocattolo da prestare o no. Un insetto che cammina dove non dovrebbe.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">ii</div>
+        <div class="step-content">
+          <h3>Stabilisci il protagonista esitante</h3>
+          <p>Bambino o piccolo animale che <strong>non sa cosa fare</strong>. Importante: il protagonista deve esitare visibilmente. L'esitazione è il punto in cui la cultura indiana entra — è quello spazio in cui un'altra storia può venire offerta come argomento.</p>
+          <em class="example">Rohan rimase fermo. Non sapeva. Guardava prima uno, poi l'altro.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iii</div>
+        <div class="step-content">
+          <h3>Scegli un personaggio che racconta</h3>
+          <p>Un animale che parla, un nonno, una zia, un albero saggio. <strong>Deve poter dire: "lascia che ti racconti una storia"</strong>. Questo personaggio non risolve il dilemma per il protagonista — gli offre un'altra storia come materiale per pensare. È il dispositivo più indiano di tutti, e il più importante.</p>
+          <em class="example">Un merlo che parla. Una formica che si ferma sul gradino. Il nonno seduto sul divano. La zia che pettina il bambino.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iv</div>
+        <div class="step-content">
+          <h3>Costruisci la storia interna in tre o quattro frasi</h3>
+          <p>Brevissima. <strong>Una scena sola, due personaggi al massimo, una sola azione</strong>. Deve illuminare per analogia la situazione esterna — non spiegarla, illuminarla. Il bambino ascoltatore farà il collegamento da solo, perché tre anni è un'età in cui le analogie semplici si afferrano benissimo. La transizione di apertura deve essere chiara: <em>"una volta, quando io ero..."</em>.</p>
+          <em class="example">"Una volta, quando io ero un piccolo merlo, avevo fame. Un topolino mi diede il suo unico seme. Ecco perché oggi non voglio l'ultimo pezzo."</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">v</div>
+        <div class="step-content">
+          <h3>Riporta il protagonista alla scelta</h3>
+          <p>Dopo la storia interna, <strong>il protagonista deve scegliere — e la scelta deve essere coerente con la storia ascoltata</strong>. Non spieghi perché ha scelto così: lo mostri agire. La pedagogia avviene per identificazione. Tuo figlio capisce perché Rohan ha dato il pane al topolino senza che nessuno glielo dichiari.</p>
+          <em class="example">Rohan ascoltò. Guardò il topolino. Staccò l'ultimo pezzo di pane e glielo posò davanti.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">vi</div>
+        <div class="step-content">
+          <h3>Posa la <span class="skt">subhashita</span> finale</h3>
+          <p>Sei-sette parole. Due tempi paralleli ("chi X / Y") oppure un'opposizione semplice. <strong>Indipendente dalla storia</strong> — deve poter essere ripetuta in altri contesti. Niente "e così Rohan imparò che...": è una formula sospesa, posata come un fiore sulla pagina. Tuo figlio comincerà a ripeterla con te dopo qualche racconto.</p>
+          <em class="example">"Chi ha poco e dà, ha già abbastanza." "Aiutare non è portare via." "Più amici, più gioco." "I piccoli proteggono i piccoli."</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INCIPIT ============ -->
+  <section id="incipit">
+    <span class="section-num">§ 04 — Le aperture</span>
+    <h2>Quattro incipit pronti</h2>
+    <p class="section-kicker">Frasi di apertura nello stile della tradizione indiana per bambini piccoli. La marca distintiva: nominare presto un piccolo essere e prepararsi a farlo parlare.</p>
+
+    <div class="incipits">
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con piccolo essere</span>
+        <p>"C'era una volta un bambino che si chiamava [nome]. Ogni mattina [azione quotidiana semplice]. Ma una mattina, vicino [luogo], vide un piccolo [animale]…"</p>
+        <p class="incipit-note">La forma più indiana. Stabilisce subito il protagonista e prepara l'incontro con un piccolo essere che presto parlerà. Funziona sempre.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con esitazione</span>
+        <p>"[Protagonista] aveva una cosa importante in mano: [oggetto/cibo/giocattolo]. E davanti a sé aveva due [persone/animali] che la volevano. Non sapeva a chi darla."</p>
+        <p class="incipit-note">Apre direttamente sul dilemma. Più diretto del precedente, ottimo se hai poco tempo. Stabilisce in tre frasi che la scelta sarà il cuore della storia.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con il nonno (o parente caro)</span>
+        <p>"[Protagonista] era seduto col nonno sotto l'albero. Il nonno disse: 'Ti racconto una cosa che ho visto io tanti anni fa, quando ero un bambino come te…'"</p>
+        <p class="incipit-note">Salta direttamente alla cornice: il nonno è già il narratore interno. La storia incassata diventa quasi tutta la storia. Funziona splendidamente con un parente reale come narratore — è il modo più affettivo della grammatica indiana.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit a ripresa di personaggio</span>
+        <p>"Ti ricordi Rohan? Quel bambino che dà il pane al topolino? Bene. Un altro giorno, Rohan…"</p>
+        <p class="incipit-note">Costruisce una saga di Rohan (o di qualunque personaggio ricorrente). I bambini di 2-3 anni amano i protagonisti che tornano — e con la grammatica indiana è facile costruire una serie di storie attorno allo stesso bambino, ognuna con una piccola scelta gentile e una storia incassata diversa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ERRORI ============ -->
+  <section id="errori">
+    <span class="section-num">§ 05 — Le trappole</span>
+    <h2>Cinque errori da evitare</h2>
+    <p class="section-kicker">Le trappole tipiche di chi viene da una cultura narrativa lineare e cerca di raccontare in stile indiano. Quasi tutte si riducono a un solo errore: <em>fare troppo</em> dentro la scatola interna.</p>
+
+    <div class="error">
+      <span class="error-mark">Errore 1</span>
+      <h3>Mettere più di un livello di incasso</h3>
+      <p>L'istinto, scoperto il dispositivo, è entusiasmarsi: una storia dentro una storia dentro una storia, come nel Mahabharata. <strong>A 2-3 anni due livelli di incasso non si reggono</strong>. La memoria di lavoro non basta. Il bambino si perde, e la fiducia nella struttura crolla.</p>
+      <p class="fix">Un solo livello, sempre. Una scatola dentro una scatola, basta. Le scatole dentro le scatole dentro le scatole sono per dopo i 6-7 anni — e per allora tuo figlio le amerà già, perché avrà imparato il piacere della prima scatola.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 2</span>
+      <h3>Non segnalare chiaramente la transizione</h3>
+      <p>L'istinto adulto è far scorrere fluidamente la storia interna nella storia esterna, come fa il romanzo moderno. <strong>Per un bambino di tre anni questo è un disastro</strong>: non sa più dove siamo, chi sta parlando, di chi è la storia. Si confonde, e il piacere dell'apertura della scatola è perso.</p>
+      <p class="fix">La transizione deve essere <em>rituale e ripetuta</em>. <strong>"Lascia che ti racconti una storia. Una volta…"</strong> Sempre la stessa formula. Tuo figlio imparerà a riconoscerla e ad aspettarla. Quando finisci la storia interna, segnala il ritorno con <strong>"[il protagonista] ascoltò"</strong>. Sempre la stessa formula. Le formule sono ponti che il bambino impara ad attraversare.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 3</span>
+      <h3>Far diventare la storia interna troppo lunga</h3>
+      <p>Una volta aperta la scatola interna, l'istinto è raccontare bene la storia dentro. <strong>Ma se la storia interna diventa troppo lunga, la cornice esterna si dimentica</strong>. Il bambino dimentica perché stiamo raccontando la storia interna, e quando torniamo all'esterna ha perso il filo.</p>
+      <p class="fix">La storia interna deve essere <strong>più breve della cornice esterna</strong>. Tre o quattro frasi. Una scena sola. Due personaggi al massimo. Una sola azione. Tutto quello che serve per illuminare la scelta della cornice — niente di più.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 4</span>
+      <h3>Spiegare cosa significa la storia interna</h3>
+      <p>Dopo aver chiuso la storia interna, l'istinto è dire: <em>"capisci, Rohan, questo significa che..."</em>. <strong>Si è ucciso il dispositivo</strong>. La forza della storia incassata è che <em>illumina senza spiegare</em>. È un'analogia, non un'argomentazione. Spiegarla la trasforma in una lezioncina.</p>
+      <p class="fix">Dopo la storia interna, mostra il protagonista che agisce coerentemente con quello che ha sentito. Niente spiegazione. Tuo figlio capisce — è esattamente l'età in cui le analogie semplici si afferrano benissimo. Fidati.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 5</span>
+      <h3>Trasformare la <span class="skt">subhashita</span> in una morale spiegata</h3>
+      <p>L'istinto è far seguire alla storia <em>"e così Rohan imparò che bisogna essere generosi"</em>. <strong>Questa è morale occidentale, non sentenza indiana</strong>. La <span class="skt">subhashita</span> non spiega la storia che precede: è una formula autonoma, posata accanto alla storia, che vivrà da sola.</p>
+      <p class="fix">La sentenza è <em>indipendente</em>. Non collegata grammaticalmente a "e così" o "dunque". È una piccola perla messa alla fine. <strong>"Chi ha poco e dà, ha già abbastanza."</strong> Punto. Niente prima, niente dopo. Tuo figlio la ripeterà fuori contesto — al supermercato, al parco, davanti a un mendicante — e in quei momenti la storia avrà fatto il suo lavoro.</p>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CARD ============ -->
+  <div class="final-card">
+    <div class="final-card-mark">कथा</div>
+    <h3>"Una storia indiana è una scatola: chi la apre trova dentro un'altra storia, e dietro la scatola un piccolo fiore di sentenza che camminerà da solo."</h3>
+    <p>Stai usando la grammatica più antica della narrazione indiana: la cornice che contiene il racconto, il racconto che contiene il senso, il senso che si stacca e va. È la stessa struttura del Mahabharata, in scala di tre minuti. Per un bambino di 2-3 anni è un piccolo gioco cognitivo che gli rimarrà per tutta la vita.</p>
+  </div>
+
+  <div class="end-mark">❦ ❦ ❦</div>
+
+  <footer>
+    <span>Volume III · Documento 4 di 4 · Fine</span>
+    <span>India · completo</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India · La Storia per Bambini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=Tiro+Devanagari+Sanskrit:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f0e3;
+    --paper-deep: #ede3cd;
+    --paper-warm: #f4e8d0;
+    --ink: #2b1f17;
+    --ink-soft: #4d3b2c;
+    --ink-faint: #8a7558;
+    --rule: #d4c5a7;
+    --vermilion: #b73c2e;
+    --vermilion-soft: #d66954;
+    --indigo: #2d3a6b;
+    --gold: #a87c2b;
+    --highlight: #ecdcb6;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 90% 5%, rgba(183, 60, 46, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 5% 95%, rgba(45, 58, 107, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(168, 124, 43, 0.025) 0%, transparent 70%);
+    color: var(--ink);
+    font-family: 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='3' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.12 0 0 0 0 0.09 0 0 0 0.06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .devanagari-mark {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-size: 3.2rem;
+    color: var(--vermilion);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  h1.title {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-size: clamp(2.5rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--vermilion);
+  }
+
+  .subtitle {
+    font-family: 'Spectral', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--vermilion);
+    border-bottom: 1px solid var(--vermilion);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--vermilion);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--vermilion);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '◆';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--vermilion);
+    font-size: 0.5rem;
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 2rem 2rem 2rem 2.5rem;
+    background: var(--paper-warm);
+    border-left: 3px solid var(--vermilion);
+    border-right: 1px solid var(--rule);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    position: relative;
+  }
+
+  .lead p + p { margin-top: 1.1rem; }
+
+  .lead::before {
+    content: '❦';
+    position: absolute;
+    top: -0.6rem;
+    left: 2rem;
+    background: var(--paper);
+    padding: 0 0.6rem;
+    color: var(--vermilion);
+    font-size: 1rem;
+    font-style: normal;
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 60px;
+    height: 1px;
+    background: var(--vermilion);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .section-kicker {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  section h3 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: 2.8rem 0 1.2rem;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+
+  section h3::before {
+    content: '◆';
+    color: var(--vermilion);
+    font-size: 0.7rem;
+  }
+
+  section p {
+    margin-bottom: 1.3rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  section p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== SANSKRIT TERM ===== */
+  .skt {
+    font-style: italic;
+    color: var(--vermilion);
+    font-weight: 500;
+  }
+
+  .skt-deva {
+    font-family: 'Tiro Devanagari Sanskrit', serif;
+    font-style: normal;
+    color: var(--indigo);
+    font-size: 0.95em;
+    margin-left: 0.2em;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    background: var(--highlight);
+    padding: 0.05em 0.3em;
+    font-style: italic;
+    border-bottom: 1px solid var(--vermilion);
+    color: var(--ink);
+  }
+
+  /* ===== TRADUZIONE ===== */
+  .traduzione {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .traduzione-row {
+    display: grid;
+    grid-template-columns: 1fr 70px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .traduzione-row:last-child { border-bottom: none; }
+
+  .traduzione-cell {
+    padding: 1.2rem 1.4rem;
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+
+  .traduzione-cell.label {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    background: var(--paper);
+    color: var(--ink);
+  }
+
+  .traduzione-cell.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--vermilion);
+    font-size: 0.9rem;
+    background: var(--paper);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .traduzione-cell.translation {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .traduzione-cell.translation.discard {
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+
+  .traduzione-cell.translation.discard::before {
+    content: '× ';
+    color: var(--vermilion);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ===== STORY BLOCK ===== */
+  .story-block {
+    margin: 3rem 0 4rem;
+    padding: 2.5rem 2.2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--vermilion);
+    box-shadow: 4px 4px 0 rgba(168, 124, 43, 0.18);
+    position: relative;
+  }
+
+  .story-block::before {
+    content: 'storia per bambini';
+    position: absolute;
+    top: -0.7rem;
+    left: 1.8rem;
+    background: var(--paper);
+    padding: 0 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+  }
+
+  .story-title {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.15;
+  }
+
+  .story-title em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .story-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story-block p {
+    text-align: left;
+    font-family: 'Spectral', serif;
+    font-size: 1.08rem;
+    font-weight: 400;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .story-block p em {
+    font-style: italic;
+    color: var(--vermilion);
+  }
+
+  .story-block p.beat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-top: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .story-block p.beat-label:first-child { margin-top: 0; }
+
+  /* La cornice della storia incassata */
+  .story-block .nested-story {
+    margin: 1.4rem 0;
+    padding: 1.4rem 1.6rem;
+    background: var(--paper);
+    border: 1px solid var(--gold);
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+
+  .story-block .nested-story::before {
+    content: 'storia dentro la storia';
+    position: absolute;
+    top: -0.6rem;
+    left: 1.2rem;
+    background: var(--paper-warm);
+    padding: 0 0.6rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .story-block .nested-story p {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+  }
+
+  .story-block .nested-story p:last-child { margin-bottom: 0; }
+
+  .story-block p.refrain {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    color: var(--vermilion);
+    font-size: 1.15rem;
+    text-align: center;
+    padding: 0.7rem 1rem;
+    margin: 1.3rem 0;
+    border-top: 1px dashed var(--rule);
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .story-block p.subhashita {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 500;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem 1.2rem;
+    margin: 1.5rem 0 0;
+    border-top: 2px double var(--vermilion);
+  }
+
+  .story-block p.subhashita::before {
+    content: '◆';
+    display: block;
+    color: var(--vermilion);
+    font-size: 0.7rem;
+    font-style: normal;
+    margin-bottom: 0.6rem;
+  }
+
+  .story-block p:first-of-type:first-letter {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 3rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.2rem 0.5rem 0 0;
+    color: var(--vermilion);
+  }
+
+  /* ===== DIAGRAM NESTED ===== */
+  .nested-diagram {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+  }
+
+  .nested-diagram .frame {
+    border: 1px solid var(--vermilion);
+    padding: 1rem 1.2rem;
+    background: var(--paper);
+  }
+
+  .nested-diagram .frame-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: var(--vermilion);
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+  }
+
+  .nested-diagram .frame-text {
+    font-family: 'Spectral', serif;
+    font-style: italic;
+    font-size: 0.94rem;
+    color: var(--ink);
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+  .nested-diagram .frame-inner {
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+    border-color: var(--gold);
+  }
+
+  .nested-diagram .frame-inner .frame-label { color: var(--gold); }
+
+  /* ===== ORNAMENTAL QUOTE ===== */
+  .ornamental {
+    margin: 3rem -1rem;
+    padding: 2rem;
+    background: var(--paper-deep);
+    border-top: 2px double var(--vermilion);
+    border-bottom: 2px double var(--vermilion);
+    text-align: center;
+    font-family: 'Spectral', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .ornamental::before,
+  .ornamental::after {
+    content: '◆';
+    display: block;
+    color: var(--vermilion);
+    font-size: 0.8rem;
+    font-style: normal;
+    margin: 0 auto 1rem;
+  }
+
+  .ornamental::after {
+    margin: 1rem auto 0;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(183, 60, 46, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--vermilion);
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--vermilion);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== VARIANTI ===== */
+  .variant {
+    margin: 1.8rem 0;
+    padding: 1.5rem 1.7rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+    position: relative;
+  }
+
+  .variant-num {
+    position: absolute;
+    top: -0.7rem;
+    left: 1.2rem;
+    background: var(--vermilion);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.7rem;
+    letter-spacing: 0.18em;
+  }
+
+  .variant h4 {
+    font-family: 'Spectral', serif;
+    font-weight: 500;
+    font-size: 1.18rem;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+    margin-top: 0.3rem;
+    line-height: 1.25;
+  }
+
+  .variant p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .variant p em {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'Spectral', serif;
+    color: var(--vermilion);
+    font-size: 1.4rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.65; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 2.5rem 0 1.5rem; }
+    .devanagari-mark { font-size: 2.6rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.1rem; padding: 1.5rem 1.4rem 1.5rem 1.6rem; }
+    h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .ornamental { font-size: 1.1rem; margin: 2rem 0; }
+    .traduzione-row { grid-template-columns: 1fr; }
+    .traduzione-cell.arrow { display: none; }
+    .traduzione-cell.label { border-bottom: 1px solid var(--rule); }
+    .story-block { padding: 1.8rem 1.4rem; }
+    .story-title { font-size: 1.4rem; }
+    .story-block .nested-story { padding: 1.2rem 1.2rem; }
+    .nested-diagram .frame-inner { margin-left: 0.5rem; }
+    section p { text-align: left; }
+    section { margin: 3.5rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, section { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume III</div>
+    <div class="devanagari-mark">बच्चे</div>
+    <h1 class="title">La storia<br><em>per bambini</em></h1>
+    <p class="subtitle">Come tradurre la grammatica indiana — l'atman in tutti gli esseri, la storia dentro la storia, la sentenza che chiude — per un bambino di tre anni. Una traduzione che richiede qualche rinuncia onesta, ma che porta cose che nessun'altra cultura sa portare.</p>
+    <div class="meta-row">
+      <span>Documento 3 di 4</span>
+      <span>Per bambini 2-3 anni</span>
+      <span>Tono creativo + pedagogico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="india_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="india_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="india_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>L'India è la più difficile da tradurre per i 2-3 anni. Dharma situato, dilemmi etici complessi, scale cosmiche: a quell'età non passano. Vanno lasciati.</p>
+    <p>Ma quattro cose della cultura indiana atterrano benissimo, e portano qualcosa che nessun'altra cultura porta: il rispetto per gli esseri piccoli, la storia che si apre dentro un'altra, il "una volta" che vive nel presente, e la piccola sentenza finale che si ripete.</p>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — La traduzione</span>
+      <h2>Cosa funziona, cosa va adattato, cosa va lasciato perdere</h2>
+      <p class="section-kicker">Sei principi della cultura indiana classica passati al filtro di un cervello di tre anni. Più rinunce del solito — ma quello che resta vale molto.</p>
+    </div>
+
+    <p>Bisogna essere onesti su una cosa: l'India è una cultura che ha pensato per gli adulti più che per i bambini. Le grandi epiche servono a formare lo spirito attraverso decenni di ascolto. Il Bhagavad Gita è un dialogo filosofico raffinato. Le storie incassate del Mahabharata richiedono memoria di lavoro e capacità di astrazione che a tre anni non ci sono ancora. Questo significa che la traduzione per i piccoli deve essere <em>più selettiva</em> di quella che abbiamo fatto per Occidente e Giappone — alcune cose vanno semplicemente lasciate per dopo. In compenso, quello che si può tradurre è prezioso, e in parte unico.</p>
+
+    <h3>Cosa funziona naturalmente</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Atman in tutti gli esseri</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona benissimo. I bambini di 2-3 anni sono già naturalmente animisti: parlano col cane, salutano la luna, chiedono come si sente la formica. La cultura indiana non gli sta chiedendo qualcosa di nuovo — gli sta dando una grammatica per qualcosa che già fanno spontaneamente.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Sentenza finale ripetibile</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona. La <span class="skt">subhashita</span> indiana — un piccolo detto sapienziale che chiude una storia — è esattamente quello che un bambino piccolo ama: una formula breve, ritmica, che si può ripetere ad alta voce e che diventa familiare. È una versione "indiana" della morale dichiarata che già conosciamo dall'Occidente — ma con un sapore diverso, più poetico.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Animali come maestri</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona ed è uno dei doni più potenti della tradizione indiana. Nel Panchatantra e nei Jataka gli animali insegnano cose ai re, ai bambini, agli stolti. Questa idea — che un piccolo essere possa sapere qualcosa di vero — è enormemente preziosa per un bambino di tre anni, che è anche lui un piccolo essere e ama sentire che la sapienza non è solo dei grandi.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va adattato</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Storia incassata</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Funziona ma <em>solo a un livello di profondità</em>. Una scatola dentro una scatola, sì. Tre scatole, no — la memoria di lavoro non regge. La transizione deve essere chiarissima, segnalata con una formula rituale: "e allora il merlo disse al bambino: <em>ascolta, c'era una volta...</em>". E la storia interna deve essere breve — un minuto, due al massimo.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Il passato dentro la storia presente</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Funziona se concretizzato. Niente "vite passate" astratte, ma personaggi che <em>raccontano cose che hanno fatto prima</em>. Il merlo che dice "una volta, quando ero piccolo come te...". Il nonno che dice "quando io avevo i tuoi anni...". È un meccanismo che il bambino capisce subito, e che è la versione pediatrica del <em>passato dentro di noi</em> della cultura indiana.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Riconoscimento dell'anima sotto le forme</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Funziona se trasformato in <em>"riconoscere chi è davvero anche quando sembra diverso"</em>. Il merlo bagnato è ancora il merlo. Il nonno con la barba lunga è ancora il nonno. La gattina spaventata è ancora la gattina. Pedagogicamente è potente: insegna che le apparenze cambiano ma l'essenza resta — un'idea utile per la vita.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va lasciato perdere</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Dharma situato + dilemma etico</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile. Il cuore intellettuale della cultura indiana è troppo complesso per i tre anni. Un piccolo dilemma ("a chi do l'ultima briciola?") può funzionare, ma non come dilemma — come occasione semplice di compassione. Niente conflitti tra dharma legittimi.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Tempo cosmico (kalpa)</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile. La mente di tre anni capisce "ieri" e "domani", a fatica "molto tempo fa". I miliardi di anni dei kalpa sono fantascienza adulta. Tenere "una volta" come massima profondità temporale.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Tre o più livelli di incasso</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile. Una storia dentro una storia dentro una storia richiede capacità cognitive che si formano dopo i 6-7 anni. Tenere un solo livello di profondità, e segnalarlo con chiarezza.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Il principio guida</span>
+      Tradurre l'India per un bambino di tre anni significa rinunciare alla complessità intellettuale e tenere <strong>la generosità ontologica</strong> — l'idea che ogni essere abbia valore, che ogni cosa abbia una sua storia, che dietro le apparenze ci sia qualcuno. Questa è la lezione più alta della cultura indiana, ed è esattamente alla portata di un bambino piccolo. Insieme a questo, una piccola tecnica narrativa potente: la storia che si apre dentro una storia. Bastano questi due elementi per portare l'India nella nanna.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La storia</span>
+      <h2>Il bambino, il merlo e il topolino</h2>
+      <p class="section-kicker">Una storia inventata, costruita secondo la grammatica indiana in versione 2-3 anni: rispetto per gli esseri piccoli, una vera storia incassata di un solo livello, una piccola <span class="skt">subhashita</span> che chiude.</p>
+    </div>
+
+    <div class="story-block">
+      <div class="story-title">Il bambino, il <em>merlo</em> e il <em>topolino</em></div>
+      <div class="story-meta">Durata: 5-6 minuti · Età: 2-3 anni · Adattabile</div>
+
+      <p class="beat-label">Apertura</p>
+      <p>C'era una volta un bambino piccolo che si chiamava Rohan. Rohan amava molto il pane. Ogni mattina sua mamma gli dava un pezzo di pane caldo con il burro, e Rohan lo mangiava sul gradino di casa, mentre guardava il giardino svegliarsi.</p>
+
+      <p class="beat-label">Lo scenario si dispiega</p>
+      <p>Una mattina Rohan stava mangiando il suo pane, quando vide arrivare un piccolo merlo nero, con il becco giallo. Il merlo si fermò sul muretto del giardino. Guardava Rohan. Aveva fame.</p>
+
+      <p>Rohan staccò un pezzettino di pane e lo lanciò sul muretto. Il merlo lo prese subito — <em>tac, tac</em> — e lo mangiò.</p>
+
+      <p>Poi, dall'erba vicino al gradino, uscì un piccolo topolino grigio. Aveva il muso rosa e le orecchie tonde. Anche lui aveva fame. Si fermò davanti a Rohan e lo guardò.</p>
+
+      <p>Rohan guardò il pane che gli era rimasto in mano. Non era tanto. Era solo un pezzettino. Guardò il merlo, che aspettava ancora un altro pezzo. Guardò il topolino, che aspettava il primo. <em>A chi do questo ultimo pezzo?</em></p>
+
+      <p class="beat-label">Il dilemma in versione bambina</p>
+      <p>Rohan rimase fermo. Il merlo aveva mangiato per primo. Era giusto dargli ancora? Il topolino non aveva mangiato niente. Era giusto dare a lui? Rohan non sapeva.</p>
+
+      <p>Allora il merlo, dal muretto, fece una cosa che i merli di solito non fanno: parlò.</p>
+
+      <p><em>Rohan</em>, disse il merlo. <em>Lascia che ti racconti una storia.</em></p>
+
+      <p class="beat-label">La storia incassata</p>
+      <div class="nested-story">
+        <p>Una volta, quando io ero un piccolo merlo appena uscito dall'uovo, avevo molta fame. Ero caduto dal nido. Non sapevo ancora volare bene. Camminavo nell'erba, e cercavo qualcosa da mangiare. Ma non trovavo niente.</p>
+        <p>Allora ho visto un piccolo topolino, proprio come quello che hai davanti a te adesso. Il topolino aveva un seme. Solo uno. Era il suo unico seme. Mi ha guardato. Ha visto che io avevo fame. E mi ha dato il suo seme. Tutto. Senza dirmi niente.</p>
+        <p>Quel seme mi ha tenuto in vita finché non sono tornato al nido. Se quel topolino non mi avesse dato il seme, io non sarei qui adesso a mangiare il tuo pane.</p>
+        <p>Ecco perché, Rohan, oggi io non voglio l'ultimo pezzo. Daglielo. I piccoli proteggono i piccoli. Lo so io, perché un topolino mi ha protetto quando ero piccolo come lui.</p>
+      </div>
+
+      <p class="beat-label">Ritorno alla storia principale</p>
+      <p>Rohan ascoltò. Non sapeva che i merli sapessero raccontare le storie, ma adesso lo sapeva. Guardò il topolino. Il topolino aveva ancora fame. Rohan staccò l'ultimo pezzettino di pane — non lo divise, lo diede tutto — e lo posò vicino al topolino.</p>
+
+      <p>Il topolino prese il pane fra le zampine. Mangiò piano piano. Quando ebbe finito, guardò Rohan. Guardò il merlo. Poi sparì nell'erba senza fare rumore.</p>
+
+      <p class="beat-label">Chiusura</p>
+      <p>Il merlo aprì le ali. Disse: <em>Rohan, oggi hai imparato una cosa che molti adulti non sanno. I grandi proteggono i piccoli. Ma anche i piccoli proteggono i piccoli — quando hanno qualcosa da dare.</em></p>
+
+      <p>Volò via, sopra il giardino, sopra il tetto, fino a sparire nel cielo.</p>
+
+      <p>Rohan rimase sul gradino con le mani vuote. Non aveva più pane. Ma aveva qualcosa di nuovo dentro — qualcosa che prima non aveva.</p>
+
+      <p class="subhashita">Chi ha poco e dà, ha già abbastanza.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — L'analisi</span>
+      <h2>Cosa è rimasto della cultura, cosa è stato adattato</h2>
+      <p class="section-kicker">Decostruire la storia per vedere come la grammatica indiana — ridotta ma non tradita — si è accomodata in un cervello di tre anni.</p>
+    </div>
+
+    <h3>La struttura: un solo livello di incasso, segnalato chiaramente</h3>
+
+    <p>La storia è costruita esattamente come una storia indiana classica in scala ridotta. C'è una <strong>cornice esterna</strong> (Rohan sul gradino col pane) e c'è una <strong>storia interna</strong> (il merlo bambino salvato dal topolino). Le due si parlano: la storia interna è <em>l'argomento</em> che il merlo offre a Rohan per aiutarlo a decidere. Esattamente come Brihadashva offre la storia di Nala a Yudhishthira per consolarlo, e come Markandeya offre la storia di Vishnu per dare contesto al dolore.</p>
+
+    <div class="nested-diagram">
+      <div class="frame">
+        <div class="frame-label">Cornice · presente di Rohan</div>
+        <div class="frame-text">Rohan ha l'ultimo pezzo di pane. Merlo e topolino aspettano. A chi darlo?</div>
+        <div class="frame frame-inner">
+          <div class="frame-label">Storia interna · passato del merlo</div>
+          <div class="frame-text">Una volta il merlo era piccolo e aveva fame. Un topolino gli diede il suo unico seme.</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Vale la pena notare le <strong>tre tecniche specifiche</strong> usate per rendere l'incasso seguibile a un bambino di tre anni.</p>
+
+    <p>Primo: la <strong>transizione è dichiarata in modo rituale</strong>. <em>"Rohan, lascia che ti racconti una storia."</em> Questa formula — adattata dalla cultura indiana, dove i saggi annunciano sempre l'inizio di una <span class="skt">katha</span> incassata — è un segnale chiaro per il bambino: <strong>adesso entriamo in un'altra storia</strong>. Senza questo segnale il bambino si confonderebbe. Con esso, la transizione diventa quasi un piccolo gioco — "stiamo aprendo una scatola dentro la scatola".</p>
+
+    <p>Secondo: la <strong>storia interna è breve, una scena sola, niente sotto-cornici</strong>. Quaranta-cinquanta parole, due personaggi, un'azione. Più di così sarebbe troppo. Il bambino deve poter tenere in mente la cornice esterna mentre ascolta quella interna — la memoria di lavoro a tre anni si esaurisce in fretta.</p>
+
+    <p>Terzo: il <strong>ritorno alla cornice è altrettanto chiaro</strong>. <em>"Rohan ascoltò."</em> Una frase semplice che riporta il fuoco sul piano principale. Il bambino capisce che la "scatola interna" è chiusa, e che siamo di nuovo nel giardino di Rohan. Tipograficamente, ho marcato anche con un'etichetta esplicita — "ritorno alla storia principale" — perché il narratore (cioè tu, genitore) possa <em>sentire</em> il cambio di livello mentre legge.</p>
+
+    <h3>L'atman in tutti gli esseri: il vero cuore della storia</h3>
+
+    <p>La grammatica indiana più profonda atterrata nella storia non è l'incasso — è il <strong>riconoscimento che ogni essere ha valore</strong>. Vediamo come funziona, perché è sottile.</p>
+
+    <p>Rohan all'inizio non sa cosa fare. Per lui il merlo e il topolino sono più o meno equivalenti — animali piccoli che aspettano cibo. La storia che il merlo racconta cambia questa equivalenza: trasforma il topolino da "piccolo animale anonimo" a <strong>portatore di una storia di generosità che attraversa le generazioni</strong>. Il topolino davanti a Rohan adesso non è più solo un topolino: è un parente di quel topolino di tanto tempo fa che salvò il piccolo merlo. Non è la stessa creatura — ma porta in sé la stessa <em>scintilla</em>. Questo è l'atman in tutti gli esseri ridotto alla sua versione più semplice: <strong>i piccoli esseri non sono intercambiabili, ognuno ha la sua storia</strong>.</p>
+
+    <p>Notare che la storia <em>non spiega</em> questo principio. Lo <em>fa accadere</em>. Rohan, quando dà il pane al topolino, non sta più semplicemente "facendo una scelta tra due animali". Sta riconoscendo che davanti a lui c'è qualcuno con una storia — qualcuno che merita rispetto, anche se è piccolo, anche se è un topolino. La pedagogia avviene per esperienza diretta: il bambino che ascolta sente Rohan capire, e capisce con lui.</p>
+
+    <div class="ornamental">
+      Il piccolo essere davanti a noi<br>non è mai solo davanti a noi.<br>Porta dentro tante altre storie.
+    </div>
+
+    <h3>Il passato dentro la storia presente</h3>
+
+    <p>La cultura indiana classica usa le vite passate come dispositivo narrativo: il protagonista è chi è oggi <em>perché</em> era qualcun altro ieri. Per un bambino di tre anni questo è troppo astratto. Ma la storia traduce il principio in una forma immediatamente accessibile: <strong>il merlo che racconta la propria infanzia</strong>.</p>
+
+    <p>Quando il merlo dice "una volta, quando io ero un piccolo merlo appena uscito dall'uovo...", sta facendo qualcosa di tecnicamente importante. Sta presentando la sua versione passata come un'altra creatura — un piccolo merlo affamato che non sa volare. Quel merlo del passato non c'è più. Il merlo presente è quello che parla a Rohan dal muretto. Eppure i due sono <em>la stessa anima</em>, e ciò che è successo al primo determina cosa fa il secondo: <em>"se quel topolino non mi avesse dato il seme, io non sarei qui adesso"</em>.</p>
+
+    <p>Questo è il <strong>passato dentro di noi</strong> nella sua versione pediatrica: il bambino impara, senza che gli sia detto esplicitamente, che <em>ciò che ti è successo prima ti rende chi sei adesso</em>, e che <em>la gentilezza ricevuta si trasmette</em>. È un'intuizione profonda della responsabilità che attraversa il tempo, ed è una delle migliori cose che la cultura indiana possa regalare a un bambino piccolo.</p>
+
+    <h3>La <span class="skt">subhashita</span> finale</h3>
+
+    <p>La storia chiude con una piccola sentenza: <strong>"Chi ha poco e dà, ha già abbastanza"</strong>. Questa è la versione pediatrica della <span class="skt">subhashita</span> indiana — quella formula sapienziale concisa che chiude i racconti del Panchatantra e dei Jataka. Vale la pena notare le scelte tecniche che la rendono funzionale a un bambino di tre anni.</p>
+
+    <p>È <strong>breve</strong>: sette parole. Ripetibile in un fiato.</p>
+
+    <p>È <strong>ritmica</strong>: due tempi paralleli ("chi ha poco e dà / ha già abbastanza"). I bambini piccoli amano la ritmicità più del contenuto — la frase entra dall'orecchio prima che dalla testa.</p>
+
+    <p>È <strong>concreta nelle parole, astratta nel senso</strong>. "Poco", "dà", "abbastanza" sono parole che un bambino di tre anni conosce. Il significato che tengono insieme — la generosità come pienezza — è più alto, ma il bambino non ha bisogno di capirlo subito. Lo capirà nel tempo, ripetendo la frase. La <span class="skt">subhashita</span> è progettata per <strong>seminare</strong>, non per essere immediatamente compresa.</p>
+
+    <p>È <strong>indipendente dalla storia</strong>. La frase funziona anche staccata dal contesto. Tuo figlio potrebbe ripeterla in altre situazioni — quando vede un mendicante, quando dà via un giocattolo, quando vede qualcuno aiutare un altro. Diventa un piccolo strumento di pensiero che gli resta addosso.</p>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sulla ripetizione</span>
+      A differenza della morale occidentale ("e così imparò che..."), la <span class="skt">subhashita</span> indiana non è collegata grammaticalmente alla storia. È una sentenza autonoma, posata alla fine come un fiore sulla pagina. Per questo si presta meglio a essere <strong>ripetuta come ritornello rituale</strong>: tuo figlio comincerà a dirla con te, e poi da solo. È diversa dalla morale occidentale anche tipograficamente — non si dice "e dunque", non si conclude un ragionamento, si offre una formula.
+    </div>
+
+    <h3>Cosa è stato lasciato</h3>
+
+    <p>Per onestà vale la pena nominare cosa la storia <em>non</em> contiene, rispetto alla cultura adulta indiana. Non c'è dilemma morale complesso — quello di Rohan è un mini-dilemma di compassione, risolto in tre paragrafi, non un vero conflitto tra dharma legittimi. Non c'è scala cosmica — il "passato" del merlo è di pochi mesi fa, non di kalpa. Non c'è devozione esplicita, niente dèi, niente reincarnazione filosofica. Non c'è il <span class="skt">prarabdha</span> come motore — Rohan non ha un destino da abitare, ha solo un pezzo di pane. È una versione molto ridotta dell'India.</p>
+
+    <p>Ma quello che resta — il rispetto per gli esseri piccoli, la storia dentro la storia, il passato che parla nel presente, la sentenza che chiude — è genuinamente indiano. Non è una favola occidentale travestita da indiana. È la grammatica indiana in scala ridotta, fatta delle proporzioni giuste per un cervello di tre anni.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Le varianti</span>
+      <h2>Tre modi di raccontare la stessa cultura</h2>
+      <p class="section-kicker">Stessa grammatica indiana, situazioni diverse, livelli di incasso diversi. Si possono usare per costruire una piccola saga di Rohan, o storie indipendenti.</p>
+
+    </div>
+
+    <p>La storia di Rohan, il merlo e il topolino è un caso specifico di una matrice più generale: <strong>protagonista di fronte a una piccola scelta + animale che racconta una storia + scelta riconciliata + sentenza finale</strong>. Una volta capita la matrice, si possono costruire molte storie diverse cambiando gli elementi. Tre varianti, da usare in sere diverse.</p>
+
+    <div class="variant">
+      <span class="variant-num">Variante 1 — stessa formula, animale diverso</span>
+      <h4>Rohan e la tartaruga ferita</h4>
+      <p>Rohan trova nel giardino una tartaruga con la zampa ferita. Vorrebbe portarla in casa per curarla, ma sua mamma gli ha detto che la tartaruga deve stare nel suo posto, nel giardino. Rohan è perplesso. Una formica sale sul gradino — "Rohan, lascia che ti racconti una storia. Una volta una formica grandissima ha cercato di portare a casa una briciola di pane troppo grande per il suo formicaio. La briciola si è rotta lungo il viaggio. Se l'avesse lasciata dov'era, avrebbe potuto tornarci ogni giorno". Rohan capisce. Mette accanto alla tartaruga una ciotolina d'acqua e una foglia di lattuga, e la lascia nel suo giardino. Ogni giorno torna a vederla. <em>Subhashita finale: "Aiutare non è portare via."</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 2 — tuo figlio come Rohan</span>
+      <h4>[Nome del bambino] e l'amico geloso</h4>
+      <p>Tuo figlio ha un amichetto al parco. Un altro bambino arriva e vorrebbe giocare. L'amichetto fa la faccia gelosa. Tuo figlio non sa cosa fare. Un cane (o un piccione, o una formica — un animale qualsiasi presente al parco) si avvicina e dice: "Lascia che ti racconti una storia. Una volta due cuccioli giocavano insieme. Arrivò un terzo cucciolo che voleva giocare anche lui. Uno dei due primi mostrò i denti. L'altro invece scodinzolò e disse: 'siamo in tre adesso, possiamo correre più veloce'. Indovina chi si è divertito di più alla fine?". Il bambino capisce, e invita anche il nuovo amico. <em>Subhashita: "Più amici, più gioco."</em> Funziona meglio se la storia esce in risposta a una situazione realmente vissuta da tuo figlio quel giorno.</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 3 — il nonno o un parente come narratore interno</span>
+      <h4>Rohan e il nonno che racconta da bambino</h4>
+      <p>Variante più affettiva. Il "merlo che racconta" viene sostituito dal nonno (o nonna, o un altro parente caro). Rohan è sul gradino col nonno. C'è una piccola situazione — un fiore appassito che Rohan vorrebbe strappare, un insetto che vorrebbe schiacciare, un giocattolo che non vorrebbe prestare alla cuginetta. Il nonno dice: "Rohan, una volta, quando io ero un bambino come te, ho fatto una cosa di cui mi sono pentito tanti anni dopo...". Racconta il suo episodio (breve, concreto, finito bene). Rohan ascolta. Cambia idea. <em>Subhashita: scegli tu, in base alla storia del nonno. "Quello che facciamo da piccoli ce lo ricordiamo da grandi" è una buona base.</em> Questa variante è particolarmente potente perché il "passato dentro di noi" diventa letterale: c'è davvero il passato del nonno dentro la storia presente di Rohan.</p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sul telaio</span>
+      Il telaio indiano per i 2-3 anni è straordinariamente flessibile. <strong>Tre componenti</strong> bastano: una piccola situazione che chiede una scelta gentile, un personaggio che racconta un breve "una volta", una sentenza che chiude. Niente trame complesse, niente dilemmi etici, niente cosmologie. La forza di queste storie è la <em>doppia struttura</em> — una storia dentro una storia — che il bambino impara a riconoscere e a gustare. Dopo qualche racconto cominceranno a piacergli più delle storie a un livello solo: capirà che è come aprire una scatola e trovarne dentro un'altra. La cultura indiana è la cultura delle scatole dentro le scatole. A tre anni si comincia con due scatole. È già molto.
+    </div>
+  </section>
+
+  <div class="end-mark">❦ ❦ ❦</div>
+
+  <footer>
+    <span>Volume III · Documento 3 di 4</span>
+    <span>Prossimo: La guida pratica →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

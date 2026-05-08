@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giappone · La Guida Pratica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf7f2;
+    --paper-deep: #f0ebe1;
+    --ink: #2a2620;
+    --ink-soft: #4a443c;
+    --ink-faint: #8a8278;
+    --rule: #d8d2c4;
+    --accent: #6b3a3a;
+    --accent-soft: #9a6464;
+    --sumi: #3d3540;
+    --highlight: #ede5d3;
+    --warning: #8b3a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 80% 10%, rgba(107, 58, 58, 0.025) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, rgba(61, 53, 64, 0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Noto Serif', 'Shippori Mincho', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    font-weight: 300;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 5rem 0 2.5rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    font-weight: 400;
+  }
+
+  .kanji-mark {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  h1.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6.5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sumi);
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 540px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 3rem;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover { color: var(--ink); }
+
+  nav.tabs a.active { color: var(--accent); }
+
+  nav.tabs a.active .tab-num {
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 5rem 0 3rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.45rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 580px;
+  }
+
+  .lead::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    margin: 2rem 0 5rem;
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 2rem;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .toc a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .toc a:hover { border-bottom-color: var(--accent); }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    color: var(--sumi);
+  }
+
+  .section-kicker {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--ink-faint);
+    margin-bottom: 2.5rem;
+    line-height: 1.5;
+    max-width: 560px;
+  }
+
+  /* ===== LESSONS ===== */
+  .lesson {
+    margin: 2rem 0;
+    padding: 1.8rem 0 1.8rem 5rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .lesson:last-of-type { border-bottom: none; }
+
+  .lesson-num {
+    position: absolute;
+    left: 0;
+    top: 1.7rem;
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--accent);
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .lesson h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .lesson p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .lesson p strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .lesson p em {
+    font-style: italic;
+  }
+
+  /* ===== JAPANESE TERM ===== */
+  .jp {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .jp-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-style: normal;
+    color: var(--sumi);
+    font-size: 0.95em;
+    margin-left: 0.15em;
+  }
+
+  /* ===== FORMULA - QUATTRO STANZE ===== */
+  .formula {
+    margin: 3rem 0;
+    padding: 2.5rem 0;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+  }
+
+  .formula-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: block;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .stanze {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin: 0 auto;
+    max-width: 640px;
+  }
+
+  .stanza {
+    padding: 1.6rem 0.8rem;
+    text-align: center;
+    position: relative;
+  }
+
+  .stanza + .stanza::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    height: 70%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .stanza-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2.4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.7rem;
+    font-weight: 400;
+  }
+
+  .stanza-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .stanza-mood {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.18em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+  }
+
+  .stanza-content {
+    font-family: 'Noto Serif', serif;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .formula-tagline {
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--accent);
+    line-height: 1.5;
+  }
+
+  .formula-tagline span {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    font-style: normal;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 0.6rem;
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    margin: 2rem 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.8rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2rem;
+    color: var(--accent);
+    line-height: 1;
+    text-align: center;
+    padding-top: 0.3rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .step-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .step-content p {
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-content p:last-child { margin-bottom: 0; }
+
+  .step-content em.example {
+    display: block;
+    margin-top: 0.7rem;
+    padding: 0.7rem 0 0.7rem 1.2rem;
+    border-left: 1px solid var(--accent);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .step-content em.example::before {
+    content: 'esempio';
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.4em;
+  }
+
+  /* ===== INCIPIT ===== */
+  .incipits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  .incipit {
+    padding: 1.6rem 0 1.6rem 1.8rem;
+    border-left: 1px solid var(--accent);
+  }
+
+  .incipit-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  .incipit p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .incipit-note {
+    font-family: 'Noto Serif', serif;
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  /* ===== ERRORS ===== */
+  .error {
+    margin: 1.8rem 0;
+    padding: 1.5rem 0 1.5rem 1.8rem;
+    border-left: 1px solid var(--warning);
+  }
+
+  .error-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--warning);
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .error h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 0.7rem;
+  }
+
+  .error p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .error p:last-child { margin-bottom: 0; }
+
+  .error p.fix {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed rgba(139, 58, 26, 0.3);
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .error p.fix::before {
+    content: '→ ';
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    border-bottom: 1px solid var(--accent);
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ===== FINAL CARD ===== */
+  .final-card {
+    margin: 6rem 0 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+    text-align: center;
+  }
+
+  .final-card-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 2.5rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.2rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  .final-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 1.3rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-card p {
+    font-family: 'Noto Serif', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'Shippori Mincho', serif;
+    color: var(--accent);
+    font-size: 1.8rem;
+    opacity: 0.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-weight: 400;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.7; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    .kanji-mark { font-size: 3rem; }
+    h1.title { font-size: 2.2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .lead { font-size: 1.2rem; }
+    h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .toc ol { grid-template-columns: 1fr; }
+    .lesson { padding-left: 4rem; }
+    .lesson-num { font-size: 2rem; }
+    .stanze { grid-template-columns: repeat(2, 1fr); }
+    .stanza:nth-child(3)::before { display: none; }
+    .stanza:nth-child(3), .stanza:nth-child(4) { border-top: 1px solid var(--rule); margin-top: 1rem; padding-top: 1.6rem; }
+    .step { grid-template-columns: 50px 1fr; gap: 1.2rem; }
+    .step-kanji { font-size: 1.7rem; }
+    .formula-tagline { font-size: 1rem; }
+    .final-card h3 { font-size: 1.25rem; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .toc, section, .final-card { animation: fadeIn 0.9s ease both; }
+  .lead { animation-delay: 0.15s; }
+  .toc { animation-delay: 0.2s; }
+  section:nth-of-type(1) { animation-delay: 0.25s; }
+  section:nth-of-type(2) { animation-delay: 0.3s; }
+  section:nth-of-type(3) { animation-delay: 0.35s; }
+  section:nth-of-type(4) { animation-delay: 0.4s; }
+  section:nth-of-type(5) { animation-delay: 0.45s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume II</div>
+    <div class="kanji-mark">手引</div>
+    <h1 class="title">La guida<br><em>pratica</em></h1>
+    <p class="subtitle">Da tenere aperta sul telefono mentre racconti, o da rileggere cinque minuti prima della nanna. Versione giapponese: si lavora sul respiro, non sul ritmo.</p>
+    <div class="meta-row">
+      <span>Documento 4 di 4</span>
+      <span>Operativo</span>
+      <span>Consultabile</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="giappone_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="giappone_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="giappone_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Una guida giapponese alla narrazione non insegna a costruire — insegna a togliere. Non più passi, ma meno. Non più tensione, ma più attenzione.</p>
+  </div>
+
+  <div class="toc">
+    <span class="toc-label">In questo documento</span>
+    <ol>
+      <li><a href="#lezioni">Le quattro lezioni chiave</a></li>
+      <li><a href="#formula">La formula — le quattro stanze</a></li>
+      <li><a href="#passi">Costruire una storia in sei passi</a></li>
+      <li><a href="#incipit">Quattro incipit pronti</a></li>
+      <li><a href="#errori">Cinque errori da evitare</a></li>
+    </ol>
+  </div>
+
+  <!-- ============ LEZIONI ============ -->
+  <section id="lezioni">
+    <span class="section-num">§ 01 — Le lezioni</span>
+    <h2>Le quattro lezioni chiave</h2>
+    <p class="section-kicker">I principi della cultura giapponese tradizionale che cambiano davvero il modo di raccontare a un bambino di 2-3 anni.</p>
+
+    <div class="lesson">
+      <span class="lesson-num">一</span>
+      <h3>Una storia può non avere problema</h3>
+      <p>La rivoluzione concettuale più potente che il Giappone offre è questa: <strong>una storia non deve risolvere qualcosa per essere una storia</strong>. Può essere solo un momento, raccontato bene. Per un bambino di 2-3 anni questo significa che si possono raccontare scene quiete — un bambino che guarda la pioggia, un nonno che taglia una mela — senza dover inventare un conflitto. La quiete è già contenuto. <em>Liberatevi dell'obbligo del problema.</em></p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">二</span>
+      <h3>L'ostacolo non è un nemico</h3>
+      <p>Quando c'è una difficoltà, non personificarla mai. Niente cattivi, niente streghe, niente lupi. <strong>Le difficoltà sono presenze, situazioni, fenomeni</strong>: la pioggia che continua, il rumore che spaventa, il giocattolo che è caduto in un posto difficile. E quando una presenza è inquieta — un'ombra, un suono, un'oscurità — la soluzione non è cacciarla ma <em>riconoscerla, ascoltarla, lasciarle un posto</em>. È il principio del <span class="jp">shizumeru</span> (placare): si calma, non si combatte.</p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">三</span>
+      <h3>La stagione è la cornice</h3>
+      <p>Ogni storia giapponese tradizionale è ambientata in una stagione precisa, e la stagione non è scenografia — è <strong>parte del contenuto</strong>. Per i bambini piccoli questo si traduce in un dispositivo potente: aprire sempre con un riferimento al momento dell'anno o del giorno ("era una sera d'estate", "stava per nevicare", "le foglie erano gialle"). Questo radica la storia nel mondo reale e crea un ritmo annuale: ogni stagione le sue storie. <em>Una storia per dicembre non è la stessa di luglio.</em></p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">四</span>
+      <h3>Le cose belle finiscono — e va bene</h3>
+      <p>La grande pedagogia emotiva del Giappone è il <span class="jp">mono no aware</span>: l'arte di stare contenti delle cose anche quando finiscono. Nelle storie per bambini di 2-3 anni questo si traduce in finali in cui qualcosa di bello accade e <strong>poi se ne va, dolcemente, senza che nessuno se ne disperi</strong>. La lucciola vola via, la foglia cade, il nonno si addormenta. È una delle migliori cose che si possa insegnare a un bambino — meglio di mille lezioni esplicite sulla resilienza. <em>Si impara non a combattere la perdita, ma a ringraziare l'incontro.</em></p>
+    </div>
+  </section>
+
+  <!-- ============ FORMULA ============ -->
+  <section id="formula">
+    <span class="section-num">§ 02 — La formula</span>
+    <h2>Le quattro stanze del <span class="jp">ki-shō-ten-ketsu</span></h2>
+    <p class="section-kicker">Non più una freccia che va da A a B, ma quattro stanze di un palazzo. Non si attraversano per arrivare da qualche parte: si visitano in ordine, e il senso emerge dalla loro composizione.</p>
+
+    <div class="formula">
+      <span class="formula-label">La forma giapponese</span>
+      <div class="stanze">
+        <div class="stanza">
+          <div class="stanza-kanji">起</div>
+          <div class="stanza-name">ki</div>
+          <div class="stanza-mood">apertura</div>
+          <div class="stanza-content">Si stabilisce la scena. Stagione, luogo, presenza tranquilla.</div>
+        </div>
+        <div class="stanza">
+          <div class="stanza-kanji">承</div>
+          <div class="stanza-name">shō</div>
+          <div class="stanza-mood">sviluppo</div>
+          <div class="stanza-content">Il quadro si approfondisce. Si guarda meglio, niente cambia ancora.</div>
+        </div>
+        <div class="stanza">
+          <div class="stanza-kanji">転</div>
+          <div class="stanza-name">ten</div>
+          <div class="stanza-mood">svolta</div>
+          <div class="stanza-content">Qualcosa entra. Una piccola sorpresa dolce, non un conflitto.</div>
+        </div>
+        <div class="stanza">
+          <div class="stanza-kanji">結</div>
+          <div class="stanza-name">ketsu</div>
+          <div class="stanza-mood">chiusura</div>
+          <div class="stanza-content">Tutto si compone. Niente si risolve, ma il quadro è completo.</div>
+        </div>
+      </div>
+      <div class="formula-tagline">
+        Quattro tempi, nessun climax.<br>Il senso è nella loro composizione.
+        <span>quattro stanze, una storia</span>
+      </div>
+    </div>
+
+    <p style="font-size: 0.95rem; color: var(--ink-faint); font-style: italic; text-align: center; margin-top: 1.5rem;">
+      Memorizza i quattro kanji come quattro stanze da visitare. La storia avanza camminando da una all'altra, senza fretta.
+    </p>
+  </section>
+
+  <!-- ============ PASSI ============ -->
+  <section id="passi">
+    <span class="section-num">§ 03 — La costruzione</span>
+    <h2>Costruire una storia in sei passi</h2>
+    <p class="section-kicker">Da fare in trenta secondi, mentale, prima di iniziare. Più semplice di quanto sembri: cinque scelte di osservazione, una di pazienza.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-kanji">時</div>
+        <div class="step-content">
+          <h3>Scegli la stagione e l'ora</h3>
+          <p>È il primo gesto, sempre. Non "c'era una volta" generico, ma <strong>una collocazione precisa nel tempo del mondo</strong>. Una stagione, un momento del giorno o della sera. Questa è la cornice in cui tutto il resto si appoggia.</p>
+          <em class="example">Era una sera d'estate. Stava per nevicare. Era il primo giorno di primavera. Era mattina presto, e nessuno era ancora sveglio.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-kanji">場</div>
+        <div class="step-content">
+          <h3>Scegli un luogo piccolo e tranquillo</h3>
+          <p>Non un mondo grande da esplorare. <strong>Un solo luogo, ben definito, raccontabile in pochissime parole</strong>. Un giardino, una finestra, una stanza, una soglia, un sentiero. La storia respira meglio se si svolge in un perimetro piccolo.</p>
+          <em class="example">Sul gradino di casa. Davanti alla finestra. Vicino allo stagno. Sotto l'albero in giardino. Nel cortile, dopo la pioggia.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-kanji">人</div>
+        <div class="step-content">
+          <h3>Scegli un protagonista quieto</h3>
+          <p>Bambino, vecchio, animale tranquillo. <strong>Non deve volere niente</strong>. Sta. Osserva. Aspetta. È seduto. È fermo. Questa è la differenza più grande con la cultura occidentale: il protagonista giapponese non è un agente, è una <em>presenza</em>. La storia accade attorno a lui, non a partire da lui.</p>
+          <em class="example">Un bambino sul gradino. Un nonno alla finestra. Un gatto sul muro. Una bambina che aspetta la mamma. Un vecchio che pesca.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-kanji">在</div>
+        <div class="step-content">
+          <h3>Scegli la presenza che apparirà</h3>
+          <p>È l'elemento del <span class="jp">ten</span> — la svolta. Una piccola presenza che entra nel quadro: <strong>fragile, viva, breve</strong>. Una lucciola, un fiocco di neve, una foglia, un suono lontano, un piccolo animale. Non deve creare un problema. Deve <em>arrivare</em> e poi <em>andarsene</em>.</p>
+          <em class="example">Una lucciola. Un pettirosso che si posa sul davanzale. Una farfalla. Una rana che salta. Il primo fiocco di neve dell'inverno.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-kanji">音</div>
+        <div class="step-content">
+          <h3>Inserisci due o tre suoni</h3>
+          <p>Le onomatopee giapponesi sono il sangue della narrazione orale. <strong>Trovane due o tre per la tua storia</strong>, ripetile, falle ripetere al bambino. <em>Shaa shaa</em> (cicale, pioggia leggera). <em>Sara sara</em> (foglie, sabbia, vestiti che si sfregano). <em>Pota pota</em> (gocce). <em>Kira kira</em> (qualcosa che brilla). <em>Shin shin</em> (neve che cade silenziosa). Ognuna ha il suo carattere: scegli quelle che si sposano col tuo scenario.</p>
+          <em class="example">"Le cicale cantavano shaa shaa. Le foglie si muovevano sara sara. E poi — kira — una piccola luce."</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-kanji">去</div>
+        <div class="step-content">
+          <h3>Lascia andare la presenza, dolcemente</h3>
+          <p>Il <span class="jp">ketsu</span> non è una conclusione: è un <strong>congedo</strong>. La presenza arrivata se ne va. Non muore, non viene catturata, non viene perduta tragicamente — semplicemente <em>se ne va</em>. La storia chiude con il protagonista che resta solo, ma sereno, con qualcosa di nuovo addosso. La voce del narratore deve <strong>rallentare</strong> nelle ultime frasi: la storia non si chiude, si addormenta.</p>
+          <em class="example">"La lucciola salì sempre più in alto, fino a confondersi con le stelle. Haru guardò il cielo. La mamma lo chiamò per andare a letto. E si addormentò pensando alla piccola luce che aveva visto."</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INCIPIT ============ -->
+  <section id="incipit">
+    <span class="section-num">§ 04 — Le aperture</span>
+    <h2>Quattro incipit pronti</h2>
+    <p class="section-kicker">Frasi di apertura nello stile della cultura giapponese tradizionale per bambini piccoli, da usare subito. Notare che nessuna comincia con "c'era una volta": il Giappone preferisce ancorare al tempo specifico.</p>
+
+    <div class="incipits">
+      <div class="incipit">
+        <span class="incipit-tag">Incipit stagionale puro</span>
+        <p>"Era una [stagione]. Il [elemento del paesaggio] era [colore/qualità]. E in [luogo piccolo], [protagonista] [azione quieta]."</p>
+        <p class="incipit-note">La forma classica. Stagione, paesaggio, protagonista in posa quieta. Funziona sempre, e si adatta a qualsiasi momento dell'anno. Imitabile dalla letteratura classica giapponese.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con suono</span>
+        <p>"<em>Shaa, shaa.</em> Le cicale cantavano. Era una sera calda d'estate, e [protagonista]..."</p>
+        <p class="incipit-note">Inizia con un suono prima ancora che con un'immagine. Particolarmente efficace ad alta voce: il bambino entra nella storia dall'orecchio, non dagli occhi. Cattura subito l'attenzione senza azione.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con silenzio</span>
+        <p>"In quella mattina non si sentiva niente. Solo il vento. [Protagonista] stava [posizione], e guardava."</p>
+        <p class="incipit-note">Apre con il silenzio — un gesto profondamente giapponese. Insegna implicitamente al bambino che il silenzio è una cosa, non un'assenza. Particolarmente buono prima della nanna.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit di tempo specifico</span>
+        <p>"Era il giorno in cui [evento stagionale concreto: cadono le prime foglie / fiorisce il ciliegio / nevica per la prima volta]. [Protagonista] [azione]."</p>
+        <p class="incipit-note">Lega la storia a un momento preciso dell'anno. Funziona soprattutto se ripetuto stagione dopo stagione: il bambino comincia ad attendere "la storia delle prime foglie" in autunno, "la storia delle lucciole" in estate. Costruisce un calendario poetico interno.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ERRORI ============ -->
+  <section id="errori">
+    <span class="section-num">§ 05 — Le trappole</span>
+    <h2>Cinque errori da evitare</h2>
+    <p class="section-kicker">Le trappole tipiche di chi viene da una cultura narrativa occidentale e cerca di raccontare in stile giapponese. Quasi tutte si riducono a un solo errore: <em>fare troppo</em>.</p>
+
+    <div class="error">
+      <span class="error-mark">Errore 1</span>
+      <h3>Voler aggiungere un conflitto perché "altrimenti non è una storia"</h3>
+      <p>L'istinto occidentale dice: serve un problema, altrimenti il bambino si annoia. Si aggiunge una difficoltà, un nemico, un ostacolo. <strong>Risultato: si è scritta una storia occidentale travestita da giapponese</strong>. Se Haru avesse cercato di catturare la lucciola e poi avesse imparato a lasciarla libera, sarebbe stata una storia perfettamente decente — ma non sarebbe stata giapponese. Sarebbe stata un'altra cosa.</p>
+      <p class="fix">Fidati dello scenario quieto. Un bambino di tre anni regge benissimo una storia in cui non succede niente di drammatico, se la voce del narratore è presente e i dettagli sono concreti. Il "non succede niente" è il contenuto.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 2</span>
+      <h3>Personificare la presenza che appare</h3>
+      <p>L'istinto è dare alla lucciola una voce, farle dire qualcosa, rivelare che è una principessa fatata. <strong>Si è ucciso il </strong><span class="jp"><strong>mono no aware</strong></span><strong> della storia</strong>. La forza del modello giapponese sta nel fatto che la presenza che appare è esattamente ciò che è — una lucciola, una foglia, un fiocco. Se diventa un personaggio con dialoghi, abbiamo trasformato la fiaba contemplativa in una fiaba europea.</p>
+      <p class="fix">La presenza non parla. Si manifesta, si muove, fa luce, fa rumore — ma non comunica con parole umane. Questa è la regola d'oro: il bambino impara che le cose hanno una propria vita che non è la nostra.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 3</span>
+      <h3>Dichiarare la morale alla fine</h3>
+      <p>Dopo aver descritto la lucciola che vola via, l'istinto pedagogico occidentale dice: aggiungiamo "e così Haru imparò che le cose belle vanno rispettate". <strong>È esattamente il contrario di quello che il Giappone fa</strong>. La pedagogia avviene per esperienza condivisa, non per dichiarazione. Il bambino sente, non gli viene detto.</p>
+      <p class="fix">Resisti. La storia trasmette già la sua lezione attraverso la sua forma. "E si addormentò pensando alla lucciola" è un finale infinitamente più potente di "e imparò a rispettare le cose piccole". Si dice <em>guardando insieme</em>, non <em>spiegando</em>.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 4</span>
+      <h3>Riempire i silenzi con commenti</h3>
+      <p>Quando la storia rallenta, l'istinto adulto è riempire — descrivere meglio, aggiungere un dettaglio, spiegare cosa il protagonista pensa. <strong>Si sta soffocando il </strong><span class="jp"><strong>ma</strong></span><strong>, lo spazio-pausa che è il cuore tecnico della cultura</strong>. Il silenzio nella narrazione non è vuoto da riempire: è materia, come il bianco in una pittura sumi-e.</p>
+      <p class="fix">Quando senti l'impulso di aggiungere, fai una pausa di voce invece. Lascia che la frase appena detta risuoni. Il bambino ha bisogno di tempo per assorbire un'immagine. Cinque secondi di silenzio nel mezzo di una storia possono essere il regalo più grande che fai.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 5</span>
+      <h3>Cercare la chiusura forte</h3>
+      <p>"E vissero felici e contenti", "E così tutto tornò a posto", "E la mamma era fiera di lui". <strong>Sono formule potenti, ma sono occidentali</strong>. Sigillano la storia. Il Giappone non sigilla — scioglie. Una storia che si chiude troppo nettamente è considerata, nella sensibilità tradizionale, di cattivo gusto.</p>
+      <p class="fix">Lascia la storia <em>aperta verso il sonno</em>. "E si addormentò pensando alla lucciola" / "E la luna restò sopra il tetto" / "E la pioggia continuò per tutta la notte". Il finale non è una porta che si chiude, è una stanza in cui si rimane qualche istante in più, da soli.</p>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CARD ============ -->
+  <div class="final-card">
+    <div class="final-card-kanji">物語</div>
+    <h3>"Una storia giapponese non finisce — si addormenta. Una storia giapponese non insegna — invita ad accorgersi."</h3>
+    <p>Stai usando la grammatica più antica e più sottile della tradizione giapponese: l'arte di raccontare senza forzare, di insegnare senza dichiarare, di chiudere senza sigillare. Per un bambino di 2-3 anni questa grammatica è naturale — più che per gli adulti. Loro sanno già stare nei momenti. Glieli stai semplicemente nominando.</p>
+  </div>
+
+  <div class="end-mark">⌘</div>
+
+  <footer>
+    <span>Volume II · Documento 4 di 4 · Fine</span>
+    <span>Giappone · completo</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

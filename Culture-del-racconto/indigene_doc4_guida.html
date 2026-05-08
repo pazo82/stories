@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture indigene americane · La Guida Pratica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1e9d9;
+    --paper-deep: #e6dcc6;
+    --paper-warm: #ebe1cc;
+    --ink: #2a201a;
+    --ink-soft: #4a3b2f;
+    --ink-faint: #8a7660;
+    --rule: #c8b89a;
+    --ocra: #c47a3d;
+    --ocra-deep: #9c5a28;
+    --rust: #a64a2c;
+    --night: #2c3854;
+    --charcoal: #2a201a;
+    --highlight: #ddc89a;
+    --warning: #8b3a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(166, 74, 44, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(44, 56, 84, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 60% 40%, rgba(196, 122, 61, 0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Lora', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.7;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='12'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4.5rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .symbol-mark {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--rust);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--rust);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 2px solid var(--rust);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 580px;
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    margin: 2rem 0 4rem;
+    padding: 1.5rem 1.8rem;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+  }
+
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.9rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 2rem;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    font-family: 'Eczar', serif;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    padding-left: 2rem;
+    position: relative;
+  }
+
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.15rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--rust);
+    letter-spacing: 0.1em;
+  }
+
+  .toc a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .toc a:hover { border-bottom-color: var(--rust); }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rust);
+  }
+
+  .section-kicker {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    margin-bottom: 2.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  /* ===== LESSONS ===== */
+  .lesson {
+    margin: 1.8rem 0;
+    padding: 1.6rem 1.8rem 1.6rem 5rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    position: relative;
+  }
+
+  .lesson-num {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .lesson h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.22rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+  }
+
+  .lesson p {
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .lesson p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .lesson p em {
+    font-style: italic;
+  }
+
+  /* ===== FORMULA - CERCHIO + RAGGIO ===== */
+  .formula {
+    margin: 3rem 0;
+    padding: 2.5rem 1.5rem;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+  }
+
+  .formula-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    display: block;
+    text-align: center;
+    font-weight: 400;
+  }
+
+  .formula-svg-container {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .formula-svg {
+    width: 100%;
+    height: auto;
+  }
+
+  .formula-tagline {
+    margin-top: 2rem;
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .formula-tagline span {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    font-style: normal;
+    letter-spacing: 0.25em;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    margin-top: 0.7rem;
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    margin: 2rem 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.6rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--rust);
+    text-align: center;
+    padding-top: 0.2rem;
+    font-style: italic;
+  }
+
+  .step-content h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .step-content p {
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-content p:last-child { margin-bottom: 0; }
+
+  .step-content em.example {
+    display: block;
+    margin-top: 0.7rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--paper-warm);
+    border-left: 2px solid var(--rust);
+    font-style: italic;
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .step-content em.example::before {
+    content: 'esempio · ';
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-right: 0.4em;
+  }
+
+  /* ===== INCIPIT ===== */
+  .incipits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.3rem;
+    margin: 2rem 0;
+  }
+
+  .incipit {
+    padding: 1.5rem 1.7rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+  }
+
+  .incipit-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .incipit p {
+    font-family: 'Eczar', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-weight: 400;
+  }
+
+  .incipit-note {
+    font-family: 'Lora', serif;
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.55;
+  }
+
+  /* ===== ERRORS ===== */
+  .error {
+    margin: 1.6rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(139, 58, 26, 0.04);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--warning);
+  }
+
+  .error-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--warning);
+    text-transform: uppercase;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  .error h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.18rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0 0 0.7rem;
+  }
+
+  .error p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .error p:last-child { margin-bottom: 0; }
+
+  .error p.fix {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed rgba(139, 58, 26, 0.3);
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  .error p.fix::before {
+    content: '→ ';
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  /* ===== FINAL CARD ===== */
+  .final-card {
+    margin: 5rem 0 3rem;
+    padding: 2.5rem 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    text-align: center;
+  }
+
+  .final-card svg {
+    margin-bottom: 1.4rem;
+  }
+
+  .final-card h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.45rem;
+    line-height: 1.4;
+    color: var(--ink);
+    margin-bottom: 1.3rem;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .final-card p {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.65; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.15rem; padding-left: 1.4rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .toc ol { grid-template-columns: 1fr; }
+    .lesson { padding: 1.4rem 1.4rem 1.4rem 4.5rem; }
+    .lesson-num { width: 38px; height: 38px; }
+    .formula { padding: 1.8rem 0.8rem; }
+    .step { grid-template-columns: 45px 1fr; gap: 1rem; }
+    .step-num { font-size: 1.8rem; }
+    .final-card { padding: 1.8rem 1.4rem; }
+    .final-card h3 { font-size: 1.2rem; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .toc, section, .final-card { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .toc { animation-delay: 0.15s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+  section:nth-of-type(5) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume IV</div>
+    <svg class="symbol-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="26" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="30" cy="30" r="17" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.65"/>
+      <circle cx="30" cy="30" r="8" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.8"/>
+      <circle cx="30" cy="30" r="2" fill="#a64a2c" opacity="0.9"/>
+    </svg>
+    <h1 class="title">La guida<br><em>pratica</em></h1>
+    <p class="subtitle">Da tenere aperta sul telefono mentre racconti, o da rileggere cinque minuti prima della nanna. Versione indigena americana: si lavora sul cerchio e sul raggio che esce verso il mondo reale del bambino.</p>
+    <div class="meta-row">
+      <span>Documento 4 di 4</span>
+      <span>Operativo</span>
+      <span>Consultabile</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="indigene_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="indigene_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="indigene_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Una guida indigena alla narrazione non insegna a inventare — insegna ad <em>ancorare</em>. La storia gira attorno a un centro, e poi esce dal cerchio per andare ad abitare un albero specifico, una panchina specifica, un parco specifico.</p>
+  </div>
+
+  <div class="toc">
+    <span class="toc-label">In questo documento</span>
+    <ol>
+      <li><a href="#lezioni">Le quattro lezioni chiave</a></li>
+      <li><a href="#formula">La formula — cerchio e raggio</a></li>
+      <li><a href="#passi">Costruire una storia in sei passi</a></li>
+      <li><a href="#incipit">Quattro incipit pronti</a></li>
+      <li><a href="#errori">Cinque errori da evitare</a></li>
+    </ol>
+  </div>
+
+  <!-- ============ LEZIONI ============ -->
+  <section id="lezioni">
+    <span class="section-num">§ 01 — Le lezioni</span>
+    <h2>Le quattro lezioni chiave</h2>
+    <p class="section-kicker">I principi delle tradizioni indigene americane che cambiano davvero il modo di raccontare a un bambino di 2-3 anni.</p>
+
+    <div class="lesson">
+      <svg class="lesson-num" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="25" cy="25" r="22" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.5"/>
+        <circle cx="25" cy="25" r="13" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="25" cy="25" r="3" fill="#a64a2c"/>
+      </svg>
+      <h3>La storia gira intorno a un centro, non corre verso una fine</h3>
+      <p>La rivoluzione della cultura indigena americana è questa: <strong>una storia non deve andare da A a B, può girare attorno a un punto e tornare a casa</strong>. Per un bambino di 2-3 anni questo significa storie che cominciano e finiscono nello stesso luogo (il parco, la finestra, il giardino), con qualcosa di importante che è accaduto in mezzo. Il bambino impara senza accorgersi che <em>il senso non sta nel cambiare scena</em> ma nel cambiare lo sguardo sulla stessa scena.</p>
+    </div>
+
+    <div class="lesson">
+      <svg class="lesson-num" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="25" cy="25" r="22" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.4"/>
+        <line x1="25" y1="25" x2="48" y2="25" stroke="#a64a2c" stroke-width="1.5"/>
+        <circle cx="48" cy="25" r="3" fill="#a64a2c"/>
+        <circle cx="25" cy="25" r="3" fill="#a64a2c"/>
+      </svg>
+      <h3>La storia esce dal libro e abita un luogo reale</h3>
+      <p>Il dispositivo unico di questa cultura: <strong>chiudere la storia legandola a un luogo della vita vera del bambino</strong>. Un albero del parco, una panchina, un cespuglio, un balcone. Da quel momento, ogni volta che ci passate, la storia si riattiva. Tuo figlio saluta. Si ricorda. La storia non finisce sul cuscino — continua per settimane, mesi, anni. È l'effetto più potente che la tradizione indigena può portare nel tuo progetto.</p>
+    </div>
+
+    <div class="lesson">
+      <svg class="lesson-num" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="15" cy="25" r="6" fill="none" stroke="#a64a2c" stroke-width="1.3"/>
+        <circle cx="35" cy="25" r="6" fill="none" stroke="#a64a2c" stroke-width="1.3"/>
+        <line x1="22" y1="25" x2="28" y2="25" stroke="#a64a2c" stroke-width="1.3" stroke-dasharray="2,2"/>
+      </svg>
+      <h3>Animali, alberi, cose hanno una propria storia</h3>
+      <p>Nelle tradizioni indigene <strong>il merlo non è un personaggio della tua storia, è qualcuno con la propria storia</strong> che, quel giorno, ha incontrato la storia di tuo figlio. Per un bambino di tre anni questo è già naturale: parla col cane, saluta la luna. La cultura indigena non gli sta chiedendo qualcosa di nuovo — gli sta dando la cornice giusta per qualcosa che lui già fa. Tratta gli esseri delle storie come <em>presenze reali</em>, non come simboli.</p>
+    </div>
+
+    <div class="lesson">
+      <svg class="lesson-num" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 25 8 L 32 18 L 25 28 L 18 18 Z" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.6"/>
+        <path d="M 18 32 L 25 42 L 32 32" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.6"/>
+        <circle cx="25" cy="25" r="2" fill="#a64a2c"/>
+      </svg>
+      <h3>La pedagogia non si dichiara, si fa</h3>
+      <p>A differenza di tutte le altre culture finora — Occidente che dichiara, Giappone che suggerisce, India che sentenzia — la tradizione indigena <strong>non commenta mai</strong>. Niente "e così imparò che...". Niente subhashita finale. Niente morale dichiarata in nessun modo. La pedagogia è affidata interamente al <em>gesto da fare</em>: salutare l'albero ogni volta che si passa. Il gesto, ripetuto cento volte, costruisce in tuo figlio un rapporto col mondo che nessuna lezione esplicita avrebbe mai costruito.</p>
+    </div>
+  </section>
+
+  <!-- ============ FORMULA ============ -->
+  <section id="formula">
+    <span class="section-num">§ 02 — La formula</span>
+    <h2>Il <em>cerchio</em> e il <em>raggio</em></h2>
+    <p class="section-kicker">Né equazione lineare (Occidente), né stanze affiancate (Giappone), né scatole concentriche (India). Un cerchio chiuso che ruota attorno al centro, e un raggio che esce dal cerchio verso il mondo reale del bambino. La formula è la struttura.</p>
+
+    <div class="formula">
+      <span class="formula-label">La forma indigena</span>
+
+      <div class="formula-svg-container">
+        <svg class="formula-svg" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cerchio principale -->
+          <circle cx="220" cy="180" r="120" fill="none" stroke="#a64a2c" stroke-width="1.5" opacity="0.55"/>
+
+          <!-- Quattro punti del cerchio -->
+          <circle cx="220" cy="60" r="7" fill="#c47a3d"/>
+          <circle cx="340" cy="180" r="7" fill="#a64a2c"/>
+          <circle cx="220" cy="300" r="7" fill="#9c5a28"/>
+          <circle cx="100" cy="180" r="7" fill="#a64a2c"/>
+
+          <!-- Centro -->
+          <circle cx="220" cy="180" r="4" fill="#2a201a"/>
+
+          <!-- Etichette del cerchio -->
+          <text x="220" y="45" text-anchor="middle" font-family="Eczar" font-size="13" font-style="italic" fill="#2a201a">l'incontro</text>
+          <text x="220" y="32" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">il qualcosa che accade</text>
+
+          <text x="385" y="184" text-anchor="middle" font-family="Eczar" font-size="13" font-style="italic" fill="#2a201a">il gesto</text>
+          <text x="385" y="200" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">aiuto rispettoso</text>
+
+          <text x="220" y="320" text-anchor="middle" font-family="Eczar" font-size="13" font-style="italic" fill="#2a201a">il cerchio si chiude</text>
+          <text x="220" y="335" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">stesso luogo, sguardo nuovo</text>
+
+          <text x="55" y="184" text-anchor="middle" font-family="Eczar" font-size="13" font-style="italic" fill="#2a201a">l'apertura</text>
+          <text x="55" y="200" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">il luogo familiare</text>
+
+          <!-- Centro -->
+          <text x="220" y="184" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#a64a2c">il parente</text>
+
+          <!-- Frecce direzionali del cerchio -->
+          <path d="M 240 75 Q 305 105, 330 165" stroke="#a64a2c" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3,3"/>
+          <path d="M 330 195 Q 305 255, 240 285" stroke="#a64a2c" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3,3"/>
+          <path d="M 200 285 Q 135 255, 110 195" stroke="#a64a2c" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3,3"/>
+          <path d="M 110 165 Q 135 105, 200 75" stroke="#a64a2c" stroke-width="1" fill="none" opacity="0.4" stroke-dasharray="3,3"/>
+
+          <!-- IL RAGGIO che esce -->
+          <line x1="340" y1="180" x2="540" y2="180" stroke="#a64a2c" stroke-width="2" marker-end="url(#arrow)"/>
+
+          <!-- Punto fuori dal cerchio -->
+          <circle cx="540" cy="180" r="9" fill="#a64a2c"/>
+          <circle cx="540" cy="180" r="14" fill="none" stroke="#a64a2c" stroke-width="1" opacity="0.5"/>
+
+          <!-- Etichetta del mondo reale -->
+          <text x="540" y="155" text-anchor="middle" font-family="Eczar" font-size="13" font-style="italic" fill="#a64a2c" font-weight="500">il mondo reale</text>
+          <text x="540" y="210" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">l'albero del parco</text>
+          <text x="540" y="222" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">la panchina, il balcone…</text>
+
+          <!-- Label del raggio -->
+          <text x="440" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#a64a2c" font-style="italic">e così, ancora oggi…</text>
+
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L8,3 z" fill="#a64a2c"/>
+            </marker>
+          </defs>
+        </svg>
+      </div>
+
+      <div class="formula-tagline">
+        Il cerchio gira attorno al centro. Poi un raggio esce, ed entra nella vita reale del bambino.
+        <span>quattro punti, un centro, un raggio territoriale</span>
+      </div>
+    </div>
+
+    <p style="font-size: 0.95rem; color: var(--ink-faint); font-style: italic; text-align: center; margin-top: 1.5rem;">
+      Memorizza la forma come un cerchio con un raggio. Il cerchio è la storia. Il raggio è ciò che dirai alla fine — la frase che fa uscire la storia dal libro e la fa entrare nel parco di tuo figlio.
+    </p>
+  </section>
+
+  <!-- ============ PASSI ============ -->
+  <section id="passi">
+    <span class="section-num">§ 03 — La costruzione</span>
+    <h2>Costruire una storia in sei passi</h2>
+    <p class="section-kicker">Da fare in trenta secondi mentale prima di iniziare. Il sesto passo è quello che fa la differenza: ancorare la storia a un luogo della vostra vita reale.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">i</div>
+        <div class="step-content">
+          <h3>Scegli un luogo familiare al bambino</h3>
+          <p>Non un luogo immaginario. <strong>Un luogo che tuo figlio frequenta davvero</strong>: il parco vicino casa, il cortile, il balcone, la strada per andare all'asilo, la panchina della nonna. Questa è la prima decisione, prima ancora del protagonista. Tutto il resto si appoggia su questa scelta.</p>
+          <em class="example">Il parco vicino a casa. Il giardino del nonno. La panchina vicino alla fontana. Il marciapiede davanti al supermercato.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">ii</div>
+        <div class="step-content">
+          <h3>Scegli un essere vivente che abita quel luogo</h3>
+          <p>Animale, pianta, perfino una "presenza" (un sasso speciale, un grosso albero). <strong>Deve essere un'entità che ha senso incontrare in quel luogo</strong> — meglio se l'hai davvero visto qualche volta lì. Più è specifico, più la storia funzionerà.</p>
+          <em class="example">Una merla nel parco. Un gatto del condominio. Un piccione del marciapiede. Un geranio del balcone. Un grande albero specifico.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iii</div>
+        <div class="step-content">
+          <h3>Costruisci un piccolo bisogno o difficoltà</h3>
+          <p>L'essere che hai scelto ha bisogno di qualcosa di piccolo. <strong>Non un dramma, non un pericolo serio — una difficoltà minore che apre la possibilità di un piccolo aiuto</strong>. Un'ala storta, un po' di sete, una briciola che non riesce a portare, un nido caduto.</p>
+          <em class="example">La merla ha l'ala un po' storta. Il gatto ha sete. La formica ha una briciola troppo grande. Il geranio ha le foglie tristi.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">iv</div>
+        <div class="step-content">
+          <h3>Costruisci l'aiuto rispettoso</h3>
+          <p>Tuo figlio (o il protagonista) interviene — ma <strong>senza prendere</strong>. La merla non viene portata a casa: viene rimessa nel suo nido. Il gatto non viene adottato: gli si lascia una ciotola. Il geranio non viene strappato: gli si dà acqua. <em>L'aiuto non è possesso</em>. Questa è la marca distintiva di tutta la pedagogia indigena.</p>
+          <em class="example">Eli rimette la merla nel nido del grande albero. Mette acqua nella ciotola del gatto. Sposta una pietra perché la formica trovi una via.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">v</div>
+        <div class="step-content">
+          <h3>Chiudi il cerchio: torna al luogo iniziale</h3>
+          <p>La storia deve <strong>tornare allo stesso luogo dell'apertura</strong>, ma adesso il luogo è cambiato dentro al bambino. Il parco è sempre lo stesso parco, ma adesso c'è la merla del grande albero. Il marciapiede è sempre lo stesso, ma adesso c'è il gatto a cui hai dato l'acqua. Niente ha cambiato il luogo, ma tutto è cambiato per chi ascolta.</p>
+          <em class="example">Eli e il papà tornano al parco il giorno dopo. Passano davanti al grande albero. La merla è lì, e canta.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">vi</div>
+        <div class="step-content">
+          <h3>Apri il raggio: porta la storia nella vita reale</h3>
+          <p>Il passo decisivo, quello che nessun altro Volume ha. <strong>Concludi con una frase che proietta la storia nel futuro reale di tuo figlio</strong>. La formula è: <em>"e ancora oggi, quando passa davanti a [luogo], saluta sempre [essere]"</em>. Questa frase fa uscire la storia dalla narrazione e la fa entrare nella vita. Da quel momento, ogni passeggiata sarà un seguito.</p>
+          <em class="example">"E ancora oggi, quando Eli passa davanti al grande albero, saluta la merla." — Detto col bambino in braccio prima di addormentarsi, e poi messo in pratica il giorno dopo al parco vero.</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INCIPIT ============ -->
+  <section id="incipit">
+    <span class="section-num">§ 04 — Le aperture</span>
+    <h2>Quattro incipit pronti</h2>
+    <p class="section-kicker">Frasi di apertura nello stile delle tradizioni indigene americane per bambini piccoli. La marca distintiva: nominare presto un luogo specifico e familiare al bambino, ancorare lì la storia.</p>
+
+    <div class="incipits">
+      <div class="incipit">
+        <span class="incipit-tag">Incipit di luogo familiare</span>
+        <p>"Hai presente [luogo specifico della vita di tuo figlio]? Bene. Una volta, [protagonista] era proprio lì, e…"</p>
+        <p class="incipit-note">La forma più indigena. Stabilisce subito il luogo come reale e familiare. Il "hai presente" coinvolge tuo figlio attivamente: deve riconoscere il luogo, e questo lo fa entrare nella storia. Funziona sempre, e attiva il riconoscimento territoriale fin dall'apertura.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit di luogo + tempo</span>
+        <p>"Era un giorno di [stagione/momento]. [Protagonista] camminava nel parco col papà. Quando arrivarono vicino [luogo specifico]…"</p>
+        <p class="incipit-note">Aggiunge un ancoraggio temporale stagionale (caratteristica delle tradizioni del Nord America). Funziona particolarmente bene se la stagione è quella reale del momento in cui racconti — fa sentire la storia "vicina" nel tempo oltre che nello spazio.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit di animale specifico</span>
+        <p>"C'è un [animale] che vive vicino al [luogo familiare]. Un giorno, [animale] aveva un piccolo problema, e…"</p>
+        <p class="incipit-note">Comincia dall'animale, prima ancora del bambino. Funziona quando vuoi che l'animale sia il vero protagonista — il bambino diventa l'aiutante chiamato. È particolarmente potente se davvero c'è un animale ricorrente in quel luogo (un cane sempre legato, un gatto del condominio).</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con tuo figlio come protagonista</span>
+        <p>"Una volta — non tanto tempo fa — [nome di tuo figlio] era al [luogo familiare] col [genitore]. E vide qualcosa che non aveva mai notato prima…"</p>
+        <p class="incipit-note">La variante più potente. Il protagonista è tuo figlio col suo nome vero, il luogo è uno reale, "non tanto tempo fa" lo posiziona come quasi-memoria. La storia non sembrerà invenzione: sembrerà racconto di qualcosa che è davvero successo. Da usare con parsimonia per non logorarne la potenza.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ERRORI ============ -->
+  <section id="errori">
+    <span class="section-num">§ 05 — Le trappole</span>
+    <h2>Cinque errori da evitare</h2>
+    <p class="section-kicker">Le trappole tipiche di chi viene da una cultura narrativa lineare e cerca di raccontare in stile indigeno. Quasi tutte si riducono a un solo errore: <em>tradire il rispetto del parente</em> o <em>non chiudere il cerchio</em>.</p>
+
+    <div class="error">
+      <span class="error-mark">Errore 1</span>
+      <h3>Far portare l'animale a casa dal protagonista</h3>
+      <p>L'istinto occidentale è "salvare" l'animale portandolo a casa, prendendosene cura, dandogli un nome, facendolo diventare proprio. <strong>Questo tradisce completamente la pedagogia indigena</strong>. Nelle storie indigene il parente animale resta al suo posto, nel suo luogo. L'aiuto non è possesso. Se la merla finisce nella gabbietta sul comodino di Eli, hai scritto una fiaba europea, non una storia indigena.</p>
+      <p class="fix">L'animale resta nel suo luogo. Il bambino lo aiuta e poi se ne va. La relazione si mantiene attraverso il <em>passaggio futuro</em> — saluti, riconoscimenti — non attraverso il possesso.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 2</span>
+      <h3>Aggiungere una morale finale dichiarata</h3>
+      <p>L'istinto è chiudere con "e così imparò a rispettare gli animali". <strong>Stai uccidendo il dispositivo</strong>. La grammatica indigena affida l'apprendimento al gesto da fare, non alla lezione da dire. Se metti una morale esplicita, non hai una storia indigena: hai una fiaba europea con cornice esotica.</p>
+      <p class="fix">Niente morale. <strong>Mai</strong>. Sostituiscila con la frase di chiusura territoriale: <em>"e ancora oggi, quando passa davanti a [luogo], saluta [essere]"</em>. Il gesto sostituisce la lezione. È molto più potente.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 3</span>
+      <h3>Usare un luogo immaginario</h3>
+      <p>L'istinto è usare un "bosco lontano", una "foresta incantata", un "paese lontano". <strong>Distrugge il riconoscimento territoriale</strong>. Se il luogo non esiste nella vita di tuo figlio, la storia non potrà mai diventare geografia abitata. Il sesto passo (il raggio) non funzionerà — non c'è nessun parco vero a cui tornare il giorno dopo.</p>
+      <p class="fix">Un luogo che tuo figlio frequenta davvero. Il parco di sotto. Il giardino del nonno. La panchina vicino alla fontana. Specifico. Identificabile. Visitabile. Senza questo, hai perso la cosa più importante che la cultura indigena offre.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 4</span>
+      <h3>Non chiudere il cerchio</h3>
+      <p>L'istinto narrativo occidentale è far progredire la storia verso una nuova destinazione: il bambino e l'animale partono insieme per un'avventura, vanno in un altro posto, succedono altre cose. <strong>Hai perso la struttura circolare</strong>. La storia indigena torna allo stesso punto di partenza — è proprio in questo ritorno che si forma il senso. Senza ritorno, la grammatica si sgretola.</p>
+      <p class="fix">Sempre tornare allo stesso luogo dell'apertura. <em>Stesso parco, stesso albero, stesso bambino</em>. Ma adesso lui sa qualcosa che prima non sapeva. Il cerchio è chiuso.</p>
+    </div>
+
+    <div class="error">
+      <span class="error-mark">Errore 5</span>
+      <h3>Trasferire elementi sacri specifici</h3>
+      <p>L'istinto è arricchire la storia con dettagli "indigeni" — la pipa sacra, le piume d'aquila, il canto cerimoniale, la danza. <strong>Sarebbe appropriazione culturale, e lo sarebbe davvero</strong>. Questi elementi specifici non sono nostri. Non vanno trasferiti in storielle per bambini occidentali, anche se in buona fede. Lo stesso vale per nomi di nazioni indigene specifiche e tradizioni cerimoniali.</p>
+      <p class="fix">Tieni lo <em>spirito</em> della cultura — il rispetto per gli animali, il cerchio, il riconoscimento territoriale, il gesto invece della lezione. Lascia i <em>contenuti specifici</em> alle culture che li custodiscono. La pipa sacra resta dei Lakota. Il tuo lavoro è imparare la grammatica, non rubare gli oggetti.</p>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CARD ============ -->
+  <div class="final-card">
+    <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="20" cy="25" r="18" fill="none" stroke="#a64a2c" stroke-width="1.3" opacity="0.6"/>
+      <line x1="38" y1="25" x2="48" y2="25" stroke="#a64a2c" stroke-width="1.3"/>
+      <circle cx="48" cy="25" r="2.5" fill="#a64a2c"/>
+      <circle cx="20" cy="25" r="2" fill="#a64a2c"/>
+    </svg>
+    <h3>"Una storia indigena è un cerchio con un raggio: il cerchio si chiude sul cuscino, ma il raggio esce e va a vivere in un albero del parco."</h3>
+    <p>Stai usando la grammatica più antica e più radicata nel territorio della narrazione umana. Le tradizioni indigene americane non hanno separato la storia dal luogo — e quando una storia ben fatta entra nella geografia di un bambino, ci resta per anni. È il dono più duraturo che puoi fargli col racconto.</p>
+  </div>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume IV · Documento 4 di 4 · Fine</span>
+    <span>Culture indigene americane · completo</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Occidente moderno · La Storia per Bambini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4efe6;
+    --paper-deep: #ebe4d4;
+    --ink: #1a1612;
+    --ink-soft: #3d342a;
+    --ink-faint: #6b5d4c;
+    --rule: #c9bda7;
+    --accent: #7a1f24;
+    --accent-soft: #a84147;
+    --highlight: #e8d9b8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(122, 31, 36, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(26, 22, 18, 0.05) 0%, transparent 50%);
+    color: var(--ink);
+    font-family: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.65;
+    min-height: 100vh;
+    padding-bottom: 6rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 3.5rem 0 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .series-mark::before,
+  .series-mark::after {
+    content: '';
+    flex: 0 0 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .series-mark::after { flex: 1; }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 144;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    max-width: 560px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    border-right: 1px solid var(--rule);
+    transition: all 0.25s ease;
+    position: relative;
+    background: transparent;
+  }
+
+  nav.tabs a:last-child { border-right: none; }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.6;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--paper);
+    background: var(--ink);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--highlight);
+    opacity: 0.9;
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 3px solid var(--accent);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .lead p + p { margin-top: 1rem; }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 4rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    font-variation-settings: "opsz" 80;
+  }
+
+  .section-kicker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  section h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: 2.5rem 0 1rem;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  section h3::before {
+    content: '◆';
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  section p {
+    margin-bottom: 1.2rem;
+    text-align: justify;
+    hyphens: auto;
+  }
+
+  section p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== TRADUZIONE TABLE ===== */
+  .traduzione {
+    margin: 2rem 0;
+    border: 1px solid var(--ink);
+    background: var(--paper-deep);
+  }
+
+  .traduzione-row {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .traduzione-row:last-child { border-bottom: none; }
+
+  .traduzione-cell {
+    padding: 1.2rem 1.4rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .traduzione-cell.label {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    background: var(--paper);
+  }
+
+  .traduzione-cell.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-size: 0.8rem;
+    background: var(--paper);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .traduzione-cell.translation {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .traduzione-cell.translation.discard {
+    color: var(--ink-faint);
+    text-decoration: line-through;
+    text-decoration-color: var(--accent);
+    font-style: normal;
+  }
+
+  /* ===== STORY BLOCK ===== */
+  .story-block {
+    margin: 3rem 0 4rem;
+    padding: 2.5rem 2.2rem;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--accent);
+    position: relative;
+  }
+
+  .story-block::before {
+    content: 'storia per bambini';
+    position: absolute;
+    top: -0.7rem;
+    left: 1.5rem;
+    background: var(--paper);
+    padding: 0 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+
+  .story-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.15;
+  }
+
+  .story-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story-block p {
+    text-align: left;
+    font-family: 'EB Garamond', serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .story-block p.refrain {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    margin: 1.2rem 0;
+    border-top: 1px dashed var(--rule);
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .story-block p.beat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-top: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .story-block p:first-of-type:first-letter {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 3rem;
+    line-height: 0.85;
+    float: left;
+    margin: 0.2rem 0.5rem 0 0;
+    color: var(--accent);
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    display: inline-block;
+    padding: 0.05em 0.3em;
+    background: var(--highlight);
+    font-style: italic;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(122, 31, 36, 0.05);
+    border-left: 3px solid var(--accent);
+    font-size: 0.95em;
+    line-height: 1.55;
+  }
+
+  .callout .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ===== PULL QUOTE ===== */
+  .pull-quote {
+    margin: 2.5rem -1rem;
+    padding: 1.8rem 2rem;
+    background: var(--paper-deep);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.4;
+    color: var(--ink);
+    text-align: center;
+    position: relative;
+  }
+
+  .pull-quote::before {
+    content: '§';
+    display: block;
+    font-style: normal;
+    color: var(--accent);
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* ===== VARIANTI ===== */
+  .variant {
+    margin: 1.5rem 0;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-deep);
+    position: relative;
+  }
+
+  .variant-num {
+    position: absolute;
+    top: -0.7rem;
+    left: 1.2rem;
+    background: var(--accent);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.7rem;
+    letter-spacing: 0.15em;
+  }
+
+  .variant h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+    margin-top: 0.3rem;
+  }
+
+  .variant p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin: 0;
+    text-align: left;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'Fraunces', serif;
+    color: var(--accent);
+    font-size: 1.5rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .container { padding: 0 1.4rem; }
+    h1.title { font-size: 2.2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .lead { font-size: 1.1rem; padding-left: 1.2rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(odd) { border-right: 1px solid var(--rule); }
+    .pull-quote { font-size: 1.15rem; margin: 2rem 0; }
+    .traduzione-row { grid-template-columns: 1fr; }
+    .traduzione-cell.arrow { display: none; }
+    .traduzione-cell.label { border-bottom: 1px solid var(--rule); }
+    .story-block { padding: 1.8rem 1.4rem; }
+    .story-title { font-size: 1.4rem; }
+    section p { text-align: left; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, section { animation: fadeUp 0.7s ease both; }
+  .lead { animation-delay: 0.1s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume I</div>
+    <h1 class="title">La storia<br><em>per bambini</em></h1>
+    <p class="subtitle">Come tradurre i principi della cultura occidentale moderna in qualcosa che funzioni davvero alle 20:30, con un bambino di tre anni stanco.</p>
+    <div class="meta-row">
+      <span>Documento 3 di 4</span>
+      <span>Per bambini 2-3 anni</span>
+      <span>Tono creativo + pedagogico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="occidente_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="occidente_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="occidente_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Una cultura narrativa è un sistema adulto. Per arrivare a un bambino di due o tre anni va smontato pezzo per pezzo, e rimontato con quello che resta in piedi.</p>
+    <p>Alcune cose dell'Occidente moderno funzionano benissimo a quell'età. Altre vanno ammorbidite. Altre ancora — le più sofisticate — vanno lasciate per dopo, e va bene così.</p>
+  </div>
+
+  <section>
+    <span class="section-num">§ 01 — La traduzione</span>
+    <h2>Cosa funziona, cosa va adattato, cosa va lasciato perdere</h2>
+    <p class="section-kicker">Cinque principi della cultura occidentale moderna passati al filtro di un cervello di tre anni.</p>
+
+    <p>Un bambino di 2-3 anni non è un piccolo adulto: è un'altra cosa. Ha un vocabolario di poche centinaia di parole. Capisce meglio le scene che le sequenze causali. Ama la <strong>ripetizione</strong> più di ogni altra cosa — la usa per imparare il linguaggio e per sentirsi al sicuro. Ha paura del distacco e dell'ignoto, ma desidera anche essere "un po' grande". La sua attenzione tiene cinque, dieci minuti. Confonde fantasia e realtà, e questo è una risorsa, non un problema.</p>
+
+    <p>Davanti a questo cervello, la cultura occidentale moderna si comporta in modi diversi. Alcuni dei suoi principi atterrano naturalmente, quasi come se fossero stati pensati per i bambini piccoli. Altri sono troppo astratti e vanno tradotti in immagini concrete. Altri ancora sono adulti, e provare a forzarli produce solo confusione.</p>
+
+    <h3>Cosa funziona naturalmente</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Struttura in tre o quattro battiti</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Funziona. Il cervello di un bambino piccolo ama la prevedibilità: setup, problema, soluzione. È esattamente la struttura che già usa per capire la giornata: prima la pappa, poi la pappa cade, poi la mamma la raccoglie.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Morale esplicita e finale</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Funziona benissimo. La forma "arcaica" di Cappuccetto Rosso è la più adatta a quest'età. Il bambino vuole sapere come va a finire e cosa significa. "E così imparò che..." è una formula perfetta, non un cliché da evitare.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Protagonista singolo identificabile</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Funziona. A questa età il bambino sta scoprendo di essere "io" e ha bisogno di un singolo personaggio in cui specchiarsi. Gruppi di personaggi lo confondono. Un orsetto, un coniglio, una bambina — uno per volta.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Conflitto chiaro</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Funziona, ma in versione molto leggera. Non un nemico mortale: un piccolo problema concreto. La palla è caduta nel fosso. La mamma è scomparsa dietro la porta. Il pupazzo è perso. Questi sono i "mostri" giusti per quest'età.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va adattato</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Male personificato</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Va ammorbidito. A 2-3 anni un "lupo cattivo" è terrorizzante davvero — non è un'astrazione narrativa. Meglio: un personaggio che fa i dispetti, che è scontroso, che si è perso. La cattiveria pura va riservata a quando il bambino sa che è finta (4-5 anni in poi).</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Tempo lineare e progresso</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Va concretizzato. Il bambino non concepisce ancora "il futuro" come categoria astratta. Ma capisce benissimo "prima... poi... alla fine". Tre tempi visibili, dichiarati, ognuno con un'azione fisica chiara. Mai più di tre passi.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Coraggio individuale</div>
+        <div class="traduzione-cell arrow">→</div>
+        <div class="traduzione-cell translation">Va riformulato. "Coraggio" è astratto. "Provare di nuovo" è concreto. "Andare avanti anche se ha paura" è concreto. Il piccolo eroe occidentale a tre anni non sconfigge dragoni: prova ancora, anche se la prima volta non è andata bene.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va lasciato perdere</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Trasformazione interiore documentata</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation">Inutilizzabile. Scrooge che si pente nel cuore della notte è una psicologia da adulti. Un bambino di tre anni non ha ancora un "io interiore" abbastanza separato dal mondo per capire di cosa stiamo parlando. La trasformazione, se c'è, deve essere visibile, esterna: prima era triste, ora ride.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Morale incarnata e ambigua</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation">Inutilizzabile. La grande conquista del romanzo moderno — "non dichiarare la morale, lasciala emergere" — è esattamente sbagliata a tre anni. A quell'età emergere significa non capire. La morale va detta, e va detta alla fine, e va ripetuta.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Viaggio dell'Eroe completo</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation">Sproporzionato. Diciassette tappe campbelliane sono per un film di due ore. Tre anni è una storia di tre minuti. Tenere solo il nucleo: stato A, problema, sforzo, stato B. Tutti gli orpelli (mentore, soglia, prove multiple, ricompensa) si possono saltare senza perdere niente.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Il principio guida</span>
+      Tradurre la cultura occidentale moderna per un bambino di 2-3 anni significa prendere la sua matrice arcaica (Cappuccetto Rosso, fiaba elementare) e <em>non andare oltre</em>. Tutto quello che la modernità ha aggiunto in tre secoli — la psicologia interiore, la morale incarnata, la complessità mitologica — è meraviglioso, ma è per dopo. A questa età si torna alla forma più semplice della propria cultura. È un atto di fiducia: i tre anni non hanno bisogno di Dickens per imparare cosa è bene, hanno bisogno di Esopo.
+    </div>
+  </section>
+
+  <section>
+    <span class="section-num">§ 02 — La storia</span>
+    <h2>L'orsetto e la pozzanghera</h2>
+    <p class="section-kicker">Una storia inventata, completa, pronta all'uso. Costruita secondo i principi della cultura occidentale moderna in versione 2-3 anni.</p>
+
+    <div class="story-block">
+      <div class="story-title">L'orsetto e la pozzanghera</div>
+      <div class="story-meta">Durata: 4-5 minuti · Età: 2-3 anni · Adattabile</div>
+
+      <p class="beat-label">Battuta 1 · Stato A</p>
+      <p>C'era una volta un orsetto piccolo piccolo, che si chiamava Nino. Nino aveva un palloncino rosso. Era il suo palloncino preferito. Ci giocava ogni giorno, lo lanciava in aria — uh! — e poi lo riprendeva — hop! Era felice.</p>
+
+      <p class="beat-label">Battuta 2 · Il problema</p>
+      <p>Un giorno Nino lanciò il palloncino in aria — uh! — ma soffiò il vento. E il vento portò il palloncino giù, giù, giù... dentro una grande pozzanghera. <em>Plof!</em></p>
+      <p>Nino guardò la pozzanghera. La pozzanghera era grande. E fredda. E Nino non aveva gli stivali. Aveva solo le sue zampette.</p>
+      <p>Nino diventò triste. "Il mio palloncino. Il mio bel palloncino rosso." E si sedette sul bordo della pozzanghera.</p>
+
+      <p class="beat-label">Battuta 3 · Il primo tentativo</p>
+      <p>Nino allungò la zampa per prenderlo. La zampa toccò l'acqua. Era fredda. Nino tirò indietro la zampa. "Brrrr!"</p>
+
+      <p class="refrain">Ma Nino voleva il suo palloncino.</p>
+
+      <p class="beat-label">Battuta 4 · Il secondo tentativo</p>
+      <p>Allora Nino prese un bastoncino. Allungò il bastoncino verso il palloncino. Ma il bastoncino era troppo corto. Il palloncino restava lì, in mezzo alla pozzanghera.</p>
+
+      <p class="refrain">Ma Nino voleva il suo palloncino.</p>
+
+      <p class="beat-label">Battuta 5 · La soluzione</p>
+      <p>Allora Nino fece un respiro grande grande. Chiuse gli occhi. E poi — un passo, due passi, tre passi — entrò nella pozzanghera. Brrrr, era fredda! Ma Nino camminò fino al palloncino, e lo prese. <em>Lo aveva preso!</em></p>
+
+      <p>Tornò sul bordo della pozzanghera con il palloncino in mano. Aveva le zampette tutte bagnate. Ma aveva il palloncino.</p>
+
+      <p class="beat-label">Battuta 6 · Stato B + morale</p>
+      <p>Nino corse a casa, si asciugò bene bene con l'asciugamano della mamma, e poi giocò di nuovo col suo palloncino rosso. Uh! Hop! Uh! Hop!</p>
+      <p>E imparò una cosa: <strong>quando una cosa è importante, vale la pena provare anche se all'inizio è un po' difficile.</strong></p>
+
+      <p class="refrain">E vissero felici e contenti — Nino e il palloncino rosso.</p>
+    </div>
+  </section>
+
+  <section>
+    <span class="section-num">§ 03 — L'analisi</span>
+    <h2>Cosa è rimasto della cultura, cosa è stato cambiato</h2>
+    <p class="section-kicker">Decostruire la storia per vedere come i principi del Doc 1 sono atterrati — e cosa è stato sacrificato per farli atterrare.</p>
+
+    <h3>La struttura: sei battiti, non tre atti</h3>
+    <p>La storia ha sei battiti chiaramente segnati: stato A, problema, primo tentativo, secondo tentativo, soluzione, stato B con morale. È <strong>la struttura in tre atti</strong> della cultura occidentale moderna, ma sgranata in passaggi più piccoli per essere seguibile da un bambino. Ogni battito è un'azione fisica visibile: nessuna emozione astratta, nessun pensiero interiore lungo. La psicologia è tutta nei gesti — Nino tira indietro la zampa, fa un respiro grande, chiude gli occhi.</p>
+
+    <p>Le due "prove" prima della soluzione (zampa, bastoncino) sono il cuore tecnico della storia. È qui che si traduce in versione bambino il <strong>coraggio individuale</strong> della cultura adulta: non si fa qualcosa di eroico, ma <em>si prova ancora</em> dopo che la prima cosa non ha funzionato. Questa è la forma più semplice di resilienza narrabile a tre anni, e probabilmente la lezione di vita più utile che si possa dare.</p>
+
+    <h3>Il tempo: lineare ma a tre marcatori espliciti</h3>
+    <p>La storia ha un tempo perfettamente lineare — Nino comincia felice, perde il palloncino, lo recupera, torna felice. Non c'è ciclicità, non c'è ambiguità sul prima e dopo. Ma il tempo è <strong>concretizzato</strong> in tre stati visibili: orsetto-felice, orsetto-bagnato-che-prova, orsetto-felice-di-nuovo. Il bambino di tre anni non capisce "il tempo passa": capisce "prima così, poi cosà, alla fine così".</p>
+
+    <p>La cosa importante è che lo <span class="keyterm">stato B è migliore di A</span> — non perché Nino abbia <em>più</em> di prima, ma perché ha <em>imparato</em> qualcosa. Il palloncino è lo stesso. Ma adesso Nino sa che si può andare nelle pozzanghere fredde se serve. Questa è la freccia del tempo occidentale in versione minima: non torni allo stesso punto, perché tu sei diverso.</p>
+
+    <h3>Il "male": ammorbidito fino a sparire</h3>
+    <p>Nella storia non c'è cattivo. La pozzanghera non è malvagia: è fredda. Il vento non è cattivo: è vento. Questo è un cambiamento <strong>importante e consapevole</strong> rispetto alla matrice di Cappuccetto Rosso, dove il lupo è personificato e ha intenzioni cattive. A tre anni il male personificato fa paura davvero — non è una convenzione narrativa, è un mostro vero che potrebbe esistere.</p>
+
+    <p>Quello che ho fatto è prendere il <strong>conflitto</strong> (componente strutturale necessaria nella narrativa occidentale) e separarlo dal <strong>male</strong> (componente morale-cosmologica più complessa). Il conflitto resta — c'è un problema da risolvere — ma il villain è scomparso. È un compromesso intelligente: si tiene la struttura della cultura, si rinuncia a uno dei suoi tratti più adultocentrici. Curiosamente, questa scelta ci avvicina senza volerlo a culture come quella giapponese o indigena, dove il "male" non è una persona ma uno squilibrio. È un piccolo regalo che fare ai bambini piccoli ci costringe a fare.</p>
+
+    <h3>La morale: esplicita, in fondo, ripetibile</h3>
+    <p>La morale è dichiarata in chiaro: <em>"quando una cosa è importante, vale la pena provare anche se all'inizio è un po' difficile"</em>. È nella forma arcaica della cultura occidentale — la stessa di Esopo, della fiaba popolare, di Cappuccetto Rosso. Niente Dickens, niente "lascia che il lettore arrivi da solo". A tre anni dichiarare è giusto.</p>
+
+    <p>Ma c'è una scelta tecnica precisa: la morale è <strong>una sola</strong>. La storia avrebbe potuto trasportare anche altre lezioni (non perdere le cose, asciugarsi quando si è bagnati, chiedere aiuto a mamma) — e tutte sono lì in filigrana. Ma ne ho dichiarata solo una. Il cervello di tre anni gestisce un messaggio per volta. Più morali significano nessuna morale.</p>
+
+    <h3>I dispositivi pedagogici nascosti</h3>
+    <p>Tre cose succedono nella storia che il bambino non nota ma che fanno tutto il lavoro:</p>
+
+    <p>Primo: la <strong>frase ricorrente</strong> "Ma Nino voleva il suo palloncino". Compare due volte tra un tentativo e l'altro. È il <em>ritornello</em>, il dispositivo più antico delle storie orali. Aiuta il bambino a capire che la storia continua, gli dà il piacere del riconoscimento, e — se la storia viene raccontata più volte — diventa una frase che il bambino dirà con te. Questo è <strong>scaffolding linguistico</strong> sotto travestimento narrativo.</p>
+
+    <p>Secondo: le <strong>onomatopee</strong> (uh, hop, plof, brrrr). Ce ne sono molte. A tre anni i suoni sono mezza storia. Permettono al bambino di partecipare, di ridere, di prevedere. Ogni storia per quest'età dovrebbe averne almeno tre o quattro.</p>
+
+    <p>Terzo: la <strong>chiusura rituale</strong> "e vissero felici e contenti". È la formula che la nostra cultura usa da secoli per dire "la storia è finita, tutto è a posto, puoi rilassarti". Funziona come un piccolo segnale di sicurezza, soprattutto se la storia viene prima della nanna. Non sostituirla con qualcosa di più originale: la sua forza è nell'essere riconoscibile.</p>
+
+    <div class="pull-quote">
+      Una storia per un bambino di tre anni non è una storia adulta più semplice — è una struttura ancestrale che sopravvive, mentre la cultura adulta gli si è costruita intorno.
+    </div>
+  </section>
+
+  <section>
+    <span class="section-num">§ 04 — Le varianti</span>
+    <h2>Tre modi di raccontare diversamente la stessa storia</h2>
+    <p class="section-kicker">Stessa struttura, diverso protagonista, diverso ostacolo. Il telaio resta, il tessuto cambia.</p>
+
+    <p>La forza di una storia ben costruita è che diventa un <strong>telaio</strong>: si possono cambiare i protagonisti e gli ostacoli senza toccare la struttura, e la storia continuerà a funzionare. Questo è particolarmente utile nelle storie per bambini piccoli, che amano le ripetizioni con piccole variazioni — è il loro modo preferito di imparare. Tre varianti, da usare sere diverse.</p>
+
+    <div class="variant">
+      <span class="variant-num">Variante 1</span>
+      <h4>Il coniglietto e la carota troppo lontana</h4>
+      <p>Stesso schema esatto. Un coniglietto vede una carota grossa, ma è oltre uno steccato. Prima prova a passarci sotto: troppo stretto. Poi prova a saltare: troppo alto. Alla fine fa un salto più grande di tutti, prendendo la rincorsa. Stato A: coniglietto che vede la carota. Stato B: coniglietto che mangia la carota e ha imparato che bisogna prendere la rincorsa per i salti difficili. <em>Stessa morale, ostacolo verticale invece che orizzontale, animale diverso. Funziona.</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 2</span>
+      <h4>Lo stesso Nino, problema diverso</h4>
+      <p>Tieni Nino come protagonista ricorrente — ai bambini piccoli piacciono i protagonisti che tornano. Questa volta Nino vuole arrivare al barattolo del miele sulla mensola alta. Prima si alza in punta di piedi: non arriva. Poi prova a saltare: non arriva. Poi prende uno sgabellino e ci sale sopra: arriva. Stessa lezione, ma con un mini-bonus: ha usato uno strumento. <em>Costruisci una piccola saga di Nino — sere di seguito, con problemi diversi. Tuo figlio comincerà a chiederti "stasera Nino?".</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 3</span>
+      <h4>La stessa storia con tuo figlio dentro</h4>
+      <p>Cambia il protagonista in tuo figlio stesso. "C'era una volta un bambino che si chiamava [nome di tuo figlio]. E [nome] aveva una palla preferita. Un giorno la palla rotolò sotto il divano..." La struttura è identica, ma adesso il protagonista è lui. Questo è un dispositivo potentissimo a 2-3 anni: il bambino si vede agire dentro la storia, ed è la forma più diretta di costruzione del sé attraverso la narrativa — quella che il romanzo borghese ha iperalizzato per gli adulti, ma che nasce qui, nelle storie della buonanotte. <em>Da usare con parsimonia: una volta ogni tanto, non ogni sera, altrimenti perde forza.</em></p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sul telaio</span>
+      Una volta che hai capito che la storia è solo: <em>protagonista piccolo + cosa importante che si trova in difficoltà + due tentativi falliti + un terzo che funziona + lezione semplice</em>, puoi inventarne una al volo per qualsiasi situazione. Il bambino ha rotto il giocattolo? Storia. Il bambino non vuole lavarsi i denti? Storia. Il bambino ha paura del buio? Storia. Il telaio funziona ovunque, e con la pratica si compone in trenta secondi mentre versi l'acqua del bagno.
+    </div>
+  </section>
+
+  <div class="end-mark">· · ·</div>
+
+  <footer>
+    <span>Volume I · Documento 3 di 4</span>
+    <span>Prossimo: La guida pratica →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

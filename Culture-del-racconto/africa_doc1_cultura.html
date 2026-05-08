@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa sub-sahariana · La Cultura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ece1;
+    --paper-deep: #e8dfce;
+    --paper-warm: #ede3d1;
+    --ink: #1f1a16;
+    --ink-soft: #3a3027;
+    --ink-faint: #7a6a58;
+    --rule: #b8a48a;
+    --rust: #a8341e;       /* rosso terra di Djenné */
+    --rust-deep: #862818;
+    --ochre: #c89530;       /* oro opaco */
+    --earth: #3a3027;       /* marrone ferro */
+    --highlight: #e6d4a8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 14% 10%, rgba(168, 52, 30, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 86% 88%, rgba(58, 48, 39, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(200, 149, 48, 0.025) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Cardo', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  /* Texture trama tessile orizzontale a bassissima opacità */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(58, 48, 39, 0.025) 2px,
+        rgba(58, 48, 39, 0.025) 3px
+      );
+    z-index: 1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4.5rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  /* Simbolo: cerchio aperto attraversato da una linea — la voce che entra nel cerchio della comunità */
+  .symbol-mark {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Cardo', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--rust);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--rust);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 2px solid var(--rust);
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 600px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  h2 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .section-kicker {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  section p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+    hyphens: none;
+  }
+
+  section p strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== KEY TERM (termini in lingue africane) ===== */
+  .afr {
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 400;
+  }
+
+  .afr strong, strong .afr { font-weight: 700; }
+
+  /* ===== AVVERTENZA ===== */
+  .avvertenza {
+    margin: 2rem 0 3rem;
+    padding: 1.6rem 1.8rem;
+    background: var(--paper-deep);
+    border: 1px solid var(--rust-deep);
+    border-left: 3px solid var(--rust-deep);
+  }
+
+  .avvertenza-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust-deep);
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 600;
+  }
+
+  .avvertenza p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0.9rem;
+  }
+
+  .avvertenza p:last-child { margin-bottom: 0; }
+
+  /* ===== PROVERBIO ===== */
+  /* Box dedicato al proverbio come dispositivo grafico nuovo del Vol V */
+  .proverb {
+    margin: 3rem -1rem;
+    padding: 2.4rem 2rem 2rem;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    text-align: center;
+    position: relative;
+  }
+
+  .proverb::before {
+    content: '"';
+    font-family: 'Fraunces', serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--rust);
+    opacity: 0.3;
+    position: absolute;
+    top: 0.4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 400;
+  }
+
+  .proverb-text {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .proverb-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .proverb-gloss {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.55;
+  }
+
+  /* ===== CALL AND RESPONSE ===== */
+  .call-response {
+    margin: 2.5rem 0;
+    padding: 2rem 1.6rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-radius: 0;
+  }
+
+  .cr-line {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.2rem;
+    align-items: baseline;
+    padding: 0.5rem 0;
+  }
+
+  .cr-line + .cr-line {
+    border-top: 1px dashed var(--rule);
+  }
+
+  .cr-role {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .cr-role.call { color: var(--rust); }
+  .cr-role.response { color: var(--earth); }
+
+  .cr-text {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .cr-text .gloss {
+    display: block;
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-top: 0.2rem;
+  }
+
+  /* ===== CONTRAST GRID ===== */
+  .contrast {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .contrast > div {
+    padding: 1.4rem 1.6rem;
+  }
+
+  .contrast > div:first-child {
+    border-right: 1px solid var(--rule);
+  }
+
+  .contrast h4 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .contrast p {
+    font-size: 0.93rem;
+    margin: 0;
+    line-height: 1.65;
+    text-align: left;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(168, 52, 30, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    font-size: 0.95em;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.15rem; padding-left: 1.4rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .proverb { margin: 2rem 0; padding: 2rem 1.4rem 1.6rem; }
+    .proverb-text { font-size: 1.15rem; }
+    .contrast { grid-template-columns: 1fr; }
+    .contrast > div:first-child { border-right: none; border-bottom: 1px solid var(--rule); }
+    section { margin: 3.5rem 0; }
+    .cr-line { grid-template-columns: 1fr; gap: 0.3rem; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .avvertenza, section { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .avvertenza { animation-delay: 0.15s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+  section:nth-of-type(5) { animation-delay: 0.4s; }
+  section:nth-of-type(6) { animation-delay: 0.45s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume V</div>
+    <svg class="symbol-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <!-- cerchio quasi chiuso: il pubblico in cerchio -->
+      <path d="M 32 6 A 26 26 0 1 1 18 9.5" fill="none" stroke="#a8341e" stroke-width="1.4" opacity="0.7" stroke-linecap="round"/>
+      <!-- linea che attraversa: la voce che entra ed esce -->
+      <line x1="2" y1="32" x2="62" y2="32" stroke="#a8341e" stroke-width="1.4" opacity="0.85"/>
+      <!-- nodo centrale: il narratore -->
+      <circle cx="32" cy="32" r="3" fill="#a8341e" opacity="0.9"/>
+    </svg>
+    <h1 class="title">Africa sub-sahariana —<br><em>la storia che si fa in cerchio</em></h1>
+    <p class="subtitle">Una famiglia di tradizioni che hanno pensato la storia non come oggetto da consegnare ma come cerimonia da celebrare insieme, non come viaggio dell'individuo ma come verifica dei legami, non come morale dichiarata ma come proverbio incarnato — perché chi racconta da solo non racconta nulla.</p>
+    <div class="meta-row">
+      <span>Documento 1 di 4</span>
+      <span>La Cultura</span>
+      <span>Tono saggistico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="#" class="active">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="africa_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="africa_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="africa_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Quando un narratore mande comincia, non dice <em>"c'era una volta"</em>. Dice <em>"vi racconto questa storia"</em>, e aspetta che il pubblico risponda <em>"sì, raccontacela"</em>. Senza quella risposta non comincia. La storia non esiste prima del cerchio: <em>è</em> il cerchio.</p>
+    <p>Tra l'invocazione del narratore e la risposta del pubblico sta l'intera filosofia narrativa di queste tradizioni — diversa, in modo sottile e radicale, da tutto quello che abbiamo visto finora.</p>
+  </div>
+
+  <div class="avvertenza">
+    <span class="avvertenza-label">Una premessa necessaria</span>
+    <p>"Africa sub-sahariana" non è una cultura: è un continente di <strong>oltre mille lingue</strong>, decine di grandi famiglie linguistiche, regni storici di antica e raffinata complessità (Mali, Songhai, Grande Zimbabwe, Benin, Buganda), forme di vita radicalmente diverse — pastori nilotici, agricoltori della foresta, mercanti delle città sahariane, popoli pescatori dei grandi laghi. Non condividono una sola cosmologia.</p>
+    <p>Condividono però alcuni <em>tratti narrativi profondi</em> che ricorrono in modi diversi quasi ovunque: la <strong>parola viva</strong> come forma autorevole di sapere, la <strong>persona pensata in relazione</strong> agli altri (umani, antenati, comunità), il <strong>proverbio</strong> come architettura del discorso adulto, il <strong>trickster animale</strong> come pedagogia dell'astuzia ambigua, la <strong>presenza degli antenati</strong> come parte della comunità vivente, e la <strong>partecipazione</strong> del pubblico come elemento costitutivo della storia, non come reazione ad essa.</p>
+    <p>In questo documento ci concentreremo soprattutto sull'<strong>Africa occidentale</strong> (tradizioni mande, akan, yoruba, igbo) con apertura significativa al <strong>bantu meridionale</strong> (zulu, xhosa). È lì che il quadro <em>griot + Anansi + ubuntu + proverbio</em> prende la sua forma più piena. Cito di sfuggita anche tradizioni dell'Africa orientale e del corno, ma senza pretesa di copertura.</p>
+    <p>E un'avvertenza di rispetto, parallela a quella del Volume IV: alcune narrazioni africane sono <strong>sacre o iniziatiche</strong> e non vanno raccontate fuori contesto. Lavoriamo su storie già ampiamente diffuse e considerate condivisibili, e trattiamo questa cultura come pensiero adulto serio — non come folklore esotico né come sapienza ingenua.</p>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — Il terreno</span>
+      <h2>La visione del mondo che genera questo tipo di storie</h2>
+      <p class="section-kicker">Tre fondamenta condivise: la persona come fascio di relazioni, la parola come potenza viva, gli antenati come parenti presenti.</p>
+    </div>
+
+    <p>Per capire la narrativa africana occorre prima accettare una proposizione filosofica precisa, non sentimentale: <strong>la persona non esiste prima delle sue relazioni</strong>. È un'inversione netta rispetto alla tradizione occidentale, che ha pensato l'individuo come dato primo e la società come somma di individui. In gran parte del pensiero africano l'ordine è rovesciato: prima viene la trama dei legami — con i parenti vivi, con gli antenati, con la comunità, con la terra che nutre — e l'individuo è il <em>nodo</em> in cui questa trama si annoda. Senza i fili, niente nodo.</p>
+
+    <p>La formulazione più nota di questa idea è zulu/xhosa: <span class="afr">umuntu ngumuntu ngabantu</span> — letteralmente <em>"una persona è persona attraverso altre persone"</em>. Si traduce <span class="afr">ubuntu</span>. La parola è diventata in Occidente uno slogan da TED talk, ma è in realtà una proposizione filosofica precisa: <strong>diventare persona è un processo relazionale</strong>, non un dato di nascita. Si <em>diventa</em> persona attraverso il riconoscimento, la cura, lo scambio. Chi rompe i legami non è solo cattivo: è meno persona, ontologicamente meno. Idee analoghe attraversano l'intero continente con nomi diversi — il <span class="afr">harambee</span> kikuyu (tirare insieme), l'<span class="afr">ujamaa</span> swahili (fratellanza), l'<span class="afr">abusua</span> akan (lignaggio matrilineare come unità prima dell'individuo). Le storie nascono in questo terreno, e il loro lavoro principale è <em>tessere e ritessere</em> questa trama.</p>
+
+    <p>La seconda fondamenta è la <strong>parola come potenza</strong>, non come segno. Per molte tradizioni dell'Africa occidentale la parola pronunciata è una forza viva che modifica il mondo: una parola di benedizione benedice davvero, una parola di maledizione ferisce davvero, un nome dato a un bambino lo orienta nell'esistenza. Per i Dogon del Mali la parola — <span class="afr">so</span> — è uno dei principi creatori del cosmo. Per gli Akan, il <span class="afr">nyansa</span> (la sapienza) si manifesta soprattutto nella capacità di parlare bene, in proverbi, in modo che le parole entrino e restino. Conseguenza diretta per la narrazione: <strong>il narratore non riferisce, agisce</strong>. Quando racconta della pioggia, qualcosa della pioggia entra nella stanza. Quando nomina un antenato, l'antenato è chiamato. La storia non descrive il mondo — lo <em>convoca</em>.</p>
+
+    <p>La terza fondamenta è la <strong>presenza degli antenati</strong>. Per gran parte del pensiero africano i morti non sono altrove: sono <strong>una parte specifica della comunità vivente</strong>, con doveri e diritti propri. Si chiamano nei nomi dei nipoti, si nutrono nelle libagioni, si consultano nei momenti difficili, si offendono se vengono dimenticati. Il filosofo kenyano John Mbiti li chiamava <span class="afr">"living-dead"</span>, i morti-vivi, intendendo qualcosa di molto preciso: gli antenati che sono ancora ricordati per nome, di solito quattro o cinque generazioni indietro, esistono in un modo intermedio — non più tra i vivi ma non ancora dimenticati, e finché vengono nominati continuano a partecipare. Le storie sono uno dei modi con cui questa partecipazione si mantiene: <strong>raccontare di chi è venuto prima è tenerlo in vita</strong>, e dimenticare di raccontarlo è la sua seconda morte.</p>
+
+    <div class="proverb">
+      <div class="proverb-text">Quando un anziano muore,<br>brucia una biblioteca.</div>
+      <div class="proverb-meta">Amadou Hampâté Bâ · Mali</div>
+      <div class="proverb-gloss">Più che un proverbio tradizionale, un'espressione divenuta proverbiale grazie allo scrittore peul. Cattura una verità antica: in una cultura orale, ogni anziano è una biblioteca, e ogni morte non raccontata è un patrimonio perduto. Non c'è il libro che resta — c'è la voce che si è spenta.</div>
+    </div>
+
+    <p>Da queste tre fondamenta — persona-in-relazione, parola viva, antenati presenti — nasce un tipo di storia molto specifico. Non è la storia dell'eroe che parte e torna trasformato (quella è occidentale e in parte indiana). Non è la storia che lascia accadere il vuoto (quella è giapponese). Non è la storia incassata nelle cornici della storia di un altro (quella è indiana). È la <strong>storia che si fa in cerchio</strong>, dove il narratore è il nodo centrale ma non il proprietario, il pubblico è co-autore con le sue risposte, gli antenati ascoltano da poco oltre il fuoco, e la morale non è dichiarata: è la verifica dei legami che la storia mette in scena.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La forma</span>
+      <h2>Struttura narrativa: <em>storia e proverbio e canto</em></h2>
+      <p class="section-kicker">Le storie africane non sono pure narrazioni: sono tessuti a tre fili — racconto, proverbio incastonato, canzone ripetuta — che si intrecciano dall'inizio alla fine.</p>
+    </div>
+
+    <p>La forma tipica della storia africana sub-sahariana è una struttura a strati che la distingue da tutto quello che abbiamo visto. Una storia akan, mande, igbo o zulu raramente è "solo" una narrazione lineare. È quasi sempre una <strong>composizione a tre fili</strong> intrecciati: la <em>storia</em> propriamente detta (l'avventura, il dialogo, l'evento), il <em>proverbio</em> (incastonato all'inizio o alla fine, e a volte ripetuto al centro come asse portante), e la <em>canzone</em> (un ritornello musicale che il pubblico riprende, e che spesso porta il senso emotivo del passaggio).</p>
+
+    <p>Cominciamo dal <strong>proverbio</strong>, perché è la chiave architettonica. In Occidente il proverbio è un'aggiunta marginale, una decorazione folkloristica. In Africa il proverbio — akan <span class="afr">ɛbɛ</span>, yoruba <span class="afr">òwe</span>, mande <span class="afr">ntalen</span> — è <strong>l'unità di base del discorso adulto colto</strong>. Una conversazione tra anziani può essere quasi interamente fatta di proverbi concatenati, e chi non sa rispondere a un proverbio con un altro proverbio non è considerato un interlocutore pieno. In ambito narrativo, il proverbio funziona in tre modi: come <em>incipit</em> (il narratore lancia il proverbio, e la storia che segue è la sua dimostrazione), come <em>chiusura</em> (la storia accade, e a fine il proverbio cristallizza ciò che si è capito), oppure come <em>asse</em> (il proverbio compare e ricompare, e la storia ne è la lenta esplicitazione). Una storia akan può letteralmente <em>essere</em> il dispiegamento narrativo di un proverbio. <strong>Il proverbio è il seme; la storia è la pianta che lo mostra cresciuto</strong>.</p>
+
+    <p>Il secondo filo è la <strong>canzone</strong>. La grandissima maggioranza delle storie africane ha dentro almeno un breve canto — di solito brevissimo, una o due frasi, ripetuto. Quando il narratore arriva al punto della canzone, la canta; e il pubblico la riprende, anche i bambini. Quando l'eroe attraversa la foresta, c'è la canzone della foresta. Quando la lepre canta per ingannare la iena, c'è la canzone dell'inganno. La canzone fa due cose insieme: <strong>scolpisce nella memoria</strong> i passaggi importanti (un bambino che ha cantato dieci volte una canzone in una storia non la dimenticherà), e <strong>fa partecipare</strong> il pubblico — la storia diventa un'esperienza corporea condivisa, non un ascolto silenzioso. Per chi viene dalla cultura del libro, è una rivoluzione: in Africa la storia <em>si canta dentro</em>.</p>
+
+    <p>Il terzo filo è il <strong>racconto</strong> propriamente detto, l'evento, la trama. Ed è qui che bisogna fare attenzione, perché la trama tipica africana non segue le regole occidentali. La struttura più ricorrente è quella che gli studiosi (a partire da Ruth Finnegan) chiamano <strong>concatenazione episodica</strong>: la storia non si costruisce intorno a un grande arco unico, ma è una <em>catena di episodi</em> ognuno autonomo, ognuno completo, che insieme delineano un ritratto. Le storie del trickster — Anansi il ragno, Ijapa la tartaruga, Sungura la lepre — sono il caso paradigmatico: non c'è "la storia di Anansi", c'è un repertorio di centinaia di episodi indipendenti, ciascuno una piccola perla, e ogni narratore sceglie quali infilare nel collare della serata. <strong>L'unità non è la storia: è la sera di racconto</strong>, e una sera tipica contiene cinque, dieci, venti storie corte, intervallate da canti, scambi col pubblico, pause.</p>
+
+    <p>Esiste anche, importantissima ma più rara nel quotidiano, la <strong>grande forma epica</strong> — l'<em>epopea</em>. È la specialità dei griot dell'Africa occidentale: composizioni lunghissime, che nel caso del <em>Sundiata</em> mande possono durare giorni interi, raccontano la fondazione di un regno, la genealogia di una dinastia, i fatti d'arme di un re. Anche qui però la struttura non è quella unitaria dell'<em>Iliade</em> o del <em>Mahabharata</em>: l'epopea è <strong>una catena di episodi epici</strong> tenuti insieme dalla figura del protagonista e dalla cornice genealogica. La logica della concatenazione resta. <strong>L'unità non è mai la storia totale: è il filo del racconto come pratica</strong>.</p>
+
+    <div class="contrast">
+      <div>
+        <h4>Forma occidentale tipica</h4>
+        <p>Un grande arco narrativo unico, costruito su tensione → climax → risoluzione. Tutto quello che è nel mezzo è funzionale al disegno totale. La storia <em>è</em> la sua struttura. Il proverbio, se c'è, è ornamento.</p>
+      </div>
+      <div>
+        <h4>Forma africana tipica</h4>
+        <p>Una catena di episodi autonomi, ciascuno con il proprio piccolo ciclo, tenuti insieme da un personaggio o un proverbio guida. Il pubblico canta, risponde, ride. La storia <em>è</em> la sera. Il proverbio è la spina dorsale.</p>
+      </div>
+    </div>
+
+    <p>Conseguenza pratica per chi vuole raccontare in stile africano: <strong>non bisogna costruire il grande arco</strong>. Bisogna costruire <em>buoni episodi corti</em>, ciascuno con la sua piccola tensione e il suo piccolo scioglimento, e infilarli con un filo (il personaggio, il proverbio, la canzone). È una grammatica perfetta per i bambini piccoli, e non per caso: è una grammatica del raccontare <em>insieme</em>, e i bambini sono il pubblico che più ha bisogno di partecipare.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — Il tempo</span>
+      <h2>La visione del tempo</h2>
+      <p class="section-kicker">Né lineare-progressivo come in Occidente, né puramente ciclico come in India: un tempo a strati, dove i vivi, gli antenati nominati e l'origine restano simultaneamente presenti.</p>
+    </div>
+
+    <p>Il tempo, nelle culture africane sub-sahariane, non è lineare nel senso occidentale (passato → presente → futuro come freccia che corre verso il progresso) né ciclico nel senso indiano (yuga e kalpa che si ripetono identici). È un tempo a <strong>strati simultanei</strong>: un presente denso che contiene insieme i vivi, gli antenati nominati e l'origine.</p>
+
+    <p>Un'osservazione resa famosa dal filosofo John Mbiti — discutibile come tutte le grandi generalizzazioni, ma utile come provocazione iniziale — è che molte lingue bantu hanno <em>un solo tempo passato che si estende profondamente all'indietro</em>, e <em>un futuro grammaticalmente molto debole</em>. Il futuro lontano è quasi inesprimibile come tempo verbale: non perché manchi l'idea, ma perché <strong>il futuro non è il luogo dove la realtà si trova</strong>. La realtà piena è qui, ora, e nel passato — che però non è "trascorso" come per noi: è <em>presente alle spalle</em>, denso, ancora attivo. Il futuro è una pallida possibilità.</p>
+
+    <p>Mbiti ha distinto due dimensioni: il <span class="afr">sasa</span> (swahili per "ora") — il tempo dell'esperienza vissuta, che include il presente, il futuro immediato e il passato recente entro cui i morti sono ancora ricordati per nome — e lo <span class="afr">zamani</span> — il grande passato, l'origine, il tempo dei miti, dove gli antenati di cui non si ricorda più il nome scivolano definitivamente, dove vivono gli dèi e gli spiriti primordiali. <strong>Una persona vivente passa lentamente dal sasa allo zamani: prima è viva, poi è morta-vivente (ricordata per nome, pregata, nutrita), poi — quando nessuno la ricorda più individualmente — entra nello zamani, dove diventa parte della comunità degli antenati anonimi e degli spiriti dell'origine</strong>. Questo passaggio è il tempo nella sua forma più reale.</p>
+
+    <p>La conseguenza per la narrazione è importante e va sottolineata: <strong>la storia africana non racconta del passato come noi lo intendiamo</strong>. Non è "una volta, tanto tempo fa, accadde questo" come archeologia di qualcosa che non c'è più. È piuttosto: <em>"così è stato e così è ancora"</em>. L'origine è simultanea al presente. Quando un narratore akan racconta come Anansi portò le storie al mondo, non sta facendo storia antica — sta dicendo perché stasera siamo qui a raccontare. La storia è il dispositivo che <strong>tiene aperto il canale</strong> tra lo zamani (l'origine) e il sasa (il presente), e l'atto stesso di raccontare ricuce questo canale ogni volta.</p>
+
+    <p>Ne deriva anche un atteggiamento particolare verso il <strong>futuro</strong>. Le storie africane si interessano poco del futuro lontano. Non ci sono profezie cosmiche, niente di paragonabile al Ragnarǫk norreno o al Kali Yuga indiano o all'Apocalisse cristiana. Il futuro è la prossima stagione delle piogge, il prossimo raccolto, la prossima generazione — un orizzonte breve di prossimità. <strong>Le storie servono a vivere bene <em>questo</em> presente, non a prepararsi a un futuro lontano</strong>. È una visione del tempo profondamente ancorata, che ha conseguenze pratiche sulla forma del racconto: nessun cliffhanger, nessun "che cosa accadrà?". Ciò che conta è ciò che è già accaduto e che sta ancora accadendo adesso.</p>
+
+    <div class="contrast">
+      <div>
+        <h4>Tempo occidentale</h4>
+        <p>Linea che corre. Il passato è chiuso. Il futuro è aperto. Il presente è una soglia. La storia narra "ciò che è accaduto" — separato e finito.</p>
+      </div>
+      <div>
+        <h4>Tempo africano (Mbiti)</h4>
+        <p>Strati simultanei. Lo zamani (origine, antenati anonimi) è alle spalle ma presente. Il sasa (vivi e morti-viventi) è denso. Il futuro lontano è grammaticalmente debole. La storia narra "ciò che è e che sta ancora accadendo".</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Il senso</span>
+      <h2>Morale, valori, insegnamenti</h2>
+      <p class="section-kicker">Una morale relazionale e non universalista: il bene è ciò che rinsalda la trama tra parenti, vivi e antenati. Il male non è una forza, è una rottura.</p>
+    </div>
+
+    <p>La morale africana è <strong>profondamente relazionale</strong>, e questo la distingue da tutte le altre morali narrative che abbiamo incontrato. Non è universalista come quella occidentale moderna (un bene oggettivo che vale per tutti gli umani in quanto tali). Non è dharmica come quella indiana (un dovere preciso e diverso per ogni persona secondo la sua nascita e la sua fase di vita). Non è ammorale come quella greca o ambigua come quella giapponese. È <strong>la morale della trama</strong>: il bene è ciò che tiene insieme i legami, il male è ciò che li spezza, e il giudizio si fa sempre dentro un cerchio di relazioni concrete — non davanti a un tribunale astratto.</p>
+
+    <p>I valori centrali, ricorrenti in molte tradizioni con nomi diversi, sono cinque, intrecciati e non ordinabili gerarchicamente.</p>
+
+    <p>Il primo è la <strong>cura dei parenti</strong>, intesa in senso largo: la famiglia estesa, il lignaggio, gli antenati, ma anche i vicini, gli ospiti, gli sconosciuti che chiedono ospitalità. Una storia africana funziona quasi sempre come <em>verifica</em> di questa cura: chi onora i parenti viene benedetto, chi li dimentica viene impoverito. Non per intervento divino punitivo — semplicemente perché chi spezza i legami si ritrova solo, e la solitudine in questa visione del mondo è la peggiore delle disgrazie. <strong>Stare bene è essere riconosciuti dai propri</strong>. Una persona ricca senza parenti è povera. Una persona povera con molti parenti è ricca.</p>
+
+    <p>Il secondo valore è l'<strong>ospitalità</strong> come obbligo sacro. Lo straniero che bussa è quasi sempre, nelle storie, qualcuno o qualcosa di più di quello che sembra: un antenato in visita, uno spirito che mette alla prova, un futuro alleato. Chi accoglie viene ricompensato, chi rifiuta perde più di quanto credeva di risparmiare. È una grammatica narrativa molto diffusa, ma in Africa ha una sfumatura specifica: l'ospitalità non è solo virtù, è <strong>infrastruttura</strong>. In società dove la sopravvivenza dipendeva dalla rete delle relazioni — chi viaggiava attraverso il Sahel poteva sopravvivere solo perché ovunque arrivasse qualcuno doveva accoglierlo — accogliere lo straniero era letteralmente tenere in piedi il continente.</p>
+
+    <p>Il terzo valore è la <strong>parola data</strong>. In una cultura senza scrittura come fondamento giuridico (nelle aree e nelle epoche prima dell'arrivo dell'islam scritto e poi del colonialismo), la parola pronunciata era il contratto, la promessa, l'identità. <strong>Mantenere la parola era mantenere se stessi</strong>. Nelle storie, romperla è spesso il peccato che innesca tutto: un cacciatore che promette un dono e non lo dà, un re che giura e poi tradisce, un giovane che fa una promessa al saggio e la dimentica. Ciò che spezza non è "una regola morale" — è il proprio essere, perché <em>non si è</em> nient'altro che la propria parola.</p>
+
+    <p>Il quarto valore è l'<strong>astuzia</strong> — e qui c'è una differenza importante con gran parte delle altre culture esplorate. Nelle storie africane l'astuzia è una virtù <strong>ambigua ma riconosciuta</strong>. Il trickster — Anansi, Ijapa, Sungura — è un personaggio insieme amato e diffidato. È il debole che si difende coi mezzi del debole, e questo è giusto e ammirevole. Ma è anche il greedy che prende più del dovuto, e per questo viene punito. <strong>L'astuzia è la virtù di chi non ha la forza ma non per questo deve sottomettersi</strong>: è la virtù degli sfavoriti. È un tema politicamente potentissimo che ha attraversato secoli di oppressione (e infatti le storie di Anansi sono state portate dagli schiavi nelle Americhe e sopravvivono come <em>Anansi</em>, <em>Aunt Nancy</em>, <em>Brer Rabbit</em>). L'astuzia ha però un limite: quando non serve a sopravvivere ma a prendersi più del proprio, diventa hybris e si ritorce contro l'astuto.</p>
+
+    <p>Il quinto valore è la <strong>memoria dei nomi</strong>. Sapere chi sono i tuoi parenti vivi, ricordare i nomi degli antenati fino a sette generazioni indietro, conoscere i nomi dei luoghi e degli spiriti che li abitano: questo è essere persona piena. Le storie servono in larga parte a tenere viva questa memoria. Per i griot mande il sapere è quasi interamente <strong>genealogico</strong>: chi era figlio di chi, chi sposò chi, chi combatté contro chi, chi fondò quale lignaggio. Dimenticare i nomi è il vero analfabetismo di queste culture. <strong>Chi non conosce i propri parenti non sa chi è</strong>.</p>
+
+    <div class="proverb">
+      <div class="proverb-text">Se vuoi andare veloce, vai da solo.<br>Se vuoi andare lontano, vai insieme.</div>
+      <div class="proverb-meta">Proverbio · attribuito a varie tradizioni africane</div>
+      <div class="proverb-gloss">Probabilmente di provenienza akan o multipla, ed è uno dei pochi proverbi africani diventati globali. Cattura con esattezza la differenza con la morale occidentale individualista: la velocità del singolo è meno preziosa della distanza del gruppo. La morale è strutturale, non virtuosa.</div>
+    </div>
+
+    <p>Sul <strong>male</strong> una nota cruciale, parallela a quella fatta per le culture indigene americane e però con una sfumatura diversa. Anche qui il male non è una forza cosmica autonoma, un Diavolo, un Satana. <strong>Il male è la rottura della trama relazionale</strong>: il parente non onorato, l'ospite respinto, il patto violato, l'antenato dimenticato. Ma a differenza delle culture indigene americane (dove il "male" è soprattutto squilibrio cosmologico tra l'umano e il non-umano), in Africa il male è <em>sociale</em> in senso pieno: è ciò che spezza il <strong>noi</strong>. Esistono anche forze pericolose — stregoneria, spiriti malvagi, esseri dei boschi — ma anche queste sono pensate quasi sempre come <em>conseguenze</em> di una rottura sociale, non come cause prime. Una persona invidiata diventa vittima di stregoneria perché qualcosa nella comunità si è rotto. La stregoneria non viene dal nulla.</p>
+
+    <p>Conseguenza narrativa: nelle storie africane raramente c'è il villain assoluto. C'è chi <strong>prende troppo</strong>, chi <strong>dimentica i suoi</strong>, chi <strong>non sa stare al suo posto</strong>. Spesso lo stesso protagonista. Anansi è insieme l'eroe e il furbacchione punito, l'astuto e l'avido. Ijapa la tartaruga è ammirevole nella prima metà della storia, insopportabile nella seconda. <strong>Il giudizio non si dà sui personaggi: si dà sui movimenti</strong> — questo gesto rinsalda i legami, quest'altro li spezza — e gli stessi personaggi possono fare l'uno e l'altro nella stessa storia.</p>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 05 — La tecnica</span>
+      <h2>Come la morale entra nella storia</h2>
+      <p class="section-kicker">Non dichiarata, non dedotta dall'arco del personaggio: <em>condensata nel proverbio</em> che apre o chiude, e <em>verificata dal pubblico</em> che risponde.</p>
+    </div>
+
+    <p>Se l'Occidente arcaico dichiara la morale alla fine in forma di sentenza, l'Occidente moderno la incarna nell'arco di trasformazione del personaggio, il Giappone la lascia emergere dal silenzio, l'India la riassume in versi sentenziosi citati nella cornice, e le culture indigene americane la consegnano al comportamento futuro dell'ascoltatore — l'Africa fa qualcosa di proprio: <strong>la morale è il proverbio, e il proverbio è verificato in tempo reale dalla risposta del pubblico</strong>. Tre dispositivi tecnici la rendono possibile.</p>
+
+    <p>Il primo è la <strong>call-and-response</strong>, che è la grammatica strutturale della performance africana. Il narratore non parla in monologo — apre, e il pubblico risponde. Apre per chiedere il permesso di raccontare:</p>
+
+    <div class="call-response">
+      <div class="cr-line">
+        <span class="cr-role call">Narratore</span>
+        <span class="cr-text">Ka nkan!<span class="gloss">"Vi racconto questa storia!" (mandinka, formula d'apertura)</span></span>
+      </div>
+      <div class="cr-line">
+        <span class="cr-role response">Pubblico</span>
+        <span class="cr-text">Nkanan!<span class="gloss">"Raccontacela!"</span></span>
+      </div>
+      <div class="cr-line">
+        <span class="cr-role call">Narratore</span>
+        <span class="cr-text">[racconta un pezzo, poi si ferma, lancia il proverbio]</span>
+      </div>
+      <div class="cr-line">
+        <span class="cr-role response">Pubblico</span>
+        <span class="cr-text">[risponde con un'esclamazione, completa il proverbio se lo conosce, canta il ritornello]</span>
+      </div>
+    </div>
+
+    <p>Apertura, intermezzi, chiusura: tutto è dialogo. In molte tradizioni il pubblico ha frasi rituali precise da pronunciare a punti precisi della storia, e se il pubblico non risponde, il narratore può smettere di raccontare — non per capriccio, ma perché <strong>letteralmente la storia non esiste senza la risposta</strong>. È un'idea profonda e diversa da tutto quello che abbiamo visto: la storia non è un oggetto che il narratore consegna, è un <em>evento condiviso</em> che esiste solo finché tutti partecipano. La call-and-response non è un'ornamentazione — è la struttura ontologica della narrazione africana.</p>
+
+    <p>Il secondo è il <strong>proverbio incastonato</strong>. Ne abbiamo parlato in §02 come architettura, ma vale ripeterlo qui in chiave morale: il proverbio è il modo in cui la morale entra nella storia <em>senza essere predicata</em>. Lanciato all'inizio (e la storia lo dimostrerà), o arrivato alla fine (e la storia lo avrà preparato), o ripetuto come asse, il proverbio condensa il senso in una forma <strong>memorabile, ritmica, ripetibile</strong>. Non viene argomentato. Non viene spiegato. È — come dicono gli akan — il <em>cavallo del discorso</em>: trasporta il senso da una mente all'altra in modo veloce, e attecchisce per la sua forma poetica più che per il suo argomento. Un bambino africano impara morale e lingua insieme, perché impara per primi i proverbi che la sua comunità usa, e con essi entra anche il modo di pensare della comunità.</p>
+
+    <p>Il terzo è la <strong>canzone partecipata</strong>. La canzone all'interno della storia — il piccolo ritornello che il pubblico canta — è un dispositivo morale potentissimo perché il pubblico <strong>incarna</strong> il senso col corpo. Quando un bambino canta cento volte, in tante storie diverse, una canzoncina che dice <em>"chi prende troppo si ritroverà solo"</em>, quel senso non è argomentato: è entrato nella memoria muscolare. La morale africana <em>si canta</em> prima di essere capita, e questo la rende molto più resistente di una morale ragionata. È difficile dimenticare una canzone che hai cantato cento volte da bambino.</p>
+
+    <div class="proverb">
+      <div class="proverb-text">Il proverbio è il cavallo del discorso:<br>quando il discorso si perde,<br>il proverbio lo ritrova.</div>
+      <div class="proverb-meta">Proverbio · Akan, Ghana</div>
+      <div class="proverb-gloss">Forse il più meta di tutti i proverbi africani: un proverbio sull'uso dei proverbi. Spiega cosa sia, in queste tradizioni, parlare bene: non costruire ragionamenti, ma sapere quale proverbio richiamare al momento giusto. Il proverbio è una scorciatoia che recupera il senso quando le parole si perdono.</div>
+    </div>
+
+    <p>Una nota tecnica importante per chi vuole raccontare in stile africano: <strong>la morale non si dichiara mai con un "e così imparò che…"</strong>. Si lascia parlare il proverbio. Se un proverbio adatto non c'è, si chiude con un'immagine concreta — l'astuto rimasto da solo, il generoso accolto dai parenti, il greedy che sente la fame del suo errore — e si lascia che il senso entri da sé. Il narratore non spiega: <strong>fa accadere</strong>, e il senso accade con lui.</p>
+
+    <div class="callout">
+      <span class="callout-label">Per il narratore</span>
+      Per un bambino di 2-3 anni la call-and-response funziona benissimo (i bambini piccoli adorano partecipare e ripetere), e la canzone funziona ancora meglio (la cantano, la chiedono di nuovo, se la portano addosso). Il proverbio invece a 2-3 anni è ancora troppo astratto: un bambino piccolo non ha il bagaglio per cogliere la condensazione. Ma una <em>versione attenuata</em> funziona: la frase ripetuta, la formula ricorrente che apre e chiude la storia, il "e ancora oggi…" finale. Vedremo nel Doc 3 come tradurre.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 06 — La funzione</span>
+      <h2>Scopo e funzione sociale</h2>
+      <p class="section-kicker">Tessere la comunità, ricordare gli antenati, formare i bambini, intrattenere — e in molte culture, una funzione professionalizzata: il <em>griot</em> come istituzione del sapere.</p>
+    </div>
+
+    <p>La funzione sociale delle storie nelle culture africane sub-sahariane è insieme la più <strong>quotidiana</strong> e la più <strong>professionalmente organizzata</strong> tra quelle che abbiamo incontrato. Quotidiana perché si racconta ovunque: la sera dopo cena, mentre si pesta il miglio, mentre si tessono cestini, durante i lunghi spostamenti, nelle veglie funebri, nelle feste. Professionalizzata perché in molte società dell'Africa occidentale esiste una <strong>casta o categoria sociale specifica</strong> incaricata della custodia della parola: il griot.</p>
+
+    <p>Cominciamo dal quotidiano, perché è la base. La maggior parte delle storie africane è raccontata da chiunque — madri, padri, nonne, nonni, fratelli maggiori — in contesti familiari ordinari. Sono le storie del trickster, le piccole favole degli animali, gli aneddoti dei vicini, i proverbi narrativizzati. Ed è qui che bisogna sottolineare una cosa che colpisce chi viene da una cultura del libro: in Africa <strong>raccontare non è un'attività riservata ai bambini</strong>. Si racconta tra adulti, davanti ai bambini, e i bambini ascoltano dal margine — non perché la storia sia "per loro", ma perché loro sono lì. La stessa storia viene capita a livelli diversi a seconda dell'età, e questo è considerato normale, non un problema da risolvere con una versione "per l'infanzia". <strong>Le storie non sono divise per età come in Occidente</strong>. Sono per tutti, e ognuno trova il suo livello.</p>
+
+    <p>Le funzioni di queste storie quotidiane sono almeno cinque, intrecciate.</p>
+
+    <p>La <strong>funzione di tessitura comunitaria</strong> è la più immediata. Raccontare insieme è stare insieme. Il cerchio del racconto è una cerimonia minima e ripetuta in cui la comunità verifica di esserci ancora — i parenti, i vicini, i bambini, gli anziani, tutti insieme intorno alla parola. Una sera di racconto è un piccolo rituale di rinforzo del <span class="afr">noi</span>. Non è solo intrattenimento: è <strong>cura sociale</strong>.</p>
+
+    <p>La <strong>funzione di trasmissione della saggezza</strong> passa quasi interamente per i proverbi e per le storie del trickster. Il bambino impara a stare al mondo non per istruzioni dirette ma per <em>esposizione ripetuta</em> a centinaia di scenari narrativi in cui qualcuno fa qualcosa, e il proverbio o la canzone cristallizza che cosa è successo. Non si impara una regola: si impara <em>una mappa di situazioni</em>, ricca e sfumata, da cui poi orientarsi.</p>
+
+    <p>La <strong>funzione di mantenimento degli antenati</strong> è specifica e potente. Le storie nominano gli antenati, raccontano dei loro fatti, li mantengono nella comunità dei viventi. Non raccontare è la seconda morte: per questo molte famiglie hanno ricordi narrativi che attraversano cinque o sei generazioni, e che finché vengono raccontati tengono in vita chi è andato.</p>
+
+    <p>La <strong>funzione di risoluzione dei conflitti</strong> è meno conosciuta ma centrale. In molte società africane, le dispute sociali si risolvevano (e in molti contesti ancora si risolvono) attraverso forme narrative: due persone in conflitto vengono fatte sedere davanti a un anziano, ciascuno racconta la sua versione, l'anziano risponde con un proverbio o con una storia che non giudica direttamente ma <em>illumina la situazione</em>. La narrazione è uno strumento di giustizia non punitiva: <strong>risana invece di punire</strong>. È la stessa idea che ritroveremo nel Volume sulla Cina con la mediazione, ma con un sapore diverso — qui non c'è il funzionario imperiale, c'è l'anziano che racconta.</p>
+
+    <p>La <strong>funzione di intrattenimento puro</strong> non va dimenticata, perché altrimenti si rischia di rendere queste storie troppo solenni. Si racconta anche solo per ridere, per stupire, per divertire. Le storie di Anansi sono spesso esilaranti. I bambini ridono, gli adulti ridono. <strong>Una sera di racconto è anche un teatro popolare</strong>, con la sua comicità, le sue voci buffe, i suoi personaggi ricorrenti che il pubblico aspetta con piacere.</p>
+
+    <p>E poi c'è il <strong>griot</strong>, e qui entriamo in qualcosa di unico al mondo. In molte società dell'Africa occidentale (mande, soninke, peul, wolof, hausa) esiste una categoria sociale ereditaria specializzata nella parola: i mande lo chiamano <span class="afr">jeli</span>, i wolof <span class="afr">gewel</span>, i hausa <span class="afr">marok'i</span>. In francese e poi in italiano lo abbiamo chiamato <em>griot</em>, parola di origine incerta. Il griot è insieme storico, genealogista, musicista, oratore, mediatore politico, custode dei segreti delle famiglie potenti. Sa a memoria genealogie di trenta generazioni, conosce le epopee dei regni (il <em>Sundiata</em>, lungo giorni di recitazione), sa quali parole pronunciare in occasione di un matrimonio, di un funerale, di un'incoronazione. È <strong>la memoria viva della società</strong>.</p>
+
+    <p>Tre cose vanno capite dei griot, perché contraddicono diversi luoghi comuni occidentali. Primo: <strong>il loro sapere è un sapere vero</strong>. Le genealogie e le epopee dei griot mande sono state confrontate da storici contemporanei con altre fonti (cronache arabe, archeologia) e si sono rivelate sostanzialmente accurate, con scarti minimi, per fatti vecchi di sette secoli. L'oralità non è memoria approssimativa: è una <em>tecnologia precisa</em>, con tecniche mnemoniche raffinate. Secondo: <strong>il griot non è subordinato al potere</strong>, anche se lo serve. Può lodare il re ma può anche, in modo codificato, criticarlo; può rifiutarsi di cantare la sua gloria. La sua autonomia veniva tradizionalmente rispettata. Terzo: <strong>il griot è una figura sociale ambigua</strong> — temuto e amato insieme, perché chi possiede la parola possiede un potere che va oltre il singolo evento.</p>
+
+    <p>L'esistenza del griot è una smentita potente di un pregiudizio occidentale tenace: l'idea che senza scrittura non ci possa essere storia rigorosa, sapere accumulato, complessità intellettuale. <strong>I griot dimostrano che l'oralità è un sistema sofisticato</strong>, con istituzioni proprie, professionisti dedicati, controlli di qualità interni, e che ha generato saperi paragonabili in profondità ai grandi corpora scritti del mondo. È il caso narrativo più clamoroso al mondo della tesi: l'oralità non è mancanza di scrittura — è una tecnologia diversa.</p>
+
+    <div class="proverb">
+      <div class="proverb-text">Senza il jeli, la storia del re è muta;<br>senza il re, il jeli non ha di chi cantare.</div>
+      <div class="proverb-meta">Tradizione mande · Mali</div>
+      <div class="proverb-gloss">Una formulazione di vecchia tradizione mande, riferita alla relazione di interdipendenza tra il jeli e il sovrano. Non è il re a possedere la sua gloria: è il jeli che la custodisce. Senza la parola che lo nomina, il potere svanisce. È la più antica intuizione di una verità che ogni epoca riscopre — la storia è quella che viene raccontata.</div>
+    </div>
+
+    <p>Per chi racconta a un bambino piccolo è prezioso ricordare che, anche al livello più semplice, raccontare è sempre questo: <strong>tessitura, memoria, formazione, intrattenimento</strong>, tutti insieme. La sera di favola non è solo "addormentare il bambino". È un piccolo cerchio di racconto in cui — per dieci minuti, per venti — la comunità minima di genitore e figlio fa la cosa più antica del mondo: convoca le storie, le tiene vive, e attraverso esse si tiene viva.</p>
+  </section>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume V · Documento 1 di 4</span>
+    <span>Prossimo: Le storie classiche →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

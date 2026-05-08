@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Occidente moderno · La Guida Pratica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4efe6;
+    --paper-deep: #ebe4d4;
+    --ink: #1a1612;
+    --ink-soft: #3d342a;
+    --ink-faint: #6b5d4c;
+    --rule: #c9bda7;
+    --accent: #7a1f24;
+    --accent-soft: #a84147;
+    --highlight: #e8d9b8;
+    --warning: #8b3a1a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 8%, rgba(122, 31, 36, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 92%, rgba(26, 22, 18, 0.05) 0%, transparent 50%);
+    color: var(--ink);
+    font-family: 'EB Garamond', 'Iowan Old Style', Georgia, serif;
+    font-size: 19px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding-bottom: 6rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0 0.06 0 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 3.5rem 0 2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .series-mark::before,
+  .series-mark::after {
+    content: '';
+    flex: 0 0 24px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .series-mark::after { flex: 1; }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 144;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    max-width: 560px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-bottom: 2px solid var(--ink);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    border-right: 1px solid var(--rule);
+    transition: all 0.25s ease;
+    position: relative;
+    background: transparent;
+  }
+
+  nav.tabs a:last-child { border-right: none; }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.6;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--paper);
+    background: var(--ink);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--highlight);
+    opacity: 0.9;
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 3px solid var(--accent);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ===== TOC ===== */
+  .toc {
+    margin: 2rem 0 4rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+  }
+
+  .toc-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 1.5rem;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    padding-left: 1.8rem;
+    position: relative;
+  }
+
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .toc a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--rule);
+    transition: border-color 0.2s;
+  }
+
+  .toc a:hover { border-bottom-color: var(--accent); }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 4rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    font-variation-settings: "opsz" 80;
+  }
+
+  .section-kicker {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  /* ===== LESSONS ===== */
+  .lesson {
+    margin: 1.8rem 0;
+    padding: 1.6rem 1.8rem 1.6rem 4.5rem;
+    background: var(--paper-deep);
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+
+  .lesson-num {
+    position: absolute;
+    left: 1.2rem;
+    top: 1.5rem;
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 2.4rem;
+    line-height: 1;
+    color: var(--accent);
+    font-variation-settings: "opsz" 144;
+  }
+
+  .lesson h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
+
+  .lesson p {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .lesson p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .lesson p em {
+    font-style: italic;
+  }
+
+  /* ===== FORMULA ===== */
+  .formula {
+    margin: 2.5rem 0;
+    padding: 2.2rem 1.5rem;
+    background: var(--ink);
+    color: var(--paper);
+    text-align: center;
+  }
+
+  .formula-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--highlight);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .formula-line {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    font-weight: 400;
+  }
+
+  .formula-line .op {
+    display: inline-block;
+    margin: 0 0.5rem;
+    color: var(--accent-soft);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .formula-line .term {
+    display: inline-block;
+    padding: 0.15em 0.5em;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    margin: 0.2rem 0.1rem;
+    font-style: italic;
+  }
+
+  .formula-line .term.start { background: rgba(232, 217, 184, 0.15); }
+  .formula-line .term.end { background: rgba(168, 65, 71, 0.25); }
+
+  .formula-equals {
+    margin: 1.8rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.15);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--highlight);
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    counter-reset: step;
+    margin: 2rem 0;
+  }
+
+  .step {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.5rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--accent);
+    grid-column: 1;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .step-content h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+  }
+
+  .step-content p {
+    font-size: 0.98rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .step-content p:last-child { margin-bottom: 0; }
+
+  .step-content em.example {
+    display: block;
+    margin-top: 0.6rem;
+    padding: 0.7rem 0.9rem;
+    background: var(--paper-deep);
+    border-left: 2px solid var(--rule);
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  .step-content em.example::before {
+    content: 'esempio · ';
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-right: 0.4em;
+  }
+
+  /* ===== INCIPIT ===== */
+  .incipits {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    margin: 2rem 0;
+  }
+
+  .incipit {
+    padding: 1.4rem 1.6rem;
+    background: var(--paper-deep);
+    border-left: 3px solid var(--ink);
+    position: relative;
+  }
+
+  .incipit-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+
+  .incipit p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .incipit-note {
+    font-family: 'EB Garamond', serif;
+    font-style: normal;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.45;
+  }
+
+  /* ===== ERRORS ===== */
+  .error {
+    margin: 1.5rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(139, 58, 26, 0.06);
+    border-left: 3px solid var(--warning);
+  }
+
+  .error-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .error-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    color: var(--warning);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .error h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--ink);
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  .error p {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+
+  .error p:last-child { margin-bottom: 0; }
+
+  .error p.fix {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
+    border-top: 1px dashed rgba(139, 58, 26, 0.3);
+    color: var(--ink);
+  }
+
+  .error p.fix::before {
+    content: '→ ';
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    display: inline-block;
+    padding: 0.05em 0.3em;
+    background: var(--highlight);
+    font-style: italic;
+    border-bottom: 1px solid var(--accent);
+  }
+
+  /* ===== FINAL CARD ===== */
+  .final-card {
+    margin: 5rem 0 3rem;
+    padding: 2.5rem 2rem;
+    background: var(--paper);
+    border: 2px solid var(--ink);
+    box-shadow: 4px 4px 0 var(--accent);
+    text-align: center;
+  }
+
+  .final-card-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: block;
+  }
+
+  .final-card h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .final-card p {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-family: 'Fraunces', serif;
+    color: var(--accent);
+    font-size: 1.5rem;
+    letter-spacing: 0.5em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 17px; }
+    .container { padding: 0 1.4rem; }
+    h1.title { font-size: 2.2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .lead { font-size: 1.1rem; padding-left: 1.2rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(odd) { border-right: 1px solid var(--rule); }
+    .toc ol { grid-template-columns: 1fr; }
+    .lesson { padding: 1.4rem 1.4rem 1.4rem 4rem; }
+    .lesson-num { font-size: 2rem; left: 1rem; top: 1.3rem; }
+    .formula { padding: 1.6rem 1rem; }
+    .formula-line { font-size: 1.1rem; line-height: 2; }
+    .step { grid-template-columns: 45px 1fr; gap: 1rem; }
+    .step::before { font-size: 2rem; }
+    .final-card { padding: 1.8rem 1.4rem; }
+    .final-card h3 { font-size: 1.25rem; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .toc, section, .final-card { animation: fadeUp 0.7s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .toc { animation-delay: 0.15s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+  section:nth-of-type(5) { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume I</div>
+    <h1 class="title">La guida<br><em>pratica</em></h1>
+    <p class="subtitle">Da tenere aperta sul telefono mentre racconti, o da rileggere cinque minuti prima della nanna.</p>
+    <div class="meta-row">
+      <span>Documento 4 di 4</span>
+      <span>Operativo</span>
+      <span>Consultabile</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="occidente_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="occidente_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="occidente_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Un volume di teoria può essere letto una volta. Una guida deve essere usabile in cinque minuti, anche stanchi, anche di fretta.</p>
+  </div>
+
+  <div class="toc">
+    <span class="toc-label">In questo documento</span>
+    <ol>
+      <li><a href="#lezioni">Le quattro lezioni chiave</a></li>
+      <li><a href="#formula">La formula</a></li>
+      <li><a href="#passi">Costruire una storia in sei passi</a></li>
+      <li><a href="#incipit">Quattro incipit pronti</a></li>
+      <li><a href="#errori">Cinque errori da evitare</a></li>
+    </ol>
+  </div>
+
+  <!-- ============ LEZIONI ============ -->
+  <section id="lezioni">
+    <span class="section-num">§ 01 — Le lezioni</span>
+    <h2>Le quattro lezioni chiave</h2>
+    <p class="section-kicker">I principi della cultura occidentale moderna che cambiano davvero il modo di raccontare a un bambino di 2-3 anni.</p>
+
+    <div class="lesson">
+      <span class="lesson-num">1</span>
+      <h3>La struttura è il messaggio</h3>
+      <p>L'Occidente moderno racconta storie in cui qualcuno parte da uno stato e arriva a un altro stato migliore. <strong>Questa forma stessa è già un insegnamento</strong>: dice al bambino che le situazioni cambiano, che dal disagio si esce, che lo sforzo produce risultati. Non devi aggiungere una morale esplicita complicata — la struttura sta già insegnando ottimismo, agency, fiducia nel cambiamento. <em>Tutto il resto è decorazione.</em></p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">2</span>
+      <h3>Due tentativi falliti, uno riuscito</h3>
+      <p>Il dispositivo più potente che la fiaba occidentale ha codificato. Il protagonista prova una volta — non funziona. Prova un'altra — non funziona. Prova una terza — funziona. <strong>Questa è la forma minima del coraggio individuale</strong> tradotta per un cervello di tre anni. Non insegna "sii eroico": insegna "riprova". È la lezione di vita più utile che si possa dare a quell'età, e funziona da sola, senza commentari.</p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">3</span>
+      <h3>Conflitto sì, cattivi no</h3>
+      <p>Tieni il conflitto (la cultura occidentale ne ha bisogno: senza problema da risolvere, la storia non parte) ma rinuncia al male personificato. <strong>L'ostacolo dev'essere una situazione, non un nemico</strong>. La pozzanghera, la mensola troppo alta, il giocattolo perso, il buio. A 2-3 anni il villain con cattive intenzioni non è una convenzione — è un mostro vero. Tornerà utile dai 5-6 anni. Per ora: ostacoli neutri, problemi concreti.</p>
+    </div>
+
+    <div class="lesson">
+      <span class="lesson-num">4</span>
+      <h3>La morale si dichiara, una sola, alla fine</h3>
+      <p>Tre secoli di romanzo moderno hanno insegnato a "lasciare che la morale emerga". <strong>A questa età è sbagliato</strong>: torna alla forma arcaica della tua cultura. Una sola lezione, dichiarata in chiaro, alla fine. Frasi come <em>"e così imparò che..."</em> non sono cliché da evitare: sono il dispositivo giusto. La complessità interpretativa è per dopo. Adesso il bambino ha bisogno di sapere come va a finire e cosa significa.</p>
+    </div>
+  </section>
+
+  <!-- ============ FORMULA ============ -->
+  <section id="formula">
+    <span class="section-num">§ 02 — La formula</span>
+    <h2>La formula</h2>
+    <p class="section-kicker">Uno schema visivo da memorizzare. Una storia occidentale per 2-3 anni in una riga.</p>
+
+    <div class="formula">
+      <span class="formula-label">Forma minima</span>
+      <div class="formula-line">
+        <span class="term start">Stato A felice</span>
+        <span class="op">+</span>
+        <span class="term">Problema concreto</span>
+        <span class="op">→</span>
+        <span class="term">Tentativo 1 fallisce</span>
+        <span class="op">→</span>
+        <span class="term">Tentativo 2 fallisce</span>
+        <span class="op">→</span>
+        <span class="term">Tentativo 3 funziona</span>
+        <span class="op">+</span>
+        <span class="term end">Stato B + lezione</span>
+      </div>
+      <div class="formula-equals">
+        sei battiti, una morale, niente cattivi
+      </div>
+    </div>
+
+    <p style="font-size: 0.95rem; color: var(--ink-faint); font-style: italic; text-align: center; margin-top: 1rem;">
+      Memorizza questa riga e potrai costruire una storia mentre versi l'acqua del bagno.
+    </p>
+  </section>
+
+  <!-- ============ PASSI ============ -->
+  <section id="passi">
+    <span class="section-num">§ 03 — La costruzione</span>
+    <h2>Costruire una storia in sei passi</h2>
+    <p class="section-kicker">Da fare in trenta secondi, mentale, prima di iniziare. Una volta presa la mano diventa istintivo.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-content">
+          <h3>Scegli un protagonista piccolo</h3>
+          <p>Animale, bambino, oggetto antropomorfo. Sempre <strong>uno solo</strong>. Possibilmente piccolo come tuo figlio (orsetto, coniglietto, topolino). Se hai un personaggio ricorrente che funziona, riusalo. Più viene riusato, più tuo figlio lo amerà.</p>
+          <em class="example">Nino l'orsetto. La coniglietta Lila. Topolino Pim.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-content">
+          <h3>Stabilisci uno stato A felice e specifico</h3>
+          <p>Non "viveva in un bosco". <strong>Una cosa concreta che gli piace fare</strong>. Tre o quattro parole, con un'azione visibile. Questo dà calore alla storia e crea il contrasto col problema che arriva.</p>
+          <em class="example">"Aveva un palloncino rosso." "Le piaceva saltare nei prati." "Mangiava sempre le more."</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-content">
+          <h3>Introduci un problema concreto, non cattivo</h3>
+          <p>Una situazione, mai un nemico. Qualcosa che è andato storto. <strong>Deve essere visualizzabile in mezzo secondo</strong>. Niente trame psicologiche, niente conflitti morali. Una cosa è caduta, è scomparsa, è troppo lontana, si è rotta.</p>
+          <em class="example">Il palloncino è caduto in pozzanghera. Le more sono troppo in alto. La palla è rotolata sotto il divano.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-content">
+          <h3>Inventa due tentativi che falliscono</h3>
+          <p>Devono essere <strong>concreti, fisici, diversi tra loro</strong>. Tra i due tentativi inserisci sempre la frase ricorrente: <em>"Ma [protagonista] voleva davvero [oggetto/obiettivo]."</em> Questa frase è il ritornello, e diventerà la cosa che tuo figlio ti dirà insieme dopo qualche racconto.</p>
+          <em class="example">Prima allunga la zampa: troppo fredda. Poi prende un bastoncino: troppo corto. Poi: salta. Poi: chiama. Poi: si arrampica.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-content">
+          <h3>Costruisci il terzo tentativo che funziona</h3>
+          <p>Il terzo tentativo deve essere <strong>un piccolo passo in più</strong> rispetto ai precedenti — non magia, non aiuto esterno, non fortuna. Un coraggio in più, uno strumento in più, un'idea in più. È qui che si trasmette la lezione: ce l'ha fatta perché ha provato ancora, in modo un po' diverso.</p>
+          <em class="example">Fa un respiro grande grande, chiude gli occhi, ed entra nella pozzanghera. Prende uno sgabellino. Si arrampica sull'albero piano piano.</em>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-content">
+          <h3>Chiudi con stato B + lezione + formula rituale</h3>
+          <p>Tre cose, in quest'ordine: il protagonista è di nuovo felice (stato B), una frase di morale dichiarata in chiaro (<em>"e così imparò che..."</em>), e una chiusura rituale (<em>"e vissero felici e contenti"</em> o simili). <strong>Le tre cose insieme segnalano al bambino che la storia è finita</strong> e che tutto è a posto. Non saltare la chiusura rituale: serve a chiudere emotivamente, non solo narrativamente.</p>
+          <em class="example">"Tornò a casa contento. E imparò che quando una cosa è importante, vale la pena provare anche se è difficile. E vissero felici e contenti."</em>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INCIPIT ============ -->
+  <section id="incipit">
+    <span class="section-num">§ 04 — Le aperture</span>
+    <h2>Quattro incipit pronti</h2>
+    <p class="section-kicker">Frasi di apertura nello stile della cultura occidentale moderna per bambini piccoli, da usare subito.</p>
+
+    <div class="incipits">
+      <div class="incipit">
+        <span class="incipit-tag">Incipit classico fiabesco</span>
+        <p>"C'era una volta un piccolo [animale], che si chiamava [nome]. E [nome] aveva una cosa che amava più di tutto al mondo: [oggetto]."</p>
+        <p class="incipit-note">Il più sicuro. Stabilisce subito protagonista, stato A felice, e un oggetto che diventerà centrale al problema. Funziona sempre.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con tempo specifico</span>
+        <p>"Una mattina di sole, [nome] si svegliò felice. Sapeva esattamente cosa voleva fare quel giorno: [azione]."</p>
+        <p class="incipit-note">Più cinematografico. Pianta subito il tempo lineare ("una mattina") e il desiderio del protagonista. Buono per storie con un obiettivo da raggiungere.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit con tuo figlio dentro</span>
+        <p>"C'era una volta un bambino che si chiamava [nome di tuo figlio]. E [nome] aveva [tre anni / due anni], e aveva [un dettaglio vero — i capelli ricci, il pigiama dei dinosauri]."</p>
+        <p class="incipit-note">Potente, da usare con parsimonia. Il bambino entra direttamente nella storia. Funziona meglio quando vuoi affrontare una piccola paura o difficoltà reale.</p>
+      </div>
+
+      <div class="incipit">
+        <span class="incipit-tag">Incipit a ripresa di personaggio</span>
+        <p>"Ti ricordi [nome del personaggio della volta scorsa]? Bene. Quel giorno, [nome] stava facendo una cosa nuova..."</p>
+        <p class="incipit-note">Costruisce una saga. Tuo figlio ha già il personaggio in testa, parte già coinvolto. Da usare quando un protagonista funziona — in genere si capisce dopo due o tre storie.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ERRORI ============ -->
+  <section id="errori">
+    <span class="section-num">§ 05 — Le trappole</span>
+    <h2>Cinque errori da evitare</h2>
+    <p class="section-kicker">Le trappole tipiche di chi viene da una cultura narrativa adulta e cerca di raccontare a un bambino di 2-3 anni.</p>
+
+    <div class="error">
+      <div class="error-header">
+        <span class="error-mark">Errore 1</span>
+      </div>
+      <h3>Costruire un cattivo personificato perché sembra "una vera storia"</h3>
+      <p>L'istinto adulto dice: ci vuole un villain. Lo abbiamo visto in Cappuccetto Rosso e in Star Wars, ed è il riflesso più radicato della nostra cultura. Ma <strong>a 2-3 anni un cattivo con cattive intenzioni fa paura davvero</strong> — non è una convenzione narrativa.</p>
+      <p class="fix">Sostituisci il cattivo con una situazione neutra. Il "lupo" diventa "il bosco buio". La "strega" diventa "la pioggia che non smette". Mantieni il conflitto, elimina l'antagonista intenzionale.</p>
+    </div>
+
+    <div class="error">
+      <div class="error-header">
+        <span class="error-mark">Errore 2</span>
+      </div>
+      <h3>Lasciare la morale "in sospeso" perché si crede sia più sofisticato</h3>
+      <p>L'adulto colto ha imparato dal romanzo moderno che dichiarare la morale è didascalico. Vuole "lasciare che il bambino arrivi da solo". <strong>A questa età "arrivare da soli" significa non arrivare</strong>. Il bambino di tre anni non ha gli strumenti per inferire una lezione da una trama.</p>
+      <p class="fix">Dichiara la lezione, una sola, in chiaro, alla fine. <em>"E imparò che..."</em> è la formula giusta. Non aver paura di sembrare didascalico: a questa età è la cosa giusta.</p>
+    </div>
+
+    <div class="error">
+      <div class="error-header">
+        <span class="error-mark">Errore 3</span>
+      </div>
+      <h3>Mettere troppi personaggi perché la storia "sembra povera"</h3>
+      <p>L'adulto pensa che una storia con un solo protagonista sia spoglia. Aggiunge un amico, un genitore, un mentore. <strong>Risultato: il bambino si confonde su chi è "il personaggio"</strong>. A 2-3 anni il cervello tiene un protagonista per volta, esattamente come tiene un'azione per volta.</p>
+      <p class="fix">Uno solo, sempre. Se proprio devi, un comprimario muto sullo sfondo (la mamma che è in casa, il papà che dorme). Ma il fuoco deve essere su uno, e quell'uno deve agire.</p>
+    </div>
+
+    <div class="error">
+      <div class="error-header">
+        <span class="error-mark">Errore 4</span>
+      </div>
+      <h3>Aggiungere descrizioni perché "danno atmosfera"</h3>
+      <p>"Il bosco era frondoso e misterioso, con grandi querce che si stagliavano contro un cielo plumbeo..." <strong>Hai perso il bambino</strong>. La narrativa adulta vive di descrizione, atmosfera, ambiente. La narrativa per 2-3 anni vive di azione e onomatopea.</p>
+      <p class="fix">Verbi, non aggettivi. <em>"Camminava — toc toc toc — nel bosco. Era buio. Brrr."</em> Ogni descrizione che non è un suono o un'azione è un secondo di noia.</p>
+    </div>
+
+    <div class="error">
+      <div class="error-header">
+        <span class="error-mark">Errore 5</span>
+      </div>
+      <h3>Voler raccontare "una storia diversa ogni sera"</h3>
+      <p>L'adulto teme di annoiare. Si sforza di inventare cose nuove. <strong>Ma i bambini di 2-3 anni amano la ripetizione</strong> — è il loro principale meccanismo di apprendimento e rassicurazione. La stessa storia, raccontata cinque sere di fila, non li annoia: li nutre.</p>
+      <p class="fix">Quando una storia funziona, ripetila. Cambia un dettaglio piccolo se vuoi (un colore, un nome). Ma il telaio resta. Tuo figlio ti chiederà <em>"ancora quella di Nino?"</em> — e quella domanda è un complimento al narratore, non un fallimento dell'inventiva.</p>
+    </div>
+  </section>
+
+  <!-- ============ FINAL CARD ============ -->
+  <div class="final-card">
+    <span class="final-card-label">Promemoria finale</span>
+    <h3>"Una storia per un bambino di tre anni non è una storia adulta più semplice — è una struttura ancestrale che sopravvive."</h3>
+    <p>Stai usando la forma più antica della tua cultura — quella che ha funzionato per secoli prima che la modernità inventasse la psicologia interiore, la morale ambigua e i Viaggi dell'Eroe in tre atti. Va bene così. Anzi: è esattamente questo che serve.</p>
+  </div>
+
+  <div class="end-mark">· · ·</div>
+
+  <footer>
+    <span>Volume I · Documento 4 di 4 · Fine</span>
+    <span>Occidente moderno · completo</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture indigene americane · Le Storie Classiche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1e9d9;
+    --paper-deep: #e6dcc6;
+    --paper-warm: #ebe1cc;
+    --ink: #2a201a;
+    --ink-soft: #4a3b2f;
+    --ink-faint: #8a7660;
+    --rule: #c8b89a;
+    --ocra: #c47a3d;
+    --ocra-deep: #9c5a28;
+    --rust: #a64a2c;
+    --night: #2c3854;
+    --charcoal: #2a201a;
+    --highlight: #ddc89a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(166, 74, 44, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(44, 56, 84, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 60% 40%, rgba(196, 122, 61, 0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Lora', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='12'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4.5rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .symbol-mark {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--rust);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--rust);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 2px solid var(--rust);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 580px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  /* ===== STORY OVERVIEW ===== */
+  .story-overview {
+    margin: 3rem 0 4rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story-overview > div {
+    padding: 1.6rem 1.3rem;
+    position: relative;
+  }
+
+  .story-overview > div + div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 18%;
+    height: 64%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .story-overview .story-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .story-overview h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .story-overview p {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ===== STORY SECTIONS ===== */
+  .story {
+    margin: 6rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .story-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .story-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .story-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    font-weight: 400;
+  }
+
+  .story-mark .num {
+    font-family: 'Eczar', serif;
+    font-size: 1.5rem;
+    color: var(--ink);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-style: italic;
+  }
+
+  .story h2 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 2.1rem;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .story h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rust);
+  }
+
+  .story-source {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  /* ===== INTERIOR HEADINGS ===== */
+  .story h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: 2.8rem 0 1.2rem;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+
+  .story h3::before {
+    content: '○';
+    color: var(--rust);
+    font-size: 0.7rem;
+  }
+
+  .story p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .story p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .story p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== NARRATIVE BLOCK - VOCE ORALE ===== */
+  .narrative {
+    margin: 1.8rem 0 2.5rem;
+    padding: 0;
+    position: relative;
+  }
+
+  .narrative-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    display: block;
+  }
+
+  .narrative-label::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--rust);
+    margin-top: 0.6rem;
+    opacity: 0.6;
+  }
+
+  .narrative p {
+    text-align: left;
+    font-family: 'Lora', serif;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    margin-bottom: 1.3rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .narrative p em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  /* Frasi-eco: per ritmare l'oralità */
+  .narrative p.echo {
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-style: italic;
+    color: var(--rust);
+    font-size: 1.15rem;
+    margin: 1.2rem 0;
+    padding: 0.5rem 0;
+  }
+
+  /* Refrain ritmico (ripetizione cerimoniale) */
+  .narrative p.refrain {
+    margin-left: 1.5rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 1rem;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    background: var(--highlight);
+    padding: 0.05em 0.3em;
+    font-style: italic;
+    border-bottom: 1px solid var(--rust);
+    color: var(--ink);
+  }
+
+  .indig {
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 500;
+  }
+
+  /* ===== ORAL VOICE QUOTE ===== */
+  .voice {
+    margin: 3rem -1rem;
+    padding: 2.2rem 2rem;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .voice::before,
+  .voice::after {
+    content: '— · —';
+    display: block;
+    color: var(--rust);
+    font-size: 0.85rem;
+    font-style: normal;
+    letter-spacing: 0.5em;
+    margin: 0 auto 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .voice::after {
+    margin: 1rem auto 0;
+  }
+
+  /* ===== CIRCLE DIAGRAM (per analisi) ===== */
+  .circle-diagram {
+    margin: 2.5rem 0;
+    padding: 2rem 1rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .circle-diagram svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .circle-caption {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink-faint);
+    max-width: 520px;
+    margin: 1rem auto 0;
+    line-height: 1.5;
+  }
+
+  /* ===== ANALYSIS ===== */
+  .analysis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  /* ===== WHY THIS STORY ===== */
+  .why-this {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.7rem;
+    border: 1px solid var(--rust);
+    background: rgba(166, 74, 44, 0.03);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .why-this strong {
+    font-style: normal;
+    font-weight: 600;
+    color: var(--rust);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.66rem;
+    display: block;
+    margin-bottom: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(166, 74, 44, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    font-size: 0.95em;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== AVVERTENZA STORIA SACRA ===== */
+  .nota-sacra {
+    margin: 2rem 0;
+    padding: 1.4rem 1.7rem;
+    background: var(--paper-deep);
+    border: 1px solid var(--ocra-deep);
+    border-left: 3px solid var(--ocra-deep);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .nota-sacra-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ocra-deep);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 600;
+  }
+
+  /* ===== SYNTHESIS ===== */
+  .synthesis {
+    margin: 6rem 0 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+  }
+
+  .synthesis h2 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.95rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  .synthesis-kicker {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .synthesis p {
+    text-align: left;
+    margin-bottom: 1.4rem;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.15rem; padding-left: 1.4rem; }
+    .story h2 { font-size: 1.65rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .voice { font-size: 1.15rem; margin: 2rem 0; }
+    .story-overview { grid-template-columns: 1fr; }
+    .story-overview > div + div::before { display: none; }
+    .story-overview > div { border-top: 1px solid var(--rule); }
+    .story-overview > div:first-child { border-top: none; }
+    .narrative p { font-size: 1.02rem; }
+    .story { margin: 4rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .story-overview, .story, .synthesis { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .story-overview { animation-delay: 0.15s; }
+  .story:nth-of-type(1) { animation-delay: 0.2s; }
+  .story:nth-of-type(2) { animation-delay: 0.25s; }
+  .story:nth-of-type(3) { animation-delay: 0.3s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume IV</div>
+    <svg class="symbol-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="26" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="30" cy="30" r="17" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.65"/>
+      <circle cx="30" cy="30" r="8" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.8"/>
+      <circle cx="30" cy="30" r="2" fill="#a64a2c" opacity="0.9"/>
+    </svg>
+    <h1 class="title">Le storie<br><em>classiche</em></h1>
+    <p class="subtitle">Tre racconti dalle tradizioni indigene americane, scelti come tre angolazioni complementari: il Trickster ridicolo che opera con i parenti animali, la donna che fonda la fratellanza con il bisonte, il mostro che ricorda cosa siamo se la fame ci divora.</p>
+    <div class="meta-row">
+      <span>Documento 2 di 4</span>
+      <span>Storie classiche</span>
+      <span>Tono narrativo + analitico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="indigene_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="indigene_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="indigene_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Tre storie dalle tradizioni indigene del Nord America. Un Trickster, una donna sacra, un mostro che è anche specchio.</p>
+    <p>In tutte e tre il cerchio si chiude. In tutte e tre c'è un parente non-umano al centro. In tutte e tre il "male" non è un nemico ma uno squilibrio del mondo che chiede di essere ricomposto.</p>
+  </div>
+
+  <div class="story-overview">
+    <div>
+      <div class="story-num">Storia I</div>
+      <h3>Coyote ruba il fuoco</h3>
+      <p>Il Trickster e la cooperazione tra parenti animali</p>
+    </div>
+    <div>
+      <div class="story-num">Storia II</div>
+      <h3>La Donna Bisonte Bianco</h3>
+      <p>Il parentado fondativo con l'animale sacro</p>
+    </div>
+    <div>
+      <div class="story-num">Storia III</div>
+      <h3>Il Wendigo</h3>
+      <p>Il male come voracità che si trasforma</p>
+    </div>
+  </div>
+
+  <!-- ============ STORIA I ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">i</span> Storia di Coyote · Trickster</div>
+      <h2>Coyote ruba il fuoco —<br><em>il Trickster e i parenti che corrono</em></h2>
+      <p class="story-source">Tradizioni del Pacifico nord-occidentale e delle Pianure (Karuk, Klamath, Nez Perce, varianti Shoshone) · una delle storie di Coyote più diffuse del Nord America · trascritta in molte versioni, qui in una sintesi rispettosa</p>
+    </div>
+
+    <span class="narrative-label">Il racconto</span>
+    <div class="narrative">
+      <p>Quando il mondo era ancora giovane, gli umani non avevano il fuoco. Erano nuovi sulla terra. Avevano i denti, le mani, la voce. Ma non avevano il fuoco. La notte tremavano. D'inverno morivano di freddo. Mangiavano tutto crudo. Non avevano luce per vedersi tra loro nel buio.</p>
+
+      <p>Il fuoco c'era. Ma non da loro. Il fuoco era custodito sulla cima di una montagna lontana, da tre Esseri di Fuoco — tre vecchie sorelle, dicono alcune versioni; tre spiriti gelosi, dicono altre. Le tre custodivano il fuoco notte e giorno. Si davano il turno. Quando una dormiva, le altre due vegliavano. Il fuoco non lasciava mai la montagna.</p>
+
+      <p>Coyote camminava una sera vicino a un villaggio umano. Vide gli umani che tremavano, stretti gli uni agli altri, con i bambini piccoli che piangevano per il freddo. Coyote si fermò. Coyote guardò.</p>
+
+      <p class="echo">Coyote pensò: <em>questo non va bene.</em></p>
+
+      <p>Tornò a casa sua. Pensò. Pensò. Pensò. Non era saggio, Coyote. Non era nemmeno particolarmente buono. Ma quella sera aveva visto i bambini piangere, e una cosa in lui non lo lasciava in pace.</p>
+
+      <p>Allora cominciò a chiamare gli altri animali. Andò dallo Scoiattolo. Andò dalla Rana. Andò dalla Lince. Andò dal Legno-secco-da-bruciare. Sì, anche il Legno era un parente, in quei tempi. A ognuno chiese: <em>vuoi aiutarmi a portare il fuoco agli umani?</em></p>
+
+      <p>Disse loro il piano. Disse: <em>il fuoco è custodito troppo bene. Da solo non posso. Ma se ci mettiamo in fila lungo la strada dalla montagna fino al villaggio, possiamo passarci il fuoco di mano in mano. Velocemente. Prima che le tre custodi ci raggiungano.</em></p>
+
+      <p>Gli animali esitarono. Lo Scoiattolo disse: <em>è pericoloso.</em> La Rana disse: <em>le custodi sono potenti.</em> La Lince disse: <em>perché vuoi farlo, Coyote? Tu non sei mai stato così.</em></p>
+
+      <p>Coyote rispose: <em>non lo so perché. Forse perché ho visto i bambini piangere. Forse perché un giorno avrò sete e gli umani mi daranno acqua. Forse perché sono stupido. Ma lo voglio fare. Mi aiutate?</em></p>
+
+      <p>Si misero d'accordo.</p>
+
+      <p>Quella notte si disposero in fila. Lo Scoiattolo a metà della discesa della montagna. La Rana al guado del fiume. La Lince nella foresta. Il Legno-secco vicino al villaggio. Coyote in cima alla montagna, vicino al fuoco delle tre custodi.</p>
+
+      <p>Coyote aspettò. Una delle tre custodi dormiva. Le altre due si stavano scaldando le mani al fuoco. Coyote si avvicinò strisciando. Si avvicinò. Si avvicinò ancora. Quando fu vicino abbastanza, balzò — afferrò un tizzone ardente con la coda — e cominciò a correre giù per la montagna.</p>
+
+      <p class="echo"><em>Le tre custodi si svegliarono tutte insieme. — Il fuoco! Il fuoco se ne va!</em></p>
+
+      <p>Le tre custodi si lanciarono all'inseguimento. Erano veloci. Erano molto veloci. Coyote correva, correva, ma sentiva il calore del tizzone bruciargli la coda — e da quel giorno la coda di Coyote ha la punta nera, dice la storia, perché quella notte si bruciò.</p>
+
+      <p>Coyote arrivò allo Scoiattolo. Gli passò il tizzone. Lo Scoiattolo lo prese sulla schiena e corse — corse — corse. E le tre custodi correvano dietro. La schiena dello Scoiattolo si bruciò, e da quel giorno gli scoiattoli hanno la coda piegata indietro sulla schiena, dicono — perché quella notte la sua schiena fu piegata dal fuoco.</p>
+
+      <p>Lo Scoiattolo arrivò alla Rana. Le passò il tizzone. La Rana se lo mise in bocca e saltò nel fiume — un salto enorme — un salto come nessuna rana aveva mai fatto. E le tre custodi arrivarono al fiume, si fermarono al guado. Una di loro afferrò la Rana per la coda. La Rana, per scappare, tirò via il proprio corpo lasciando la coda nella mano della custode — e da quel giorno le rane non hanno la coda, dicono, perché quella notte la Rana ha lasciato la sua coda alle custodi del fuoco.</p>
+
+      <p>La Rana arrivò alla Lince. Le passò il tizzone. La Lince corse nella foresta. Era veloce. Le tre custodi non riuscivano a vederla nel buio degli alberi. La Lince arrivò al Legno-secco.</p>
+
+      <p>Il Legno-secco prese il fuoco dentro di sé. Lo nascose. Lo nascose così bene che le tre custodi, quando arrivarono, non lo videro più. Cercarono dappertutto. Niente. Non sapevano che il fuoco era nascosto dentro al Legno.</p>
+
+      <p>Le tre custodi tornarono alla montagna, sconfitte.</p>
+
+      <p>E Coyote insegnò agli umani come tirare fuori il fuoco dal Legno-secco. Gli mostrò come strofinare due bastoni. Gli mostrò come soffiare sulla scintilla. Da quella notte gli umani hanno il fuoco — ma non lo prendono direttamente: <strong>lo chiedono al Legno, ogni volta</strong>. Perché è il Legno che lo custodisce dentro di sé, da allora.</p>
+
+      <p class="echo">Il fuoco era venuto agli umani. La notte adesso era calda. I bambini non piangevano più.</p>
+
+      <p>Ma Coyote se ne andò. Non rimase a farsi ringraziare. Era già altrove, a combinare un altro pasticcio. Forse a rubare qualcos'altro. Forse a cadere in un fiume. Coyote era così.</p>
+
+      <p>Solo che, da quella notte, in tutti i villaggi umani, quando si accendeva il fuoco la sera, qualcuno guardava sempre fuori nell'oscurità, dove sapevano che Coyote girava — e diceva: <em>grazie, vecchio scemo. Grazie.</em></p>
+    </div>
+
+    <h3>Il Trickster come pedagogia involontaria</h3>
+
+    <p>Coyote è la figura più diffusa nella narrativa indigena del Nord America. Compare in centinaia di storie, dalle Pianure al Pacifico nord-occidentale, dal Sud-Ovest al Plateau. È sempre lo stesso personaggio — astuto, ridicolo, vorace, generoso, sciocco, geniale. È contemporaneamente <strong>creatore del mondo e idiota di villaggio</strong>. Per capire come funziona, bisogna abbandonare le categorie occidentali: Coyote non è "buono né cattivo", non è nemmeno "moralmente complesso" nel senso del romanzo moderno. È <strong>una figura cosmologica completa</strong>: contiene tutto.</p>
+
+    <p>Notare cosa fa la storia. Coyote ruba il fuoco. Tecnicamente è un atto di trasgressione: prende qualcosa che non gli appartiene, contro la volontà delle tre custodi. Una storia occidentale a questo punto dovrebbe scegliere: o Coyote è un eroe (il fine giustifica il mezzo, gli umani avevano bisogno) o è un ladro (la trasgressione si paga). <strong>La storia indigena non sceglie</strong>. Coyote è entrambe le cose. Ha aiutato gli umani — ma è anche un ladro, e nelle altre storie del ciclo lo sappiamo bene, perché lo vedremo rubare carne, ingannare amici, finire in disgrazie autocausate.</p>
+
+    <p>Questo è il dispositivo tecnico fondamentale: <strong>il Trickster è una macchina per produrre giudizio etico nell'ascoltatore, senza darlo</strong>. Il narratore non commenta. Non dice "Coyote ha fatto bene", non dice "Coyote ha fatto male". Dice solo: Coyote ha fatto questo. È successo così. Cosa ne pensiamo? L'ascoltatore — anche un bambino — è chiamato a formare il proprio giudizio, e a formarlo in <strong>modo plurimo</strong>. Perché in questa stessa storia Coyote è ammirevole (compassione per i bambini umani), ridicolo (la coda nera), generoso (organizza la rete), egoista (se ne va senza farsi ringraziare). Tutte queste cose insieme, nello stesso personaggio, nella stessa azione.</p>
+
+    <div class="voice">
+      Coyote non è un esempio.<br>Coyote è una domanda.<br>E ogni volta che senti la storia,<br>la domanda è un po' diversa.
+    </div>
+
+    <h3>I parenti animali come catena cooperativa</h3>
+
+    <p>Il cuore della storia, per i tuoi interessi, sta nella sequenza centrale — la <strong>staffetta</strong>. Coyote da solo non riesce. Il furto del fuoco non è un'impresa solitaria di un eroe singolo (modello occidentale). È una <strong>cooperazione tra parenti animali</strong>. Lo Scoiattolo, la Rana, la Lince, il Legno-secco. Ognuno fa la sua parte. Ognuno paga un prezzo — la coda bruciata, la schiena piegata, la coda persa, il fuoco custodito per sempre dentro di sé. <strong>Ognuno porta sul corpo, ancora oggi, la traccia di quella notte</strong>.</p>
+
+    <p>Notare come la storia <em>spiega le forme degli animali</em> attraverso la cooperazione passata. La coda nera del coyote, la schiena curva dello scoiattolo, l'assenza di coda della rana — non sono curiosità anatomiche, sono <strong>memorie di un patto</strong>. Quando un bambino indigeno cresce ascoltando questa storia e poi vede uno scoiattolo nel bosco, non vede solo un animale: <em>vede un parente che una volta ha portato il fuoco</em>. La storia è entrata nel suo modo di guardare il mondo. Lo scoiattolo non è più un animale generico — è qualcuno con una storia specifica, che ha contribuito a far esistere la condizione presente del mondo umano.</p>
+
+    <p>Questa è la lezione tecnica più importante: <strong>il parentado con gli animali nella narrativa indigena non è metafora, è genealogia</strong>. Lo scoiattolo è veramente un parente. La rana è veramente un parente. Quando li si incontra nel bosco, si incontra qualcuno con cui c'è una storia condivisa. Ed è per questo che la cultura indigena tratta gli animali con il rispetto che si deve ai parenti — non perché lo dica un principio etico astratto, ma perché si <em>ricordano</em> le storie in cui si è collaborato con loro.</p>
+
+    <h3>La forma a cerchio: gli umani al freddo, gli umani al caldo</h3>
+
+    <p>La storia comincia con gli umani al freddo, di notte, tremanti, con i bambini che piangono. Finisce con gli umani al caldo, di notte, attorno al fuoco, con i bambini che dormono. <strong>Stessa scena. Stessa scena.</strong> Eppure tutto è cambiato.</p>
+
+    <div class="circle-diagram">
+      <svg viewBox="0 0 600 240" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cerchio narrativo -->
+        <circle cx="300" cy="120" r="90" fill="none" stroke="#a64a2c" stroke-width="1.3" opacity="0.5"/>
+
+        <!-- Punti del cerchio -->
+        <circle cx="210" cy="120" r="6" fill="#a64a2c"/>
+        <circle cx="300" cy="30" r="6" fill="#c47a3d"/>
+        <circle cx="390" cy="120" r="6" fill="#a64a2c"/>
+        <circle cx="300" cy="210" r="5" fill="#9c5a28"/>
+
+        <!-- Etichette -->
+        <text x="125" y="124" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">umani al freddo</text>
+        <text x="125" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">apertura</text>
+
+        <text x="300" y="14" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">il furto sulla montagna</text>
+
+        <text x="475" y="124" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">umani al caldo</text>
+        <text x="475" y="140" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">chiusura</text>
+
+        <text x="300" y="226" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">la staffetta dei parenti</text>
+
+        <!-- Centro -->
+        <text x="300" y="118" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#a64a2c">il dono</text>
+        <text x="300" y="134" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a7660">centro del cerchio</text>
+      </svg>
+      <div class="circle-caption">
+        Il cerchio della storia: si parte e si arriva nello stesso punto (umani la sera vicino al fuoco), ma il fuoco non c'è più all'inizio e c'è alla fine. Il significato si è spostato senza che il quadro cambi.
+      </div>
+    </div>
+
+    <p>È la firma della struttura narrativa indigena. Non si va da A a B in linea retta. Si va attorno a un centro — qui, il dono del fuoco — e si torna al punto di partenza. Ma adesso <strong>il punto di partenza si guarda con altri occhi</strong>. Il villaggio umano è sempre quello. La sera è sempre quella. Ma adesso quella sera è abitata dal fuoco, e il fuoco è abitato dalla memoria di Coyote, della Rana, dello Scoiattolo, della Lince, del Legno-secco. La scena è diventata <em>spessa di memoria</em>. È più ricca anche se non è cambiata.</p>
+
+    <p>Per il narratore questo è un dispositivo tecnico potente: <strong>il finale non deve essere "diverso" dall'inizio per significare qualcosa</strong>. Può essere identico — anzi, deve esserlo — ma riempito di tutto quello che è successo nel mezzo. È una pedagogia della <em>profondità invece della trasformazione</em>: non si insegna che le cose cambiano, si insegna che <em>le cose hanno strati</em>, e che chi conosce la storia vede gli strati.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere il Trickster come macchina di giudizio etico (non come modello né come monito), per vedere il parentado con gli animali in azione come catena cooperativa concreta, e per vedere il cerchio narrativo nella sua forma più chiara — gli umani al freddo, gli umani al caldo, la stessa scena con un significato che è ora abitato.
+    </div>
+  </section>
+
+  <!-- ============ STORIA II ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">ii</span> Tradizione Lakota · Storia sacra</div>
+      <h2>La Donna Bisonte Bianco —<br><em>la fondazione del parentado</em></h2>
+      <p class="story-source"><span class="indig">Pte San Win</span> · tradizione orale Lakota · trasmessa attraverso le generazioni dai custodi della Pipa Sacra · ampiamente condivisa pubblicamente da autori Lakota (Joseph Marshall, Vine Deloria, Black Elk)</p>
+    </div>
+
+    <div class="nota-sacra">
+      <span class="nota-sacra-label">Una nota di rispetto</span>
+      Questa è una storia sacra Lakota. Non è una storia segreta — è raccontata pubblicamente da autori Lakota in libri, scuole e cerimonie aperte — ma è <strong>centrale nella spiritualità del popolo</strong>. Va trattata con la gravità che merita. La racconto qui in una forma che sintetizza fonti pubbliche, senza pretendere di rappresentare versioni cerimoniali né di trasmettere la pipa stessa, che è una cosa diversa dalla storia su di essa.
+    </div>
+
+    <span class="narrative-label">Il racconto</span>
+    <div class="narrative">
+      <p>Questo accadde molti, molti inverni fa. Il popolo Lakota viveva nelle pianure, dove vive ancora. Era un periodo di fame. La caccia era andata male. I bisonti erano lontani. Le riserve di cibo si stavano esaurendo. I bambini avevano fame. Gli anziani diventavano deboli.</p>
+
+      <p>Il consiglio decise di mandare due giovani cacciatori a cercare i bisonti. Due tra i più rispettati. Partirono al mattino, con i loro archi, le loro frecce, e poco cibo.</p>
+
+      <p>Camminarono tutto il giorno. Non videro un solo bisonte. Camminarono il secondo giorno. Niente. Il terzo giorno, salirono su una collina alta, sperando di vedere lontano da lì.</p>
+
+      <p>E videro qualcosa.</p>
+
+      <p>In lontananza, attraverso la pianura, veniva camminando una donna. Una donna sola. Camminava verso di loro, ancora lontana, ma chiaramente verso di loro. Era vestita di bianco. Bianco come la neve. Bianco come una nuvola d'estate. Aveva i capelli lunghi, sciolti. Portava qualcosa tra le braccia.</p>
+
+      <p>I due cacciatori si fermarono a guardare.</p>
+
+      <p>Uno dei due era un buon uomo. L'altro era un giovane vanitoso, di quelli che pensano sempre prima a sé stessi. Quando il giovane vanitoso vide la donna, gli vennero in mente pensieri che un cacciatore in cerca di cibo per il popolo non dovrebbe avere. Pensò: <em>è bella. La voglio per me.</em> Lo disse al compagno.</p>
+
+      <p>Il buon uomo gli rispose: <em>non parlare così. Non sai chi è. Forse è una donna sacra.</em></p>
+
+      <p>Il vanitoso rise. <em>Vado da lei.</em> E si mosse verso di lei.</p>
+
+      <p>La donna si avvicinava.</p>
+
+      <p>Quando il vanitoso le fu vicino, la donna lo guardò. Lo guardò una volta sola. E in quel momento — qui le versioni si accordano, anche se in modi diversi — il vanitoso fu avvolto da una nube. Quando la nube si sollevò, restò solo un mucchio di ossa per terra. Le ossa di chi era stato divorato dai serpenti del proprio cuore. Il vanitoso era diventato ciò che aveva voluto: solo un corpo, ridotto al suo niente.</p>
+
+      <p>La donna proseguì. Arrivò al buon uomo, che era rimasto fermo, in silenzio.</p>
+
+      <p>Gli disse: <em>vai al tuo popolo. Di' loro che torni al campo. Di' loro di costruire una capanna grande, una capanna pulita. Di' loro di prepararsi. Io verrò tra quattro giorni. Porto qualcosa per voi.</em></p>
+
+      <p>Il buon uomo corse a casa. Riferì. Il consiglio fu convocato. Tutti si misero al lavoro. Costruirono una capanna grande e pulita al centro del villaggio. Aspettarono.</p>
+
+      <p>Il quarto giorno, all'alba, una sentinella la vide arrivare in lontananza. Veniva dalla pianura. Sempre vestita di bianco. Sempre con qualcosa tra le braccia.</p>
+
+      <p>Entrò nel villaggio. Tutti erano radunati in silenzio. Entrò nella capanna. Si sedette al centro. Aprì il fagotto che portava.</p>
+
+      <p>Dentro c'era una pipa. Una pipa lunga, con il fornello di pietra rossa, lo stelo di legno, decorata di piume d'aquila. <strong>La Pipa Sacra</strong>. Il dono.</p>
+
+      <p>La donna parlò a lungo. Insegnò al popolo come usare la pipa. Insegnò le parole da dire. Insegnò le sette cerimonie sacre — la cerimonia dell'inipi, la cerimonia di hanblecheya, la cerimonia di wiwanyang wachipi, e le altre. Insegnò il modo di pregare. Insegnò il modo di trattare la pipa, di tenerla, di passarla. Disse che la pipa era il legame tra il popolo e il Grande Mistero.</p>
+
+      <p>Poi disse questa cosa, che è la cosa che vogliamo sentire. Disse:</p>
+
+      <p class="echo"><em>I bisonti sono i vostri parenti.<br>Vi daranno il loro corpo.<br>Ma voi dovete onorarli.<br>Quando uccidete un bisonte, ricordate che è un parente che si dà a voi.<br>Ringraziatelo. Usate ogni parte di lui. Non sprecate niente.<br>Se onorate il bisonte, il bisonte tornerà sempre.<br>Se non lo onorate, il bisonte se ne andrà.</em></p>
+
+      <p>Il popolo ascoltò. Tutti ascoltarono. Le parole entrarono nei loro cuori.</p>
+
+      <p>Quando la donna finì di parlare, si alzò. Uscì dalla capanna. Tutto il villaggio la seguì. Lei camminò verso la pianura, da dove era venuta.</p>
+
+      <p>E camminando, dicono i Lakota, lei si fermò. Si tolse il vestito bianco. E davanti agli occhi del popolo si trasformò — prima in un bisonte nero, poi in un bisonte rosso, poi in un bisonte giallo, e infine in un <strong>bisonte bianco</strong>. Un bisonte bianco come la neve. Si voltò una volta verso il popolo. E poi si allontanò nella pianura. Sparì all'orizzonte.</p>
+
+      <p>Il giorno dopo, all'alba, la sentinella si svegliò e guardò la pianura. La vide piena.</p>
+
+      <p>I bisonti erano tornati.</p>
+
+      <p>Erano migliaia. Si stendevano fino all'orizzonte. La caccia poteva ricominciare. Il popolo non avrebbe più avuto fame.</p>
+
+      <p>Ma adesso il popolo cacciava in modo diverso. Adesso, quando un cacciatore prendeva un bisonte, si fermava prima. Toccava la sua pelliccia. Diceva una preghiera. Lo ringraziava per essersi dato. Non sprecava niente — la carne, la pelliccia, le ossa, i tendini, tutto veniva usato. Niente andava sprecato.</p>
+
+      <p>Perché adesso il popolo sapeva. <strong>Il bisonte era un parente.</strong> E lo era perché una volta una donna era venuta vestita di bianco, aveva portato la pipa, aveva detto il modo, e si era trasformata in bisonte bianco davanti ai loro occhi.</p>
+
+      <p>La pipa, da quella volta, è stata custodita dai Lakota. Da generazione a generazione, da custode a custode. C'è ancora oggi, dicono. È stata passata, in linea continua, dalle mani della Donna Bisonte Bianco a oggi. Custodita da una persona alla volta. Mai persa.</p>
+
+      <p>E il popolo Lakota — il popolo dei bisonti — continua a chiamarsi così, perché di quel parente è rimasto figlio.</p>
+    </div>
+
+    <h3>Il parentado come fondazione, non come metafora</h3>
+
+    <p>La storia di Pte San Win è la più chiara dimostrazione di una cosa che abbiamo introdotto nel Doc 1 ma che merita di essere vista in azione: <strong>nelle culture indigene americane, "parente" non è una metafora — è una categoria ontologica</strong>. Il bisonte non è "come un parente". Non è "trattato come un parente". <strong>È</strong> un parente. La differenza non è retorica: è cosmologica.</p>
+
+    <p>Vediamo come la storia stabilisce questo. Nel momento centrale, la donna sacra <em>si trasforma in bisonte bianco</em>. Non semplicemente "diventa simile a un bisonte". Non "rivela un'affinità simbolica". Si trasforma — letteralmente, di fronte ai testimoni. La donna che ha parlato, che ha portato la pipa, che ha insegnato le cerimonie, era già un bisonte. E quando se ne va, se ne va come bisonte. Significa: <strong>il sacro che vi ha visitato e il bisonte che adesso cacciate sono la stessa cosa</strong>. Non sono due livelli di realtà collegati simbolicamente. Sono <em>la stessa entità</em> manifestata in due forme.</p>
+
+    <p>Da questa trasformazione deriva tutto il resto. Il modo Lakota di trattare il bisonte — pregare prima della caccia, ringraziarlo dopo, non sprecare niente — non è un protocollo etico astratto. È <strong>il modo in cui ci si comporta con un parente</strong>. Lo si onora. Lo si ringrazia. Non si spreca niente di lui, perché è di famiglia. La cultura ha codificato in pratica quotidiana ciò che la storia ha fondato narrativamente.</p>
+
+    <div class="voice">
+      Il parentado non è qualcosa che si decide.<br>È qualcosa che si scopre,<br>quando una donna vestita di bianco<br>si trasforma davanti ai tuoi occhi.
+    </div>
+
+    <h3>La storia come fondazione del comportamento presente</h3>
+
+    <p>Pte San Win è anche l'esempio più chiaro di una funzione narrativa che il Doc 1 aveva nominato: <strong>la storia come motivazione presente del comportamento</strong>. Per il popolo Lakota, il modo di cacciare il bisonte oggi è giustificato — letteralmente — da quella visita. Quando un cacciatore Lakota tradizionale prega prima di prendere un bisonte, non sta seguendo una regola di buona condotta. Sta <em>ricordando</em> ciò che la donna ha detto. La sua azione presente è incardinata nella storia passata. <strong>La storia si racconta non per insegnare, ma per fondare</strong>.</p>
+
+    <p>Questo è un dispositivo che la cultura occidentale ha quasi perso. Per noi una storia è una cosa, e una regola di comportamento un'altra. Per i Lakota le due sono la stessa cosa: la regola <em>è</em> la storia in atto. Quando smetti di raccontare la storia, smetti anche di sapere perché fai quello che fai. Per questo la trasmissione narrativa è cruciale — non perché sia "tradizione" in senso conservatore, ma perché è <em>infrastruttura del senso pratico</em>.</p>
+
+    <p>Per chi racconta a un bambino piccolo, anche occidentale, questa lezione è straordinaria: <strong>una storia ben fatta può fondare un comportamento</strong>. Non come morale dichiarata ("e così imparò che..."). Come radice da cui nasce un gesto. Quando il bambino si ricorda della storia, si ricorda anche del gesto giusto. Il gesto e la storia sono la stessa cosa.</p>
+
+    <h3>Il cerchio: cacciatori affamati, cacciatori onorati</h3>
+
+    <p>La storia comincia con due cacciatori affamati, mandati dal villaggio in cerca di bisonti che non si trovano. Finisce con il villaggio che caccia di nuovo i bisonti, che ora ci sono. <strong>Stessa scena: la caccia al bisonte</strong>. Eppure tutto è cambiato. Il cerchio si è chiuso, ma il significato è completamente diverso. All'inizio si cacciava il bisonte come preda. Alla fine si caccia il bisonte come parente che si dà.</p>
+
+    <p>È una variazione raffinata della struttura circolare che abbiamo visto in Coyote. Lì, il punto di partenza e quello di arrivo erano oggettivamente diversi (umani senza fuoco vs umani con fuoco) ma la <em>scena</em> era identica. Qui, sia il punto di partenza che quello di arrivo sono gli stessi (caccia al bisonte) ma la <em>relazione</em> è cambiata radicalmente. Il cerchio non è una semplice ciclicità: è un tornare con uno sguardo che si è approfondito.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere il parentado con gli animali nella sua forma più piena e fondativa — non come dispositivo letterario ma come ontologia che genera comportamento. E per vedere come una storia possa diventare radice viva di una pratica quotidiana: il cacciatore Lakota oggi prega prima di cacciare perché si ricorda di Pte San Win. La storia non insegna: fonda.
+    </div>
+  </section>
+
+  <!-- ============ STORIA III ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">iii</span> Tradizione Anishinaabe · Storia di confine</div>
+      <h2>Il Wendigo —<br><em>quando la fame divora chi la sente</em></h2>
+      <p class="story-source">Tradizioni Algonquine, in particolare Anishinaabe (Ojibwe), Cree, Innu · una delle figure più potenti del Nord America boreale · diffusa con varianti dal Quebec alle Pianure</p>
+    </div>
+
+    <span class="narrative-label">Il racconto</span>
+    <div class="narrative">
+      <p>I popoli del Nord — gli Anishinaabe e i loro vicini, dove l'inverno è lungo e il cibo è poco — hanno sempre raccontato del Wendigo. Non è una storia singola: è un personaggio ricorrente, un avvertimento che torna in molte storie. Ne raccontiamo qui una versione, che riassume molte. Ma vale per tutte: il Wendigo è sempre la stessa cosa, anche quando la storia cambia.</p>
+
+      <p>Una volta c'era un cacciatore. Aveva moglie e tre figli. Viveva in una capanna nella foresta del Nord. L'inverno arrivò forte quell'anno. La neve cadde presto e fitta. Gli animali si erano nascosti. La caccia era andata male.</p>
+
+      <p>La famiglia aveva poco cibo nella capanna. Poco. Sarebbe bastato per qualche giorno, non di più. Il cacciatore decise di partire per cacciare lontano, oltre il bosco grande, dove forse c'erano ancora cervi. Disse alla moglie: <em>tornerò tra dieci giorni. Conserva il cibo. Da' poco ai bambini, ma a tutti la stessa parte.</em> Salutò i figli. Partì.</p>
+
+      <p>Camminò un giorno. Camminò due. Cercò cervi. Niente. Camminò il terzo giorno, oltre il bosco grande. Niente. Il quarto giorno aveva fame. Il quinto giorno la fame era forte. Il sesto giorno cominciò a nevicare di nuovo, fitto, fitto. Il cacciatore non vedeva più i suoi passi nella neve. Si perse.</p>
+
+      <p>Vagò. Cercò di tornare. Non sapeva più da che parte fosse la sua capanna. Aveva fame, sempre più fame. Mangiò la corteccia degli alberi. Mangiò la neve. Mangiò ciò che si poteva mangiare in un bosco senza animali. Niente bastava.</p>
+
+      <p>Una notte, accampato vicino a un fuoco morente, sentì qualcosa. Non era un suono. Era una <em>presenza</em>. Una presenza enorme, fredda. Più fredda della neve. Più fredda dell'aria. Una presenza fatta di fame.</p>
+
+      <p>Sentì una voce dentro di lui — non dalle orecchie, da dentro. La voce diceva: <em>hai fame. Mangia. C'è da mangiare. Tu sai dove c'è da mangiare. Vai a casa. Mangia.</em></p>
+
+      <p>Il cacciatore capì cosa la voce gli stava dicendo. <strong>Capì cosa la voce voleva che lui mangiasse</strong>. Si svegliò di colpo, sudando freddo. Il fuoco era morto.</p>
+
+      <p>Si rifiutò.</p>
+
+      <p>Disse ad alta voce, alla foresta vuota: <em>no. Non lo farò. Preferisco morire io.</em></p>
+
+      <p>La voce tornò. Più forte. <em>Hai fame. I tuoi figli ti aspettano. Mangia. Mangia chi puoi mangiare.</em></p>
+
+      <p>Il cacciatore prese il proprio coltello. Lo affondò nella neve. Ce lo lasciò, lontano da sé. Si trascinò lontano dal coltello. Disse: <em>se devo morire, muoio. Ma non ascolterò la voce.</em></p>
+
+      <p>Quella notte morì di freddo, da solo, nella foresta.</p>
+
+      <p>Ma la sua anima, dicono, fu salva. Perché il Wendigo non l'aveva preso.</p>
+
+      <p class="echo">Il Wendigo, vedete, è questo. Non è un mostro che vive nella foresta. È <strong>la voce</strong>. È la voce della fame che dice di mangiare ciò che non si dovrebbe mangiare. È la voce che, se ascoltata, ti trasforma.</p>
+
+      <p>Perché in un'altra versione della storia, un altro cacciatore in un'altra foresta in un altro inverno, ascoltò la voce. Tornò a casa, guidato dalla voce. E mangiò. Mangiò la sua famiglia.</p>
+
+      <p>E quando ebbe finito, non aveva più fame. Ma era cambiato. Era diventato altissimo, più alto di un albero. Aveva la pelle di ghiaccio, gli occhi vuoti, i denti come zanne. Aveva il cuore di ghiaccio. E aveva una fame che non si saziava più — perché aveva mangiato la cosa sbagliata, e adesso niente lo poteva sfamare. Più mangiava, più aveva fame. Più aveva fame, più mangiava.</p>
+
+      <p>Era diventato un Wendigo.</p>
+
+      <p>Si dice che il Wendigo cammini ancora nelle foreste del Nord. Si dice che lo si possa incontrare nelle notti d'inverno, lontano dai villaggi. Si dice che chi lo incontra senta la sua voce dentro di sé, e debba scegliere. Si dice che molti dei Wendigo che camminano nella foresta sono stati una volta uomini come noi.</p>
+
+      <p class="echo">Il Wendigo non è qualcosa di altro da noi.<br>Il Wendigo è ciò che diventiamo se ascoltiamo la voce.</p>
+
+      <p>Per questo gli Anishinaabe, quando un membro della comunità mostra segni di voracità eccessiva — di chi prende troppo, accumula troppo, mangia mentre gli altri hanno fame — dicono: <em>attenzione. Sta diventando Wendigo.</em> E lo dicono con preoccupazione vera, non come metafora. Perché la trasformazione è graduale. Comincia con un pasto. Continua con altri pasti. Finisce con una creatura di ghiaccio nella foresta.</p>
+
+      <p>Ma c'è anche un'altra cosa, che la storia dice e che è importante. Un Wendigo si può <strong>fermare</strong>. Non da solo — da solo non riesce, perché il suo cuore è di ghiaccio. Ma la comunità può fermarlo. La comunità può prenderlo prima che si trasformi del tutto. Può curarlo — con il fuoco, con i canti, con il calore degli altri corpi attorno al suo. Si dice che, in alcuni casi, un Wendigo è stato sciolto. Il ghiaccio del suo cuore è tornato carne. La voce ha taciuto. È tornato uomo.</p>
+
+      <p>Ma è la comunità che deve farlo. Non il Wendigo da solo.</p>
+    </div>
+
+    <h3>Il male come voracità che si trasforma</h3>
+
+    <p>Il Wendigo è una delle invenzioni cosmologiche più sofisticate della narrativa indigena del Nord America. È, in superficie, un mostro. Ma se si guarda bene è qualcosa di molto più strano e molto più potente: <strong>un'esplorazione dei limiti dell'umano attraverso la figura di chi quei limiti li ha rotti</strong>. Vale la pena vedere come funziona, perché è esattamente il genere di "male" che la cultura occidentale fatica a concepire.</p>
+
+    <p>Notare cosa il Wendigo <strong>non è</strong>. Non è il diavolo (un'entità preesistente all'umano, che esiste indipendentemente). Non è un demone (un essere d'altro mondo che invade questo). Non è un mostro alieno (qualcosa di completamente non-umano). Il Wendigo è <strong>una persona</strong> — una persona umana — che ha attraversato una soglia e non può più tornare indietro. Era qualcuno. Aveva una famiglia. Aveva un nome. Poi ha mangiato la cosa sbagliata, e adesso è quello che vediamo.</p>
+
+    <p>Questo cambia profondamente la categoria del "male". Il Wendigo non è alterità: è <strong>specchio</strong>. Quando si racconta del Wendigo, non si racconta di "loro" (i mostri). Si racconta di "noi" (gli umani, in una possibile versione di sé). La storia dice: <em>tu, ascoltatore, potresti diventare questo</em>. Non in senso metaforico. In senso letterale-cosmologico. Tutti hanno fame, prima o poi. Tutti sentono la voce, prima o poi. La differenza tra te e il Wendigo è solo se ascolti la voce o no.</p>
+
+    <div class="voice">
+      Il mostro non è là fuori.<br>Il mostro è la nostra fame, quando vince.
+    </div>
+
+    <h3>Lo squilibrio del mondo che chiede di essere ricomposto</h3>
+
+    <p>Per i tuoi interessi, il punto centrale è questo: <strong>il Wendigo è un male perché è uno squilibrio</strong>. Non un'iniquità, non un peccato, non una colpa morale. Uno squilibrio. La fame è naturale e necessaria — gli umani devono mangiare. Ma c'è una <strong>misura</strong>. Quando la fame supera la misura, quando si vuole mangiare ciò che non si dovrebbe mangiare (i propri parenti, in senso stretto o esteso), allora il sistema si rompe. E quando si rompe, produce la creatura che lo rappresenta: l'avidità che si è trasformata in corpo.</p>
+
+    <p>Il Wendigo è <strong>la voracità incarnata</strong>. È quello che succede al mondo quando l'equilibrio tra prendere e dare salta. La sua punizione — quella fame che non si sazia più — non è una vendetta cosmica: è la <em>conseguenza logica</em> del suo squilibrio. Chi prende oltre la misura, paradossalmente, perde la capacità di essere sfamato. Più mangia, più ha fame. È uno squilibrio che si auto-mantiene.</p>
+
+    <p>E questo ci porta al punto pratico. Il Wendigo non si sconfigge come un drago. Non lo si uccide e si torna a casa contenti. <strong>Lo si scioglie</strong>. Si ricompone l'equilibrio rotto. Le tradizioni Anishinaabe raccontano di Wendigo che, presi in tempo, sono stati riportati alla forma umana attraverso il fuoco e il canto e il calore comunitario — la comunità che restituisce al singolo sbilanciato il calore che ha perso, e così facendo lo riequilibra. Il "male" qui non si combatte: si <em>ricompone</em>. Con cura. Con il calore. Con la presenza degli altri.</p>
+
+    <h3>La responsabilità collettiva</h3>
+
+    <p>C'è un aspetto della storia del Wendigo che attraversa anche la tua lista secondaria, e che merita di essere nominato: <strong>la responsabilità è della comunità, non del singolo</strong>. Il Wendigo non si salva da solo. Il suo cuore è di ghiaccio — non può scegliere di tornare indietro. È la comunità che deve <em>vedere</em> i segni precoci della trasformazione, intervenire prima che sia tardi, scioglierlo con il calore collettivo.</p>
+
+    <p>Questa è una visione profondamente diversa da quella occidentale moderna, che attribuisce al singolo la responsabilità del proprio comportamento e considera l'intervento collettivo come paternalismo o invasione. Per gli Anishinaabe è il contrario: <em>se vedi qualcuno che sta diventando Wendigo e non intervieni, sei responsabile anche tu</em>. Non perché tu abbia fatto qualcosa di sbagliato — ma perché <strong>la comunità è il livello a cui si tiene insieme l'equilibrio</strong>. Un Wendigo è un fallimento di tutti, non solo di sé.</p>
+
+    <p>Per il tuo progetto questa è una nota importante: il "male come squilibrio" delle tradizioni indigene americane ha sempre, in filigrana, una componente comunitaria. Non è solo "questo individuo si è squilibrato". È "questa relazione tra individuo e comunità si è rotta". E la riparazione, di conseguenza, è anche relazionale, non solo individuale.</p>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere il "male" non come alterità ma come specchio della voracità umana — e per vedere come le tradizioni indigene americane concepiscano lo squilibrio del mondo come qualcosa che chiede di essere <em>ricomposto</em> dalla comunità, non sconfitto da un eroe. È la concezione del male più radicalmente diversa dall'Occidente che abbiamo visto, e una delle più adulte mai prodotte dall'umanità.
+    </div>
+  </section>
+
+  <!-- ============ SINTESI ============ -->
+  <div class="synthesis">
+    <h2>Tre cerchi attorno allo stesso fuoco</h2>
+    <p class="synthesis-kicker">Cosa emerge quando le tre storie si guardano insieme</p>
+
+    <p>Coyote che ruba il fuoco con i parenti animali. Pte San Win che fonda il parentado con il bisonte. Il Wendigo che mostra cosa succede quando il parentado si rompe. <strong>Tre storie, una grammatica unica</strong>: il mondo è un cerchio di parenti — umani, animali, spiriti, elementi — e il senso di tutto sta nella qualità delle relazioni dentro quel cerchio.</p>
+
+    <p>Quando la relazione funziona, i parenti collaborano: come Coyote e lo Scoiattolo e la Rana e la Lince e il Legno-secco, nella staffetta del fuoco. Quando la relazione viene riconosciuta nella sua sacralità, fonda comportamenti che durano per generazioni: come per il popolo Lakota dopo la visita di Pte San Win. Quando la relazione si rompe — quando uno si crede separato dal cerchio, libero di prendere oltre la misura — il sistema produce la sua creatura monstruosa: il Wendigo, voracità incarnata che non si sazia più.</p>
+
+    <p>Il cerchio narrativo che caratterizza queste tradizioni è isomorfo al cerchio di parentado che è il loro contenuto. <strong>La forma rispecchia il senso</strong>. Si parte da un punto, si attraversa l'azione, si torna al punto di partenza — ma adesso si vede meglio. Coyote: gli umani la sera, prima freddi e ora caldi. Pte San Win: la caccia al bisonte, prima di sopravvivenza, ora di onore. Wendigo: la fame, prima naturale, ora trasformante. Stessi punti, sguardo diverso.</p>
+
+    <p>Per chi racconta a un bambino di 2-3 anni questa è probabilmente la lezione più potente che si possa portare via dal Volume IV: <strong>una storia non deve cambiare il mondo per essere efficace — può semplicemente cambiare lo sguardo sullo stesso mondo</strong>. La sera è sempre la sera. Il bisonte è sempre il bisonte. La fame è sempre la fame. Ma dopo aver sentito la storia, si vedono diversamente. E vedere diversamente è già fare qualcosa di profondo.</p>
+
+    <p>Il prossimo documento — Doc 3 — proverà a tradurre questa grammatica per i 2-3 anni. Anticipo che ci sono cose che funzionano sorprendentemente bene a quell'età (i bambini piccoli sono già naturalmente in relazione con animali, oggetti, alberi — la cosmologia indigena li tratta come adulti che vedono ancora bene), e altre che vanno lasciate (il Wendigo è sproporzionato, le sacralità cerimoniali non sono trasferibili). Vedremo come.</p>
+  </div>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume IV · Documento 2 di 4</span>
+    <span>Prossimo: La storia per bambini →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

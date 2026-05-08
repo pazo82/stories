@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Culture indigene americane · La Storia per Bambini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eczar:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f1e9d9;
+    --paper-deep: #e6dcc6;
+    --paper-warm: #ebe1cc;
+    --ink: #2a201a;
+    --ink-soft: #4a3b2f;
+    --ink-faint: #8a7660;
+    --rule: #c8b89a;
+    --ocra: #c47a3d;
+    --ocra-deep: #9c5a28;
+    --rust: #a64a2c;
+    --night: #2c3854;
+    --charcoal: #2a201a;
+    --highlight: #ddc89a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 12% 8%, rgba(166, 74, 44, 0.05) 0%, transparent 45%),
+      radial-gradient(circle at 88% 92%, rgba(44, 56, 84, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 60% 40%, rgba(196, 122, 61, 0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Lora', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='12'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 4.5rem 0 2rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .symbol-mark {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Lora', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover {
+    color: var(--ink);
+    background: var(--paper-deep);
+  }
+
+  nav.tabs a.active {
+    color: var(--rust);
+    background: var(--paper);
+  }
+
+  nav.tabs a.active .tab-num {
+    color: var(--rust);
+    opacity: 0.8;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 2px solid var(--rust);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 580px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .section-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  h2 em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--rust);
+  }
+
+  .section-kicker {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 580px;
+  }
+
+  section h3 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--ink);
+    margin: 2.8rem 0 1.2rem;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+  }
+
+  section h3::before {
+    content: '○';
+    color: var(--rust);
+    font-size: 0.7rem;
+  }
+
+  section p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+    hyphens: none;
+  }
+
+  section p strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    background: var(--highlight);
+    padding: 0.05em 0.3em;
+    font-style: italic;
+    border-bottom: 1px solid var(--rust);
+    color: var(--ink);
+  }
+
+  .indig {
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 500;
+  }
+
+  /* ===== TRADUZIONE ===== */
+  .traduzione {
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .traduzione-row {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .traduzione-row:last-child { border-bottom: none; }
+
+  .traduzione-cell {
+    padding: 1.2rem 1.4rem;
+    font-size: 0.94rem;
+    line-height: 1.6;
+  }
+
+  .traduzione-cell.label {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1rem;
+  }
+
+  .traduzione-cell.arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    background: var(--paper);
+    border-left: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+
+  .traduzione-cell.translation {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .traduzione-cell.translation.discard {
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+
+  .traduzione-cell.translation.discard::before {
+    content: '× ';
+    color: var(--rust);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  /* ===== STORY BLOCK ===== */
+  .story-block {
+    margin: 3rem 0 4rem;
+    padding: 0;
+    background: transparent;
+    position: relative;
+  }
+
+  .story-block-frame {
+    padding: 2.5rem 2.2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rust);
+    border-left: 3px solid var(--rust);
+    box-shadow: 4px 4px 0 rgba(166, 74, 44, 0.12);
+    position: relative;
+  }
+
+  .story-block-frame::before {
+    content: 'storia per bambini';
+    position: absolute;
+    top: -0.7rem;
+    left: 1.8rem;
+    background: var(--paper);
+    padding: 0 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+  }
+
+  .story-title {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+    line-height: 1.15;
+  }
+
+  .story-title em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .story-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story-block-frame p {
+    text-align: left;
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    font-weight: 400;
+    line-height: 1.8;
+    margin-bottom: 1.1rem;
+    color: var(--ink);
+  }
+
+  .story-block-frame p em {
+    font-style: italic;
+    color: var(--rust);
+  }
+
+  .story-block-frame p.beat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-top: 1.6rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .story-block-frame p.beat-label::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 1px;
+    background: var(--rust);
+    margin-top: 0.4rem;
+    opacity: 0.5;
+  }
+
+  .story-block-frame p.beat-label:first-child { margin-top: 0; }
+
+  .story-block-frame p.echo {
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-style: italic;
+    color: var(--rust);
+    font-size: 1.1rem;
+    margin: 1.2rem 0;
+    padding: 0.4rem 0;
+  }
+
+  /* La chiusura territoriale */
+  .story-block-frame .territorial-close {
+    margin-top: 1.6rem;
+    padding: 1.3rem 1.4rem;
+    background: var(--paper);
+    border-top: 2px solid var(--rust);
+    border-bottom: 2px solid var(--rust);
+  }
+
+  .story-block-frame .territorial-close p {
+    font-family: 'Eczar', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin: 0;
+    text-align: center;
+  }
+
+  .story-block-frame .territorial-close p::before {
+    content: 'e così, ancora oggi…';
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 0.62rem;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  /* ===== DIAGRAM CIRCLE BAMBINO ===== */
+  .circle-mini {
+    margin: 2rem 0;
+    padding: 1.8rem 1rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    text-align: center;
+  }
+
+  .circle-mini svg {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .circle-mini-caption {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: var(--ink-faint);
+    max-width: 500px;
+    margin: 1rem auto 0;
+    line-height: 1.5;
+  }
+
+  /* ===== ORAL VOICE QUOTE ===== */
+  .voice {
+    margin: 3rem -1rem;
+    padding: 2.2rem 2rem;
+    background: var(--paper-warm);
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    text-align: center;
+    font-family: 'Eczar', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--ink);
+  }
+
+  .voice::before,
+  .voice::after {
+    content: '— · —';
+    display: block;
+    color: var(--rust);
+    font-size: 0.85rem;
+    font-style: normal;
+    letter-spacing: 0.5em;
+    margin: 0 auto 1rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .voice::after {
+    margin: 1rem auto 0;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2rem 0;
+    padding: 1.5rem 1.8rem;
+    background: rgba(166, 74, 44, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    font-size: 0.95em;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== VARIANTI ===== */
+  .variant {
+    margin: 1.8rem 0;
+    padding: 1.5rem 1.7rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+    position: relative;
+  }
+
+  .variant-num {
+    position: absolute;
+    top: -0.7rem;
+    left: 1.2rem;
+    background: var(--rust);
+    color: var(--paper);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    padding: 0.25rem 0.7rem;
+    letter-spacing: 0.18em;
+  }
+
+  .variant h4 {
+    font-family: 'Eczar', serif;
+    font-weight: 500;
+    font-size: 1.18rem;
+    margin-bottom: 0.6rem;
+    color: var(--ink);
+    margin-top: 0.3rem;
+    line-height: 1.25;
+  }
+
+  .variant p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin: 0;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .variant p em {
+    color: var(--ink-faint);
+    font-style: italic;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.15rem; padding-left: 1.4rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .voice { font-size: 1.15rem; margin: 2rem 0; }
+    .traduzione-row { grid-template-columns: 1fr; }
+    .traduzione-cell.arrow { display: none; }
+    .traduzione-cell.label { border-bottom: 1px solid var(--rule); }
+    .story-block-frame { padding: 1.8rem 1.4rem; }
+    .story-title { font-size: 1.4rem; }
+    section { margin: 3.5rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, section { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume IV</div>
+    <svg class="symbol-mark" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="30" cy="30" r="26" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.5"/>
+      <circle cx="30" cy="30" r="17" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.65"/>
+      <circle cx="30" cy="30" r="8" fill="none" stroke="#a64a2c" stroke-width="1.2" opacity="0.8"/>
+      <circle cx="30" cy="30" r="2" fill="#a64a2c" opacity="0.9"/>
+    </svg>
+    <h1 class="title">La storia<br><em>per bambini</em></h1>
+    <p class="subtitle">Come tradurre la grammatica indigena americana — il parente animale, il cerchio narrativo, il riconoscimento territoriale — per un bambino di 2-3 anni. Una traduzione che porta una cosa che nessun altro Volume sa portare: la storia che continua a vivere ogni volta che si passa davanti a un albero.</p>
+    <div class="meta-row">
+      <span>Documento 3 di 4</span>
+      <span>Per bambini 2-3 anni</span>
+      <span>Tono creativo + pedagogico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="indigene_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="indigene_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="indigene_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Le tradizioni indigene americane atterrano sorprendentemente bene per i 2-3 anni — meglio di India, in alcune cose meglio di Giappone. Perché i bambini piccoli sono già naturalmente in relazione con animali, alberi, oggetti. Vedono ancora bene.</p>
+    <p>Quello che la cultura indigena può portare, e nessun altro Volume può portare allo stesso modo, è il <em>riconoscimento territoriale</em>: una storia che continua a vivere ogni volta che si passa davanti a un albero specifico. La storia che esce dalla pagina e abita il parco.</p>
+  </div>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — La traduzione</span>
+      <h2>Cosa funziona, cosa va adattato, cosa va lasciato perdere</h2>
+      <p class="section-kicker">Sei principi delle tradizioni indigene americane passati al filtro di un cervello di tre anni. Una sorpresa: ne sopravvivono moltissimi.</p>
+    </div>
+
+    <p>Bisogna nominare una cosa importante prima: i bambini di 2-3 anni sono <strong>già naturalmente in alcuni dei modi indigeni di stare al mondo</strong>. Parlano col cane. Salutano la luna. Pensano che l'albero abbia sentimenti. Un sasso può essere un amico per qualche settimana. Insistono per toccare la terra a piedi nudi. Tutto questo, che la cultura adulta occidentale considera "fase magica da superare", è in realtà <em>buona vista cosmologica</em>. La tradizione indigena americana non gli sta chiedendo qualcosa di nuovo — gli sta dando una <strong>grammatica adulta</strong> per qualcosa che lui già pratica spontaneamente. È, paradossalmente, la cultura più facile da tradurre per i bambini piccoli, perché è quella che è già lì.</p>
+
+    <h3>Cosa funziona naturalmente</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Animali come parenti</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona benissimo. Il bambino di tre anni non distingue ancora bene tra "parente" e "amico-animale". Per lui il merlo del giardino è già un piccolo qualcuno con la sua personalità. La cultura indigena gli dà la cornice giusta: <em>è davvero un parente, e va trattato come tale</em>. Niente di più naturale.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Riconoscimento territoriale</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona meravigliosamente. È <strong>il dispositivo unico di questa cultura</strong>. Una storia che si chiude legandosi a un luogo reale — l'albero del parco, la panchina del giardino, la fontana di piazza — diventa parte della geografia affettiva del bambino. Ogni volta che ci passa, si ricorda. La storia non finisce sul cuscino: continua nelle settimane successive.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Struttura a cerchio</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona. I bambini piccoli amano il <em>ritorno alla scena di partenza</em> — è rassicurante, è familiare. La tipica fiaba europea torna a casa alla fine; la tradizione indigena fa qualcosa di simile ma con una variante potente: torna allo <em>stesso punto</em>, non solo allo stesso luogo. Il bambino capisce che il punto di partenza è cambiato anche se sembra uguale.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Ritmo orale e ripetizione</div>
+        <div class="traduzione-cell arrow">○</div>
+        <div class="traduzione-cell translation">Funziona. Le ripetizioni cerimoniali ("Camminò un giorno. Camminò due. Camminò tre") sono uno dei dispositivi più amati a quest'età. La struttura ternaria o quaternaria è naturale, memorizzabile, partecipativa.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va adattato</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Il Trickster</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Va ammorbidito. Il Coyote adulto — astuto, ridicolo, sciocco insieme — è troppo complesso per un bambino di tre anni. Ma una <em>versione lieve</em> funziona: un piccolo animale-protagonista che fa una cosa un po' goffa e un po' generosa, senza essere giudicato come "buono" o "cattivo". Niente moralismo. È la dose giusta di Trickster a quell'età.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">Cooperazione tra esseri</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Va concretizzato in <em>una catena breve, due o tre passaggi</em>. La staffetta del fuoco di Coyote ha cinque animali — troppi. Per i tre anni, due aiutanti bastano. Ognuno fa qualcosa di concreto e visibile, e poi passa.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label">La storia come fondazione del comportamento</div>
+        <div class="traduzione-cell arrow">≈</div>
+        <div class="traduzione-cell translation">Funziona se concretizzata in <em>un piccolo gesto da fare nella vita reale</em>. Non insegnamenti astratti — ma "ogni volta che vedi quell'albero, lo saluti", oppure "quando senti un merlo cantare, ringrazia". Questi piccoli rituali concreti, ancorati a luoghi e momenti specifici, sono la versione pediatrica della storia che fonda il comportamento.</div>
+      </div>
+    </div>
+
+    <h3>Cosa va lasciato perdere</h3>
+
+    <div class="traduzione">
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Il Wendigo e il male come voracità</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile. Il Wendigo nella sua versione integrale è cannibalismo, terrore, trasformazione mostruosa. Niente di tutto questo a tre anni. Si può tenere, in filigrana, l'idea che "non si prende più di quello che serve" — ma senza alcun riferimento a mostri, ghiaccio, fame patologica.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Sacralità cerimoniale</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile e sarebbe una mancanza di rispetto. Pte San Win, le cerimonie sacre, gli oggetti rituali specifici non vanno mai trasferiti in storie per bambini occidentali — non nostre, non condivisibili in quel modo. Tenere lo <em>spirito</em> (il rispetto per gli animali, il riconoscimento del sacro), lasciare i <em>contenuti specifici</em>.</div>
+      </div>
+      <div class="traduzione-row">
+        <div class="traduzione-cell label discard">Le sette generazioni</div>
+        <div class="traduzione-cell arrow">—</div>
+        <div class="traduzione-cell translation discard">Inutilizzabile come concetto a tre anni. Il bambino non ha ancora la dimensione della "generazione". Lo si introdurrà più avanti, naturalmente.</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Il principio guida</span>
+      Tradurre le tradizioni indigene americane per un bambino di 2-3 anni significa <strong>non chiedergli di capire una nuova cosmologia</strong> — gliela ricordi, semplicemente, perché è già la sua. Il bambino di tre anni è già naturalmente in relazione col merlo del giardino. La cultura indigena gli sta dando una <em>cornice adulta</em> per quella relazione: il merlo è davvero un parente, gli si parla davvero, lo si saluta davvero quando si passa davanti al suo albero. Non si tratta di insegnare qualcosa — si tratta di <em>onorare quello che già fa</em>.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La storia</span>
+      <h2>Il bambino e la merla</h2>
+      <p class="section-kicker">Una storia inventata, costruita secondo la grammatica indigena in versione 2-3 anni: parentado con un animale, struttura a cerchio, riconoscimento territoriale finale che continua nel parco di tuo figlio.</p>
+    </div>
+
+    <div class="story-block">
+      <div class="story-block-frame">
+        <div class="story-title">Il bambino e la <em>merla</em></div>
+        <div class="story-meta">Durata: 5-6 minuti · Età: 2-3 anni · Adattabile a ogni parco/giardino</div>
+
+        <p class="beat-label">Apertura · al parco</p>
+        <p>C'era una volta un bambino piccolo che si chiamava Eli. Eli amava molto andare al parco con il suo papà. Al parco c'era un grande albero, vecchio, con i rami larghi. Tutti i bambini lo chiamavano <strong>il grande albero</strong>.</p>
+
+        <p>Eli e il papà passavano davanti al grande albero ogni volta che andavano al parco. Eli lo guardava sempre, ma non lo salutava mai. Era solo un albero, pensava lui. Un albero come gli altri.</p>
+
+        <p class="beat-label">L'incontro · qualcosa nell'erba</p>
+        <p>Un giorno di primavera, mentre Eli e il papà camminavano vicino al grande albero, Eli sentì un piccolo rumore nell'erba. Si fermò. Guardò.</p>
+
+        <p>Nell'erba c'era una merla. Una merla nera, con il becco giallo. Era piccola. E aveva un'ala storta. Provava a volare e non ci riusciva. Saltellava. Provava di nuovo. Niente. L'ala non rispondeva.</p>
+
+        <p>La merla guardò Eli con i suoi occhi tondi. Eli capì: la merla aveva bisogno di aiuto.</p>
+
+        <p class="beat-label">La cooperazione · due aiutanti</p>
+        <p>Eli e il papà si avvicinarono piano piano. Il papà disse: <em>se rimane qui, un gatto la prenderà. Dobbiamo metterla in alto, al sicuro. Ma devi essere tu a farlo, Eli. La merla si fida di te.</em></p>
+
+        <p>Eli aveva un po' paura. Ma allungò le mani. La merla non scappò. Si lasciò prendere — piano, piano, piano. Era leggera. Più leggera di una piuma. Eli sentiva il suo cuore piccolo che batteva forte.</p>
+
+        <p>Il papà aiutò Eli ad arrampicarsi sul ramo basso del grande albero. Lassù, in mezzo ai rami, c'era un nido. Un nido tondo, fatto di ramoscelli e muschio. Eli posò la merla nel nido. Pian piano. Con molta attenzione.</p>
+
+        <p>La merla si sistemò nel nido. Chiuse gli occhi. Era a casa.</p>
+
+        <p class="echo">Eli e il papà tornarono giù dall'albero. Salutarono la merla. La merla non disse niente — ma Eli vide che li guardava ancora.</p>
+
+        <p class="beat-label">La chiusura del cerchio · al parco di nuovo</p>
+        <p>Tornarono a casa. Eli pensò alla merla tutta la sera. Si addormentò pensando a lei.</p>
+
+        <p>Il giorno dopo Eli e il papà tornarono al parco. Camminarono di nuovo verso il grande albero. Era sempre lì. Era sempre lo stesso albero.</p>
+
+        <p>Ma quando passarono vicino, Eli sentì qualcosa. Sentì un canto. Un canto lieve, allegro. Veniva da sopra.</p>
+
+        <p>Eli alzò gli occhi.</p>
+
+        <p>In cima ai rami, nel nido, c'era la merla. Con l'ala dritta. Stava cantando. Cantava per Eli.</p>
+
+        <p class="echo">Eli si fermò. La salutò con la mano. La merla cantò più forte.</p>
+
+        <p>Adesso il grande albero non era più solo un albero come gli altri. Era <strong>l'albero della merla</strong>. E la merla era diventata, quel giorno, un piccolo parente di Eli.</p>
+
+        <div class="territorial-close">
+          <p>quando Eli e il papà passano davanti al grande albero, salutano sempre la merla. Qualche volta lei canta. Qualche volta è silenziosa, e dorme. Ma è sempre lì. E tutti e due sanno chi è chi, e si ricordano di quel giorno di primavera in cui lei aveva l'ala storta nell'erba, ed Eli l'ha rimessa a casa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — L'analisi</span>
+      <h2>Cosa è rimasto della cultura, cosa è stato adattato</h2>
+      <p class="section-kicker">Decostruire la storia per vedere come la grammatica indigena americana — ridotta ma non tradita — si è accomodata in un cervello di tre anni.</p>
+    </div>
+
+    <h3>La struttura: il cerchio chiuso, lo sguardo cambiato</h3>
+
+    <p>La storia segue rigorosamente la struttura circolare della cultura indigena americana. Comincia al parco, vicino al grande albero. Finisce al parco, vicino al grande albero. <strong>Stesso luogo. Stesso albero. Stesso bambino con lo stesso papà.</strong> Eppure tutto è cambiato — non l'albero, ma <em>cosa significa</em> l'albero per Eli. All'inizio era "un albero come gli altri". Alla fine è "l'albero della merla", parente di Eli.</p>
+
+    <div class="circle-mini">
+      <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Cerchio narrativo -->
+        <circle cx="300" cy="100" r="75" fill="none" stroke="#a64a2c" stroke-width="1.3" opacity="0.5"/>
+
+        <!-- Punti -->
+        <circle cx="225" cy="100" r="6" fill="#a64a2c"/>
+        <circle cx="300" cy="25" r="6" fill="#c47a3d"/>
+        <circle cx="375" cy="100" r="6" fill="#a64a2c"/>
+        <circle cx="300" cy="175" r="5" fill="#9c5a28"/>
+
+        <!-- Etichette -->
+        <text x="135" y="104" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">grande albero</text>
+        <text x="135" y="118" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">come gli altri</text>
+
+        <text x="300" y="14" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">l'incontro con la merla</text>
+
+        <text x="465" y="104" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">grande albero</text>
+        <text x="465" y="118" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8a7660">della merla</text>
+
+        <text x="300" y="192" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#2a201a">il nido</text>
+
+        <!-- Centro -->
+        <text x="300" y="98" text-anchor="middle" font-family="Eczar" font-size="11" font-style="italic" fill="#a64a2c">il parente</text>
+        <text x="300" y="113" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#8a7660">trovato</text>
+      </svg>
+      <div class="circle-mini-caption">
+        Il cerchio della storia di Eli: stesso albero a inizio e fine, ma adesso è qualcun'altra cosa. Il significato si è spostato senza che il quadro cambi — è il dispositivo centrale della cultura indigena.
+      </div>
+    </div>
+
+    <p>Per un bambino di tre anni questa struttura è particolarmente potente perché lavora a due livelli. Al livello superficiale: c'è movimento nella storia (incontro, salvataggio, ritorno). Al livello profondo: si <em>torna a casa</em>, si torna allo stesso parco. Il bambino impara senza accorgersi che <strong>il movimento di una storia non è solo "andare avanti", può essere anche "tornare e vedere meglio"</strong>. È una lezione sottile e una delle migliori cose che la cultura indigena può insegnare a quell'età.</p>
+
+    <h3>Il parente animale, in versione domestica</h3>
+
+    <p>La merla nella storia non è una "amichetta-animale" generica come potrebbe essere in una fiaba europea standard. È <strong>un parente</strong>, nel senso indigeno specifico. Vediamo cosa fa la storia per stabilirlo.</p>
+
+    <p>Primo: la merla viene <em>incontrata</em>, non cercata. Eli non parte con l'obiettivo di salvare un animale. La merla è là, nell'erba, quel giorno. Si incrociano i loro cammini. Questo è importante perché nelle tradizioni indigene il rapporto con i parenti non-umani non è qualcosa che si cerca attivamente — si presenta. Si è invitati, in un certo senso, alla relazione. Eli viene invitato dalla merla che ha bisogno.</p>
+
+    <p>Secondo: Eli <em>aiuta senza prendere</em>. Non porta la merla a casa. Non la mette in una gabbia. Non la fa propria. La rimette nel suo nido, al suo posto, nel suo albero. Questo è il principio del rispetto indigeno: l'aiuto non è possesso. <em>Si lascia il parente al suo posto</em>. La differenza con la sensibilità occidentale standard ("portiamola a casa, le diamo da mangiare, la curiamo") è importante e va sentita.</p>
+
+    <p>Terzo: la relazione <em>continua dopo la storia</em>. Eli e la merla non si separano. La merla non vola via per sempre. Resta nel suo albero, e ogni volta che Eli passa, lei è lì. Si salutano. Questo è il parentado nella sua forma piena: <strong>una relazione duratura, mantenuta nel tempo, ancorata a un luogo</strong>. Non un episodio chiuso.</p>
+
+    <div class="voice">
+      Il parente non si possiede.<br>Il parente si saluta, ogni volta che si incontra.
+    </div>
+
+    <h3>Il riconoscimento territoriale: la firma del Volume IV</h3>
+
+    <p>La parte più potente della storia, e la più tipicamente indigena, è la <strong>chiusura territoriale</strong>. La storia non termina con "e Eli si addormentò felice". Termina con una frase che <em>continua</em>: <em>"e ancora oggi, quando Eli e il papà passano davanti al grande albero, salutano sempre la merla"</em>. Questa frase fa una cosa che nessun'altra cultura della serie ha fatto: <strong>la storia esce dal libro e abita la vita reale del bambino</strong>.</p>
+
+    <p>Vediamo come funziona praticamente. Tu racconti la storia stasera. Bene. Il giorno dopo vai al parco con tuo figlio. Passate davanti a un grande albero — uno qualsiasi del parco vero, scegli tu quale sarà "il grande albero della storia". Tu dici: <em>guarda, ecco il grande albero. C'è la merla?</em> Tuo figlio guarda. Magari c'è davvero un uccellino tra i rami. Magari no. Ma il bambino <strong>saluta l'albero</strong>. Saluta la merla, che ci sia o no.</p>
+
+    <p>Da quel momento, ogni volta che passerete davanti a quell'albero, la storia si <em>riattiva</em>. Tuo figlio si ricorderà. Saluterà. Forse aggiungerà nuovi dettagli ("oggi la merla dorme", "oggi la merla è andata a prendere i vermi per i suoi piccoli"). La storia diventerà <strong>geografia abitata</strong>. È il dispositivo unico della tradizione indigena americana, ed è esattamente alla portata di un bambino di tre anni.</p>
+
+    <p>Notare la potenza pedagogica di questo. Una storia normale (Volume I, II, III) finisce sul cuscino: bella, importante, ma chiusa. Una storia con riconoscimento territoriale <em>continua</em>: lavora nel bambino per settimane, mesi, anni. Costruisce nella sua testa una mappa della propria città, del proprio quartiere, del proprio parco — una mappa fatta di luoghi-con-storie. È esattamente il modo in cui le tradizioni indigene hanno mantenuto vivo il proprio territorio attraverso le generazioni: trasmettendo storie incardinate nei luoghi.</p>
+
+    <h3>L'assenza di morale dichiarata</h3>
+
+    <p>Notare cosa <strong>la storia non dice</strong>. Non dice mai: "e così Eli imparò a rispettare gli animali". Non dice: "è importante aiutare chi è in difficoltà". Non dice: "gli animali sono nostri amici". <strong>Non c'è morale dichiarata</strong>. Questo è una scelta tecnica precisa, fedele alla cultura indigena americana che — come abbiamo visto nel Doc 1 — affida la pedagogia al <em>comportamento dell'ascoltatore dopo</em>, non al commento del narratore.</p>
+
+    <p>Per un bambino di tre anni questa rinuncia totale alla morale esplicita è insolita rispetto alla cultura occidentale standard, ma funziona, perché c'è qualcos'altro che fa il lavoro: <strong>il gesto da fare</strong>. Tuo figlio non impara astrattamente "bisogna rispettare gli animali" — impara <em>concretamente</em> a salutare la merla quando passa davanti al grande albero. Il gesto sostituisce la lezione. Anzi: è una lezione molto più potente di qualunque morale dichiarata, perché si <em>fa</em> ogni volta, non si pensa una volta sola.</p>
+
+    <p>Questa è probabilmente la cosa più tipicamente indigena che la storia trasporta: <strong>la pedagogia non è qualcosa che si dice, è qualcosa che si fa</strong>. Tuo figlio cresce salutando alberi e merli. Quel gesto, ripetuto cento volte negli anni a venire, costruisce in lui un rapporto col mondo che nessun "rispetta gli animali" detto a parole avrebbe mai costruito.</p>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sull'eseguibilità</span>
+      Per far funzionare davvero la storia, devi <strong>scegliere il grande albero</strong> prima di raccontarla, o subito dopo la prima volta. Un albero specifico in un parco specifico, vicino casa, dove vai abbastanza spesso. Non deve avere davvero la merla — basta che sia visibile e identificabile. La storia comincia a vivere quando tu, il giorno dopo, gli dici: <em>guarda, c'è il grande albero. Salutiamo la merla?</em>. Da quel momento il bambino lo riconoscerà ogni volta. La storia si è territorializzata.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Le varianti</span>
+      <h2>Tre modi di raccontare la stessa cultura</h2>
+      <p class="section-kicker">Stessa grammatica indigena, animali diversi, luoghi diversi, ognuno radicato nella vita reale di tuo figlio.</p>
+
+    </div>
+
+    <p>La storia di Eli e la merla è un caso specifico di una matrice molto produttiva: <strong>bambino + animale incontrato in un luogo specifico + piccolo aiuto rispettoso + cerchio chiuso + riconoscimento territoriale finale</strong>. Tre varianti, ognuna ancorata a un luogo diverso della tua vita reale.</p>
+
+    <div class="variant">
+      <span class="variant-num">Variante 1 — al parco, con altro animale</span>
+      <h4>Il bambino e la formica</h4>
+      <p>Stesso schema, scala diversa. Eli al parco vede una piccola formica che cerca di portare una briciola enorme — più grande di lei. La briciola continua a rotolare dentro un buchetto. La formica esce. Riprova. La briciola rotola di nuovo. Eli e il papà spostano una piccola pietra, in modo che la formica possa salire da una via diversa. La formica trova la nuova via. Porta la briciola al formicaio. Da quel giorno, ogni volta che Eli passa vicino a quel cespuglio, controlla se vede una formica con una briciola. <em>Stessa grammatica: parente piccolo, aiuto rispettoso (non si prende la formica), cerchio chiuso, riconoscimento territoriale (il cespuglio delle formiche).</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 2 — sul balcone di casa</span>
+      <h4>Il bambino e il geranio</h4>
+      <p>Una storia con un parente vegetale. Eli ha sempre visto sul balcone di casa un vaso di gerani. Non li guardava mai, erano solo fiori. Un giorno il papà nota che un geranio ha le foglie un po' tristi. Eli e il papà gli portano dell'acqua — Eli versa, piano piano, perché non si rovesci. La sera Eli torna a guardare. Il geranio sembra già un po' più sveglio. Il giorno dopo è in piena salute. <em>"Ti ricordi che gli abbiamo dato l'acqua?"</em>, dice il papà. Da quel giorno Eli passa sul balcone ogni mattina e dice buongiorno al geranio. <em>Versione domestica: il parente vegetale, il piccolo aiuto, la presenza quotidiana. Riconoscimento territoriale dentro casa — particolarmente potente perché il bambino interagisce col geranio ogni giorno.</em></p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 3 — col tuo bambino come protagonista, in un luogo della vostra vita</span>
+      <h4>[Nome del bambino] e il [animale che esiste davvero in un luogo che frequentate]</h4>
+      <p>La variante più potente. Identifica un luogo che tuo figlio frequenta abbastanza spesso — un parco, una strada, una panchina, un cortile — dove c'è (o spesso c'è) un animale: un piccione, un cane sempre legato fuori dal supermercato, un gatto del condominio, una rana in uno stagno. Costruisci una storia di un piccolo aiuto: tuo figlio nota che il piccione ha le piume bagnate, il gatto ha sete, la rana è uscita dall'acqua. Un piccolo gesto rispettoso (qualche briciola, una ciotola d'acqua, una preghiera silenziosa per la rana). Cerchio chiuso. <em>"E così, ancora oggi, quando passi vicino a [luogo], saluti sempre [animale]."</em> Da quel momento, ogni volta che ci passate, il rituale si attiva. <em>Da usare quando vuoi che la storia entri davvero nella vita di tuo figlio. Una storia così raccontata bene può accompagnarvi per anni.</em></p>
+    </div>
+
+    <div class="callout">
+      <span class="callout-label">Una nota sul telaio</span>
+      Il telaio indigeno per i 2-3 anni è straordinariamente fertile. Quattro componenti bastano: <strong>un luogo specifico della vita reale + un essere vivente che lo abita + un piccolo aiuto rispettoso + un saluto che continua nel tempo</strong>. Non hai bisogno di trame complesse, di personaggi multipli, di morali. Il "lavoro" della storia avviene dopo, ogni volta che passate insieme davanti a quel luogo. Una storia ben fatta ti accompagna per mesi. Questo è il dono unico della tradizione indigena americana al tuo progetto: storie che <strong>continuano a vivere</strong>, non finiscono.
+    </div>
+  </section>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume IV · Documento 3 di 4</span>
+    <span>Prossimo: La guida pratica →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giappone · Le Storie Classiche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Noto+Serif:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf7f2;
+    --paper-deep: #f0ebe1;
+    --ink: #2a2620;
+    --ink-soft: #4a443c;
+    --ink-faint: #8a8278;
+    --rule: #d8d2c4;
+    --accent: #6b3a3a;
+    --accent-soft: #9a6464;
+    --sumi: #3d3540;
+    --highlight: #ede5d3;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 80% 10%, rgba(107, 58, 58, 0.025) 0%, transparent 50%),
+      radial-gradient(circle at 10% 90%, rgba(61, 53, 64, 0.03) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Noto Serif', 'Shippori Mincho', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.8;
+    font-weight: 300;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='w'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0.16 0 0 0 0 0.15 0 0 0 0 0.13 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23w)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    padding: 5rem 0 2.5rem;
+  }
+
+  .series-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 3rem;
+    font-weight: 400;
+  }
+
+  .kanji-mark {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    opacity: 0.85;
+  }
+
+  h1.title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6.5vw, 4rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.6rem;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--sumi);
+  }
+
+  .subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.3rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 540px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  nav.tabs {
+    margin-top: 3rem;
+    border-bottom: 1px solid var(--ink);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 25%;
+    height: 50%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.6;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover { color: var(--ink); }
+
+  nav.tabs a.active { color: var(--accent); }
+
+  nav.tabs a.active .tab-num {
+    color: var(--accent);
+    opacity: 0.7;
+  }
+
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: var(--accent);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 5rem 0 4rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.45rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 580px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  .lead::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 2rem;
+  }
+
+  /* ===== STORY OVERVIEW ===== */
+  .story-overview {
+    margin: 3rem 0 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story-overview > div {
+    padding: 1.8rem 1.4rem;
+    position: relative;
+  }
+
+  .story-overview > div + div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .story-overview .story-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .story-overview h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .story-overview p {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ===== STORY SECTIONS ===== */
+  .story {
+    margin: 6rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .story-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .story-mark {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    font-weight: 400;
+  }
+
+  .story-mark .num {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 1.8rem;
+    color: var(--sumi);
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+
+  .story h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 2.2rem;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+  }
+
+  .story h2 em {
+    font-style: italic;
+    color: var(--sumi);
+  }
+
+  .story-source {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  /* ===== INTERIOR HEADINGS ===== */
+  .story h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin: 3rem 0 1.2rem;
+    letter-spacing: -0.005em;
+    line-height: 1.3;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .story p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+  }
+
+  .story p strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .story p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== NARRATIVE BLOCK ===== */
+  .narrative {
+    margin: 1.5rem 0 2.5rem;
+    padding: 0;
+    position: relative;
+  }
+
+  .narrative-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    font-weight: 400;
+    display: block;
+  }
+
+  .narrative-label::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    margin-top: 0.6rem;
+    opacity: 0.5;
+  }
+
+  .narrative p {
+    text-align: left;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  .narrative p em {
+    font-style: italic;
+    color: var(--sumi);
+  }
+
+  /* ===== ANALYSIS ===== */
+  .analysis {
+    margin: 2rem 0;
+  }
+
+  .analysis-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  /* ===== JAPANESE TERM ===== */
+  .jp {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+
+  .jp-kanji {
+    font-family: 'Shippori Mincho', serif;
+    font-style: normal;
+    color: var(--sumi);
+    font-size: 0.95em;
+    margin-left: 0.15em;
+  }
+
+  /* ===== KEY TERM ===== */
+  .keyterm {
+    border-bottom: 1px solid var(--accent);
+    color: var(--ink);
+    font-style: italic;
+  }
+
+  /* ===== BREATHING QUOTE ===== */
+  .breath {
+    margin: 3rem auto;
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: var(--accent);
+    max-width: 540px;
+  }
+
+  .breath::before,
+  .breath::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--accent);
+    margin: 1.5rem auto;
+    opacity: 0.5;
+  }
+
+  /* ===== WHY THIS STORY ===== */
+  .why-this {
+    margin: 2.5rem 0;
+    padding: 1.5rem 0 1.5rem 1.8rem;
+    border-left: 1px solid var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    font-weight: 400;
+  }
+
+  .why-this strong {
+    font-style: normal;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-size: 0.65rem;
+    display: block;
+    margin-bottom: 0.7rem;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ===== CALLOUT ===== */
+  .callout {
+    margin: 2.5rem 0;
+    padding: 1.6rem 0 1.6rem 1.8rem;
+    border-left: 1px solid var(--accent);
+    font-size: 0.95em;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .callout-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    display: block;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  /* ===== CONTRAST ===== */
+  .contrast-male {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 2rem 0;
+  }
+
+  .contrast-male h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+  }
+
+  .contrast-male p {
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  /* ===== SYNTHESIS ===== */
+  .synthesis {
+    margin: 6rem 0 3rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .synthesis h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 1.9rem;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  .synthesis-kicker {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 1.05rem;
+  }
+
+  .synthesis p {
+    text-align: left;
+    margin-bottom: 1.4rem;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'Shippori Mincho', serif;
+    color: var(--accent);
+    font-size: 1.8rem;
+    opacity: 0.6;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-weight: 400;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    .kanji-mark { font-size: 3rem; }
+    h1.title { font-size: 2.2rem; }
+    .subtitle { font-size: 1.1rem; }
+    .lead { font-size: 1.2rem; }
+    .story h2 { font-size: 1.7rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .breath { font-size: 1.25rem; }
+    .story-overview { grid-template-columns: 1fr; }
+    .story-overview > div + div::before { display: none; }
+    .story-overview > div { border-top: 1px solid var(--rule); }
+    .story-overview > div:first-child { border-top: none; }
+    .contrast-male { grid-template-columns: 1fr; gap: 2rem; }
+    .narrative p { font-size: 1.05rem; }
+    section, .story { margin: 4rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .story-overview, .story, .synthesis { animation: fadeIn 0.9s ease both; }
+  .lead { animation-delay: 0.15s; }
+  .story-overview { animation-delay: 0.2s; }
+  .story:nth-of-type(1) { animation-delay: 0.25s; }
+  .story:nth-of-type(2) { animation-delay: 0.3s; }
+  .story:nth-of-type(3) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume II</div>
+    <div class="kanji-mark">三話</div>
+    <h1 class="title">Le storie<br><em>classiche</em></h1>
+    <p class="subtitle">Tre racconti del Giappone tradizionale, scelti come tre angolazioni: il tempo che non torna uguale, il legame rotto dalla curiosità, lo spirito offeso che chiede ascolto.</p>
+    <div class="meta-row">
+      <span>Documento 2 di 4</span>
+      <span>Storie classiche</span>
+      <span>Tono narrativo + analitico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="giappone_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="giappone_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="giappone_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Tre storie, tre stagioni della sensibilità giapponese.</p>
+    <p>Urashima Tarō mostra il <span class="jp">mono no aware</span> — lo struggimento dolce davanti al tempo che è passato. La gru riconoscente mostra l'<span class="jp">en</span> — il legame karmico che la curiosità umana sa rompere. Hōichi senza orecchie mostra come si tratta uno spirito offeso: non si combatte, si ascolta, si placa.</p>
+  </div>
+
+  <div class="story-overview">
+    <div>
+      <div class="story-num">Storia I</div>
+      <h3>Urashima Tarō</h3>
+      <p>Il tempo come ruota che non torna mai uguale</p>
+    </div>
+    <div>
+      <div class="story-num">Storia II</div>
+      <h3>La gru riconoscente</h3>
+      <p>Il legame e la curiosità che lo rompe</p>
+    </div>
+    <div>
+      <div class="story-num">Storia III</div>
+      <h3>Hōichi senza orecchie</h3>
+      <p>Lo spirito offeso e l'arte del placamento</p>
+    </div>
+  </div>
+
+  <!-- ============ STORIA I ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">一</span> Mukashibanashi · Fiaba popolare</div>
+      <h2>Urashima Tarō —<br><em>il pescatore tornato troppo tardi</em></h2>
+      <p class="story-source">Tradizione orale antichissima · prime versioni scritte nel <em>Nihon Shoki</em>, 720 d.C. · forma codificata nel periodo Edo</p>
+    </div>
+
+    <span class="narrative-label">Il racconto</span>
+    <div class="narrative">
+      <p>C'era un giovane pescatore di nome Urashima Tarō, che viveva in un piccolo villaggio sulla costa. Un giorno, sulla spiaggia, vide alcuni bambini che tormentavano una tartaruga. La salvò, e la rimise in mare.</p>
+
+      <p>Qualche tempo dopo, mentre pescava, una grande tartaruga si avvicinò alla sua barca. <em>Sono io quella che hai salvato</em>, disse. <em>Per ringraziarti, ti porterò al palazzo del Re Drago, sul fondo del mare.</em></p>
+
+      <p>Urashima salì sul guscio. La tartaruga lo portò giù, giù nelle acque profonde, fino al palazzo di Ryūgū-jō — un palazzo di coralli e perle, dove ogni stanza era una stagione diversa: una stanza di primavera con i ciliegi in fiore, una di estate con le lucciole, una di autunno con le foglie rosse, una di inverno con la neve.</p>
+
+      <p>La principessa Otohime lo accolse. Urashima rimase nel palazzo. I giorni passavano dolci. Mangiava cibi che non aveva mai assaggiato, vedeva danze che non aveva mai visto. Erano passati — gli sembrava — tre giorni, forse quattro.</p>
+
+      <p>Una mattina sentì una stretta al cuore. Pensò a sua madre, al villaggio, ai pescatori suoi compagni. Disse a Otohime che voleva tornare, anche solo per poco. Otohime non protestò. Gli diede un piccolo cofanetto di legno laccato, chiuso da un nastro di seta. <em>Tienilo con te</em>, disse. <em>Ma non aprirlo mai. Qualunque cosa accada.</em></p>
+
+      <p>La tartaruga lo riportò sulla spiaggia.</p>
+
+      <p>Urashima scese a terra e si guardò intorno. La spiaggia era la sua, ma non riconosceva nessuno. Cercò il sentiero per il villaggio. Il sentiero era diverso. Le case del villaggio non c'erano. C'erano altre case, di gente che non aveva mai visto, e il villaggio si era spostato un po' più in là, e si era allargato. Fermò un vecchio che passava. <em>Conosci la famiglia di Urashima Tarō?</em> Il vecchio rifletté. <em>Urashima Tarō? Sì, ne ho sentito parlare quando ero bambino. Mio nonno mi raccontava di un pescatore con quel nome, che un giorno scomparve in mare. È passato molto tempo. Trecento anni, forse di più.</em></p>
+
+      <p>Urashima rimase fermo sulla spiaggia. Le persone che amava erano morte da generazioni. Il mondo a cui voleva tornare non c'era più.</p>
+
+      <p>Si sedette sulla sabbia e tirò fuori il cofanetto. Nonostante la promessa, lo aprì.</p>
+
+      <p>Dal cofanetto uscì una nuvola bianca, leggera, e si dissolse nel vento. Urashima sentì sulle mani la pelle che si raggrinziva, sui capelli un peso bianco, sulla schiena un'ombra antica. In pochi istanti diventò vecchio — tutti i trecento anni che il mare gli aveva risparmiato lo raggiunsero insieme, e morì.</p>
+
+      <p>Sulla spiaggia, il vento spostava i suoi capelli bianchi. Più in là, in mare, una tartaruga si vedeva appena, e poi non si vedeva più.</p>
+    </div>
+
+    <h3>Analisi mirata: il tempo come ruota che non torna uguale</h3>
+
+    <div class="analysis">
+      <p>Urashima Tarō è probabilmente la storia più nota della tradizione giapponese, e non è un caso. Condensa in modo quasi puro la concezione giapponese del tempo, e la posizione emotiva — il <span class="jp">mono no aware</span> — che da quella concezione deriva. Vale la pena leggerla con attenzione, perché ogni elemento è esattamente il contrario di come una storia occidentale tratterebbe gli stessi materiali.</p>
+
+      <p>Cominciamo dalla cosa più ovvia: <strong>l'apertura non è un problema, è un gesto</strong>. Urashima salva una tartaruga. Non lo fa per essere un eroe, non lo fa per ottenere qualcosa: lo fa perché in quel momento è la cosa giusta da fare. Una storia occidentale comincerebbe con un desiderio non realizzato (Urashima vuole sposarsi, vuole arricchirsi, vuole partire); qui comincia con un'azione gentile e priva di motivo. Questa è una marca distintiva: nelle storie giapponesi i protagonisti spesso non <em>vogliono</em> qualcosa, semplicemente <em>fanno</em>.</p>
+
+      <p>Il palazzo del Re Drago è il <strong>cuore stagionale della storia</strong>. Le quattro stanze — primavera, estate, autunno, inverno — non sono ornamento esotico: sono una rappresentazione visiva del tempo giapponese. Le stagioni stanno tutte insieme, simultaneamente disponibili, fuori dal flusso ordinario. È il tempo dei <span class="jp">kami</span>, il tempo del sacro: ciclico, presente, non lineare. Mentre Urashima è là, il tempo umano — fuori — continua a scorrere senza di lui. Questo è il dispositivo narrativo centrale: <strong>due tempi diversi che convivono</strong>, e il pescatore ne attraversa uno credendo di stare nell'altro.</p>
+
+      <p>Ma il punto vero della storia — la cosa che la rende decisiva — è il <strong>finale</strong>. In una storia occidentale, dopo il colpo di scena del villaggio scomparso, ci aspetteremmo una soluzione. Urashima trova un modo per tornare al palazzo, o per riportare in vita i suoi cari, o per costruirsi una nuova vita nel nuovo mondo. Si trasforma, impara, ricomincia. <strong>Niente di tutto questo accade</strong>. Urashima si siede sulla sabbia, apre il cofanetto, diventa vecchio, muore. Fine.</p>
+
+      <div class="breath">
+        Il finale non risolve nulla.<br>Mostra solo che il tempo, una volta perso, non si recupera.
+      </div>
+
+      <p>Per un orecchio occidentale questo finale può sembrare crudele, o ingiusto, o "incompleto". Ma è esattamente il punto della storia. Urashima non viene <em>punito</em> per aver aperto il cofanetto: il cofanetto contiene semplicemente <strong>il tempo che gli era stato risparmiato</strong>, e quando si apre, il tempo lo raggiunge. Non c'è giudizio morale, non c'è villain, non c'è lezione esplicita su "non disobbedire". C'è solo una constatazione: tu hai vissuto trecento anni in tre giorni soggettivi, e quando torni nel mondo dei vivi, quei trecento anni ti pesano addosso tutti insieme. È fisica, non etica.</p>
+
+      <p>Il <span class="jp">mono no aware</span> della storia è in questo: <strong>la primavera è tornata trecento volte sulla costa, ma le persone che Urashima amava erano lì una volta sola</strong>. Il ciclo è continuato — il villaggio esiste ancora, anche se è un altro villaggio; la spiaggia esiste ancora, anche se è cambiata; le tartarughe escono ancora dal mare. Ma il tempo individuale, quello sì, è perso. La storia è il punto in cui il ciclo cosmico e l'irripetibilità umana si incontrano e producono una tristezza dolce, accettata, non risolvibile.</p>
+
+      <p>Tecnicamente, la storia segue una struttura affine al <span class="jp">ki-shō-ten-ketsu</span>, ma con una variante. <span class="jp">Ki</span>: il salvataggio della tartaruga. <span class="jp">Shō</span>: il palazzo, le quattro stanze, la vita dolce. <span class="jp">Ten</span>: il ritorno alla spiaggia e la scoperta del villaggio cambiato — la svolta, il momento in cui tutto si capovolge. <span class="jp">Ketsu</span>: l'apertura del cofanetto, la vecchiaia, la morte. Ma il <span class="jp">ketsu</span> non "lega" nel senso di "risolve": lega nel senso di <em>completa l'immagine</em>. Adesso vediamo cosa significa il dono di Otohime, cosa significa il tempo, cosa significa essere stati felici a Ryūgū-jō. Tutto si compone — ma niente si aggiusta.</p>
+
+      <p>La <strong>morale</strong>, in senso occidentale, è quasi assente. C'è una piccola cornice didattica nelle versioni più recenti ("non aprire mai un dono che non capisci"), ma è tardiva e quasi sempre considerata di cattivo gusto dai conoscitori. La storia vera funziona <em>senza morale</em> — ti consegna un'esperienza emotiva (lo struggimento del tempo perso) e ti lascia. Cosa farne, è affar tuo.</p>
+    </div>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere il tempo giapponese in azione, e per capire che una storia può finire senza risoluzione e funzionare benissimo. Urashima è la dimostrazione che il <span class="jp">mono no aware</span> — l'emozione fondamentale della cultura — non è un'aggiunta poetica: è il motore stesso della narrazione.
+    </div>
+  </section>
+
+  <!-- ============ STORIA II ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">二</span> Mukashibanashi · Fiaba popolare</div>
+      <h2>La gru riconoscente —<br><em>il legame e la curiosità che lo rompe</em></h2>
+      <p class="story-source"><span class="jp">Tsuru no Ongaeshi</span><span class="jp-kanji">鶴の恩返し</span> · tradizione orale popolare · varianti diffuse in tutto il Giappone rurale</p>
+    </div>
+
+    <span class="narrative-label">Il racconto</span>
+    <div class="narrative">
+      <p>C'era una volta un vecchio falegname che viveva da solo in un villaggio di montagna. Era povero, ma onesto. Una sera d'inverno, tornando a casa nella neve, sentì un grido debole. Vicino al sentiero, una gru bianca era caduta in una trappola, e una zampa era ferita. Il vecchio si fermò, aprì la trappola, liberò la gru e la guardò volare via nel cielo grigio.</p>
+
+      <p>Quella stessa notte, mentre il vento faceva tremare le imposte, qualcuno bussò alla porta. Il vecchio aprì. Sulla soglia c'era una giovane donna, bellissima, con la neve sulle spalle. <em>Mi sono persa nella tempesta</em>, disse. <em>Posso restare qui questa notte?</em></p>
+
+      <p>Il vecchio la fece entrare, le diede da mangiare il poco che aveva, le offrì un giaciglio accanto al fuoco. La mattina la tempesta non era ancora finita. La donna restò. Il giorno dopo, la tempesta passò, ma la donna non se ne andava. Diceva di non avere nessuno, da nessuna parte. Il vecchio, che era solo da molti anni, le chiese di sposarlo. Lei accettò.</p>
+
+      <p>Vissero felici. La donna cucinava, riordinava, ascoltava. Una sera disse al marito: <em>Sappi che so tessere. Comprami del filo, e tesserò una stoffa che potrai vendere al mercato. Ma c'è una condizione: quando tesso, non devi mai guardarmi. Promettilo.</em></p>
+
+      <p>Il vecchio promise. La donna entrò nella stanza del telaio e chiuse la porta. Per tre giorni e tre notti si sentì il rumore del telaio — <em>sok, sok, sok</em> — e nient'altro. Al terzo giorno la donna uscì, pallida, magrissima, con in mano una stoffa così sottile e così splendida che sembrava fatta di luce. <em>Portala al mercato</em>, disse.</p>
+
+      <p>Il vecchio la portò. La stoffa fu venduta a un signore ricco per una somma enorme. Il vecchio tornò a casa contento. La moglie sorrise, ma era ancora pallida. Passarono alcuni mesi. Il denaro finì. Il vecchio chiese alla moglie se poteva tessere ancora una volta, l'ultima. Lei esitò. Poi acconsentì. <em>Ma ricordati la promessa.</em></p>
+
+      <p>Entrò nella stanza, chiuse la porta. <em>Sok, sok, sok.</em> Passò il primo giorno. Il secondo. Il terzo. Al quarto giorno il vecchio era inquieto. Cosa faceva, là dentro? Come tesseva senza fili? Perché diventava ogni volta più magra? La curiosità lo divorava. Si avvicinò alla porta. <em>Sok, sok, sok.</em> Aprì uno spiraglio.</p>
+
+      <p>Dentro, al telaio, non c'era una donna. C'era una gru bianca. Si stava strappando le piume del petto, una per una, e le tesseva sul telaio. Il petto era già quasi nudo, con macchie di sangue sulla pelle bianca.</p>
+
+      <p>La gru si voltò. Lo guardò.</p>
+
+      <p>Il vecchio capì subito di aver rotto qualcosa che non si poteva aggiustare. Cercò di parlare, ma la gru smise di tessere. Si alzò dal telaio, si trasformò un'ultima volta in donna — vestita di un kimono bianco logoro — e disse al marito: <em>Io ero la gru che hai salvato quella notte nella neve. Sono venuta a ringraziarti. Volevo restare con te. Ma ora che mi hai vista, non posso più rimanere.</em></p>
+
+      <p>Si trasformò di nuovo in gru, una gru con il petto quasi spoglio, e volò fuori dalla finestra, verso le montagne, e non tornò mai più.</p>
+
+      <p>Il vecchio rimase in casa, con una stoffa di luce a metà sul telaio, e sulla soglia poche piume bianche che il vento si sarebbe presto portato via.</p>
+    </div>
+
+    <h3>Analisi mirata: l'<span class="jp">en</span> e la curiosità che lo rompe</h3>
+
+    <div class="analysis">
+      <p>La gru riconoscente è una delle fiabe giapponesi più amate, e funziona su un meccanismo narrativo che è molto difficile spiegare a un orecchio occidentale finché non lo si vede in azione: il <span class="jp">en</span><span class="jp-kanji">縁</span>, il legame karmico, e la sua fragilità di fronte alla curiosità umana.</p>
+
+      <p>L'<span class="jp">en</span> è il legame che si crea tra esseri quando uno fa qualcosa di importante per l'altro. Non è gratitudine nel senso occidentale (un debito che si può ripagare) e non è amore romantico (una scelta soggettiva). È più simile a un <strong>filo invisibile</strong> che, una volta annodato, lega due esseri al di là della loro volontà cosciente. Il vecchio salva la gru. Il filo si annoda. La gru viene a ringraziarlo — ma "ringraziare" è una traduzione povera; più precisamente, viene a <em>onorare il legame</em>, perché è così che il legame chiede di essere onorato. Diventa sua moglie. Tesse per lui usando il proprio corpo, letteralmente. Si dà.</p>
+
+      <p>Notare cosa <strong>non</strong> c'è in questa storia. Non c'è cattivo. La trappola in cui era caduta la gru non ha un colpevole nominato — è solo una trappola, fa parte del mondo. Non c'è ostacolo esterno: nessuno cerca di separare i due sposi, nessuno trama contro di loro, nessuna circostanza avversa li costringe. La storia funziona in <strong>uno spazio di pura intimità domestica</strong>: una casa di montagna, un telaio, una porta chiusa, una promessa.</p>
+
+      <p>L'unico vero "antagonista" è interno al protagonista: <strong>la sua curiosità</strong>. E qui sta il cuore tecnico della storia. La curiosità del vecchio non è cattiveria, non è tradimento, non è perfino cattiva fede. È semplicemente <em>l'incapacità di lasciar essere</em>. È una debolezza profondamente umana, e profondamente fatale al legame. Lui vuole <em>sapere</em> — e in quella cultura, voler sapere troppo è già rompere.</p>
+
+      <p>Questa è una concezione del male radicalmente diversa da quella occidentale. Non c'è un nemico da sconfiggere. Non c'è un vizio capitale (non è invidia, non è avarizia, non è superbia). C'è una <strong>delicatezza che non è stata rispettata</strong>. Il torto del vecchio non è morale: è di sensibilità. Avrebbe dovuto sentire che certe cose non si guardano, che certi misteri vanno lasciati misteriosi, che certe promesse contengono di più di quello che dicono. Non l'ha sentito. Ha aperto la porta.</p>
+
+      <div class="breath">
+        Nella cultura giapponese, una promessa non è un contratto:<br>è il filo sottile che tiene insieme un mondo possibile.
+      </div>
+
+      <p>Il <strong>finale</strong>, anche qui, non risolve. La gru non muore (non è una tragedia in senso occidentale), il vecchio non viene punito né si redime (non è una storia di pentimento). Semplicemente, qualcosa che era possibile non è più possibile. La gru se ne va. Il legame si scioglie. Il vecchio resta solo, con una stoffa a metà — immagine perfetta del bello incompiuto, dell'<span class="jp">wabi-sabi</span> che attraversa tutta la storia.</p>
+
+      <p>Ed è proprio in questa "incompletezza accettata" che la storia trasmette il suo insegnamento, senza mai dichiararlo. Una storia occidentale moderna chiuderebbe diversamente: o il vecchio salverebbe la gru un'altra volta (riparazione), o si pentirebbe e ne uscirebbe trasformato (arco), o moriremmo di crepacuore (tragedia romantica). La fiaba giapponese fa una cosa diversa, e più sottile: <strong>mostra cosa si è perso, e basta</strong>. La pedagogia è affidata interamente alla risonanza emotiva — al <span class="jp">yoin</span>, il suono che continua dopo la campana.</p>
+
+      <p>C'è un'ultima cosa importante da notare. La gru, prima di andarsene, <strong>non incolpa il vecchio</strong>. Non gli rimprovera la promessa rotta, non lo maledice, non recrimina. Dice solo: <em>"ora che mi hai vista, non posso più rimanere"</em>. È una constatazione, non un'accusa. Il legame è rotto perché funzionava in un certo modo, e quel modo richiedeva una certa cosa, e quella cosa non c'è più stata. Punto. Questa <strong>assenza di recriminazione</strong> è un tratto profondamente giapponese, e profondamente saggio: chi sente di aver rotto qualcosa, lo sa già. Non c'è bisogno di dirglielo.</p>
+    </div>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere come una storia possa funzionare senza nemico esterno, con il "male" interiorizzato come incapacità di rispettare un mistero. E per vedere il <span class="jp">en</span> come legame che la cultura occidentale fatica a concepire — qualcosa tra il debito karmico, la grazia ricevuta, e il dono che non si può restituire.
+    </div>
+  </section>
+
+  <!-- ============ STORIA III ============ -->
+  <section class="story">
+    <div class="story-header">
+      <div class="story-mark"><span class="num">三</span> Kaidan · Storia di fantasmi</div>
+      <h2>Hōichi senza orecchie —<br><em>lo spirito offeso e l'arte del placamento</em></h2>
+      <p class="story-source"><span class="jp">Mimi-nashi Hōichi</span><span class="jp-kanji">耳なし芳一</span> · tradizione antica del santuario Akama-jingū · raccolta da Lafcadio Hearn in <em>Kwaidan</em>, 1904</p>
+    </div>
+
+    <span class="narrative-label">Il racconto</span>
+    <div class="narrative">
+      <p>Per capire la storia bisogna sapere prima un'altra storia. Otto secoli fa, nel mare di Shimonoseki, vicino allo stretto di Dan-no-ura, si combatté l'ultima battaglia tra i clan Heike e Genji. Il clan Heike fu sterminato. Il piccolo imperatore bambino, di otto anni, fu fatto annegare in mare dalla nonna per non cadere in mano al nemico. Tutta la corte degli Heike fu inghiottita dalle onde — donne, bambini, samurai, dame, in un solo giorno. Sul fondo del mare, da allora, si dice che gli Heike continuino a vivere come pesci, e che le loro ombre attraversino la spiaggia nelle notti senza luna.</p>
+
+      <p>Otto secoli dopo, in un piccolo tempio buddhista vicino allo stretto, viveva un giovane monaco cieco di nome Hōichi. Non era un monaco completo — era un suonatore di <span class="jp">biwa</span>, il liuto a quattro corde, e cantava. Cantava tutte le grandi storie, ma una in particolare: <em>l'Heike monogatari</em>, la storia della disfatta degli Heike, che durava ore, e che lui sapeva da capo a fondo. Quando la cantava, anche gli uomini più rudi piangevano.</p>
+
+      <p>Una notte d'estate, mentre il vecchio monaco capo era fuori a celebrare un funerale, Hōichi stava sulla veranda del tempio, da solo, in attesa del fresco. Sentì dei passi sul sentiero — passi pesanti, di un uomo armato. Una voce roca lo chiamò: <em>Hōichi! Hōichi-san!</em></p>
+
+      <p><em>Sì?</em> rispose Hōichi. <em>Sono cieco. Chi mi cerca?</em></p>
+
+      <p><em>Non temere</em>, disse la voce. <em>Sono mandato dal mio signore. Si trova qui in pellegrinaggio, alloggia nelle vicinanze, ed ha sentito parlare della tua arte. Vuole che tu vada a cantargli l'Heike monogatari questa notte. Vieni con me.</em></p>
+
+      <p>Hōichi prese il suo biwa. Una mano di ferro lo guidò per il braccio. Camminarono. Hōichi sentiva sotto i piedi prima sentiero, poi ghiaia, poi gradini, poi pavimento di tatami, poi voci sommesse — molte voci, una folla silenziosa di nobili. Una donna con voce raffinata gli disse di sedersi e di cantare la storia della battaglia di Dan-no-ura. Cantò. La sua voce riempì la sala. Quando arrivò al passo della morte dell'imperatore bambino — la nonna che si tuffa in mare con lui in braccio — sentì attorno a sé pianti, singhiozzi soffocati, un dolore antico che si stringeva.</p>
+
+      <p>Quando finì, la stessa voce di donna gli disse: <em>Il nostro signore è commosso. Vuole che tu torni a cantare ogni notte per sei notti. Non dirlo a nessuno: il signore vuole questo soggiorno segreto.</em></p>
+
+      <p>Una mano lo riaccompagnò al tempio prima dell'alba.</p>
+
+      <p>Il monaco capo, tornato il giorno dopo, notò che Hōichi sembrava stanco. Ma Hōichi non disse nulla. La notte seguente uscì di nuovo. E la successiva. Una notte un servitore del tempio, vedendolo allontanarsi nella nebbia, decise di seguirlo. Lo cercò, lo perse, lo cercò di nuovo. Lo trovò infine seduto da solo nel cimitero del tempio, davanti alle tombe degli Heike — antiche pietre logore, illuminate da fuochi fatui che fluttuavano nell'aria. Hōichi cantava, gli occhi chiusi, davanti alle tombe vuote, come se intorno ci fosse una corte intera.</p>
+
+      <p>Il servitore corse a chiamare il monaco capo. Lo trascinarono via di forza. Il monaco capo capì subito.</p>
+
+      <p><em>Hōichi</em>, disse, <em>quelli che ti chiamano non sono uomini vivi. Sono gli spiriti degli Heike. Vogliono la loro storia, vogliono essere ascoltati ancora. Ma se tornerai un'altra notte da loro, non ti lasceranno tornare. Verrai trascinato sotto il mare con loro. La tua voce gli piace troppo.</em></p>
+
+      <p>Hōichi tremò. <em>Cosa devo fare?</em></p>
+
+      <p>Il monaco capo prese pennello e inchiostro. Per ore, su tutto il corpo nudo di Hōichi — fronte, braccia, gambe, schiena, petto, mani — scrisse i sutra del <em>Sutra del Cuore</em>. Migliaia di caratteri sacri, fitti, fitti. <em>Quando verranno a chiamarti questa notte</em>, disse, <em>non rispondere. Non muoverti. Qualunque cosa accada, non parlare. I sutra ti renderanno invisibile a loro. Sopravviverai se taci.</em></p>
+
+      <p>La notte arrivò. I passi di ferro arrivarono sul sentiero. La voce roca chiamò: <em>Hōichi!</em> Hōichi non rispose. <em>Hōichi!</em> Hōichi non si mosse. Sentì il samurai entrare nella veranda. Sentì il samurai cercare nel buio. Sentì il samurai bestemmiare sottovoce. <em>Non c'è. È scomparso. Solo... aspetta. Vedo qualcosa nel buio. Due cose, sospese a mezz'aria.</em></p>
+
+      <p>Il samurai si avvicinò. Erano le orecchie di Hōichi. Il monaco capo, scrivendo i sutra, aveva dimenticato le orecchie. Erano le uniche due parti del suo corpo non protette dalle parole sacre.</p>
+
+      <p>Il samurai parlò: <em>Devo riportare al mio signore qualcosa di te. Visto che il resto è scomparso, prenderò queste.</em></p>
+
+      <p>Una mano di ferro afferrò le orecchie di Hōichi e le strappò di netto.</p>
+
+      <p>Hōichi non gridò. Non si mosse. Sentì il sangue colare lungo il collo. Sentì i passi del samurai allontanarsi. Sentì il silenzio tornare. Solo allora, sulla veranda fredda, perse i sensi.</p>
+
+      <p>La mattina il monaco capo lo trovò. Curò le ferite. Hōichi guarì. Da quel giorno gli Heike non lo chiamarono più — avevano avuto qualcosa di lui, e questo bastò. La sua fama si sparse: tutti volevano sentire cantare il monaco senza orecchie. Diventò celebre, ricco, rispettato.</p>
+
+      <p>E sotto le onde dello stretto di Dan-no-ura, da quel giorno, gli Heike continuarono ad attraversare il mare. Ma nessuno li sentì più cantare la propria storia.</p>
+    </div>
+
+    <h3>Analisi mirata: lo spirito offeso e l'arte del placamento</h3>
+
+    <div class="analysis">
+      <p>Hōichi senza orecchie è la storia perfetta per capire come la cultura giapponese tradizionale costruisce un "antagonista" che non è un villain. È una storia di fantasmi, di pericolo mortale, di violenza fisica — eppure non c'è nessun cattivo. Vale la pena smontarla pezzo per pezzo, perché qui si vede in azione una concezione del male che la nostra cultura ha quasi completamente dimenticato.</p>
+
+      <h3>Chi sono i fantasmi degli Heike, e perché chiamano Hōichi</h3>
+
+      <p>Gli Heike sono <strong>vittime di un'ingiustizia cosmica</strong>. Sono morti in massa, in un solo giorno, otto secoli fa — un intero clan annientato, donne, bambini, vecchi, l'imperatore bambino. La loro storia (l'<em>Heike monogatari</em>) è uno dei testi più importanti della letteratura giapponese, e ruota interamente attorno a un'idea: la <em>caduta dei potenti</em>, il <span class="jp">mujō</span> dell'impermanenza che colpisce anche chi sembrava intoccabile. Gli Heike, da morti, sono rimasti <strong>presenze inquiete</strong> non perché fossero cattivi in vita (anzi, alcuni erano nobili e raffinati), ma perché la loro fine è stata violenta, ingiusta, e non è mai stata davvero <em>raccontata</em> abbastanza, ascoltata abbastanza, pianta abbastanza.</p>
+
+      <p>Quando chiamano Hōichi, non lo chiamano per uccidere. Lo chiamano per <strong>ascoltare di nuovo la propria storia</strong>. Hōichi è il più bravo cantore vivente dell'<em>Heike monogatari</em>: la sua voce è l'unica che può rendere giustizia a quel dolore, ridarlo al mondo, farlo esistere ancora una volta. Per gli Heike, sentire raccontata bene la propria fine è una forma di <em>esistenza</em>. È la cosa che li tiene in equilibrio tra l'altro mondo e il nostro.</p>
+
+      <p>Il problema, dal punto di vista dei vivi, è che gli Heike <em>non si rendono conto</em> di essere morti, o si rendono conto in modo confuso. Per loro, Hōichi sta venendo nella loro corte come un cantore qualunque andrebbe nella corte di un signore. Loro pagano (o lo pagherebbero), lo trattano con onore, lo riaccompagnano a casa. Il fatto che la loro "casa" sia il mondo dei morti, e che portarsi dietro Hōichi significhi ucciderlo, <strong>è una conseguenza non intenzionale</strong>. Non sono malvagi: sono <em>fuori posto</em>. Sono persone morte che si comportano come persone vive, e questo squilibrio uccide chi entra nel loro raggio.</p>
+
+      <div class="breath">
+        Lo spirito offeso non vuole farti del male.<br>Vuole essere ascoltato. Il danno è un effetto collaterale.
+      </div>
+
+      <h3>Perché non si combattono</h3>
+
+      <p>Notare cosa <strong>non</strong> succede nella storia. Il monaco capo non chiama un esorcista. Non recita formule per cacciare gli Heike. Non chiede aiuto a un samurai per affrontarli. <strong>Gli Heike non sono il problema</strong>. Gli Heike hanno tutto il diritto di esistere — sono morti male, e finché non saranno placati, continueranno a essere lì. Il problema è solo che Hōichi è entrato nel loro spazio, e adesso bisogna tirarlo fuori.</p>
+
+      <p>La soluzione tecnica è di una bellezza concettuale notevole: i sutra scritti sul corpo. Il monaco non <em>caccia</em> gli Heike, li <strong>rende invisibili a Hōichi e Hōichi invisibile a loro</strong>. È una soluzione di <em>separazione</em>, non di sconfitta. Gli Heike continueranno a esistere, continueranno ad attraversare il mare, semplicemente non potranno più trovare Hōichi. È come tirare giù una saracinesca tra due stanze: nessuno è stato distrutto, è solo cambiato il rapporto spaziale.</p>
+
+      <p>Questo è radicalmente diverso dalla logica occidentale. In una storia occidentale di fantasmi, la soluzione narrativa è quasi sempre l'<em>esorcismo</em> (cacciare lo spirito), la <em>distruzione</em> (un eroe che combatte e uccide il male), o la <em>redenzione</em> (lo spirito viene aiutato a "passare oltre" e scompare per sempre). Qui no: gli Heike <strong>restano</strong>. Restano nel mare, restano nelle tombe, restano per sempre, e va bene così. Il mondo li contiene. La saggezza non è eliminarli ma <em>convivere con loro lasciandoli al loro posto</em>.</p>
+
+      <h3>Il sacrificio delle orecchie</h3>
+
+      <p>Il dettaglio centrale della storia — quello che le dà il nome — è il prezzo che Hōichi paga: le sue orecchie. È un dettaglio macabro, ma se letto bene è il cuore simbolico della vicenda.</p>
+
+      <p>Le orecchie di Hōichi sono le uniche parti del suo corpo che <strong>non sono state coperte dai sutra</strong>. Erano dimenticate, esposte, indifese. E sono proprio loro — non gli occhi (Hōichi era cieco), non la bocca (la sua arte) — ad essere prese dagli Heike. C'è una simmetria profonda: gli Heike volevano essere <em>ascoltati</em>, e portano via la parte di Hōichi che <em>ascolta</em>. Si prendono il loro pezzo. Non lo uccidono — sarebbe stato facile — ma si fanno consegnare un pegno. Un pezzo del cantore che li ha ascoltati.</p>
+
+      <p>Dopo questo scambio, gli Heike si placano. Non tornano più a cercare Hōichi. È come se avessero ricevuto, in qualche modo, ciò che gli era dovuto: <strong>una parte del suo corpo, in cambio di tutte le notti di canto</strong>. È un <em>compenso simbolico</em>, non una vendetta. Il "torto" si è ricomposto — non perfettamente, non senza ferite, ma sufficientemente. L'armonia è stata ristabilita.</p>
+
+      <h3>Cosa significa "placare" uno spirito</h3>
+
+      <div class="contrast-male">
+        <div>
+          <h4>Modello occidentale del male</h4>
+          <p>Il villain ha intenzioni cattive. Va sconfitto, ucciso, espulso. La soluzione è <em>rimuoverlo</em>. Il finale è binario: bene vince, male perde. Il mondo è migliore senza di lui.</p>
+        </div>
+        <div>
+          <h4>Modello giapponese dello spirito offeso</h4>
+          <p>Lo spirito ha un torto da riconciliare. Va ascoltato, riconosciuto, placato. La soluzione è <em>ridargli il suo posto</em>. Il finale è un riequilibrio: nessuno scompare, le forze trovano la giusta distanza.</p>
+        </div>
+      </div>
+
+      <p>Il verbo chiave della cultura giapponese su questi temi è <span class="jp">shizumeru</span><span class="jp-kanji">鎮める</span> — "calmare, placare, far affondare". Non si caccia uno spirito: si <em>calma</em>. Non si annienta un'energia inquieta: la si fa <em>scendere</em> in un luogo dove possa stare senza nuocere. I templi shintoisti dedicati agli spiriti vendicativi (<span class="jp">onryō</span>) servono esattamente a questo: dare allo spirito offeso un luogo di riconoscimento, una stanza propria, un altare dove possa ricevere offerte. Una volta che ha un posto, smette di vagare.</p>
+
+      <p>Hōichi senza orecchie è in fondo un manuale narrativo di questa pratica. Il messaggio profondo della storia — mai dichiarato esplicitamente — è: <strong>quando incontri un'energia inquieta, non combatterla. Cerca di capire qual è il torto che la tiene legata. Restituisci ciò che puoi. Lasciale il suo spazio. Tieni te stesso al sicuro, non sconfiggendola, ma diventando invisibile alla sua compulsione</strong>.</p>
+
+      <p>Per chi viene da una cultura occidentale questo è uno strumento narrativo nuovo, e potentissimo. Permette di costruire storie con tensione reale — pericolo, paura, perdita — senza dover inventare un cattivo intenzionale. L'antagonista è uno squilibrio. La soluzione è una ricomposizione. Il mondo, alla fine, contiene tutti — vivi e morti, equilibri e squilibri, voci e silenzi.</p>
+    </div>
+
+    <div class="why-this">
+      <strong>Perché questa storia, perché questo aspetto</strong>
+      Per vedere in azione la concezione giapponese del "male" come spirito offeso da placare, non come villain da sconfiggere. È lo strumento narrativo che la cultura occidentale ha quasi perso, e che permette di raccontare storie cariche di tensione e mistero senza ricorrere a un cattivo intenzionale. Per chi racconta a un bambino piccolo è particolarmente prezioso: si può trasporre come "l'ombra che ha bisogno di una storia" o "il rumore che vuole essere ascoltato".
+    </div>
+  </section>
+
+  <!-- ============ SINTESI ============ -->
+  <div class="synthesis">
+    <h2>Tre forme dello stesso silenzio</h2>
+    <p class="synthesis-kicker">Cosa emerge quando le tre storie si guardano insieme</p>
+
+    <p>Urashima, la gru e Hōichi sono tre storie diversissime — un pescatore, un falegname, un monaco cieco — ma raccontano in fondo una stessa cosa: <strong>il mondo è più grande di noi, e funziona secondo regole che possiamo capire solo se sappiamo ascoltare</strong>. In tutte e tre, il protagonista non è un eroe che agisce sul mondo: è un essere umano che attraversa una zona del mondo dove valgono altre regole — il fondo del mare, la stanza del telaio, la veranda di notte — e che ne esce trasformato, ferito, o annientato a seconda di come ha saputo stare in quella zona.</p>
+
+    <p>In tutte e tre, <strong>non c'è un cattivo</strong>. La tartaruga che porta Urashima non vuole fargli del male: gli fa un dono che lui non sa contenere. La gru non si vendica del marito: smette semplicemente di poter restare. Gli Heike non perseguitano Hōichi per crudeltà: lo chiamano perché qualcuno deve raccontare la loro storia, e lui è il migliore. Quello che noi chiameremmo "antagonismo" è, in tutte e tre le storie, <em>una presenza che funziona secondo le proprie leggi</em>, e con cui i protagonisti sbagliano i conti.</p>
+
+    <p>In tutte e tre, <strong>il finale non risolve</strong>. Urashima muore vecchio sulla spiaggia. Il vecchio falegname resta con una stoffa a metà. Hōichi sopravvive, ma senza orecchie — la guarigione è anche una mutilazione permanente. Nessuno "vince". Ma in tutte e tre, qualcosa si <em>compone</em>: il quadro si chiude, le forze trovano un equilibrio, il <span class="jp">yoin</span> — il suono che continua dopo la campana — riempie il silenzio.</p>
+
+    <p>Il prossimo documento — Doc 3 — proverà a chiedersi: come si traduce tutto questo per un bambino di 2-3 anni? Cosa sopravvive? Cosa va lasciato? Spoiler: il <span class="jp">mono no aware</span>, il legame, e lo spirito da placare possono atterrare benissimo, se si trovano le immagini giuste. Sono in fondo cose che i bambini piccoli sentono già — più di quanto noi adulti immaginiamo.</p>
+  </div>
+
+  <div class="end-mark">⌘</div>
+
+  <footer>
+    <span>Volume II · Documento 2 di 4</span>
+    <span>Prossimo: La storia per bambini →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
