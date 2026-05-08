@@ -27,7 +27,7 @@
       "nome": "Africa Sub-sahariana",
       "colore": "africa",
       "documenti": [
-        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "africa_doc1_cultura.html",     "disponibile": false },
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "africa_doc1_cultura.html",     "disponibile": true },
         { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "africa_doc2_storie.html",      "disponibile": false },
         { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "africa_doc3_bambini.html",     "disponibile": false },
         { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "africa_doc4_guida.html",       "disponibile": false }
