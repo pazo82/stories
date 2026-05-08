@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report 2 — Il linguaggio narrativo a 2-3 anni</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdf8f0;
+    --paper-deep: #f5ecd9;
+    --ink: #2a1a0e;
+    --ink-soft: #5a3e2b;
+    --ink-faint: #8a7560;
+    --rule: #d9c8a8;
+    --accent: #c4632e;
+    --accent-deep: #8a3f15;
+    --accent-soft: #f3e0cf;
+    --sage: #6b8a5f;
+    --sage-bg: #eef2e8;
+    --berry: #a83a52;
+    --berry-bg: #f7e4e8;
+    --slate: #4a5568;
+    --slate-bg: #e8ecf1;
+    --honey: #d4a017;
+    --honey-bg: #fbf3da;
+    --lavender: #7a6ba8;
+    --lavender-bg: #ede9f5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    line-height: 1.78;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(196,99,46,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(107,138,95,0.04) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* HEADER */
+  .header {
+    padding: 80px 24px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .report-meta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+  }
+
+  .report-number {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 5.5vw, 2.9rem);
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .header h1 em {
+    font-style: italic;
+    color: var(--accent-deep);
+  }
+
+  .header-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 580px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-ornament {
+    margin: 28px auto 0;
+    width: 60px;
+    height: 1px;
+    background: var(--rule);
+    position: relative;
+  }
+  .header-ornament::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--paper);
+    padding: 0 10px;
+    color: var(--accent);
+    font-size: 0.7rem;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 50px 0 30px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.18rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 50px;
+  }
+  .intro p { margin-bottom: 18px; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro .lead-cap {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 0.85;
+    float: left;
+    color: var(--accent-deep);
+    padding: 8px 12px 0 0;
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom: 56px; }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.65rem;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 22px;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.18rem;
+    color: var(--ink);
+    margin: 32px 0 12px;
+    line-height: 1.35;
+  }
+
+  p { margin-bottom: 18px; }
+  p strong, .section strong { font-weight: 700; color: var(--ink); }
+  em { font-style: italic; }
+  .section a { color: var(--accent-deep); }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--accent-deep);
+    text-align: left;
+    margin: 36px 0 36px 0;
+    padding: 0 0 0 28px;
+    border-left: 3px solid var(--accent);
+  }
+
+  /* KEY BOX */
+  .key-box {
+    background: var(--accent-soft);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .key-box::before {
+    content: 'CONCETTO CHIAVE';
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--accent-deep);
+    margin-bottom: 10px;
+  }
+  .key-box p {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    line-height: 1.55;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .key-box p:last-child { margin-bottom: 0; }
+
+  /* RESEARCH BOX */
+  .research-box {
+    background: var(--slate-bg);
+    border-radius: 4px;
+    padding: 22px 26px;
+    margin: 28px 0;
+    font-size: 0.95rem;
+  }
+  .research-box::before {
+    content: '◆ DALLA RICERCA';
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    color: var(--slate);
+    margin-bottom: 10px;
+  }
+  .research-box p { margin-bottom: 10px; line-height: 1.65; }
+  .research-box p:last-child { margin-bottom: 0; }
+
+  /* BILINGUAL SPECIAL SECTION */
+  .bilingual-section {
+    background: linear-gradient(135deg, var(--lavender-bg) 0%, var(--paper-deep) 100%);
+    border-radius: 8px;
+    padding: 40px 38px;
+    margin: 50px 0;
+    border-top: 4px solid var(--lavender);
+    position: relative;
+  }
+  .bilingual-section::before {
+    content: '⌖ SEZIONE DEDICATA';
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--lavender);
+    margin-bottom: 14px;
+  }
+  .bilingual-section h2 {
+    margin-top: 0;
+    margin-bottom: 8px;
+    color: var(--ink);
+  }
+  .bilingual-section .bilingual-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.08rem;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+  }
+  .bilingual-section h3 {
+    color: var(--lavender);
+    margin-top: 28px;
+  }
+  .bilingual-section p { font-size: 0.97rem; }
+  .bilingual-section .key-box {
+    background: white;
+    border-left: 3px solid var(--lavender);
+  }
+  .bilingual-section .key-box::before { color: var(--lavender); }
+
+  /* APPLICATION */
+  .application {
+    background: var(--sage-bg);
+    border-radius: 6px;
+    padding: 32px 32px 28px;
+    margin: 50px 0 30px;
+    border-top: 4px solid var(--sage);
+  }
+  .application-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    color: var(--sage);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .application h3 {
+    margin-top: 0;
+    font-size: 1.4rem;
+    color: var(--ink);
+  }
+  .application h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin: 24px 0 10px;
+  }
+  .application p { font-size: 0.97rem; }
+
+  /* CALLOUT */
+  .callout {
+    border-left: 3px solid var(--honey);
+    background: var(--honey-bg);
+    padding: 18px 22px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.96rem;
+  }
+  .callout strong { color: var(--accent-deep); }
+
+  /* TABLE-LIKE LIST for milestones */
+  .milestone-list {
+    list-style: none;
+    margin: 24px 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .milestone-list li {
+    display: flex;
+    gap: 24px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.96rem;
+    line-height: 1.55;
+  }
+  .milestone-age {
+    flex-shrink: 0;
+    width: 90px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--accent-deep);
+  }
+  .milestone-text { color: var(--ink-soft); }
+  .milestone-text strong { color: var(--ink); }
+
+  .divider {
+    text-align: center;
+    margin: 60px 0;
+    color: var(--ink-faint);
+    font-size: 1.2rem;
+    letter-spacing: 1em;
+  }
+
+  .closing {
+    margin-top: 70px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .closing strong {
+    color: var(--accent-deep);
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .footnote {
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    line-height: 1.6;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+    margin-top: 50px;
+    font-style: italic;
+  }
+
+  ul.styled { margin: 0 0 22px 22px; line-height: 1.8; }
+  ul.styled li { margin-bottom: 8px; }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .header { padding: 50px 22px 42px; }
+    .container { padding: 0 22px 60px; }
+    .intro { font-size: 1.08rem; padding: 40px 0 24px; margin-bottom: 36px; }
+    .intro .lead-cap { font-size: 2.6rem; }
+    h2 { font-size: 1.45rem; }
+    h3 { font-size: 1.1rem; }
+    .pull-quote { font-size: 1.18rem; padding-left: 20px; margin: 28px 0; }
+    .application, .bilingual-section { padding: 26px 22px; }
+    .key-box, .research-box { padding: 20px 22px; }
+    .milestone-list li { flex-direction: column; gap: 4px; }
+    .milestone-age { width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="report-meta">Percorso teorico — La mente del bambino a 2-3 anni</div>
+    <div class="report-number">Report 02 di 11</div>
+    <h1>Il linguaggio <em>narrativo</em> a 2-3 anni</h1>
+    <p class="header-sub">Cosa il bambino può seguire, come la mente si organizza in storia, e cosa significa crescere tra italiano e inglese</p>
+    <div class="header-ornament"></div>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <p><span class="lead-cap">N</span>el primo report abbiamo visto che tuo figlio entra nella storia attraverso il canale emotivo. Adesso guardiamo l'altro canale, quello che a 2-3 anni si sta aprendo a velocità impressionante: il linguaggio. Non solo il linguaggio come strumento di comunicazione, ma il linguaggio come <em>forma in cui la mente comincia a organizzare l'esperienza</em>.</p>
+      <p>Questo report ha tre parti. La prima è tecnica: cosa tuo figlio può effettivamente seguire dal punto di vista linguistico — quante parole conosce, quali frasi processa, quali connettivi capisce. La seconda è teorica: l'idea di Jerome Bruner che la mente umana sia narrativa per costituzione, e che raccontare a un bambino sia un atto cognitivo fondamentale, non decorativo. La terza è specifica per la tua famiglia: cosa significa che lui sta crescendo con l'italiano da te e l'inglese dalla mamma, e cosa la ricerca recente dice davvero — al netto degli entusiasmi divulgativi e delle paure altrettanto divulgative.</p>
+    </section>
+
+    <!-- SEZIONE 1 -->
+    <section class="section">
+      <div class="section-num">— I —</div>
+      <h2>L'esplosione del linguaggio: cosa succede tra i 18 mesi e i 3 anni</h2>
+
+      <p>Tra i 18 e i 24 mesi quasi tutti i bambini neurotipici attraversano un fenomeno che la letteratura chiama <em>vocabulary spurt</em> — l'esplosione lessicale. Prima di questo punto, il vocabolario cresce lentamente: il bambino aggiunge una, due, forse tre parole nuove a settimana. Dopo lo <em>spurt</em>, l'apprendimento accelera bruscamente. Studi sul vocabolario produttivo mostrano che, in questa fase, un bambino può imparare anche venti parole nuove a settimana.</p>
+
+      <p>Questo non è un dato accademico astratto: è il motivo per cui tuo figlio sembra cambiare ogni giorno. Una settimana non sa una parola, la settimana dopo la usa correttamente in tre contesti diversi. Il cervello sta consolidando un'enorme quantità di connessioni semantiche, e lo sta facendo in parallelo a un'esplosione equivalente nella sintassi.</p>
+
+      <p>Ecco un quadro orientativo di cosa aspettarsi nella fascia di interesse. È importante leggerlo come <em>banda di normalità</em>, non come traguardo: la variabilità individuale a quest'età è enorme e quasi sempre fisiologica.</p>
+
+      <ul class="milestone-list">
+        <li>
+          <div class="milestone-age">18 mesi</div>
+          <div class="milestone-text"><strong>Vocabolario produttivo:</strong> 10-50 parole tipicamente. Frasi a una parola ("acqua", "su", "no"). Comprende molto più di quanto produce.</div>
+        </li>
+        <li>
+          <div class="milestone-age">24 mesi</div>
+          <div class="milestone-text"><strong>Vocabolario produttivo:</strong> intorno alle 50-200 parole. Comincia la combinazione di due parole: "mamma andata", "ancora pappa", "no scarpa". MLU (Mean Length of Utterance) intorno a 1.5-1.9 morfemi.</div>
+        </li>
+        <li>
+          <div class="milestone-age">30 mesi</div>
+          <div class="milestone-text"><strong>Vocabolario produttivo:</strong> 200-500 parole. Frasi telegrafiche di 3 parole ("papà va lavoro"). Compaiono prime forme verbali, plurali, possessivi.</div>
+        </li>
+        <li>
+          <div class="milestone-age">36 mesi</div>
+          <div class="milestone-text"><strong>Vocabolario produttivo:</strong> spesso oltre le 500 parole, talvolta molto oltre. Frasi complete di 3-4 parole. Comincia l'uso di "perché", "ma", "e poi". Comprensibile dagli estranei nella maggior parte delle frasi.</div>
+        </li>
+      </ul>
+
+      <div class="callout">
+        <strong>Un punto fondamentale:</strong> a quest'età la <em>comprensione</em> precede sempre largamente la <em>produzione</em>. Tuo figlio capisce molto di più di quanto sa dire, e questo divario è particolarmente ampio nel periodo 18-30 mesi. Le storie che gli racconti possono — e devono — essere linguisticamente più ricche di quello che lui sa produrre. Lo nutrono.
+      </div>
+    </section>
+
+    <!-- SEZIONE 2 -->
+    <section class="section">
+      <div class="section-num">— II —</div>
+      <h2>Cosa il bambino può seguire sintatticamente</h2>
+
+      <p>Sapere quante parole conosce non basta. Per raccontare una storia, ti serve sapere <em>quali strutture grammaticali</em> riesce a processare. Qui la ricerca offre indicazioni precise, e parecchio rilevanti per il modo in cui costruisci una frase narrativa.</p>
+
+      <h3>Lunghezza media dell'enunciato</h3>
+      <p>L'MLU di tuo figlio (la lunghezza media delle sue frasi spontanee) ti dice quanto materiale verbale tiene insieme attivamente. Ma la sua capacità di <em>processare in ascolto</em> è più alta, in genere di un fattore due o tre. Se lui produce frasi di 3 parole, può seguire frasi di 6-9 parole senza fatica — ammesso che la sintassi sia semplice.</p>
+
+      <h3>Subordinate: poche, e tardive</h3>
+      <p>A 2-3 anni le frasi subordinate sono ancora processate con difficoltà. "Il coniglio che aveva perso il cappello correva nel bosco" è una frase che mette il bambino sotto sforzo: deve tenere in mente "il coniglio" mentre processa "che aveva perso il cappello" prima di arrivare a "correva". È meglio rompere: <em>"Il coniglio aveva perso il cappello. Correva nel bosco."</em> Stessa informazione, due frasi semplici, processabili senza memoria di lavoro tesa.</p>
+
+      <h3>Connettivi causali e temporali</h3>
+      <p>I primi connettivi che il bambino padroneggia sono quelli più semplici e concreti: <em>"e poi", "allora", "perché"</em>. "E poi" e "allora" segnalano successione temporale ed entrano in scena verso i 24-30 mesi. "Perché" come connettivo causale entra più tardi, intorno ai 30-36 mesi, e all'inizio è usato in modo limitato — il bambino capisce la causalità concreta ("piango perché mi sono fatto male") molto prima della causalità astratta.</p>
+      <p>Per la storia: i connettivi giusti per quest'età sono <em>"e poi"</em>, <em>"allora"</em>, <em>"così"</em>, <em>"ma"</em>. Sono il sale della narrazione orale. Evita "tuttavia", "nonostante", "sebbene": non sono parole "difficili" — sono <em>strutture cognitive</em> che il suo cervello non ha ancora.</p>
+
+      <h3>Il passato narrativo</h3>
+      <p>Tra i 24 e i 36 mesi il bambino comincia a capire e usare il passato — non solo come tempo verbale, ma come <em>modalità narrativa</em>. "Ieri il gatto è caduto dall'albero" non è solo una frase: è la prima volta in cui un evento esiste nel linguaggio dopo essere finito nel mondo. Questa è una rivoluzione cognitiva. Per la storia raccontata, è il momento in cui le formule classiche ("c'era una volta", "tanto tempo fa") cominciano davvero a funzionare — non come convenzioni vuote, ma come segnali che attivano la modalità narrativa specifica.</p>
+
+      <div class="key-box">
+        <p>La sintassi giusta per una storia a 2-3 anni è: <em>frasi brevi, paratattiche, collegate da "e poi" / "allora" / "così" / "ma"</em>. Ogni volta che ti senti usare una subordinata complessa, prova a romperla in due frasi. La storia non perde nulla; il bambino guadagna processabilità.</p>
+      </div>
+    </section>
+
+    <!-- SEZIONE 3 -->
+    <section class="section">
+      <div class="section-num">— III —</div>
+      <h2>Bruner e la mente narrativa: perché raccontare è darti un sé</h2>
+
+      <p>Jerome Bruner, uno dei psicologi cognitivi più influenti del Novecento, sostenne in <em>Acts of Meaning</em> (1990) e <em>Actual Minds, Possible Worlds</em> (1986) una tesi semplice e radicale: la mente umana possiede due modi fondamentali di organizzare l'esperienza. Uno è <em>logico-paradigmatico</em> — quello della scienza, della classificazione, della deduzione. L'altro è <em>narrativo</em> — quello che organizza eventi nel tempo, attribuisce intenzioni ad agenti, costruisce significato attraverso storie.</p>
+
+      <p>Per Bruner, la modalità narrativa non è meno fondamentale di quella logica. Non è una versione semplificata o decorativa del pensiero. È il <em>primo modo</em> in cui la mente umana dà senso al mondo, ed è probabilmente quello su cui poggia tutto il resto, compresa la costruzione del Sé.</p>
+
+      <p>Il punto cruciale per noi è questo: <strong>i bambini imparano a pensare narrativamente perché vengono raccontati</strong>. La capacità di organizzare l'esperienza in forma di storia non emerge da sola: si forma nell'interazione con adulti che già lo fanno. Ogni volta che racconti a tuo figlio cosa è successo oggi, ogni volta che inventi una storia per lui, ogni volta che gli ridai indietro un suo episodio in forma narrativa ("ti ricordi quando sei caduto e poi è arrivato il nonno?"), gli stai dando una <em>grammatica del significato</em>.</p>
+
+      <div class="research-box">
+        <p>Studi longitudinali (Fivush, Reese, Haden) sullo sviluppo della <em>narrative competence</em> mostrano che i bambini i cui genitori li coinvolgono frequentemente in narrazioni elaborative ("ti ricordi cosa abbiamo visto al parco? E come ti sei sentito quando il cane è arrivato?") sviluppano memorie autobiografiche più ricche, vocabolario emotivo più articolato, e una capacità maggiore di costruire racconti coerenti dei propri vissuti. La narrazione non descrive solo l'esperienza: la struttura.</p>
+      </div>
+
+      <h3>Il Self come narrazione</h3>
+      <p>Una delle conseguenze più affascinanti del lavoro di Bruner — sviluppata poi da Katherine Nelson e altri — è l'idea che il Sé stesso sia una costruzione narrativa. A 2-3 anni il bambino comincia a costruire un'idea di "chi è" attraverso le storie che gli vengono raccontate <em>su di lui</em>. "Tu sei quello che adora i camion." "Da piccolo eri un bambino coraggioso che non aveva paura del mare." "Ricordi quando hai aiutato la mamma a fare il pane?"</p>
+      <p>Queste non sono solo frasi affettuose. Sono i primi mattoni di un'identità narrativa. E non passa solo dalle storie su di lui: passa anche dalle storie inventate, perché quando lui si identifica con un personaggio (e a 2-3 anni si identifica <em>totalmente</em>, come vedremo nel Report 4), sta provando provvisoriamente delle versioni di sé.</p>
+
+      <div class="pull-quote">
+        Quando racconti, non gli stai solo parlando.<br>
+        Gli stai dando la forma in cui penserà di essere.
+      </div>
+
+      <p>Questo dà un peso diverso al gesto serale di inventare una storia. Non è intrattenimento. È, alla lettera, <em>scaffolding cognitivo</em>: gli stai costruendo le impalcature del modo in cui penserà sé stesso, gli altri, il mondo. È un'attività che probabilmente conta di più di mille altre cose che fai per lui durante la giornata, anche quando ti sembra una piccola routine prima del sonno.</p>
+    </section>
+
+    <!-- SEZIONE BILINGUAL DEDICATA -->
+    <section class="bilingual-section">
+      <h2>Crescere tra italiano e inglese: cosa succede nella mente di tuo figlio</h2>
+      <p class="bilingual-sub">Tuo figlio sente principalmente italiano. Sua madre, fin da quando era piccolo, gli parla in inglese. Tu non parli inglese abbastanza bene per farlo, e per questo gli parli sempre in italiano. Cosa significa, davvero?</p>
+
+      <h3>Il quadro: una variante del modello OPOL</h3>
+      <p>La situazione che descrivi è una variante di quello che la letteratura chiama <em>One Parent One Language</em> (OPOL): ogni genitore parla al bambino una sola lingua, in modo coerente. Nel tuo caso è un OPOL parziale — la madre fa la sua parte, tu non puoi fare quella inglese, ma fai bene la tua italiana, e l'ambiente esterno (italiano) rinforza il tuo lato. È una configurazione comune e funziona.</p>
+
+      <p>Quello che sta facendo il cervello di tuo figlio in questa configurazione è, in termini neurolinguistici, costruire <em>due sistemi distinti</em> con un'area di sovrapposizione. Non sta "imparando una lingua sola con qualche parola straniera". Sta sviluppando due grammatiche, due fonologie, due lessici, e — contemporaneamente — sta imparando a riconoscere a quale persona, in quale contesto, va attivato quale sistema.</p>
+
+      <h3>Il <em>language mixing</em> non è confusione</h3>
+      <p>Una delle preoccupazioni più diffuse — anche tra i pediatri meno aggiornati — è il <em>language mixing</em>: il fatto che il bambino bilingue, intorno ai 2 anni, mescoli le due lingue nella stessa frase. <em>"Voglio more milk"</em>. <em>"Look, una macchina!"</em>. La ricerca degli ultimi vent'anni è chiara: <strong>non è confusione, è competenza</strong>.</p>
+
+      <div class="research-box">
+        <p>Il bambino bilingue di 2-3 anni che mescola le lingue lo fa per ragioni precise: spesso usa la parola che ha imparato per prima, oppure quella che gli viene più rapidamente, oppure adatta consapevolmente al suo interlocutore (Byers-Heinlein e colleghi hanno documentato che già a 18-20 mesi i bambini bilingui modulano l'uso delle due lingue in base a chi hanno davanti). Studi recenti su bambini francese-inglese e spagnolo-inglese mostrano che il <em>code-switching</em> aumenta tra i 10 e i 18 mesi, è normale fino ai 4 anni, e tende a stabilizzarsi quando i due sistemi sono pienamente separati.</p>
+      </div>
+
+      <p>Quando lui ti dirà <em>"papà, voglio juice"</em>, non significa che è in ritardo nell'italiano. Significa che la parola "juice" gli è arrivata prima dalla madre, o gli viene più veloce in quel momento. La cosa più utile che puoi fare è semplicemente rispondere in italiano normale, dando il modello giusto senza correggere: <em>"Vuoi il succo? Te lo prendo."</em></p>
+
+      <h3>Sul "vantaggio cognitivo bilingue": una verità più sfumata</h3>
+      <p>Negli anni 2000 si è diffusa l'idea, anche grazie al lavoro pionieristico di Ellen Bialystok, che i bambini bilingui avessero un vantaggio cognitivo generalizzato — soprattutto nelle <em>funzioni esecutive</em> (controllo dell'attenzione, inibizione di stimoli irrilevanti, flessibilità cognitiva). L'idea ha avuto enorme fortuna mediatica.</p>
+
+      <p>Le meta-analisi degli ultimi dieci anni hanno seriamente ridimensionato questa narrazione. Lavori come Lehtonen et al. (2018), Donnelly et al. (2019), Paap (2019) e una crescente letteratura sulla "crisi della replicabilità" in psicologia hanno mostrato che <strong>il vantaggio cognitivo bilingue, se esiste, è piccolo, dipendente dal compito, e probabilmente influenzato da bias di pubblicazione</strong>. Le evidenze su un beneficio robusto e generalizzato non reggono.</p>
+
+      <div class="callout">
+        <strong>Cosa farne?</strong> Né rivendicare un vantaggio che probabilmente non c'è, né preoccuparsi per uno svantaggio che <em>certamente non c'è</em>. Il bilinguismo precoce è una ricchezza in sé — culturale, identitaria, relazionale — e non ha bisogno di essere giustificato da un presunto bonus cerebrale. Tuo figlio sta semplicemente imparando a vivere in due mondi linguistici, e questo è già abbastanza, senza bisogno di trasformarlo in performance cognitiva.
+      </div>
+
+      <h3>Un punto su cui invece le evidenze sono solide</h3>
+      <p>C'è un'area in cui i bambini bilingui mostrano in modo più consistente differenze: la <em>consapevolezza metalinguistica</em>. I bambini bilingui sembrano sviluppare prima e meglio la capacità di pensare al linguaggio <em>come oggetto</em> — di riflettere sul fatto che le parole sono etichette per le cose, che la stessa cosa può avere due nomi, che il linguaggio non è la realtà ma un modo di descriverla. Questo è un effetto plausibile e ben documentato. Per quanto riguarda il "controllo esecutivo" generalizzato, le prove sono molto più deboli.</p>
+
+      <h3>E tu, padre italiano in famiglia bilingue: cosa significa</h3>
+      <p>Adesso il punto specifico per te. Hai detto che eviti di parlare inglese a tuo figlio perché non lo conosci abbastanza bene. Questa scelta è giusta, e voglio dirti perché — non per consolazione ma per ragioni precise.</p>
+
+      <div class="key-box">
+        <p>Per un bambino di 2-3 anni, la cosa peggiore che un genitore possa fare linguisticamente non è "parlare una lingua sola". È <em>parlare male una lingua di cui dovrebbe essere modello</em>. Un input linguistico ricco e naturale in italiano gli serve molto più di un input povero e impreciso in inglese.</p>
+      </div>
+
+      <p>Tre ragioni per cui la tua posizione attuale è la migliore per lui:</p>
+
+      <ul class="styled">
+        <li><strong>Sei un riferimento italiano nitido.</strong> In una famiglia OPOL, ogni genitore è il "garante" della propria lingua. Tuo figlio sa che con te si parla italiano, con la mamma inglese. Questa nitidezza aiuta i due sistemi a separarsi correttamente nella sua testa. Se tu cominciassi a inserire inglese imperfetto, la chiarezza si sporcherebbe.</li>
+        <li><strong>L'italiano è la tua lingua emotiva.</strong> Le storie che sai raccontare bene, in cui sai modulare la voce, scegliere la parola giusta, sentire il ritmo, sono storie italiane. Le storie sono <em>regolazione emotiva</em> (l'abbiamo visto nel Report 1): farle in una lingua che non padroneggi al livello della tua lingua-madre significa zoppicare proprio dove devi essere più presente.</li>
+        <li><strong>L'input è una questione di qualità, non solo di quantità.</strong> La ricerca sull'acquisizione del linguaggio mostra che la complessità lessicale e sintattica dell'input parentale predice molto bene lo sviluppo del bambino. Un input italiano ricco da te è un dono. Un input inglese mediocre sarebbe quasi rumore.</li>
+      </ul>
+
+      <h3>Il rovescio della medaglia — il tuo lato emotivo</h3>
+      <p>Voglio nominare anche una cosa che spesso non si dice. In una famiglia bilingue dove uno dei due genitori non condivide la seconda lingua, c'è quasi sempre un piccolo sentimento di esclusione — un "non posso entrare in quel canale". Quando la madre racconta una storia in inglese e tuo figlio ride a una battuta che tu non cogli del tutto, è un'esperienza specifica.</p>
+
+      <p>Non c'è bisogno di risolverla forzando. Non devi mettere su una storia in inglese improvvisato per non sentirti escluso. Ma è utile riconoscere che quel canale italiano che hai con tuo figlio — le tue storie, la tua voce, il tuo ritmo — è il <em>tuo territorio</em> con lui. Non è "la metà" del suo mondo linguistico: è un mondo intero, completo, vostro. Il fatto che la madre ne abbia uno suo in inglese non ti toglie nulla. Anzi, gli sta dando due mondi al posto di uno, e tu sei l'architetto di uno dei due.</p>
+
+      <p>Tornerò su questo punto nel Report 10, dove parleremo del rituale narrativo come spazio di intimità — ma volevo già anticiparlo qui, perché capire il bilinguismo significa anche capire le sue implicazioni emotive su di te, non solo su tuo figlio.</p>
+    </section>
+
+    <div class="divider">· · ·</div>
+
+    <!-- APPLICAZIONE -->
+    <section class="application">
+      <div class="application-label">Applicazione — Come parlare nella storia</div>
+
+      <h3>Da quanto detto in questo report discendono alcune scelte concrete sul "come".</h3>
+
+      <h4>1. Frasi brevi, paratattiche, collegate</h4>
+      <p>Riempi la storia di "e poi", "allora", "ma", "così". Sono i connettivi che il suo cervello processa naturalmente. Spezza ogni subordinata complessa in due frasi semplici: non perdi nulla, guadagni tutto.</p>
+
+      <h4>2. Lessico più ricco di quello che lui produce</h4>
+      <p>Non semplificare il vocabolario ai livelli del suo parlato. La comprensione precede sempre la produzione, e le storie sono il luogo per eccellenza in cui il bambino incontra parole nuove in un contesto che le rende comprensibili. "Il bosco era <em>silenzioso</em>" è una parola che lui forse non userà ancora, ma che capirà perfettamente nel contesto della storia, e che dopo qualche ripetizione entrerà nel suo vocabolario passivo.</p>
+
+      <h4>3. Usa il passato narrativo deliberatamente</h4>
+      <p>"C'era una volta", "una mattina", "tanto tempo fa", "ieri il gatto…": sono formule che attivano la modalità narrativa nel suo cervello. Non sono cliché da evitare per originalità — sono <em>marcatori cognitivi</em> che gli dicono "stiamo entrando in una storia". Funzionano.</p>
+
+      <h4>4. Racconta anche la sua giornata</h4>
+      <p>L'idea di Bruner si applica fuori dalla storia inventata. Trasformare un episodio reale di tuo figlio in racconto ("ti ricordi stamattina, quando il cane è venuto e tu prima avevi un po' paura, e poi gli hai dato la mano e lui ti ha leccato?") gli costruisce memoria autobiografica e vocabolario emotivo nello stesso gesto. È una forma di narrazione potentissima, oltre la fiaba della sera.</p>
+
+      <h4>5. Non correggere il <em>language mixing</em>, modella</h4>
+      <p>Quando lui mescola italiano e inglese in una frase, non dirgli "si dice succo" né "in italiano si dice così". Riprendi la sua intenzione e modellala in italiano corretto: "Ah, vuoi il succo? Eccolo." Lui registra il modello senza sentirsi corretto. Lo stesso fa la madre dal suo lato, in inglese. Senza che nessuno dei due faccia il poliziotto linguistico, i due sistemi si stabilizzano da soli.</p>
+
+      <h4>6. Le parole inglesi che lui userà con te</h4>
+      <p>Capiterà che, parlando con te, lui userà parole inglesi che ha imparato dalla madre. Non vuol dire che sta perdendo l'italiano, né che ti sta sfidando. Sta semplicemente usando la parola che ha più disponibile in quel momento. Tu rispondi in italiano normale, riprendendo il suo significato. Sentirà che con te il canale è italiano, senza nessuna penalizzazione esplicita per aver usato una parola dell'altro canale.</p>
+    </section>
+
+    <section class="closing">
+      <p>Tuo figlio sta imparando a pensare in storie.<br>
+      Ogni volta che tu gliene racconti una in italiano,<br>
+      gli stai dando una <strong>grammatica del significato</strong>,<br>
+      <em>e una metà del suo mondo linguistico.</em></p>
+    </section>
+
+    <div class="footnote">
+      Riferimenti chiave: Jerome Bruner, <em>Acts of Meaning</em> (1990) e <em>Actual Minds, Possible Worlds</em> (1986); Katherine Nelson, <em>Narratives from the Crib</em> (1989) e <em>Language in Cognitive Development</em> (1996); Robyn Fivush e colleghi sulle <em>elaborative narratives</em>. Per il bilinguismo: Krista Byers-Heinlein per il code-mixing nei lattanti; Ellen Bialystok per il quadro complessivo; Lehtonen et al. (2018) e Paap (2019, 2023) per le revisioni critiche del "vantaggio bilingue"; Annick De Houwer, <em>Bilingual First Language Acquisition</em> (2009) per una visione equilibrata e accessibile della ricerca. Per i milestones linguistici: Roger Brown, <em>A First Language</em> (1973), classico ma ancora utilizzato.
+    </div>
+
+  </main>
+
+</div>
+
+</body>
+</html>
