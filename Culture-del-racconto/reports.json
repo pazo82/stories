@@ -1,0 +1,114 @@
+{
+  "serie": {
+    "titolo": "Le Culture del Racconto nel Mondo",
+    "sottotitolo": "Un viaggio attraverso le tradizioni narrative dell'umanità"
+  },
+  "panoramico": {
+    "id": "panoramico",
+    "titolo": "Le Culture del Racconto nel Mondo",
+    "descrizione": "Report introduttivo e panoramico sull'intera serie",
+    "link": "culture-del-racconto.html",
+    "disponibile": true
+  },
+  "culture": [
+    {
+      "id": "occidente",
+      "nome": "Occidente Moderno",
+      "colore": "west",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "occidente_doc1_cultura.html",  "disponibile": true },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "occidente_doc2_storie.html",   "disponibile": true },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "occidente_doc3_bambini.html",  "disponibile": true },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "occidente_doc4_guida.html",    "disponibile": true }
+      ]
+    },
+    {
+      "id": "africa",
+      "nome": "Africa Sub-sahariana",
+      "colore": "africa",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "africa_doc1_cultura.html",     "disponibile": false },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "africa_doc2_storie.html",      "disponibile": false },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "africa_doc3_bambini.html",     "disponibile": false },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "africa_doc4_guida.html",       "disponibile": false }
+      ]
+    },
+    {
+      "id": "giappone",
+      "nome": "Giappone",
+      "colore": "japan",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "giappone_doc1_cultura.html",   "disponibile": true },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "giappone_doc2_storie.html",    "disponibile": true },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "giappone_doc3_bambini.html",   "disponibile": true },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "giappone_doc4_guida.html",     "disponibile": true }
+      ]
+    },
+    {
+      "id": "india",
+      "nome": "India",
+      "colore": "india",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "india_doc1_cultura.html",      "disponibile": true },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "india_doc2_storie.html",       "disponibile": true },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "india_doc3_bambini.html",      "disponibile": true },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "india_doc4_guida.html",        "disponibile": true }
+      ]
+    },
+    {
+      "id": "indigene",
+      "nome": "Culture Indigene Americane",
+      "colore": "indigen",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "indigene_doc1_cultura.html",   "disponibile": true },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "indigene_doc2_storie.html",    "disponibile": true },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "indigene_doc3_bambini.html",   "disponibile": true },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "indigene_doc4_guida.html",     "disponibile": true }
+      ]
+    },
+    {
+      "id": "arabo",
+      "nome": "Mondo Arabo-persiano",
+      "colore": "arabic",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "arabo_doc1_cultura.html",      "disponibile": false },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "arabo_doc2_storie.html",       "disponibile": false },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "arabo_doc3_bambini.html",      "disponibile": false },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "arabo_doc4_guida.html",        "disponibile": false }
+      ]
+    },
+    {
+      "id": "cina",
+      "nome": "Cina",
+      "colore": "china",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "cina_doc1_cultura.html",       "disponibile": false },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "cina_doc2_storie.html",        "disponibile": false },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "cina_doc3_bambini.html",       "disponibile": false },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "cina_doc4_guida.html",         "disponibile": false }
+      ]
+    },
+    {
+      "id": "norrena",
+      "nome": "Tradizione Norrena",
+      "colore": "norse",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "norrena_doc1_cultura.html",    "disponibile": false },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "norrena_doc2_storie.html",     "disponibile": false },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "norrena_doc3_bambini.html",    "disponibile": false },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "norrena_doc4_guida.html",      "disponibile": false }
+      ]
+    },
+    {
+      "id": "grecia",
+      "nome": "Grecia Antica",
+      "colore": "greek",
+      "documenti": [
+        { "tipo": "cultura",   "titolo": "La Cultura",           "link": "grecia_doc1_cultura.html",     "disponibile": false },
+        { "tipo": "storie",    "titolo": "Le Storie Classiche",  "link": "grecia_doc2_storie.html",      "disponibile": false },
+        { "tipo": "bambini",   "titolo": "La Storia per Bambini","link": "grecia_doc3_bambini.html",     "disponibile": false },
+        { "tipo": "guida",     "titolo": "La Guida Pratica",     "link": "grecia_doc4_guida.html",       "disponibile": false }
+      ]
+    }
+  ]
+}
