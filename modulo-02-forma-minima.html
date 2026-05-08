@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modulo 2 · La forma minima</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,700;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f7f1e6;
+    --paper-deep: #efe6d2;
+    --paper-deeper: #e6dcc1;
+    --ink: #221912;
+    --ink-soft: #5a4937;
+    --ink-faint: #8a7a64;
+    --rule: #d9cdb3;
+    --accent: #b8511a;
+    --accent-deep: #7d3409;
+    --accent-soft: #f0d9c4;
+    --moss: #4d6b3a;
+    --moss-bg: #e6ecd9;
+    --moss-deep: #2d4221;
+    --indigo: #2e3f6b;
+    --indigo-bg: #dde2ed;
+    --indigo-deep: #1c2849;
+    --ochre: #b58900;
+    --ochre-bg: #f5e9c2;
+    --rose: #9b3050;
+    --rose-bg: #f3d9df;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(184,81,26,0.04) 0%, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(46,63,107,0.03) 0%, transparent 40%);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.75;
+    font-feature-settings: "kern", "liga", "onum";
+  }
+
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── HEADER ── */
+  header { padding: 80px 0 56px; }
+
+  .crumb {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .crumb::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+  .module-num {
+    font-family: 'Fraunces', serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .cornice-tag {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    padding: 4px 12px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.2rem, 6vw, 3.3rem);
+    font-weight: 500;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  h1 em { font-style: italic; color: var(--accent); font-weight: 400; }
+
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--ink-soft);
+    max-width: 560px;
+    line-height: 1.55;
+    margin-bottom: 36px;
+  }
+
+  /* Apertura snella */
+  .apertura {
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    padding: 28px 0;
+    margin-bottom: 0;
+  }
+
+  .apertura p {
+    color: var(--ink-soft);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .apertura p:last-child { margin-bottom: 0; }
+  .apertura strong { color: var(--accent-deep); font-weight: 500; }
+
+  /* ── TOC ── */
+  .toc {
+    margin: 48px 0 0;
+    padding: 24px 28px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .toc-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 14px;
+  }
+
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 24px;
+  }
+
+  .toc li {
+    counter-increment: toc;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+  }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero) " · ";
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .toc a { color: var(--ink-soft); text-decoration: none; transition: color 0.2s; }
+  .toc a:hover { color: var(--accent); }
+
+  @media (max-width: 600px) { .toc ol { grid-template-columns: 1fr; } }
+
+  /* ── SECTION ── */
+  section { padding: 64px 0 24px; }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-size: 4.5rem;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--accent-soft);
+    line-height: 0.8;
+    margin-bottom: 8px;
+    user-select: none;
+  }
+
+  .section-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.6rem, 4.5vw, 2.1rem);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 32px;
+    max-width: 580px;
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 32px 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  p {
+    margin-bottom: 18px;
+    color: var(--ink);
+  }
+
+  p.lede {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: var(--ink);
+    font-weight: 400;
+  }
+
+  p strong { color: var(--accent-deep); font-weight: 600; }
+  p em { font-style: italic; color: var(--ink-soft); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    text-align: center;
+    margin: 40px 0;
+    color: var(--accent-soft);
+    letter-spacing: 1.2em;
+    font-size: 0.85rem;
+  }
+
+  /* ── LA FORMA: schema visivo dei 4 tempi ── */
+  .schema-forma {
+    background: var(--paper-deep);
+    border-radius: 4px;
+    padding: 36px 32px;
+    margin: 24px 0;
+  }
+
+  .schema-titolo {
+    font-family: 'Fraunces', serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-faint);
+    text-align: center;
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+
+  .schema-tempi {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    align-items: stretch;
+    position: relative;
+  }
+
+  @media (max-width: 700px) { .schema-tempi { grid-template-columns: 1fr; gap: 16px; } }
+
+  .tempo-box {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    padding: 18px 16px;
+    text-align: center;
+    position: relative;
+  }
+
+  .tempo-numero {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.6rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-weight: 400;
+  }
+
+  .tempo-nome {
+    font-family: 'Fraunces', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .tempo-domanda {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-style: italic;
+  }
+
+  /* ── TEMPO DETTAGLIATO ── */
+  .tempo-dettaglio {
+    margin: 28px 0;
+    padding: 28px 30px;
+    background: rgba(255,255,255,0.45);
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    border-left: 4px solid var(--accent);
+  }
+
+  .tempo-dettaglio.peso-medio { border-left-color: var(--ochre); background: rgba(255,255,255,0.55); }
+  .tempo-dettaglio.peso-finale { border-left-color: var(--rose); background: rgba(255,255,255,0.55); }
+
+  .tempo-head {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tempo-head .num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    color: var(--accent);
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  .tempo-head h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .peso-pill {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: var(--ochre-bg);
+    color: #856700;
+  }
+
+  .peso-pill.critico { background: var(--rose-bg); color: var(--rose); }
+
+  .tempo-dettaglio p {
+    color: var(--ink);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin: 14px 0;
+  }
+
+  .micro-esempio {
+    background: var(--paper-deep);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 3px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .micro-esempio strong {
+    font-style: normal;
+    color: var(--accent-deep);
+    font-weight: 500;
+  }
+
+  /* ── STORIA ESEMPIO ── */
+  .storia {
+    background: var(--paper-deep);
+    border-radius: 4px;
+    padding: 36px 36px 32px;
+    margin: 28px 0;
+    position: relative;
+  }
+
+  .storia-meta {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .storia-meta-item {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.74rem;
+    color: var(--ink-faint);
+  }
+
+  .storia-meta-item strong {
+    color: var(--accent-deep);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-right: 4px;
+  }
+
+  .storia-titolo {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+  }
+
+  .storia-corpo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--ink);
+    padding: 0 4px;
+  }
+
+  .storia-corpo p {
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .storia-marker {
+    display: inline-block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(184,81,26,0.1);
+    padding: 2px 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+    margin-right: 8px;
+    position: relative;
+    top: -3px;
+  }
+
+  .smontaggio {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .smontaggio-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .smontaggio-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .smontaggio-list li {
+    padding: 8px 0;
+    border-bottom: 1px dashed rgba(217,205,179,0.5);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 12px;
+  }
+
+  .smontaggio-list li:last-child { border-bottom: none; }
+
+  .smontaggio-list .tempo-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+
+  /* ── PESCARE DALLA REALTÀ ── */
+  .pescare {
+    background: var(--moss-bg);
+    border-radius: 4px;
+    padding: 28px 32px;
+    margin: 24px 0;
+    border-left: 3px solid var(--moss);
+  }
+
+  .pescare-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 14px;
+  }
+
+  .pescare h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--moss-deep);
+    margin: 16px 0 10px;
+  }
+
+  .pescare h3:first-of-type { margin-top: 0; }
+
+  .pescare p {
+    color: var(--moss-deep);
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .pescare strong { color: var(--moss); font-weight: 600; }
+  .pescare em { color: var(--moss); font-style: italic; }
+
+  .se-vedi {
+    background: rgba(255,255,255,0.5);
+    padding: 16px 20px;
+    border-radius: 3px;
+    margin: 14px 0;
+  }
+
+  .se-vedi-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 6px;
+  }
+
+  .se-vedi p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* ── TACCUINO ── */
+  .trick {
+    margin: 22px 0;
+    padding: 20px 24px;
+    border-left: 2px solid var(--accent);
+    background: linear-gradient(90deg, rgba(184,81,26,0.03) 0%, transparent 70%);
+  }
+
+  .trick-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+
+  .trick h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .trick p {
+    margin: 8px 0;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .trick .esempio {
+    background: var(--paper-deep);
+    padding: 14px 18px;
+    margin-top: 12px;
+    border-radius: 3px;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+  }
+
+  .trick .esempio em {
+    font-style: normal;
+    color: var(--accent-deep);
+    font-weight: 500;
+  }
+
+  .errore {
+    margin: 22px 0;
+    padding: 18px 24px;
+    background: rgba(155,48,80,0.05);
+    border-left: 2px solid var(--rose);
+    border-radius: 0 3px 3px 0;
+  }
+
+  .errore-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 6px;
+  }
+
+  .errore p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .formula-banner {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 22px 28px;
+    border-radius: 4px;
+    margin: 28px 0;
+    font-family: 'Fraunces', serif;
+    font-size: 1.1rem;
+    line-height: 1.55;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+  .formula-banner span { color: var(--ochre); font-weight: 500; }
+
+  /* ── ESERCIZIO ── */
+  .esercizio {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 36px 36px 32px;
+    border-radius: 4px;
+    margin-top: 16px;
+  }
+
+  .esercizio-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 12px;
+  }
+
+  .esercizio h3 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.65rem;
+    font-weight: 500;
+    color: var(--paper);
+    margin: 0 0 18px;
+    letter-spacing: -0.01em;
+  }
+
+  .esercizio p {
+    color: rgba(247,241,230,0.92);
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+
+  .esercizio strong { color: var(--ochre); font-weight: 500; }
+
+  .varianti {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  @media (max-width: 600px) { .varianti { grid-template-columns: 1fr; } }
+
+  .variante {
+    background: rgba(247,241,230,0.06);
+    border: 1px solid rgba(247,241,230,0.15);
+    border-radius: 4px;
+    padding: 18px 20px;
+  }
+
+  .variante-time {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 8px;
+  }
+
+  .variante p {
+    color: rgba(247,241,230,0.85);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  .regola-unica {
+    margin-top: 28px;
+    padding: 18px 22px;
+    background: rgba(255,217,125,0.08);
+    border: 1px solid rgba(255,217,125,0.2);
+    border-radius: 4px;
+  }
+
+  .regola-unica .label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 6px;
+  }
+
+  .regola-unica p {
+    margin: 0;
+    color: rgba(247,241,230,0.92);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  /* ── SPIRAGLIO CULTURALE ESTESO ── */
+  .spiraglio-esteso {
+    background: var(--moss-bg);
+    border-radius: 4px;
+    padding: 32px 36px;
+    margin-top: 16px;
+    border-left: 3px solid var(--moss);
+  }
+
+  .spiraglio-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 14px;
+  }
+
+  .spiraglio-esteso > p {
+    color: var(--moss-deep);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  .tradizione {
+    margin: 24px 0;
+    padding: 20px 22px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 4px;
+  }
+
+  .tradizione-nome {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--moss);
+    margin-bottom: 8px;
+  }
+
+  .tradizione h4 {
+    font-family: 'Fraunces', serif;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--moss-deep);
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .tradizione p {
+    color: var(--moss-deep);
+    font-size: 0.98rem;
+    line-height: 1.65;
+    margin-bottom: 12px;
+  }
+
+  .tradizione p:last-child { margin-bottom: 0; }
+  .tradizione em { color: var(--moss); font-style: italic; }
+  .tradizione strong { color: var(--moss-deep); font-weight: 600; }
+
+  .confronto {
+    margin-top: 24px;
+    padding: 20px 22px;
+    background: rgba(45,66,33,0.08);
+    border-radius: 4px;
+  }
+
+  .confronto-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--moss-deep);
+    margin-bottom: 10px;
+  }
+
+  .confronto p {
+    color: var(--moss-deep);
+    font-size: 0.96rem;
+    line-height: 1.65;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    margin: 80px 0 60px;
+    padding: 40px 0 0;
+    border-top: 1px solid var(--rule);
+    text-align: center;
+    color: var(--ink-faint);
+  }
+
+  footer p {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  footer .next {
+    margin-top: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-style: normal;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- ═════ HEADER ═════ -->
+  <header>
+    <div class="crumb">Fase 2 · La forma di una storia</div>
+    <div class="module-num">Modulo due</div>
+    <span class="cornice-tag">Modulo-cornice</span>
+    <h1>La forma <em>minima</em></h1>
+    <p class="subtitle">Quattro tempi semplici. Una mappa che puoi tenere in testa per ogni storia che racconterai. Anche quando improvvisi, saprai sempre dove sei.</p>
+
+    <div class="apertura">
+      <p>Hai imparato a <strong>raccogliere semi</strong> dalla giornata. Adesso impari a metterli in una forma che funziona — una struttura tanto semplice che potrai tenerla a mente anche stanco morto.</p>
+      <p>Non è la "trama" dei manuali di scrittura. È qualcosa di più piccolo e più antico: il modo in cui i racconti per i bambini di 2-3 anni si tengono in piedi, in qualunque cultura del mondo.</p>
+    </div>
+
+    <div class="toc">
+      <div class="toc-label">In questo modulo</div>
+      <ol>
+        <li><a href="#forma">La forma essenziale</a></li>
+        <li><a href="#tempi">I quattro tempi</a></li>
+        <li><a href="#storie">Tre storie esempio</a></li>
+        <li><a href="#pescare">Pescare dalla realtà</a></li>
+        <li><a href="#taccuino">Spunti, idee, trucchetti</a></li>
+        <li><a href="#esercizio">Esercizio della settimana</a></li>
+        <li><a href="#spiraglio">Spiraglio culturale esteso</a></li>
+      </ol>
+    </div>
+  </header>
+
+  <!-- ═════ 1. LA FORMA ═════ -->
+  <section id="forma">
+    <div class="section-num">01</div>
+    <div class="section-tag">La forma essenziale</div>
+    <h2>Quattro tempi. Sempre questi, sempre in quest'ordine.</h2>
+
+    <p class="lede">Per un bambino di 2-3 anni, una storia che funziona ha sempre la stessa forma. Non è una semplificazione: è proprio così che il suo cervello segue una storia. Memorizzala una volta, vale per sempre.</p>
+
+    <div class="schema-forma">
+      <div class="schema-titolo">La forma minima</div>
+      <div class="schema-tempi">
+        <div class="tempo-box">
+          <div class="tempo-numero">i</div>
+          <div class="tempo-nome">L'incontro</div>
+          <div class="tempo-domanda">Chi è? Dov'è?</div>
+        </div>
+        <div class="tempo-box">
+          <div class="tempo-numero">ii</div>
+          <div class="tempo-nome">Il piccolo problema</div>
+          <div class="tempo-domanda">Cosa vuole? Cosa lo blocca?</div>
+        </div>
+        <div class="tempo-box">
+          <div class="tempo-numero">iii</div>
+          <div class="tempo-nome">I tentativi</div>
+          <div class="tempo-domanda">Cosa prova a fare?</div>
+        </div>
+        <div class="tempo-box">
+          <div class="tempo-numero">iv</div>
+          <div class="tempo-nome">Il ritorno</div>
+          <div class="tempo-domanda">Come si chiude in pace?</div>
+        </div>
+      </div>
+    </div>
+
+    <p>Tre cose da notare subito su questa forma.</p>
+
+    <p><strong>Primo: i tempi non hanno tutti lo stesso peso.</strong> "I tentativi" e "il ritorno" sono i tempi più delicati — sono i due punti dove ti sei bloccato finora. Per questo nel modulo li approfondisco di più degli altri due.</p>
+
+    <p><strong>Secondo: il problema è "piccolo".</strong> A questa età il problema non deve essere drammatico, anzi. La pigna che ha perso un aghetto è già un problema enorme. Cercare draghi è il modo migliore per perdere il tuo bambino.</p>
+
+    <p><strong>Terzo: il ritorno è sicuro, sempre.</strong> Per i 2-3 anni la storia si chiude tornando "a casa", in pace. Niente colpi di scena, niente finali aperti. Il ritorno al sicuro è il regalo che gli fai alla fine — è quello che gli permette di dormire.</p>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- ═════ 2. I QUATTRO TEMPI ═════ -->
+  <section id="tempi">
+    <div class="section-num">02</div>
+    <div class="section-tag">I quattro tempi, uno per uno</div>
+    <h2>Cosa fa ogni tempo, e quanto pesa.</h2>
+
+    <!-- TEMPO I -->
+    <div class="tempo-dettaglio">
+      <div class="tempo-head">
+        <span class="num">i</span>
+        <h4>L'incontro</h4>
+      </div>
+      <p><strong>Cosa fa:</strong> presenta il personaggio in un luogo. Niente di più. È l'apertura della finestra.</p>
+      <p><strong>Quanto dura:</strong> due o tre frasi. Non di più. Se l'incontro si dilunga, perdi il bambino prima di entrare nella storia.</p>
+      <p>L'incontro funziona se ha <em>un dettaglio sensoriale</em>: un suono, un colore, un movimento. Non descrivere il personaggio in astratto — fallo apparire in azione.</p>
+      <div class="micro-esempio">
+        <strong>Debole:</strong> "C'era una rana di nome Teo. Viveva in uno stagno verde."<br>
+        <strong>Forte:</strong> "<em>Plonk!</em> Una piccola rana cadde sulla foglia. Era Teo."
+      </div>
+    </div>
+
+    <!-- TEMPO II -->
+    <div class="tempo-dettaglio">
+      <div class="tempo-head">
+        <span class="num">ii</span>
+        <h4>Il piccolo problema</h4>
+      </div>
+      <p><strong>Cosa fa:</strong> introduce qualcosa che il personaggio vuole ma non può avere subito. Il motore della storia.</p>
+      <p><strong>Quanto dura:</strong> una o due frasi. Il problema deve essere riconoscibile in tre secondi.</p>
+      <p>Il problema, a questa età, ha tre forme tipiche: <em>ha perso qualcosa</em> (oggetto smarrito), <em>vuole arrivare da qualche parte</em> (ostacolo da superare), <em>vuole qualcuno</em> (ricongiungimento). Tutte e tre funzionano sempre. Pesca da queste tre, non inventarne di nuove.</p>
+      <div class="micro-esempio">
+        <strong>Smarrimento:</strong> "Ma... dov'era finito il suo cappellino di muschio?"<br>
+        <strong>Ostacolo:</strong> "Voleva tanto arrivare alla pozzanghera grande, ma il prato era larghissimo."<br>
+        <strong>Ricongiungimento:</strong> "La sua mamma rana era sparita dietro la foglia."
+      </div>
+    </div>
+
+    <!-- TEMPO III - PESO MEDIO -->
+    <div class="tempo-dettaglio peso-medio">
+      <div class="tempo-head">
+        <span class="num">iii</span>
+        <h4>I tentativi</h4>
+        <span class="peso-pill">il punto dove ti perdi nel mezzo</span>
+      </div>
+      <p><strong>Cosa fa:</strong> il personaggio prova a risolvere il problema. È qui che vive la maggior parte della storia. Ed è qui che ti sei bloccato finora.</p>
+      <p><strong>La regola che risolve il blocco a metà:</strong> i tentativi sono <strong>sempre tre</strong>. Mai due, mai quattro. Il numero tre è la soglia magica — è quello che il cervello del bambino di 2-3 anni riesce a tenere insieme senza fatica, ed è quello che ti dà ritmo automatico.</p>
+      <p>Lo schema dei tre tentativi funziona così:</p>
+      <p>— <strong>Tentativo 1</strong>: prova qualcosa di ovvio. Non funziona.<br>
+      — <strong>Tentativo 2</strong>: prova qualcosa di diverso. Non funziona ancora.<br>
+      — <strong>Tentativo 3</strong>: succede qualcosa di nuovo (un aiuto, un'idea, un caso). Funziona.</p>
+      <p>I primi due tentativi sono brevi: una frase ciascuno, una variazione sonora ("ploff!", "splash!"). Il terzo è quello che porta alla soluzione: lì rallenti, descrivi un po' di più, dai il momento di respiro prima del finale.</p>
+      <div class="micro-esempio">
+        <strong>Tentativo 1:</strong> "Cercò sotto la foglia grande. Niente."<br>
+        <strong>Tentativo 2:</strong> "Cercò dentro il sasso bagnato. Niente."<br>
+        <strong>Tentativo 3:</strong> "Allora un piccolo bruco le disse: 'Hai guardato sopra la foglia?' E lì... eccolo!"
+      </div>
+      <p>Quando ti senti perdere nel mezzo, fermati e chiediti: <em>"a che tentativo sono?"</em> Se sei al primo, fai il secondo. Se sei al secondo, lancia il terzo (con l'aiuto inatteso). Lo schema ti riporta a galla.</p>
+    </div>
+
+    <!-- TEMPO IV - PESO FINALE -->
+    <div class="tempo-dettaglio peso-finale">
+      <div class="tempo-head">
+        <span class="num">iv</span>
+        <h4>Il ritorno</h4>
+        <span class="peso-pill critico">il punto dove ti blocchi più di tutto</span>
+      </div>
+      <p><strong>Cosa fa:</strong> riporta il personaggio al sicuro. Chiude il cerchio. Manda il bambino verso il sonno.</p>
+      <p><strong>La verità che ti libera:</strong> il finale per un bambino di 2-3 anni <strong>non deve essere brillante. Deve essere prevedibile.</strong> Stai cercando un finale "bello" e non lo trovi perché stai cercando la cosa sbagliata. La cosa giusta è semplicissima: <em>il personaggio torna al punto di partenza, in pace</em>.</p>
+      <p>La struttura del ritorno è sempre la stessa, in tre micromomenti:</p>
+      <p>— <strong>1. Il sollievo:</strong> il problema è risolto. Una frase.<br>
+      — <strong>2. Il ritorno fisico:</strong> il personaggio torna a casa, sul ramo, nella tana, sulla foglia. Una frase.<br>
+      — <strong>3. La quiete:</strong> si raggomitola, chiude gli occhi, si addormenta, mangia qualcosa di buono. Una frase.</p>
+      <p>Tre frasi. È letteralmente questo. Le hai tu, sempre, anche stanco morto.</p>
+      <div class="micro-esempio">
+        "E così Teo prese il suo cappellino di muschio.<br>
+        Saltò saltò saltò fino alla sua foglia preferita.<br>
+        Si raggomitolò vicino alla mamma rana, e chiuse gli occhietti."
+      </div>
+      <p>Una variante potente: <strong>negli ultimi tre o quattro secondi, abbassa la voce</strong>. Non perché lo dica un manuale, ma perché il tuo bambino lo sente fisicamente: la voce che si abbassa è il segnale del sonno. Il finale non è solo un finale di storia, è una transizione verso il sonno.</p>
+    </div>
+
+    <p style="margin-top:32px;">Ti accorgerai, a forza di praticare, che <strong>il finale è sempre uguale a se stesso</strong>: cambiano i nomi e i luoghi, ma il movimento è sempre lo stesso — sollievo, ritorno, quiete. Non è ripetitivo per il bambino: per lui è un rituale. Anzi, lo aspetta.</p>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- ═════ 3. STORIE ESEMPIO ═════ -->
+  <section id="storie">
+    <div class="section-num">03</div>
+    <div class="section-tag">Tre storie esempio</div>
+    <h2>La forma in azione, smontata pezzo per pezzo.</h2>
+
+    <p>Tre storie complete, ciascuna nata da un seme diverso (un oggetto, un animale, un episodio). Leggile prima per intero, poi guarda lo smontaggio. Vedrai che la stessa forma le regge tutte e tre, anche se sembrano diverse.</p>
+
+    <!-- STORIA 1 -->
+    <div class="storia">
+      <div class="storia-meta">
+        <div class="storia-meta-item"><strong>Seme:</strong> oggetto (una pigna)</div>
+        <div class="storia-meta-item"><strong>Tipo di problema:</strong> smarrimento</div>
+        <div class="storia-meta-item"><strong>Durata:</strong> ~3 minuti</div>
+      </div>
+      <div class="storia-titolo">La pigna che aveva perso un aghetto</div>
+      <div class="storia-corpo">
+        <p><span class="storia-marker">i · incontro</span><em>Tap.</em> Una piccola pigna cadde sul tappeto di aghi. Si chiamava Pina. Era una pigna molto orgogliosa dei suoi aghetti.</p>
+        <p><span class="storia-marker">ii · problema</span>Ma una mattina si guardò e... oh no! Le mancava un aghetto piccolo piccolo, proprio in cima.</p>
+        <p><span class="storia-marker">iii · tentativi</span>Cercò sotto la foglia secca. <em>Frusc frusc.</em> Niente.</p>
+        <p>Cercò vicino al sasso muschioso. <em>Toc toc.</em> Niente.</p>
+        <p>Allora una piccola formica passò lì vicino. "Ma cara Pina," disse, "lo vedi quel rametto laggiù? Mi sembra di vederci sopra qualcosa di tuo." E Pina, rotolando rotolando, arrivò al rametto. E lì... <em>brilla brilla</em>... c'era il suo aghetto!</p>
+        <p><span class="storia-marker">iv · ritorno</span>Pina prese il suo aghetto e se lo rimise in cima.</p>
+        <p>Rotolò pian piano fino al suo posticino sotto il pino grande.</p>
+        <p>Si appoggiò vicino alle altre pigne, chiuse gli occhietti, e si addormentò.</p>
+      </div>
+
+      <div class="smontaggio">
+        <div class="smontaggio-label">Smontaggio</div>
+        <ul class="smontaggio-list">
+          <li><span class="tempo-label">i · incontro</span>Apre con un suono ("Tap"). Personaggio + luogo + un dettaglio caratterizzante (orgogliosa). Tre frasi.</li>
+          <li><span class="tempo-label">ii · problema</span>Smarrimento riconoscibile. Una frase, con esclamazione ("oh no!") che dà l'emozione.</li>
+          <li><span class="tempo-label">iii · tentativi</span>Tre tentativi. I primi due brevi e simmetrici ("frusc frusc" / "toc toc"). Il terzo introduce un aiuto inatteso (la formica) e si dilata di più.</li>
+          <li><span class="tempo-label">iv · ritorno</span>Tre micromomenti: rimette l'aghetto (sollievo), rotola al suo posto (ritorno fisico), chiude gli occhi (quiete).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- STORIA 2 -->
+    <div class="storia">
+      <div class="storia-meta">
+        <div class="storia-meta-item"><strong>Seme:</strong> animale visto (un piccione)</div>
+        <div class="storia-meta-item"><strong>Tipo di problema:</strong> ostacolo</div>
+        <div class="storia-meta-item"><strong>Durata:</strong> ~2 minuti</div>
+      </div>
+      <div class="storia-titolo">Il piccione che voleva la briciola più grande</div>
+      <div class="storia-corpo">
+        <p><span class="storia-marker">i · incontro</span>Sul marciapiede, vicino al semaforo, c'era un piccione grigio. Si chiamava Gigi. <em>Tubù tubù</em>, faceva. Aveva fame.</p>
+        <p><span class="storia-marker">ii · problema</span>Vide una briciola di pane... ma proprio in mezzo alla strada! E la strada era piena di scarpe che camminavano.</p>
+        <p><span class="storia-marker">iii · tentativi</span>Provò a lanciarsi in mezzo. <em>Bzzzz!</em> Una bicicletta! Tornò indietro.</p>
+        <p>Provò a girare intorno. <em>Tap tap tap!</em> Tante scarpe! Si fermò ancora.</p>
+        <p>Allora aspettò. Aspettò proprio lì sul bordo, con gli occhietti fissi sulla briciola. E quando il semaforo divenne rosso e tutti si fermarono... <em>fruuuuu!</em> Volò veloce, prese la briciola con il becco, e tornò indietro.</p>
+        <p><span class="storia-marker">iv · ritorno</span>La briciola era buonissima. Croccante.</p>
+        <p>Gigi tornò sotto il suo cornicione preferito.</p>
+        <p>Si infilò la testina sotto l'ala, e si addormentò.</p>
+      </div>
+
+      <div class="smontaggio">
+        <div class="smontaggio-label">Smontaggio</div>
+        <ul class="smontaggio-list">
+          <li><span class="tempo-label">i · incontro</span>Luogo molto concreto (marciapiede, semaforo) — perché tuo figlio l'ha visto davvero. Suono caratteristico ("tubù").</li>
+          <li><span class="tempo-label">ii · problema</span>Ostacolo: la strada. Visivo, comprensibile, fisico.</li>
+          <li><span class="tempo-label">iii · tentativi</span>Tre tentativi che progrediscono: azione goffa → azione più cauta → attesa intelligente. Il terzo introduce una soluzione legata al mondo reale (il semaforo rosso). I suoni scandiscono il ritmo.</li>
+          <li><span class="tempo-label">iv · ritorno</span>Sollievo (briciola buona), ritorno (cornicione), quiete (testina sotto l'ala).</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- STORIA 3 -->
+    <div class="storia">
+      <div class="storia-meta">
+        <div class="storia-meta-item"><strong>Seme:</strong> episodio (acqua versata)</div>
+        <div class="storia-meta-item"><strong>Tipo di problema:</strong> ricongiungimento</div>
+        <div class="storia-meta-item"><strong>Durata:</strong> ~3 minuti</div>
+      </div>
+      <div class="storia-titolo">Il topolino Pio e il suo ditale</div>
+      <div class="storia-corpo">
+        <p><span class="storia-marker">i · incontro</span>In una piccola cucina sotto al lavandino viveva un topolino. Si chiamava Pio. Aveva un ditale d'argento che era la sua tazza. Lo amava tantissimo.</p>
+        <p><span class="storia-marker">ii · problema</span>Una sera, mentre beveva, <em>oh!</em>, il ditale gli scivolò di zampa e rotolò rotolò rotolò... fino a sparire dietro la tubatura. Pio rimase senza la sua tazza.</p>
+        <p><span class="storia-marker">iii · tentativi</span>Provò a infilare la zampina. Troppo stretto. <em>Ahi.</em></p>
+        <p>Provò con un fiammifero come bastoncino. Non arrivava. <em>Uffa.</em></p>
+        <p>Allora chiamò il suo amico ragnetto, che era sottile sottile. Il ragnetto si calò giù dalla sua tela, prese il ditale con le sue otto zampine, e lo riportò su. <em>Eccolo!</em></p>
+        <p><span class="storia-marker">iv · ritorno</span>Pio strinse forte il suo ditale.</p>
+        <p>Tornò nella sua tana sotto al lavandino.</p>
+        <p>Si raggomitolò sul suo letto di stoffa, abbracciò il ditale, e chiuse gli occhietti.</p>
+      </div>
+
+      <div class="smontaggio">
+        <div class="smontaggio-label">Smontaggio</div>
+        <ul class="smontaggio-list">
+          <li><span class="tempo-label">i · incontro</span>Personaggio con un oggetto-amato. Crea attaccamento subito (Pio + il ditale = una coppia).</li>
+          <li><span class="tempo-label">ii · problema</span>Ricongiungimento: la separazione tra Pio e il suo ditale. Il "rotolò rotolò rotolò" è una mini-cantilena che fa già ritmo.</li>
+          <li><span class="tempo-label">iii · tentativi</span>Tre tentativi crescenti: la zampa (corpo), il fiammifero (oggetto), il ragnetto (alleato). I primi due hanno reazioni emotive ("ahi", "uffa") che il bambino sente. Il terzo è l'aiuto inatteso che funziona.</li>
+          <li><span class="tempo-label">iv · ritorno</span>Sollievo (stringe il ditale), ritorno (tana), quiete (abbraccio + occhi chiusi). Notare l'oggetto che torna nel finale: chiude il cerchio fisicamente.</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:32px;">Tre storie diverse, stessa forma. Quando l'avrai praticata qualche sera, la sentirai come una mano che ti regge la voce: anche se non sai ancora bene cosa stai per dire, sai che <em>sei al tentativo 2</em>, e la storia continua da sola.</p>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- ═════ 4. PESCARE DALLA REALTÀ ═════ -->
+  <section id="pescare">
+    <div class="section-num">04</div>
+    <div class="section-tag">Pescare dalla realtà</div>
+    <h2>Come riconoscere la forma minima nella sua giornata.</h2>
+
+    <p>Nella prima fase hai imparato a raccogliere semi. Adesso impari a riconoscere, dentro a quei semi, i quattro tempi già presenti — perché ci sono già, è solo che non li vedevi.</p>
+
+    <div class="pescare">
+      <div class="pescare-tag">Esercizi di riconoscimento</div>
+
+      <h3>Le sue stesse giornate sono già storie a quattro tempi</h3>
+      <p>Tuo figlio ne vive una decina al giorno, in miniatura. Imparare a riconoscerle ti dà uno schema infinito da cui pescare.</p>
+
+      <div class="se-vedi">
+        <div class="se-vedi-label">Se vedi</div>
+        <p>Lui che cerca un giocattolo che non trova, prova in due posti, lo trova in un terzo, lo abbraccia.</p>
+      </div>
+
+      <p><strong>Hai già la storia intera:</strong> incontro (lui che gioca), problema (smarrimento), tentativi (i due posti dove cerca), ritorno (lo trova e lo abbraccia). Ti basta trasporla — un piccolo orso che cerca il suo cucchiaio di legno.</p>
+
+      <div class="se-vedi">
+        <div class="se-vedi-label">Se vedi</div>
+        <p>Lui al parco che vuole arrivare allo scivolo, ma c'è un altro bambino davanti, aspetta, riprova, alla fine ci arriva.</p>
+      </div>
+
+      <p><strong>Hai già la storia intera:</strong> incontro (al parco), problema (ostacolo), tre tentativi (avvicinarsi, aspettare, andare quando libero), ritorno (la gioia dello scivolo). Trasposizione: un coniglietto che vuole bere alla pozzanghera dove ci sono già altri animali.</p>
+
+      <h3>La domanda che cambia tutto</h3>
+      <p>Quando vedi un episodio della giornata e vuoi capire se è "raccontabile", chiediti una sola cosa: <em>"Questo episodio aveva un piccolo problema risolto?"</em></p>
+      <p>Se sì → è una storia. Hai i quattro tempi.<br>
+      Se no → non è una storia, è un momento. Va bene, ne troverai altri.</p>
+
+      <h3>Il diario dei "tre tempi mancanti"</h3>
+      <p>Una variante dell'esercizio del Modulo 1, più mirata: durante la giornata, ogni tanto, prendi un episodio qualsiasi e <strong>completalo mentalmente nei tempi che mancano</strong>.</p>
+      <p>Esempio. Vedi il vicino che porta fuori il cane. <em>Incontro</em>: c'è già. <em>Problema</em>: non sai. → Inventalo: il cane vuole andare al parco. <em>Tentativi</em>: non c'è. → Inventali: tira il guinzaglio, si ferma davanti a un altro cane, alla fine arriva. <em>Ritorno</em>: tornano a casa stanchi e felici.</p>
+      <p>È un allenamento di trenta secondi che fai mentre cammini. Dopo una settimana, hai uno schema interno che si attiva da solo.</p>
+    </div>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- ═════ 5. TACCUINO ═════ -->
+  <section id="taccuino">
+    <div class="section-num">05</div>
+    <div class="section-tag">Il taccuino del narratore</div>
+    <h2>Spunti, idee, trucchetti sulla forma.</h2>
+
+    <p>Diversi dal Modulo 1: lì erano spunti per <em>iniziare</em>. Qui sono spunti per <em>tenere la struttura in piedi</em> e per gestire i due punti critici (mezzo e finale).</p>
+
+    <h3>Per partire bene</h3>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · La regola dei tre dettagli</div>
+      <h4>Tre cose concrete prima di entrare nel problema</h4>
+      <p>L'incontro è forte se hai <strong>tre dettagli sensoriali</strong> — non descrittivi. Sensoriali significa: un suono, un colore, un movimento.</p>
+      <div class="esempio">
+        Esempio: <em>"plonk!"</em> (suono) + <em>"piccola rana"</em> (colore/dimensione) + <em>"cadde sulla foglia"</em> (movimento). Tre dettagli, una frase. Il bambino è già dentro.
+      </div>
+    </div>
+
+    <h3>Per non perdersi nel mezzo</h3>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · Le tre dita</div>
+      <h4>Conta i tentativi sulle dita, fisicamente</h4>
+      <p>Mentre racconti, tieni una mano dietro la schiena (o sotto il libro, o dove non si vede) e <strong>conta i tentativi sulle dita</strong>. Quando sei a tre, sai che il prossimo è il ritorno. Sembra banale ma funziona: il tuo corpo sa dove sei nella storia anche quando la mente è stanca.</p>
+    </div>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · La parola-segnale</div>
+      <h4>Una parola fissa per ogni nuovo tentativo</h4>
+      <p>Usa sempre la stessa parola per introdurre i tentativi — diventa un segnale interno (per te) e un ritmo (per lui). "Allora", "Provò", "Pensò". Il primo tentativo: <em>"Allora provò..."</em>. Il secondo: <em>"Allora provò ancora..."</em>. Il terzo: <em>"Allora..."</em> e qui cambia il tono perché succede l'aiuto.</p>
+    </div>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · L'aiuto sempre dallo stesso luogo</div>
+      <h4>Un alleato ricorrente che funziona da àncora</h4>
+      <p>Scegli un piccolo personaggio-aiutante (un bruco, una formica, un ragnetto, un uccellino) che <strong>compare sempre nel terzo tentativo di tutte le tue storie</strong>. Diventa una presenza famigliare per tuo figlio, e per te diventa un automatismo: quando arrivi al terzo tentativo e non sai cosa far succedere, fai apparire l'alleato. Lui sa cosa fare.</p>
+      <div class="esempio">
+        Padri reali che usano questo trucco hanno scelto: la lumachina Lia ("che è lenta ma sa tutto"), il ragnetto Pippo ("che è piccolo ma sottile"), il merlo Bibo ("che vede dall'alto"). Ognuno il suo.
+      </div>
+    </div>
+
+    <h3>Per chiudere senza soffrire</h3>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · La frase del finale, sempre la stessa</div>
+      <h4>Una formula di chiusura che usi in tutte le storie</h4>
+      <p>Crea una <strong>frase rituale</strong> che chiude tutte le storie. Non è ripetitiva: è un rituale. Tuo figlio la imparerà a memoria e la aspetterà.</p>
+      <div class="esempio">
+        Esempi reali: <em>"...e così chiuse gli occhietti, e dormì un sonno dolcissimo."</em> · <em>"...e si addormentò sognando le stelle."</em> · <em>"...e tutto fu di nuovo al suo posto."</em><br>
+        Trovala una volta, usala sempre.
+      </div>
+    </div>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · La voce che scende</div>
+      <h4>Negli ultimi quindici secondi, abbassa il volume</h4>
+      <p>Non è una scelta drammaturgica, è una scelta corporea. Il bambino di 2-3 anni reagisce al tono prima che alle parole. Una voce che <strong>scende</strong> negli ultimi quindici secondi è il segnale fisico del sonno. Combinata con la frase rituale, è un sedativo naturale.</p>
+    </div>
+
+    <div class="trick">
+      <div class="trick-name">Trucchetto · L'oggetto che torna</div>
+      <h4>Il finale è più potente se chiude il cerchio fisicamente</h4>
+      <p>Se nella storia c'era un oggetto importante (la pigna, il ditale, il cappellino), <strong>fallo tornare nel finale</strong>. È un movimento circolare che il bambino sente come "completo". Non gli serve capirlo razionalmente — lo sente.</p>
+    </div>
+
+    <h3>Errori da evitare</h3>
+
+    <div class="errore">
+      <div class="errore-label">Errore comune</div>
+      <p><strong>Quattro o cinque tentativi.</strong> Sembrano "più storia" ma in realtà spezzano il ritmo e perdono il bambino. Tre tentativi, sempre. Se senti che ne hai due, aggiungine uno. Se ne hai quattro, taglia.</p>
+    </div>
+
+    <div class="errore">
+      <div class="errore-label">Errore comune</div>
+      <p><strong>Finale "originale".</strong> Il finale per i 2-3 anni è prevedibile, e va bene così. Cercare un finale brillante è la principale causa di blocco a fine storia. Ricorda: per lui il finale è un rituale, non un colpo di scena.</p>
+    </div>
+
+    <div class="errore">
+      <div class="errore-label">Errore comune</div>
+      <p><strong>Problema senza tentativi.</strong> "C'era una rana che aveva perso il suo cappellino. Lo trovò sotto la foglia. Tornò a casa." È una storia tecnica ma vuota — manca il cuore (i tentativi). Sono i tentativi che danno respiro alla storia. Non saltarli.</p>
+    </div>
+
+    <div class="formula-banner">
+      Quattro tempi. Tre tentativi. <span>Una sola forma.</span>
+    </div>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- ═════ 6. ESERCIZIO ═════ -->
+  <section id="esercizio">
+    <div class="section-num">06</div>
+    <div class="section-tag">La pratica</div>
+    <h2>Esercizio della settimana.</h2>
+
+    <div class="esercizio">
+      <div class="esercizio-label">Si chiama</div>
+      <h3>Dieci dita, una storia</h3>
+
+      <p>Per tutta la settimana, racconta storie usando il <strong>conto delle dita</strong>. Letteralmente. Mentre racconti, tieni una mano dove non si vede e tocca le dita: <strong>indice</strong> (incontro), <strong>medio</strong> (problema), <strong>anulare-mignolo-pollice</strong> (i tre tentativi), e poi torni all'<strong>indice</strong> (ritorno). Cinque dita, una storia.</p>
+
+      <p>Scopo dell'esercizio: <em>incarnare la struttura</em>. Non basta saperla, devi averla nelle mani. Dopo qualche sera, il movimento delle dita ti viene da solo, e con lui ti viene la struttura. Anche se ti distrai, le dita ti dicono dove sei.</p>
+
+      <p>Pesca i semi dalla giornata, come in Fase 1. Stessa pratica, ma ora <strong>obblighi te stesso a vestirli con la forma a quattro tempi</strong>. Anche se la storia ti viene corta, anche se ti vergogni dei tentativi, fai i quattro tempi. La forma viene prima della qualità.</p>
+
+      <div class="varianti">
+        <div class="variante">
+          <div class="variante-time">90 secondi</div>
+          <p>Quattro tempi minimi. Una frase per tempo. Tre tentativi tagliati a una frase ciascuno. La frase rituale del finale. Funziona sempre.</p>
+        </div>
+        <div class="variante">
+          <div class="variante-time">5 minuti</div>
+          <p>Espandi i tempi 2 e 3 (problema e tentativi). Aggiungi suoni, dilata l'aiuto inatteso, fai sentire la voce che scende sul finale.</p>
+        </div>
+      </div>
+
+      <div class="regola-unica">
+        <div class="label">L'unica regola</div>
+        <p>Anche quando improvvisi, anche quando sei stanco morto, anche quando lui ti distrae: <strong>i quattro tempi non si saltano mai</strong>. Possono essere brevissimi, ma ci devono essere tutti. È questo che ti tiene a galla.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider">· · ·</div>
+
+  <!-- ═════ 7. SPIRAGLIO CULTURALE ESTESO ═════ -->
+  <section id="spiraglio">
+    <div class="section-num">07</div>
+    <div class="section-tag">Spiraglio culturale esteso</div>
+    <h2>Due tradizioni che pensano la forma in modo diverso.</h2>
+
+    <div class="spiraglio-esteso">
+      <p>La struttura a quattro tempi che hai imparato è il modo occidentale (e largamente africano e asiatico) di pensare una storia per bambini piccoli — è solido, funziona, ed è un punto di partenza eccellente. Ma è bene sapere che non è l'unico. Due tradizioni in particolare offrono un'alternativa interessante, che potrai esplorare più avanti nel percorso.</p>
+
+      <div class="tradizione">
+        <div class="tradizione-nome">Tradizione 1 · Ki-shō-ten-ketsu (Giappone)</div>
+        <h4>La storia senza conflitto</h4>
+        <p>Nella tradizione narrativa giapponese (e cinese, da cui deriva), esiste una struttura a quattro tempi che <strong>non passa attraverso il conflitto</strong>. I quattro tempi sono: <em>ki</em> (introduzione), <em>shō</em> (sviluppo), <em>ten</em> (svolta), <em>ketsu</em> (conclusione). La svolta non è un problema da risolvere, ma un cambio di prospettiva — un altro elemento che entra in scena e illumina di nuova luce ciò che c'era prima.</p>
+        <p>Per un bambino di 2-3 anni, una storia ki-shō-ten-ketsu potrebbe essere: <em>una piccola lumaca attraversa un prato (ki); incontra una farfalla che la saluta (shō); all'improvviso comincia a piovere e tutti si riparano sotto la stessa foglia (ten); la pioggia smette e tutti sono diventati amici (ketsu).</em> Niente problema, niente tentativi. Solo presenza, incontro, evento condiviso, quiete.</p>
+        <p>Funziona molto bene per i bambini molto piccoli o molto sensibili, perché <strong>non genera tensione</strong>. È particolarmente utile la sera, prima del sonno.</p>
+      </div>
+
+      <div class="tradizione">
+        <div class="tradizione-nome">Tradizione 2 · Storie indigene americane</div>
+        <h4>La storia che non si chiude del tutto</h4>
+        <p>Molte tradizioni narrative dei popoli indigeni nordamericani (Navajo, Lakota, Hopi) hanno una caratteristica sorprendente: <strong>la storia non si chiude mai del tutto</strong>. Il personaggio non torna esattamente al punto di partenza — torna a un punto leggermente diverso, e qualcosa rimane in sospeso. Spesso la storia finisce con un'immagine, un dettaglio, un suono, non con una risoluzione.</p>
+        <p>Esempio: <em>il piccolo coyote cerca la luna che è caduta nel lago. Prova in tre modi a riprenderla, alla fine scopre che non era caduta — era solo il riflesso. Si siede sulla riva e guarda la luna vera, in cielo. Il vento muove le foglie.</em> Il finale non è "tornò a casa e dormì". È un'immagine sospesa.</p>
+        <p>Questa tradizione richiede un bambino un po' più grande (verso i 3 anni) e una serata particolare — non funziona quando è iperstanco. Ma <strong>quando funziona, lascia un seme</strong>: il bambino impara che le storie non sempre finiscono con tutto a posto, e che il mondo continua anche dopo l'ultima parola.</p>
+      </div>
+
+      <div class="confronto">
+        <div class="confronto-label">Cosa ci dice il confronto</div>
+        <p>Le tre forme — quattro tempi occidentali, ki-shō-ten-ketsu, storia indigena — non sono varianti della stessa cosa. Sono tre risposte diverse a una stessa domanda: cosa accompagna un bambino verso il sonno? La risposta occidentale dice "la risoluzione". Quella giapponese dice "la quiete condivisa". Quella indigena dice "l'immagine che resta". A te, più avanti, la libertà di scegliere quale forma serve quale sera.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════ FOOTER ═════ -->
+  <footer>
+    <p>Questa settimana, una sola cosa:<br>quattro tempi, tre tentativi, una forma sola.</p>
+    <p class="next">Modulo 3 · Il personaggio che lui ricorderà · in arrivo dopo la pratica</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
