@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Storie per 2-3 anni</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #fff9f0;
+    --sun: #ffb347;
+    --sun-deep: #e07b00;
+    --grass: #4caf6e;
+    --grass-deep: #2d7a4a;
+    --berry: #d64f6f;
+    --berry-light: #f9d0da;
+    --cloud: #ffffff;
+    --ink: #2c1a0e;
+    --ink-soft: #5a3e2b;
+    --lavender: #9b7fd4;
+    --mint: #3dbfa0;
+    --honey: #f5c842;
+    --honey-bg: #fffbea;
+    --peach: #ff8c69;
+    --peach-bg: #fff3ee;
+    --sage-bg: #eef7f2;
+    --blue: #4a90d9;
+    --blue-bg: #edf4fc;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--sky);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    line-height: 1.75;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: linear-gradient(160deg, #ffe0b2 0%, #fff3e0 40%, #e8f5e9 100%);
+    padding: 60px 24px 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 3px solid var(--sun);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(255,179,71,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(76,175,110,0.25) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .floating-icons {
+    font-size: 2rem;
+    margin-bottom: 16px;
+    animation: wiggle 3s ease-in-out infinite;
+    display: block;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  .age-badge {
+    display: inline-block;
+    background: var(--grass);
+    color: white;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 30px;
+    margin-bottom: 14px;
+  }
+
+  .header h1 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: clamp(1.9rem, 6vw, 3rem);
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 12px;
+  }
+
+  .header h1 span { color: var(--sun-deep); }
+
+  .header-sub {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 520px;
+    margin: 0 auto;
+    font-weight: 600;
+  }
+
+  /* ── CONTAINER ── */
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 22px 60px;
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--ink);
+    margin: 52px 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section-title .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .section-intro {
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    font-size: 0.97rem;
+  }
+
+  /* ── RULE CARD ── */
+  .rule-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 36px;
+  }
+
+  .rule-card {
+    border-radius: 16px;
+    padding: 20px 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .rule-card .rc-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+  .rule-card strong {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 5px;
+  }
+  .rule-card p { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.55; }
+
+  .rc-yellow { background: var(--honey-bg); border: 2px solid #f5c84266; }
+  .rc-yellow strong { color: var(--sun-deep); }
+  .rc-green { background: var(--sage-bg); border: 2px solid #4caf6e44; }
+  .rc-green strong { color: var(--grass-deep); }
+  .rc-pink { background: var(--berry-light); border: 2px solid #d64f6f44; }
+  .rc-pink strong { color: var(--berry); }
+  .rc-blue { background: var(--blue-bg); border: 2px solid #4a90d944; }
+  .rc-blue strong { color: var(--blue); }
+  .rc-peach { background: var(--peach-bg); border: 2px solid #ff8c6944; }
+  .rc-peach strong { color: #c05030; }
+  .rc-lavender { background: #f3effe; border: 2px solid #9b7fd444; }
+  .rc-lavender strong { color: var(--lavender); }
+
+  /* ── EXAMPLE BLOCK ── */
+  .example-block {
+    border-radius: 18px;
+    padding: 26px 28px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .example-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px; height: 100%;
+    border-radius: 18px 0 0 18px;
+  }
+
+  .eb-yellow { background: var(--honey-bg); }
+  .eb-yellow::before { background: var(--sun); }
+  .eb-green { background: var(--sage-bg); }
+  .eb-green::before { background: var(--grass); }
+  .eb-pink { background: var(--berry-light); }
+  .eb-pink::before { background: var(--berry); }
+  .eb-blue { background: var(--blue-bg); }
+  .eb-blue::before { background: var(--blue); }
+  .eb-peach { background: var(--peach-bg); }
+  .eb-peach::before { background: var(--peach); }
+  .eb-lavender { background: #f3effe; }
+  .eb-lavender::before { background: var(--lavender); }
+
+  .example-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .el-yellow { color: var(--sun-deep); }
+  .el-green { color: var(--grass-deep); }
+  .el-pink { color: var(--berry); }
+  .el-blue { color: var(--blue); }
+  .el-peach { color: #c05030; }
+  .el-lavender { color: var(--lavender); }
+
+  .example-title {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: 1.08rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+  }
+
+  .story-text {
+    font-size: 0.97rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    font-style: italic;
+    background: rgba(255,255,255,0.6);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 10px;
+  }
+
+  .story-text em { font-style: normal; font-weight: 700; color: var(--ink); }
+
+  .why-it-works {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .why-it-works::before {
+    content: '💡';
+    font-style: normal;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ── FORMULA BOX ── */
+  .formula-box {
+    background: var(--ink);
+    color: white;
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin: 28px 0;
+    text-align: center;
+  }
+
+  .formula-box .fb-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--honey);
+    margin-bottom: 10px;
+  }
+
+  .formula-box .fb-text {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.5;
+    color: white;
+  }
+
+  .formula-box .fb-text span { color: var(--honey); }
+
+  /* ── COMPARISON TABLE ── */
+  .compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 20px 0 28px;
+  }
+
+  .compare-col { border-radius: 14px; padding: 18px 20px; }
+  .compare-col h4 {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .compare-col li {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+    padding-left: 4px;
+    list-style: none;
+    display: flex;
+    gap: 6px;
+  }
+  .compare-col li::before { flex-shrink: 0; }
+
+  .compare-no { background: #fff0f0; border: 2px solid #f5c6c6; }
+  .compare-no h4 { color: #c0392b; }
+  .compare-no li::before { content: '✗'; color: #e74c3c; }
+
+  .compare-yes { background: #f0fff4; border: 2px solid #a8e6bc; }
+  .compare-yes h4 { color: var(--grass-deep); }
+  .compare-yes li::before { content: '✓'; color: var(--grass); }
+
+  /* ── FULL WIDTH EXAMPLE ── */
+  .big-example {
+    background: white;
+    border-radius: 20px;
+    border: 2px solid #e8e0d0;
+    padding: 28px 30px;
+    margin: 20px 0;
+    box-shadow: 0 4px 20px rgba(44,26,14,0.07);
+  }
+
+  .big-example .be-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .be-emoji { font-size: 2.2rem; }
+
+  .be-meta { flex: 1; }
+  .be-situation {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-soft);
+    margin-bottom: 3px;
+  }
+  .be-name {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--ink);
+  }
+
+  .be-story {
+    font-size: 0.97rem;
+    line-height: 1.8;
+    color: #4a3828;
+    font-style: italic;
+  }
+
+  .be-story em { font-style: normal; font-weight: 700; color: var(--ink); }
+
+  .be-breakdown {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed #ddd;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .bb-item {
+    background: var(--sky);
+    border-radius: 10px;
+    padding: 10px 12px;
+    text-align: center;
+  }
+  .bb-item .bb-label {
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+  .bb-item .bb-value {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  /* ── TIPS ROW ── */
+  .tips-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .tip-card {
+    background: white;
+    border-radius: 14px;
+    padding: 16px 14px;
+    text-align: center;
+    border: 2px solid #eee;
+    transition: transform 0.2s;
+  }
+
+  .tip-card .tc-icon { font-size: 1.6rem; margin-bottom: 8px; display: block; }
+  .tip-card strong { font-family: 'Baloo 2', cursive; font-size: 0.88rem; display: block; margin-bottom: 4px; color: var(--ink); }
+  .tip-card span { font-size: 0.8rem; color: var(--ink-soft); }
+
+  /* ── QUICK STARTERS ── */
+  .starter-list { margin: 16px 0; }
+
+  .starter-item {
+    display: flex;
+    gap: 14px;
+    padding: 14px 0;
+    border-bottom: 1px dashed #ddd;
+    align-items: flex-start;
+  }
+
+  .starter-item:last-child { border-bottom: none; }
+
+  .si-emoji { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+
+  .si-text strong {
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .si-text span { font-size: 0.88rem; color: var(--ink-soft); }
+
+  /* ── DIVIDER ── */
+  .wave-divider {
+    text-align: center;
+    font-size: 1.4rem;
+    letter-spacing: 0.3em;
+    color: var(--sun);
+    margin: 12px 0 44px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    margin-top: 52px;
+    padding: 36px 0;
+    border-top: 2px dashed #e0d5c5;
+  }
+  .footer p { color: var(--ink-soft); font-size: 0.95rem; }
+  .footer strong { color: var(--sun-deep); }
+
+  @media (max-width: 580px) {
+    .rule-grid { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+    .tips-row { grid-template-columns: 1fr 1fr; }
+    .be-breakdown { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <span class="floating-icons">🐣 🐻 🌈 🍓 🐸</span>
+  <div class="age-badge">Focus età 2–3 anni</div>
+  <h1>Storie per i <span>Piccolissimi</span></h1>
+  <p class="header-sub">Come costruire trame che catturano davvero un bambino di 2-3 anni — con tanti esempi pronti da usare</p>
+</div>
+
+<div class="container">
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 1: LA MENTE A QUEST'ETÀ -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="section-title">
+    <div class="dot" style="background:var(--sun)"></div>
+    Prima di tutto: come funziona la mente a 2-3 anni
+  </div>
+  <p class="section-intro">Per inventare storie che funzionano davvero, devi sapere cosa succede dentro quella testolina.</p>
+
+  <div class="rule-grid">
+    <div class="rule-card rc-yellow">
+      <span class="rc-icon">⏱️</span>
+      <strong>Attenzione brevissima</strong>
+      <p>Dai 90 secondi ai 4 minuti di concentrazione reale. La storia deve finire prima che si distragga — non è un fallimento, è fisiologia.</p>
+    </div>
+    <div class="rule-card rc-green">
+      <span class="rc-icon">🔁</span>
+      <strong>Ama la ripetizione</strong>
+      <p>Vuole la stessa storia cento volte. Non è noia — è apprendimento. La ripetizione dà sicurezza e crea attesa.</p>
+    </div>
+    <div class="rule-card rc-pink">
+      <span class="rc-icon">🌡️</span>
+      <strong>Pensa per emozioni, non per trame</strong>
+      <p>Non segue "e poi, e poi, e poi." Sente: c'è tensione? C'è calore? C'è sollievo? Quella è la sua storia.</p>
+    </div>
+    <div class="rule-card rc-blue">
+      <span class="rc-icon">🏠</span>
+      <strong>Il mondo familiare è magia</strong>
+      <p>Un cucchiaio, le scarpe, il cane del vicino: sono oggetti epici. Non ha bisogno di draghi — ha bisogno di oggetti che conosce in situazioni nuove.</p>
+    </div>
+    <div class="rule-card rc-peach">
+      <span class="rc-icon">🪞</span>
+      <strong>Si mette sempre al centro</strong>
+      <p>Il personaggio fa le cose che fa lui: mangia, dorme, cade, piange, ride. Più il personaggio gli assomiglia, più è catturato.</p>
+    </div>
+    <div class="rule-card rc-lavender">
+      <span class="rc-icon">🎵</span>
+      <strong>Il suono conta quanto le parole</strong>
+      <p>"Bum bum bum", "splonf", "cricri": le onomatopee non sono decorazioni — sono il cuore della storia per un bambino piccolo.</p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 2: LA FORMULA -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="wave-divider">· · ·</div>
+
+  <div class="section-title">
+    <div class="dot" style="background:var(--grass)"></div>
+    La formula giusta per 2-3 anni
+  </div>
+  <p class="section-intro">Dimentica le strutture da adulto. A quest'età la trama è un cerchio, non una linea.</p>
+
+  <div class="formula-box">
+    <div class="fb-label">La struttura che funziona</div>
+    <div class="fb-text">
+      <span>Personaggio familiare</span> → vuole qualcosa di semplice<br>
+      → incontra un piccolo ostacolo <span>(suono + reazione emotiva)</span><br>
+      → lo risolve in modo concreto → <span>torna al sicuro</span>
+    </div>
+  </div>
+
+  <div class="compare">
+    <div class="compare-col compare-no">
+      <h4>✗ Troppo per quest'età</h4>
+      <ul>
+        <li>Più di un personaggio principale</li>
+        <li>Colpi di scena o tradimenti</li>
+        <li>Concetti astratti (onestà, coraggio)</li>
+        <li>Più di 2 luoghi diversi</li>
+        <li>Trama con più di 3 passaggi</li>
+        <li>Finale aperto o ambiguo</li>
+      </ul>
+    </div>
+    <div class="compare-col compare-yes">
+      <h4>✓ Perfetto per quest'età</h4>
+      <ul>
+        <li>Un solo protagonista con un nome corto</li>
+        <li>Un desiderio concreto (fame, caldo, abbraccio)</li>
+        <li>Un ostacolo fisico e visibile</li>
+        <li>Un posto sicuro dove tornare</li>
+        <li>Suoni, rumori, movimenti</li>
+        <li>Finale caldo e prevedibile</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 3: ESEMPI COMPLETI -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="wave-divider">· · ·</div>
+
+  <div class="section-title">
+    <div class="dot" style="background:var(--berry)"></div>
+    Storie complete con analisi
+  </div>
+  <p class="section-intro">Storie pronte all'uso, con la spiegazione di perché funzionano per un bambino di 2-3 anni.</p>
+
+  <!-- ESEMPIO 1 -->
+  <div class="big-example">
+    <div class="be-header">
+      <div class="be-emoji">🐸</div>
+      <div class="be-meta">
+        <div class="be-situation">Situazione: ora di pranzo, non vuole mangiare</div>
+        <div class="be-name">Rana Teo e la zuppa verde</div>
+      </div>
+    </div>
+    <div class="be-story">
+      "C'era una volta Teo, una ranocchia piccola piccola, con la pancia che faceva... <em>grrr grrr grrr!</em><br><br>
+      Teo aveva fame. Tanta fame.<br><br>
+      Saltò fino alla cucina — <em>boing boing boing</em> — e trovò una ciotola di zuppa verde. Verde come lui!<br><br>
+      <em>"Mah"</em>, disse Teo, guardandola storto. <em>"Non mi piace."</em><br><br>
+      Ma la pancia faceva ancora <em>grrr grrr grrr!</em><br><br>
+      Allora Teo soffiò sulla zuppa — <em>pffffff</em> — per farla diventare fresca. La annusò. Poi... aprì la bocca grande grande e... <em>slurp!</em> La mangiò tutta.<br><br>
+      La pancia adesso diceva solo: <em>mmmmm.</em><br><br>
+      E Teo si raggomitolò sul suo muschio morbido e si addormentò."
+    </div>
+    <div class="be-breakdown">
+      <div class="bb-item">
+        <div class="bb-label">Struttura</div>
+        <div class="bb-value">Fame → resistenza → azione → soluzione</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-label">Perché funziona</div>
+        <div class="bb-value">Rispecchia esatto il momento reale del bambino</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-label">Trucco</div>
+        <div class="bb-value">I suoni corporei danno ritmo e fanno ridere</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESEMPIO 2 -->
+  <div class="big-example">
+    <div class="be-header">
+      <div class="be-emoji">🧸</div>
+      <div class="be-meta">
+        <div class="be-situation">Situazione: non vuole andare a dormire</div>
+        <div class="be-name">L'orsetto che aveva ancora voglia di giocare</div>
+      </div>
+    </div>
+    <div class="be-story">
+      "Bubi era un orsetto morbido con le orecchie tonde. Ogni sera la mamma gli diceva: <em>'Bubi, è ora di dormire.'</em><br><br>
+      Ma Bubi aveva ancora voglia di giocare con i suoi blocchi. <em>TAN TAN TAN!</em> Li metteva su. <em>CRAC!</em> Cadevano. Rideva.<br><br>
+      La luna guardò dalla finestra e disse piano piano: <em>'Bubi... Bubi...'</em><br><br>
+      <em>'Chi sei?'</em> chiese Bubi.<br><br>
+      <em>'Sono la luna. Ho portato i sogni. Li tengo qui, in questo sacchetto d'argento. Se non vieni a dormire, i sogni scappano.'</em><br><br>
+      Bubi si fermò. Guardò il sacchetto immaginario. <em>'Ci sono i sogni con i palloni?'</em><br><br>
+      <em>'Sì. E anche quelli con le torte.'</em><br><br>
+      Bubi mise giù i blocchi — <em>clic</em> — si arrampicò nel lettino, chiuse gli occhi... e i sogni entrarono tutti."
+    </div>
+    <div class="be-breakdown">
+      <div class="bb-item">
+        <div class="bb-label">Struttura</div>
+        <div class="bb-value">Resistenza → interlocutore magico → negoziazione → resa dolce</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-label">Perché funziona</div>
+        <div class="bb-value">Trasforma il "devi dormire" in un'avventura con ricompensa</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-label">Trucco</div>
+        <div class="bb-value">La luna come alleato del genitore, non come minaccia</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESEMPIO 3 -->
+  <div class="big-example">
+    <div class="be-header">
+      <div class="be-emoji">🐥</div>
+      <div class="be-meta">
+        <div class="be-situation">Situazione: primo giorno all'asilo / separazione</div>
+        <div class="be-name">Pip il pulcino che aspettava la mamma</div>
+      </div>
+    </div>
+    <div class="be-story">
+      "Pip era un pulcino giallo con il becco piccolo piccolo. Un giorno la mamma gallina lo portò in un posto nuovo, pieno di altri pulcini.<br><br>
+      <em>'Resto qui con te?'</em> chiese Pip.<br><br>
+      <em>'No, tesoro. Ma torno. Sempre torno.'</em><br><br>
+      Pip guardò la mamma andare via. La pancia faceva un po' strano — non fame, qualcos'altro.<br><br>
+      Poi un pulcino arancione si avvicinò. <em>'Vuoi vedere la mia casetta di blocchi?'</em><br><br>
+      Pip ci andò. I blocchi erano alti alti! <em>TAN TAN TAN!</em> Poi cadevano. <em>CRASH!</em> Ridevano insieme.<br><br>
+      Pip stava ancora ridendo quando sentì: <em>'Pip!'</em><br><br>
+      Era la mamma. Era tornata. Come aveva detto.<br><br>
+      Pip corse da lei — <em>pia pia pia!</em> — e la mamma lo abbracciò forte forte."
+    </div>
+    <div class="be-breakdown">
+      <div class="bb-item">
+        <div class="bb-label">Struttura</div>
+        <div class="bb-value">Separazione → disagio → distrazione → riunione</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-label">Perché funziona</div>
+        <div class="bb-value">Normalizza l'ansia e conferma che la mamma torna sempre</div>
+      </div>
+      <div class="bb-item">
+        <div class="bb-label">Trucco</div>
+        <div class="bb-value">"Sempre torno" — quella frase da ripetere identica ogni volta</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 4: LA RIPETIZIONE -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="wave-divider">· · ·</div>
+
+  <div class="section-title">
+    <div class="dot" style="background:var(--lavender)"></div>
+    Il superpotere della ripetizione interna
+  </div>
+  <p class="section-intro">I bambini di 2-3 anni adorano le strutture che si ripetono dentro la storia. È la tecnica più semplice e più efficace.</p>
+
+  <div class="example-block eb-lavender">
+    <div class="example-label el-lavender">⭐ Tecnica: la tripletta</div>
+    <div class="example-title">Tre tentativi, tre risposte diverse — poi il finale</div>
+    <div class="story-text">
+      "Il coniglio Lulu cercava il suo cappellino. Guardò sotto il cuscino: <em>niente.</em> Guardò dietro la porta: <em>niente.</em> Guardò nella scarpa: <em>niente!</em> Poi si grattò un'orecchio... e lo trovò lì, sulla testa da stamattina."
+    </div>
+    <div class="why-it-works">Perché funziona: la tripletta crea attesa e ritmo. Dopo il secondo "niente" il bambino anticipa il terzo — e ride già prima del finale.</div>
+  </div>
+
+  <div class="example-block eb-green">
+    <div class="example-label el-green">⭐ Tecnica: la frase ritornello</div>
+    <div class="example-title">Una frase che torna uguale — e che il bambino imparerà a dire con te</div>
+    <div class="story-text">
+      "Ogni volta che Ghiro aveva paura, soffiava forte sul suo pelo: <em>'Via via, paura, via!'</em> Quando il fulmine fece BOOM — <em>'Via via, paura, via!'</em> Quando il cane abbaiò forte — <em>'Via via, paura, via!'</em> E la paura... andava sempre via davvero."
+    </div>
+    <div class="why-it-works">Perché funziona: dopo due volte il bambino la sa. La terza la dice insieme a te. È il momento in cui la storia diventa SUA.</div>
+  </div>
+
+  <div class="example-block eb-yellow">
+    <div class="example-label el-yellow">⭐ Tecnica: l'escalation di suoni</div>
+    <div class="example-title">I rumori crescono fino all'esplosione — poi tutto si calma</div>
+    <div class="story-text">
+      "La casetta di Topo era silenziosa. Poi arrivò il vento: <em>ssss.</em> Poi la pioggia: <em>pic pic pic.</em> Poi il tuono: <em>BOOM BOOM BOOM!</em> Topo si mise sotto le coperte. Aspettò. Aspettò. E poi... il sole. <em>E tutto diventò quieto quieto quieto.</em>"
+    </div>
+    <div class="why-it-works">Perché funziona: il bambino si eccita con i suoni forti, poi la calma finale lo porta verso il sonno. Funziona come una culla sonora.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 5: ADATTARE AL MOMENTO -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="wave-divider">· · ·</div>
+
+  <div class="section-title">
+    <div class="dot" style="background:var(--peach)"></div>
+    Come adattare la storia al momento della giornata
+  </div>
+  <p class="section-intro">La stessa struttura base cambia completamente a seconda di quando e perché racconti.</p>
+
+  <div class="example-block eb-peach">
+    <div class="example-label el-peach">🌅 Mattina — storie che caricano</div>
+    <div class="example-title">Il gattino che si stiracchiava</div>
+    <div class="story-text">
+      "Micio apriva gli occhi. Uno. Poi l'altro. Sbadigliò — <em>aaaaaah!</em> Allungò la zampa destra — <em>striiiiitch.</em> La zampa sinistra — <em>striiiiitch.</em> La codina — <em>striiiiitch.</em> Si alzò in piedi, scosse le orecchie, e disse: <em>'Sono pronto. Il giorno può cominciare!'</em>"
+    </div>
+    <div class="why-it-works">Per la mattina: ritmo vivace, movimenti fisici, finale di apertura. Puoi anche farlo muovere insieme al personaggio — stiracchiatevi insieme.</div>
+  </div>
+
+  <div class="example-block eb-blue">
+    <div class="example-label el-blue">☀️ Pomeriggio — storie brevi in qualsiasi momento</div>
+    <div class="example-title">La storia dei 60 secondi (in macchina, al parco, in fila)</div>
+    <div class="story-text">
+      "Sai cosa ha fatto oggi il topo Filo? Ha trovato una briciola di pane GRANDISSIMA — grande come lui! Ha provato a spostarla. Niente. Ha soffiato. Niente. Poi ha chiamato il suo amico, la formica Lea. Insieme — <em>uno due tre, SPINGETE!</em> — la briciola si è mossa. E hanno fatto una festa."
+    </div>
+    <div class="why-it-works">Per il pomeriggio: struttura minima, protagonista piccolo (come lui), un problema fisico e concreto. Si racconta in 60 secondi ovunque.</div>
+  </div>
+
+  <div class="example-block eb-green">
+    <div class="example-label el-green">🌙 Sera — storie che addormentano</div>
+    <div class="example-title">Tutto il bosco va a dormire</div>
+    <div class="story-text">
+      "Quando il sole scendeva... il fiore chiudeva i petali. <em>Pian pianino.</em> Il coniglietto entrava nella sua tana. <em>Pian pianino.</em> L'uccellino metteva la testina sotto l'ala. <em>Pian pianino.</em> La luna saliva in cielo e guardava tutti. Tutti dormivano. Il bosco era quieto. <em>Quieto quieto quieto...</em>"
+    </div>
+    <div class="why-it-works">Per la sera: voce sempre più lenta, sempre più bassa. "Pian pianino" ripetuto rallenta anche il tuo respiro — e il suo. La lista di personaggi che dormono funziona come ipnosi dolce.</div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 6: I 10 INCIPIT PRONTI -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="wave-divider">· · ·</div>
+
+  <div class="section-title">
+    <div class="dot" style="background:var(--blue)"></div>
+    10 incipit pronti — completa tu il resto
+  </div>
+  <p class="section-intro">Inizia con una di queste frasi. Il resto viene da solo.</p>
+
+  <div class="starter-list">
+    <div class="starter-item">
+      <div class="si-emoji">🐻</div>
+      <div class="si-text">
+        <strong>"C'era una volta un orsetto che aveva perso la sua coperta preferita..."</strong>
+        <span>→ Dove la cerca? Dove la trova? È il posto più ovvio del mondo.</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🍎</div>
+      <div class="si-text">
+        <strong>"La mela rossa sul ramo più alto voleva scendere, ma non sapeva come..."</strong>
+        <span>→ Chi la aiuta? Il vento? Un uccellino? Una bambina?</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🌧️</div>
+      <div class="si-text">
+        <strong>"Fuori pioveva forte — pic pic pic — e il gattino non voleva bagnarsi..."</strong>
+        <span>→ Come fa ad attraversare il giardino? Cosa usa come ombrello?</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🦆</div>
+      <div class="si-text">
+        <strong>"L'anatroccolo Dado non riusciva a fare 'quack' come tutti gli altri..."</strong>
+        <span>→ Che suono fa invece? Come impara? Chi lo aiuta?</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🌙</div>
+      <div class="si-text">
+        <strong>"La stellina era stanca ma non riusciva a spegnersi per dormire..."</strong>
+        <span>→ Cosa fa la luna? Come la aiuta ad addormentarsi?</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🐛</div>
+      <div class="si-text">
+        <strong>"Il bruco Bruno mangiò TALMENTE tante foglie che non riusciva più a muoversi..."</strong>
+        <span>→ Come risolve? Chi arriva a dargli una mano? Che diventa?</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">👟</div>
+      <div class="si-text">
+        <strong>"Le scarpe di Leo erano sparite. Cercò sotto il letto. Cercò nel bagno. Cercò in cucina..."</strong>
+        <span>→ Dove erano? Qualcuno le aveva prese? O erano proprio davanti alla porta?</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🐞</div>
+      <div class="si-text">
+        <strong>"La coccinella Pina aveva perso un puntino. Ne aveva sei ieri, oggi ne contava solo cinque..."</strong>
+        <span>→ Dove è andato? Come lo ritrova? (i bambini adorano contare con il personaggio)</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🥣</div>
+      <div class="si-text">
+        <strong>"La pappa del riccino era troppo calda. Aspettò. Era ancora calda. Aspettò ancora..."</strong>
+        <span>→ Cosa fa mentre aspetta? Chi incontra? Funziona bene all'ora dei pasti.</span>
+      </div>
+    </div>
+    <div class="starter-item">
+      <div class="si-emoji">🌈</div>
+      <div class="si-text">
+        <strong>"Dopo la pioggia uscì un arcobaleno. 'Posso salirci?' chiese la rana Zuzu..."</strong>
+        <span>→ Ci riesce? Dove arriva? Cosa trova in cima?</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════ -->
+  <!-- SEZIONE 7: I TRUCCHI VOCALI -->
+  <!-- ═══════════════════════════════════ -->
+  <div class="wave-divider">· · ·</div>
+
+  <div class="section-title">
+    <div class="dot" style="background:var(--grass)"></div>
+    I trucchi vocali che cambiano tutto
+  </div>
+  <p class="section-intro">A 2-3 anni, il modo in cui dici le cose è la storia. Ecco come.</p>
+
+  <div class="tips-row">
+    <div class="tip-card">
+      <span class="tc-icon">🐘</span>
+      <strong>Voce grande = grande</strong>
+      <span>Personaggi grandi o spaventosi: voce bassa, lenta, che vibra nel petto</span>
+    </div>
+    <div class="tip-card">
+      <span class="tc-icon">🐁</span>
+      <strong>Voce piccola = piccolo</strong>
+      <span>Topi, formiche, pulcini: voce acuta, veloce, con le parole strette</span>
+    </div>
+    <div class="tip-card">
+      <span class="tc-icon">💤</span>
+      <strong>Rallenta per dormire</strong>
+      <span>Quando vuoi che si addormenti, rallenta ogni frase del 30%. Lui ti segue senza accorgersene.</span>
+    </div>
+    <div class="tip-card">
+      <span class="tc-icon">🔊</span>
+      <strong>Suoni fisici</strong>
+      <span>"Bum", "splonf", "cricri", "woosh": falli con la bocca. Ridete insieme. È la storia.</span>
+    </div>
+    <div class="tip-card">
+      <span class="tc-icon">⏸️</span>
+      <strong>La pausa del mistero</strong>
+      <span>Prima di rivelare cosa c'era dietro la porta: 2 secondi di silenzio. Li tiene col fiato sospeso.</span>
+    </div>
+    <div class="tip-card">
+      <span class="tc-icon">🎯</span>
+      <strong>Il suo nome nella storia</strong>
+      <span>"E sai chi era bravo a farlo? Un bambino che conosco..." — occhi grandi. Sempre.</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div style="font-size: 2rem; margin-bottom: 12px;">🐣</div>
+    <p>La storia perfetta per un bambino di 2-3 anni<br>è quella che <strong>racconti stasera.</strong></p>
+    <p style="margin-top: 10px; font-size: 0.88rem; color: #aaa;">Anche se ti blocchi. Anche se cambi finale all'ultimo secondo.<br>Lui ricorderà la tua voce, non la trama.</p>
+  </div>
+
+</div>
+</body>
+</html>
