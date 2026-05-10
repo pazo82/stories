@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa sub-sahariana · Le storie classiche</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ece1;
+    --paper-deep: #e8dfce;
+    --paper-warm: #ede3d1;
+    --ink: #1f1a16;
+    --ink-soft: #3a3027;
+    --ink-faint: #7a6a58;
+    --rule: #b8a48a;
+    --rust: #a8341e;
+    --rust-deep: #862818;
+    --ochre: #c89530;
+    --earth: #3a3027;
+    --highlight: #e6d4a8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 14% 10%, rgba(168, 52, 30, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 86% 88%, rgba(58, 48, 39, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(200, 149, 48, 0.025) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Cardo', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(58, 48, 39, 0.025) 2px,
+        rgba(58, 48, 39, 0.025) 3px
+      );
+    z-index: 1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header { padding: 4.5rem 0 2rem; }
+
+  .series-mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .symbol-mark {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Cardo', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TABS ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover { color: var(--ink); background: var(--paper-deep); }
+  nav.tabs a.active { color: var(--rust); background: var(--paper); }
+  nav.tabs a.active .tab-num { color: var(--rust); opacity: 0.8; }
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 2px solid var(--rust);
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 600px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  /* ===== STORY CARD ===== */
+  .story {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .story-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .story-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .story-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2.story-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  h2.story-title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .story-origin {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  /* "Perché questa storia" tag */
+  .why-tag {
+    margin: 1.4rem 0 0;
+    padding: 0.9rem 1.2rem;
+    background: rgba(168, 52, 30, 0.06);
+    border-left: 3px solid var(--rust);
+    font-family: 'Cardo', serif;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .why-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-right: 0.6rem;
+    font-weight: 500;
+  }
+
+  /* ===== STORY BODY ===== */
+  .story-body {
+    margin: 2.5rem 0;
+  }
+
+  .story-body p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+    hyphens: none;
+  }
+
+  .story-body p strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .story-body p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* Formula d'apertura della performance */
+  .opening-formula {
+    margin: 2rem 0 2rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.5;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .opening-formula .gloss {
+    display: block;
+    font-family: 'Cardo', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.85rem;
+    color: var(--ink-faint);
+    margin-top: 0.5rem;
+  }
+
+  /* Canzone dentro la storia */
+  .song {
+    margin: 2rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(200, 149, 48, 0.08);
+    border-top: 1px solid var(--ochre);
+    border-bottom: 1px solid var(--ochre);
+    text-align: center;
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  .song-label {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-style: normal;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  .song .gloss {
+    display: block;
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 0.88rem;
+    color: var(--ink-faint);
+    margin-top: 0.5rem;
+  }
+
+  /* Closing formula */
+  .closing-formula {
+    margin: 2rem 0;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--rust);
+    border-top: 1px dashed var(--rule);
+    border-bottom: 1px dashed var(--rule);
+  }
+
+  .closing-formula .gloss {
+    display: block;
+    font-family: 'Cardo', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 0.82rem;
+    color: var(--ink-faint);
+    margin-top: 0.4rem;
+  }
+
+  /* Termini in lingue africane */
+  .afr {
+    font-style: italic;
+    color: var(--rust);
+    font-weight: 400;
+  }
+
+  /* ===== ANALYSIS ===== */
+  .analysis {
+    margin: 3rem 0;
+    padding: 2rem 2rem 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--rust);
+  }
+
+  .analysis-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .analysis h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .analysis h3 em { font-style: italic; color: var(--rust); }
+
+  .analysis p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: var(--ink-soft);
+  }
+
+  .analysis p:last-child { margin-bottom: 0; }
+
+  .analysis p strong { color: var(--ink); font-weight: 700; }
+  .analysis p em { font-style: italic; color: var(--ink-soft); }
+
+  /* ===== SYNTHESIS ===== */
+  .synthesis {
+    margin: 6rem 0 3rem;
+    padding: 3rem 2rem;
+    background: linear-gradient(180deg, var(--paper-deep) 0%, var(--paper-warm) 100%);
+    border: 1px solid var(--rust);
+    border-radius: 0;
+    position: relative;
+  }
+
+  .synthesis-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .synthesis h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.8rem;
+    line-height: 1.2;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .synthesis h2 em { font-style: italic; color: var(--rust); }
+
+  .synthesis p {
+    margin-bottom: 1.2rem;
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
+  .synthesis p strong { color: var(--ink); font-weight: 700; }
+  .synthesis p em { font-style: italic; color: var(--ink-soft); }
+
+  /* Quadrato delle storie */
+  .square {
+    margin: 2.5rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: var(--paper);
+  }
+
+  .square > div {
+    padding: 1.4rem 1.6rem;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .square > div:nth-child(2n) { border-right: none; }
+  .square > div:nth-last-child(-n+2) { border-bottom: none; }
+
+  .square h4 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--rust);
+    margin-bottom: 0.4rem;
+  }
+
+  .square p {
+    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  .square .sq-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  /* Bridge to Doc 3 */
+  .bridge {
+    margin: 3rem 0 2rem;
+    padding: 1.6rem 1.8rem;
+    background: rgba(168, 52, 30, 0.05);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+  }
+
+  .bridge-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .bridge p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .bridge p:last-child { margin-bottom: 0; }
+  .bridge p strong { color: var(--ink); font-weight: 700; }
+  .bridge p em { font-style: italic; }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.15rem; padding-left: 1.4rem; }
+    h2.story-title { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .opening-formula, .song, .closing-formula { margin-left: 0; margin-right: 0; }
+    .analysis, .synthesis { padding: 1.6rem 1.4rem; }
+    .square { grid-template-columns: 1fr; }
+    .square > div { border-right: none !important; }
+    .square > div:last-child { border-bottom: none; }
+    .story { margin: 3.5rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, .story, .synthesis { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  .story:nth-of-type(1) { animation-delay: 0.2s; }
+  .story:nth-of-type(2) { animation-delay: 0.25s; }
+  .story:nth-of-type(3) { animation-delay: 0.3s; }
+  .story:nth-of-type(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume V</div>
+    <svg class="symbol-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 32 6 A 26 26 0 1 1 18 9.5" fill="none" stroke="#a8341e" stroke-width="1.4" opacity="0.7" stroke-linecap="round"/>
+      <line x1="2" y1="32" x2="62" y2="32" stroke="#a8341e" stroke-width="1.4" opacity="0.85"/>
+      <circle cx="32" cy="32" r="3" fill="#a8341e" opacity="0.9"/>
+    </svg>
+    <h1 class="title">Le storie classiche —<br><em>quattro modi di tenere il cerchio</em></h1>
+    <p class="subtitle">Dall'origine cosmica del raccontare all'epica genealogica dei griot, dalla favola del trickster punito al pane diviso che fa di un povero un re. Quattro storie che insieme disegnano un quadrato della cultura narrativa africana.</p>
+    <div class="meta-row">
+      <span>Documento 2 di 4</span>
+      <span>Le Storie</span>
+      <span>Tono narrativo + analitico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="africa_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="africa_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="africa_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Le quattro storie che seguono non sono la "letteratura africana": sono quattro punti di un quadrato che insieme illuminano una cultura più grande di ognuna di esse.</p>
+    <p>La prima racconta l'origine cosmica del raccontare. La seconda mostra cosa fa un griot. La terza è la piccola favola del trickster punito. La quarta porta in scena l'ubuntu come pane diviso. Da qui partiremo per il bambino.</p>
+  </div>
+
+  <!-- ============================================ -->
+  <!-- STORIA 1: ANANSI -->
+  <!-- ============================================ -->
+  <article class="story">
+    <div class="story-header">
+      <span class="story-num">§ Storia I — Akan, Ghana</span>
+      <h2 class="story-title">Anansi e <em>la scatola delle storie</em></h2>
+      <p class="story-origin">Mito eziologico Akan/Ashanti, raccolto in molte versioni a partire dall'inizio del Novecento (W.H. Barker e C. Sinclair, 1917; Harold Courlander, 1957). Il personaggio di Anansi è sopravvissuto alla diaspora atlantica e si ritrova nei Caraibi (<em>Anancy</em>) e nel Sud degli Stati Uniti (<em>Aunt Nancy</em>).</p>
+      <div class="why-tag">
+        <span class="why-label">Perché questa storia</span>
+        Perché racconta <em>l'origine del raccontare</em> stesso. Le storie del mondo non sono invenzione di autori: sono un dono cosmico strappato al cielo, da un piccolo ragno furbo, per gli umani.
+      </div>
+    </div>
+
+    <div class="story-body">
+
+      <div class="opening-formula">
+        Yɛnsɛ sɛ — yɛnsɛ sɛ…
+        <span class="gloss">"Vi raccontiamo che — vi raccontiamo che…" Formula d'apertura akan delle Anansesem, le storie del ragno.</span>
+      </div>
+
+      <p>Al principio, tutte le storie del mondo appartenevano a Nyame, il dio del cielo. Stavano chiuse dentro una scatola, accanto al suo trono, in alto sopra le nuvole, e nessuno sulla terra le possedeva. Sulla terra c'era silenzio — non un silenzio di pace, ma un silenzio di mancanza. Gli umani lavoravano, mangiavano, dormivano, ma nessuno sapeva raccontare nulla, e quando cadeva la sera intorno al fuoco non avevano niente da dirsi.</p>
+
+      <p>Anansi, il ragno, era piccolo. Aveva otto zampe sottili e un corpo non più grande di una nocciola. Ma Anansi era già allora il più astuto degli esseri della terra, e una notte alzò lo sguardo verso il cielo e disse a se stesso: <em>quelle storie devono venire quaggiù</em>.</p>
+
+      <p>Tessé un filo lunghissimo, salì fino al cielo, si presentò davanti a Nyame e disse: «Padre, dammi le tue storie. Voglio portarle agli umani.»</p>
+
+      <p>Nyame guardò il piccolo ragno e rise. «Tu? Vuoi le mie storie? Le hanno chieste re potenti, guerrieri famosi, elefanti grandi come colline. A nessuno le ho date. Tu sei un ragno. Cosa puoi offrire in cambio?»</p>
+
+      <p>«Dimmi il prezzo», disse Anansi.</p>
+
+      <p>«Il prezzo è alto», disse Nyame, ed era sicuro che il piccolo ragno sarebbe tornato indietro a mani vuote. «Voglio quattro cose. Voglio Onini il pitone, il più grande del mondo, che vive nel fiume. Voglio Mmoboro, lo sciame dei calabroni, che vivono nell'albero più alto. Voglio Osebo il leopardo, che ha denti come coltelli. E voglio Mmoatia, lo spirito della foresta, che nessun mortale ha mai visto in faccia. Portameli vivi. Allora avrai le storie.»</p>
+
+      <p>Anansi disse: «Va bene», e tornò sulla terra.</p>
+
+      <p><strong>Per prima cosa andò al fiume di Onini il pitone.</strong> Tagliò un ramo dritto e lungo, e si incamminò verso il fiume parlando ad alta voce con se stesso, come se discutesse con la moglie. «Mia moglie ha torto», diceva. «Mia moglie ha torto.» «Mia moglie dice che il pitone Onini non è lungo come questo ramo. Io dico che è più lungo. Mia moglie dice che è più corto. Mia moglie ha torto.» Continuò così finché Onini, incuriosito, sbucò dal fiume.</p>
+
+      <p>«Cosa dici di me, piccolo ragno?»</p>
+
+      <p>«Mia moglie e io stiamo discutendo. Lei dice che tu sei più corto di questo ramo. Io dico che sei più lungo. Vorrei misurarti, ma tu non stai mai fermo.»</p>
+
+      <p>Onini si offese. «Stenditi qui accanto a me, e vedrai che sono più lungo del tuo ramo.»</p>
+
+      <p>Anansi mise il ramo per terra. Il pitone si stese accanto. «Adesso lega la mia testa al ramo, perché non si veda bene se non sono dritto», disse Onini. Anansi obbedì. «Adesso lega la mia coda», disse Onini. Anansi obbedì. «Adesso lega anche il centro», disse Onini. E quando Onini fu tutto legato al ramo, Anansi disse sorridendo: «Adesso, pitone, ti porto da Nyame.» E così fece.</p>
+
+      <p><strong>Poi andò all'albero più alto, dove vivevano i calabroni Mmoboro.</strong> Riempì una zucca cava di acqua, e si fece un secondo recipiente con foglie larghe. Si avvicinò all'albero versandosi addosso l'acqua, e gridò ai calabroni: «Sciocchi, sta piovendo a dirotto, e voi state lì fuori a bagnarvi! Venite dentro la mia zucca, è asciutta!» I calabroni guardarono in basso, videro Anansi tutto bagnato, sentirono cadere goccioloni d'acqua dalle sue foglie, e si convinsero che fosse davvero un acquazzone. «Ringraziamo la tua gentilezza, ragno», dissero, e si infilarono uno dopo l'altro dentro la zucca. Quando furono tutti dentro, Anansi tappò il collo della zucca con un foglia, e li portò da Nyame.</p>
+
+      <p><strong>Poi andò a cercare Osebo il leopardo.</strong> Scavò una buca profonda sul sentiero che il leopardo percorreva ogni mattina, la coprì con foglie e rami sottili, e si nascose. Al mattino, Osebo cadde nella buca e ruggì furibondo. Anansi si affacciò: «Povero leopardo! Cosa fai laggiù?»</p>
+
+      <p>«Sono caduto, sciocco ragno. Tirami fuori.»</p>
+
+      <p>«Ma se ti tiro fuori, mi mangi.»</p>
+
+      <p>«Lo giuro su tutto il mio onore di leopardo, non ti mangerò.»</p>
+
+      <p>Anansi finse di crederci. Calò una corda fatta di filo di ragno, robusta come solo Anansi sa farla. «Lega la corda alla tua coda», disse, «così ti tiro su.» Osebo legò. Anansi tirò — ma lentamente, lentamente — e quando il leopardo era a metà strada, gli calò sulla testa un grosso ramo che gli mozzò il respiro. Lo legò ben bene e lo portò da Nyame.</p>
+
+      <p><strong>Restava Mmoatia, lo spirito della foresta.</strong> Questo era il più difficile: nessuno l'aveva mai visto. Anansi non andò a cercarla — fece di meglio. Intagliò una bambola di legno, la cosparse di linfa appiccicosa, e mise davanti alla bambola una scodella di igname pestato — il piatto preferito degli spiriti della foresta. Poi legò un filo invisibile al collo della bambola, si nascose e aspettò.</p>
+
+      <p>Mmoatia arrivò, vide la bambola, vide l'igname. «Bambola, posso mangiare il tuo igname?» chiese. Anansi tirò il filo: la testa della bambola annuì. Lo spirito mangiò. Quando ebbe finito, disse: «Bambola, grazie del cibo.» Anansi non rispose. «Bambola, ti ho detto grazie!» Ancora silenzio. Mmoatia si offese — gli spiriti della foresta tengono molto alle buone maniere — e diede uno schiaffo alla bambola: la mano si attaccò alla linfa. Diede l'altro schiaffo: anche l'altra mano si attaccò. Diede un calcio: anche il piede si attaccò. Diede l'altro calcio: anche l'altro piede. Diede una testata: la testa si attaccò. Mmoatia era prigioniera dell'inganno della cortesia, e Anansi uscì dal suo nascondiglio, la sciolse con cura, e la portò da Nyame.</p>
+
+      <p>Il dio del cielo guardò il pitone legato al ramo, lo sciame nella zucca, il leopardo legato per la coda, e lo spirito della foresta tenuta per un filo. Per molto tempo non disse nulla. Poi:</p>
+
+      <p>«Re potenti hanno provato. Guerrieri famosi hanno provato. Elefanti grandi come colline hanno provato. Tutti hanno fallito. Tu, piccolo ragno, hai vinto. Per questo, da oggi, tutte le storie del mondo si chiameranno con il tuo nome.»</p>
+
+      <p>E aprì la scatola.</p>
+
+      <p>Le storie volarono giù dal cielo come un nugolo di farfalle, si sparsero sulla terra, entrarono nelle case, si posarono sui tetti, si infilarono nei sogni dei bambini. Da quel giorno, ogni volta che qualcuno racconta una storia, anche se non lo sa, sta raccontando una storia di Anansi. Per questo, in lingua akan, le storie si chiamano <span class="afr">Anansesem</span>: le parole del ragno. E per questo i bambini akan, prima di addormentarsi, chiedono ai grandi: <em>raccontami un'Anansesem</em>.</p>
+
+      <div class="closing-formula">
+        Sɛ m'atorosɛm yi yɛ dɛ a, momfa bi nkɔ, na momma bi nka.
+        <span class="gloss">"Se questa mia storia vi è piaciuta, prendetene un pezzo, e lasciatene un pezzo." Formula di chiusura akan: la storia non è proprietà del narratore, va passata.</span>
+      </div>
+    </div>
+
+    <div class="analysis">
+      <span class="analysis-label">Analisi mirata</span>
+      <h3>Le storie come <em>dono cosmico strappato al cielo</em></h3>
+      <p>La cosa straordinaria di questo mito non è il viaggio di Anansi né le quattro imprese — sono dispositivi che ritroveremo in molte tradizioni del mondo. La cosa straordinaria è la <strong>cosa che viene strappata al cielo</strong>. In altre culture, il piccolo astuto che ruba qualcosa al divino ruba il fuoco (Prometeo per i Greci), o il maíz (per i mesoamericani), o il mais e il bisonte (per varie tradizioni indigene americane). Anansi ruba <em>le storie</em>. Cioè ruba il dispositivo stesso con cui gli umani potranno poi raccontare di tutto, anche del furto del fuoco se occorresse.</p>
+      <p>Questa è una proposizione culturale potente, perché dice una cosa precisa: per la cultura akan, <strong>il bene primario non è la tecnologia (il fuoco), non è il cibo (il mais), non è la conoscenza astratta — è la capacità di raccontare</strong>. È il raccontare che fa degli umani umani. È il raccontare che permette il legame, la memoria, la trasmissione. Senza le storie, c'è solo lavoro e silenzio. Le storie sono per gli umani <em>più importanti del fuoco</em>.</p>
+      <p>Una nota tecnica sul trickster. Anansi qui è celebrato — <strong>è il trickster premiato</strong>. Vince con l'astuzia contro avversari più forti, e ottiene per gli umani ciò che potenti e guerrieri non avevano potuto ottenere. È la celebrazione dell'astuzia come <em>virtù degli sfavoriti</em>: il piccolo che batte il grande, il debole che batte il forte, non con la forza ma con l'intelligenza della relazione (osserva: ogni inganno di Anansi sfrutta una <em>debolezza relazionale</em> dell'avversario — l'orgoglio del pitone, la pigrizia dei calabroni, l'avidità del leopardo, le buone maniere dello spirito). Ma teniamo a mente: vedremo nella terza storia il rovescio — il trickster che diventa avido e viene punito.</p>
+    </div>
+  </article>
+
+  <!-- ============================================ -->
+  <!-- STORIA 2: SUNDIATA -->
+  <!-- ============================================ -->
+  <article class="story">
+    <div class="story-header">
+      <span class="story-num">§ Storia II — Mande, Mali</span>
+      <h2 class="story-title">Sundiata Keita, <em>il Leone del Mali</em></h2>
+      <p class="story-origin">Epopea mande del XIII secolo, tramandata oralmente dai <em>jeli</em> (griot) della famiglia Kouyaté per quasi otto secoli. La versione canonica oggi disponibile è quella recitata dal jeli Mamadou Kouyaté di Djeliba Koro, trascritta in francese da Djibril Tamsir Niane (1960). Patrimonio orale dell'umanità (UNESCO). La performance integrale può durare giornate.</p>
+      <div class="why-tag">
+        <span class="why-label">Perché questa storia</span>
+        Perché mostra cosa fa un griot: custodisce con precisione storica una memoria di sette secoli. E perché mostra un eroismo africano che non è mai solitario — l'eroe è sempre <em>nodo di una rete</em>.
+      </div>
+    </div>
+
+    <div class="story-body">
+
+      <div class="opening-formula">
+        Sono Djeli Mamadou Kouyaté, figlio di Bintou Kouyaté e di Djeli Kedian Kouyaté, maestro nell'arte del parlare. Da tempo immemorabile i Kouyaté sono al servizio dei principi Keita del Mali: noi siamo i sacchi di parole, noi siamo le tombe in cui sono sepolti i segreti di molti secoli.
+        <span class="gloss">Apertura del Sundiata nella performance di Mamadou Kouyaté trascritta da D.T. Niane. Il jeli si presenta dichiarando il proprio lignaggio: nessuno racconta senza prima dire di chi è figlio.</span>
+      </div>
+
+      <p><em>Il racconto che segue è il nucleo essenziale di un'opera molto più lunga. Riassumiamo, perché la versione completa coprirebbe pagine e pagine, ma cerchiamo di mantenere il sapore della performance.</em></p>
+
+      <p>Molto tempo fa, prima che il Mali fosse il Mali, c'era nel paese mande un piccolo regno, e il suo re si chiamava Naré Maghan. Un giorno, due cacciatori arrivarono alla sua corte portando con sé una donna strana: era brutta, gibbosa come una bufala, con un volto che si diceva non avesse uguali per orrore. La chiamavano <strong>Sogolon Kedjou</strong>, la bufalo-donna. I cacciatori l'avevano catturata seguendo le indicazioni di un indovino che aveva detto al re: <em>la donna che ti sembrerà più brutta sarà la madre del tuo erede, e il tuo erede sarà il più grande dei sovrani che il Mande conoscerà</em>.</p>
+
+      <p>Naré Maghan la sposò. La sua prima moglie, Sassouma Bérété, già madre di un figlio bello e sano, rise di scherno. Ma da Sogolon nacque un bambino. Lo chiamarono <strong>Sundiata</strong>, e nessuno rideva più — perché il bambino, fino ai sette anni, non camminò.</p>
+
+      <p>Sundiata stava seduto a terra, mangiava molto, parlava poco, guardava il mondo. La gente lo chiamava il <em>bambino-rospo</em>. Sassouma ne approfittava per umiliare Sogolon: «Vedi, anche le profezie sbagliano. Tuo figlio non sarà mai re. Mio figlio sarà re.» E quando Naré Maghan morì, Sassouma fece incoronare suo figlio Dankaran Touman, e cacciò Sogolon dal palazzo, in una capanna nei campi.</p>
+
+      <p>Un giorno Sogolon, stanca di un'umiliazione di troppo, andò da Sundiata e disse: «Figlio, anche tu vedi cosa sopporto per te. Anche tu vedi che tutti ridono. Ma io ho ancora la promessa nelle ossa. <em>Alzati</em>.»</p>
+
+      <p>Sundiata aveva sette anni. Disse: «Madre, oggi mi alzerò.» Chiese al fabbro Farakourou una sbarra di ferro spessa quanto la sua coscia. Il fabbro la portò. Sundiata afferrò la sbarra, la piantò nel terreno, e si tirò su. La sbarra si curvò sotto le sue mani come un arco. Ma lui si alzò. Una volta in piedi, fece due passi. Poi tre. Poi camminò fino al baobab del villaggio, l'afferrò per il tronco, lo sradicò, e lo posò davanti alla porta della madre.</p>
+
+      <p><strong>«Da oggi, madre, mangerai all'ombra di questo albero.»</strong></p>
+
+      <div class="song">
+        <span class="song-label">Canzone del jeli</span>
+        Prendi il tuo arco, Simbon, prendi il tuo arco, e va'.<br>
+        Il bambino-rospo è un leone.<br>
+        L'ostacolo è caduto.
+        <span class="gloss">Il <em>Hymne à l'Arc</em>, l'inno dell'arco, viene cantato dal jeli al momento in cui Sundiata si alza per la prima volta. È il momento più celebre dell'epopea, e ogni jeli lo ricorda nota per nota.</span>
+      </div>
+
+      <p>Da quel giorno Sundiata camminò, e con lui camminò anche la sua minaccia per il regno usurpato. Sassouma, terrorizzata, mandò assassini contro di lui. Sogolon allora prese il figlio, prese le sue figlie, e con un piccolo seguito fuggì in esilio.</p>
+
+      <p>Per molti anni Sundiata vagò di corte in corte. Fu accolto dal re Mansa Konkon, dove imparò il gioco e la sapienza. Fu accolto dal re di Wagadou, dove imparò la guerra. Fu accolto dal re Tounkara di Mema, che lo amò come un figlio e gli affidò un esercito. Sundiata cresceva. Diventava forte. <strong>Ma non era mai solo</strong>. Sua madre Sogolon era con lui, sua sorella Kolonkan era con lui, suo fratello Manding Bory era con lui, e con lui erano i jeli — Balla Fasséké, il jeli che lo accompagnava da quando era nato, e che cantava i suoi antenati ogni sera per ricordargli chi era.</p>
+
+      <p>Mentre Sundiata era in esilio, sul Mande calò un'ombra. Si chiamava <strong>Soumaoro Kanté</strong>, il re-stregone del Sosso. Conquistò un regno dopo l'altro, e tra i suoi conquistati ci fu anche il piccolo regno mande dove Dankaran Touman regnava miserabilmente. Soumaoro era una creatura terribile: si diceva che il suo corpo non potesse essere ferito da arma normale, che si nutrisse di carne umana, che vivesse in una stanza piena di teschi e che il suo balafon — il grande xilofono di legno — fosse stato rubato agli spiriti. La gente del Mande, schiavizzata, disperata, mandò messaggeri a cercare Sundiata in esilio.</p>
+
+      <p>I messaggeri lo trovarono a Mema. Quando Sundiata seppe che il suo paese era oppresso, disse a Tounkara: «Padre adottivo, ho ricevuto da te tutto. Adesso devo tornare. <em>L'albero non dimentica le radici</em>.» Tounkara gli diede cavalli, soldati, archi, e una benedizione che il jeli ricorda ancora.</p>
+
+      <p>Sundiata tornò. Lungo il cammino verso il Mande, regni interi si univano a lui. Era come se il paese aspettasse soltanto questo. Quando arrivò di fronte all'esercito di Soumaoro, era a capo di una coalizione di tutti i popoli mande, e con lui c'erano i suoi <em>generali</em>: Tiramakhan, Fakoli (che era stato il nipote di Soumaoro stesso e l'aveva tradito quando lo zio aveva preso sua moglie), e tanti altri.</p>
+
+      <p>La battaglia decisiva fu a <strong>Krina</strong>, nel 1235.</p>
+
+      <p>Soumaoro era invulnerabile alle frecce normali. Ma il jeli Balla Fasséké aveva scoperto, attraverso la sorella di Sundiata che aveva sedotto Soumaoro, il segreto del re-stregone: solo una freccia con una punta fatta di sperone di gallo bianco poteva ferirlo. Sundiata preparò la freccia. All'inizio della battaglia, prima che gli eserciti si scontrassero, scoccò la freccia. Toccò Soumaoro alla spalla — solo sfiorato, ma bastò: la magia del re-stregone si dissolse. La sua armata si sbandò. Soumaoro fuggì verso la montagna sacra di Koulikoro e lì sparì in una grotta. Non si vide mai più.</p>
+
+      <p>Sundiata entrò in Niani come liberatore. I re di tutti i popoli mande si riunirono a Kourukan Fouga, sotto un grande albero, e <strong>giurarono fedeltà</strong> a Sundiata. Quel giuramento — la <em>Carta di Kurukan Fuga</em> — è considerato uno dei più antichi documenti costituzionali al mondo, ed è ancora trasmesso oralmente dai jeli. Sundiata divenne <span class="afr">Mansa</span>, sovrano dei sovrani. Il suo regno divenne il grande Impero del Mali, che durerà tre secoli e diventerà uno dei più ricchi e civili del mondo medievale.</p>
+
+      <div class="closing-formula">
+        Il mondo è vecchio, ma il futuro nasce dal passato.<br>Questa è la storia che ho ricevuto. Adesso è vostra. Custoditela.
+        <span class="gloss">Formula di chiusura tipica delle performance dell'epopea di Sundiata. Il jeli non chiude con una morale: chiude consegnando.</span>
+      </div>
+    </div>
+
+    <div class="analysis">
+      <span class="analysis-label">Analisi mirata</span>
+      <h3>L'oralità come <em>tecnologia precisa</em>, l'eroe come <em>nodo di una rete</em></h3>
+      <p>Due cose vanno guardate da vicino in questa storia, perché contraddicono pregiudizi tenaci.</p>
+      <p>La prima è la <strong>precisione storica</strong>. Sundiata Keita è esistito. La battaglia di Krina è del 1235. La fondazione dell'Impero del Mali è documentata da fonti arabe (Ibn Battuta, Ibn Khaldun) e da archeologia indipendente. I jeli della famiglia Kouyaté hanno trasmesso oralmente questa storia, di padre in figlio, per <em>quasi ottocento anni</em>, e la versione canonica raccolta nel 1960 si è rivelata sostanzialmente accurata su fatti, nomi, date, geografia. Questo dovrebbe sconvolgere chiunque sia cresciuto credendo che "senza scrittura non c'è storia". I jeli usano tecniche mnemoniche raffinate (musica fissa, formule ricorrenti, schemi genealogici, controlli di qualità tra famiglie di griot) e <strong>fanno storia rigorosa per via orale</strong>. Il pregiudizio occidentale che separa "mito" e "storia" qui crolla: l'epopea di Sundiata è insieme epica e cronaca, e i jeli non distinguono le due cose perché per loro non sono due cose.</p>
+      <p>La seconda è il modello di <strong>eroismo</strong>. Sundiata non è l'eroe occidentale — il solitario che si auto-genera. È il bambino che <em>la madre tira su</em>; che <em>la sorella protegge</em>; che <em>i jeli ricordano a se stesso</em> ogni sera cantandogli i suoi antenati; che cresce nelle corti di <em>padri adottivi</em>; che torna chiamato dal suo <em>popolo</em>; che vince grazie alla coalizione dei <em>re alleati</em>. Ogni passo è una rete. L'eroe esiste solo dentro la rete che lo ha fatto eroe. Quando la storia dice <em>"Sundiata vinse a Krina"</em>, sta dicendo qualcosa di molto diverso da quello che direbbe un'epopea greca o nordica: sta dicendo che <strong>una vasta rete di legami, tessuta da molte persone, ha trovato in lui il suo nodo decisivo</strong>. Senza la madre Sogolon che subisce le umiliazioni e tira fuori il figlio quando il momento arriva, senza il jeli Balla Fasséké che gli canta i suoi antenati e poi scopre il segreto di Soumaoro, senza la sorella che si sacrifica per ottenere quel segreto, senza il padre adottivo Tounkara che gli dà l'esercito, Sundiata non sarebbe nessuno.</p>
+      <p>Questa è una grammatica eroica diversa, e profondamente africana. <strong>Il grande è grande perché è ben circondato</strong>. Solo, sarebbe ancora il bambino-rospo seduto a terra.</p>
+    </div>
+  </article>
+
+  <!-- ============================================ -->
+  <!-- STORIA 3: TARTARUGA -->
+  <!-- ============================================ -->
+  <article class="story">
+    <div class="story-header">
+      <span class="story-num">§ Storia III — Igbo, Nigeria</span>
+      <h2 class="story-title">Perché la tartaruga <em>ha il guscio rotto</em></h2>
+      <p class="story-origin">Favola eziologica igbo, raccontata in moltissime varianti in Africa occidentale (versioni igbo, yoruba, akan, hausa, ewe — il personaggio della tartaruga, <em>Mbe</em> in igbo, <em>Ijapa</em> in yoruba, è uno dei trickster più diffusi del continente). La versione qui seguita è quella riportata da Chinua Achebe in <em>Things Fall Apart</em> (1958), che la riferisce come l'aveva ascoltata da bambino.</p>
+      <div class="why-tag">
+        <span class="why-label">Perché questa storia</span>
+        Perché è il rovescio di Anansi. Lo stesso ingegno che lì era virtù degli sfavoriti, qui diventa avidità che si ritorce contro l'astuto. La morale africana mostrata in azione: chi rompe i legami resta solo.</p>
+      </div>
+    </div>
+
+    <div class="story-body">
+
+      <div class="opening-formula">
+        Vi racconto una storia di tempo fa.<br>— Ah!
+        <span class="gloss">Formula d'apertura igbo. La risposta del pubblico — un breve "ah" — autorizza il narratore a continuare. Senza la risposta, la storia non comincia.</span>
+      </div>
+
+      <p>Una volta era carestia. Il cielo era diventato di rame, le piogge erano in ritardo da molte lune, e sulla terra c'era poco da mangiare. Ma in cielo, dove abitavano gli uccelli e dove di tanto in tanto venivano invitati anche gli spiriti, tutto era abbondante.</p>
+
+      <p>Un giorno arrivò sulla terra una notizia stupenda: gli abitanti del cielo davano un grande banchetto, e <strong>tutti gli uccelli del mondo erano invitati</strong>. Ci sarebbero stati piatti su piatti, igname, riso, palme da olio, frutti che sulla terra non si vedevano da mesi. Gli uccelli erano felici. Si lavarono le piume, si lucidarono i becchi, si fecero belli.</p>
+
+      <p>La tartaruga — che in questa storia chiamiamo <strong>Mbe</strong>, come la chiamano gli igbo — udì la notizia. Mbe era affamato come tutti, e aveva sentito parlare del banchetto. Aveva un'astuzia rapida e una pancia molto grande. <em>Devo andare a quel banchetto</em>, pensò. Ma le tartarughe non volano.</p>
+
+      <p>Mbe andò a trovare gli uccelli. «Cari amici», disse con una voce melliflua, «sento che tutti voi state per andare al grande banchetto in cielo. Io sono molto triste. Avrei tanto voluto venire anch'io. Ho una conversazione preparata, ho parole nuove, ho cose da dire che farebbero ridere gli ospiti del cielo. Ma sono una tartaruga, e non posso volare.»</p>
+
+      <p>Gli uccelli erano cuori semplici. «Povero Mbe», dissero. «E se ti aiutassimo noi? Ognuno di noi può prestarti una piuma. Ne hai bisogno di tante. Noi ne abbiamo.»</p>
+
+      <p>E così fecero. Ognuno gli regalò una piuma, e Mbe si mise insieme un paio d'ali patchwork — un'ala di tutti i colori, fatta di tutte le piume del mondo. Poteva volare.</p>
+
+      <p>Mentre volavano verso il cielo, Mbe — che era un parlatore eccellente e aveva una lingua sciolta — cominciò a intrattenere gli uccelli. Faceva discorsi, raccontava storielle, faceva ridere. A un certo punto disse: «Amici, c'è un'usanza che voglio condividere con voi. Quando si va a un banchetto in cielo, è tradizione che ognuno scelga un nuovo nome per l'occasione. Io l'ho fatto. Mi sono dato un nome bellissimo per il banchetto.»</p>
+
+      <p>«Davvero? Che nome?» chiesero gli uccelli, ingenui.</p>
+
+      <p>«Il mio nome per il banchetto è <strong>Tutti-voi</strong>.»</p>
+
+      <p>Gli uccelli risero. «Che nome strano!» Ma siccome Mbe era pieno di chiacchiere e nessuno ci pensò più, la cosa passò.</p>
+
+      <p>Arrivarono in cielo. Gli abitanti del cielo accolsero gli uccelli con grande cortesia, e portarono fuori i piatti. Igname pestato, riso bianco, zuppa di palma. Era abbondanza vera.</p>
+
+      <p>Un servitore del cielo arrivò portando il primo grande piatto, e disse, come è usanza: «Questo cibo è per <em>tutti voi</em>.»</p>
+
+      <p>Mbe scattò. «<em>Sentito?</em> Ha detto che è per <em>tutti-voi</em>! E <strong>Tutti-voi</strong> sono io! Ringrazio gli ospiti del cielo per questo dono che mi fanno!» E senza aspettare un istante, si gettò sul piatto e cominciò a mangiare.</p>
+
+      <p>Gli uccelli rimasero a bocca aperta. Aspettarono. Forse arrivava un altro piatto. Arrivò il secondo: «Questo è per <em>tutti voi</em>.» «Per me!» disse Mbe, e si gettò anche su quello. Poi il terzo. Il quarto. Mbe mangiò tutto. Mangiò finché la sua pancia non si gonfiò così tanto che non riusciva più ad alzarsi. Gli uccelli lo guardavano. Erano furiosi.</p>
+
+      <div class="song">
+        <span class="song-label">Canzone degli uccelli</span>
+        Mbe ha mangiato il nostro nome.<br>
+        Mbe ha rubato la nostra ala.<br>
+        Mbe vola da solo, adesso.<br>
+        Mbe vola da solo.
+        <span class="gloss">Una versione del ritornello che il pubblico canta nelle performance orali della storia. Nelle versioni più antiche la canzone è più articolata e ritmica, ma il senso è questo: chi ha rotto il patto torna solo.</span>
+      </div>
+
+      <p>Quando il banchetto finì e fu tempo di tornare sulla terra, gli uccelli si avvicinarono a Mbe. «Restituiscici le piume.» Mbe protestò, supplicò, promise — ma gli uccelli, uno per uno, si ripresero ognuno la sua piuma. In pochi minuti Mbe non aveva più ali. Era nudo, gonfio di cibo, e in cielo.</p>
+
+      <p>Gli uccelli volarono via. Solo uno, il pappagallo, si fermò un momento. «Mbe», disse, «vuoi che dica qualcosa a tua moglie quando passo da casa tua?»</p>
+
+      <p>«Sì sì sì! Dille di tirare fuori dalla casa tutti gli oggetti morbidi che abbiamo — i materassi, i vestiti, le coperte, le pelli di capra, tutto — e di metterli ammucchiati davanti alla porta. Devo saltare giù e ho bisogno di qualcosa di morbido sotto.»</p>
+
+      <p>Il pappagallo arrivò sulla terra, andò a casa di Mbe, e disse alla moglie della tartaruga: «Tuo marito ha detto: tira fuori dalla casa tutti gli oggetti <em>duri</em> che hai — le pietre, i mortai, le zappe, le asce, tutto — e mettili davanti alla porta. Deve atterrare e ha bisogno di qualcosa di solido sotto.»</p>
+
+      <p>(Questo, dirà il narratore guardando i bambini, perché il pappagallo era uno degli uccelli che Mbe aveva ingannato, e adesso gli rendeva la pariglia.)</p>
+
+      <p>La moglie di Mbe obbedì. Accumulò davanti alla casa pietre, mortai, zappe, lame, tutto quello che era duro nel villaggio. Poi alzò gli occhi al cielo e aspettò.</p>
+
+      <p>Mbe in cielo si fece coraggio. «Sotto è morbido», pensò. «Mi farò un volo.» E si lasciò cadere.</p>
+
+      <p>Cadde. Cadde a lungo. E quando arrivò a terra — sulle pietre, sui mortai, sulle zappe — il suo guscio si ruppe in mille pezzi.</p>
+
+      <p>Per fortuna nel villaggio c'era un medico, e il medico raccolse i pezzi e li rincollò uno per uno. Ma il guscio non tornò mai più liscio. Da quel giorno, la tartaruga ha il guscio screpolato, fatto di tante piccole tessere ricucite. E ogni volta che vediamo una tartaruga, ricordiamo cosa succede a chi va al banchetto degli amici e mangia tutto da solo.</p>
+
+      <div class="closing-formula">
+        Questa è la storia che ho raccontato. Adesso è vostra.<br>— L'abbiamo presa.
+        <span class="gloss">Formula di chiusura igbo, con la risposta rituale del pubblico che conferma di aver "raccolto" la storia.</span>
+      </div>
+    </div>
+
+    <div class="analysis">
+      <span class="analysis-label">Analisi mirata</span>
+      <h3>La morale relazionale come <em>solitudine dell'avido</em></h3>
+      <p>Notiamo cosa <strong>non</strong> dice il narratore. Non dice <em>«Mbe ha sbagliato»</em>. Non dice <em>«non bisogna essere avidi»</em>. Non dice <em>«la morale è che…»</em>. Il narratore mostra un fatto, e il fatto è una catena di gesti: Mbe inganna gli uccelli, Mbe mangia il loro pranzo, Mbe perde le sue ali, Mbe cade, Mbe ha il guscio rotto. La morale non è <em>nominata</em>: è <em>strutturata nei legami che si rompono</em>.</p>
+      <p>Guardiamo da vicino dove la morale si trova davvero. È in quella scena cruciale, breve e meravigliosa: gli uccelli, uno per uno, riprendono ciascuno la propria piuma. <strong>Mbe non è punito da una legge cosmica, dagli dèi, dal destino. È punito dal ritiro di un dono</strong>. Ogni piuma era stata regalata, e ogni piuma viene ripresa. Mbe ha rotto il patto del dono — il patto che dice "tu mi hai dato qualcosa, io ti tratto come tale" — e quando il patto si rompe, il dono torna indietro. Senza le piume Mbe è quello che era prima del patto: una tartaruga che non vola. La sua punizione non è inflitta — è semplicemente la sua condizione originaria che torna a riprendersi quando il legame si è dissolto.</p>
+      <p>Questa è la morale africana al suo cuore. <strong>Il male è la solitudine dell'avido</strong>. Non c'è bisogno di un giudice, di un inferno, di una legge che descenda dal cielo. C'è la rete dei legami, e quando uno la rompe la rete si ritrae da lui — e lui resta in cielo, da solo, con le ali altrui che lo abbandonano. Il guscio rotto è solo la conseguenza fisica di una solitudine già accaduta. Il vero crollo è quando le piume tornano ciascuna al suo proprietario.</p>
+      <p>Una nota tecnica importante: questo è il <strong>trickster punito</strong>, e va letto in dialogo con Anansi. Stessa astuzia, stessa rapidità di lingua, stessa capacità di costruire trappole verbali (il nome "Tutti-voi" è il colpo di genio di un trickster maestro). Ma la differenza è dove punta. <em>Anansi usa l'astuzia per ottenere le storie per gli umani</em> — l'astuzia al servizio del legame. <em>Mbe usa l'astuzia per prendersi tutto da solo</em> — l'astuzia al servizio dell'ego. La cultura africana non condanna l'astuzia: distingue. <strong>L'astuzia che tesse, e l'astuzia che strappa.</strong> Le due storie insieme costruiscono questa distinzione senza mai enunciarla esplicitamente.</p>
+    </div>
+  </article>
+
+  <!-- ============================================ -->
+  <!-- STORIA 4: IL BAMBINO E IL VECCHIO RE -->
+  <!-- ============================================ -->
+  <article class="story">
+    <div class="story-header">
+      <span class="story-num">§ Storia IV — Bantu, Africa meridionale</span>
+      <h2 class="story-title">Il bambino e <em>il vecchio re</em></h2>
+      <p class="story-origin">Storia ricorrente in molte varianti nell'area bantu meridionale (zulu, xhosa, sotho), documentata in raccolte etnografiche del primo Novecento (Henry Callaway, Léopold Sédar Senghor) e variamente ricostruita nel Novecento. Il motivo del re travestito che mette alla prova il popolo è diffuso in molte culture del mondo, ma la chiusura sull'<em>insegnare invece che punire</em> è specificamente africana e profondamente legata alla filosofia ubuntu.</p>
+      <div class="why-tag">
+        <span class="why-label">Perché questa storia</span>
+        Perché mostra l'ubuntu come pratica del pane diviso, e una giustizia che non punisce ma <em>insegna</em> — perché chi rompe i legami è meno persona e va aiutato a tornare persona.
+      </div>
+    </div>
+
+    <div class="story-body">
+
+      <div class="opening-formula">
+        Kwasukasukela —<br>— Cosi!
+        <span class="gloss">Formula d'apertura zulu: "C'era una volta…" — "Sì, raccontaci!". La risposta del pubblico è obbligatoria.</span>
+      </div>
+
+      <p>In un regno della grande terra del sud, c'era un re vecchio e stanco. Aveva governato a lungo, e il suo popolo lo amava — ma da molti anni il re sentiva una preoccupazione che gli toglieva il sonno. <em>Conosco i miei consiglieri</em>, diceva tra sé. <em>Conosco i miei capi-villaggio. Conosco i miei guerrieri. Ma conosco veramente il mio popolo? So come si comportano gli uomini e le donne quando il re non li sta guardando?</em></p>
+
+      <p>Una mattina decise. Si tolse la pelle di leopardo e i bracciali d'avorio, indossò gli stracci di un mendicante, si imbrattò il viso di terra, e uscì dal palazzo da una porta sul retro che nessuno usava. Non disse a nessuno dove andava. Si incamminò.</p>
+
+      <p>Camminò per molti giorni. Attraversò villaggi, valli, fiumi. Mangiava ciò che trovava per strada. Dormiva all'aperto. Quando la fame e la stanchezza lo presero, decise di chiedere ospitalità.</p>
+
+      <p><strong>La prima casa</strong> a cui bussò era grande. Era la casa di un mercante, ricco di mandrie e granai. Il re bussò.</p>
+
+      <p>«Sono un viandante stanco. Posso avere un po' d'acqua e un pezzo di pane?»</p>
+
+      <p>Il mercante guardò il vecchio dalla testa ai piedi. Vide gli stracci, vide la sporcizia, vide gli occhi vuoti dalla fame. Disse: «Va' via. Non ho niente per i mendicanti. Se ti do qualcosa, domani torneranno tutti. Va' a chiedere ai poveri come te.» E chiuse la porta.</p>
+
+      <p>Il re riprese la strada.</p>
+
+      <p><strong>La seconda casa</strong> era la casa di un guerriero famoso, ornata con i corni dei tori uccisi, le pelli dei leoni cacciati, gli scudi delle battaglie vinte. Il re bussò.</p>
+
+      <p>«Sono un viandante stanco. Posso avere un po' d'acqua e un pezzo di pane?»</p>
+
+      <p>Il guerriero rise di un riso duro. «Vecchio sporco, vai a cercare gli avanzi nei rifiuti. Ho cose migliori da fare.» Poi gli gettò un osso spolpato, come si fa con un cane. Il re raccolse l'osso senza dire niente, lo posò a terra, e riprese la strada.</p>
+
+      <p>Adesso la fame era forte. Le gambe non lo reggevano. Il sole stava calando.</p>
+
+      <p><strong>La terza casa</strong> era piccola, fatta di fango e paglia. Davanti alla porta una donna stava macinando grano in un mortaio, e accanto a lei un bambino di forse cinque o sei anni la guardava con grandi occhi attenti. Il re si avvicinò.</p>
+
+      <p>«Sorella, sono un viandante stanco. Posso avere un po' d'acqua e un pezzo di pane?»</p>
+
+      <p>La donna alzò gli occhi. Vide gli stracci, vide la fame, vide qualcosa nello sguardo del vecchio che non capì. Disse: «Padre, entra. Riposati. Non ho molto, ma quel che ho è anche tuo.»</p>
+
+      <p>Lo fece entrare nella sua piccola casa. Gli portò acqua fresca da bere. Poi tirò fuori da un panno l'unico pezzo di pane che aveva — un pezzo non grande, perché la carestia era anche da loro — e lo mise sul tavolo. Il bambino guardava.</p>
+
+      <p>La donna prese il coltello. Tagliò il pane in tre pezzi uguali. Diede il primo al re. Diede il secondo al bambino. Tenne per sé il terzo.</p>
+
+      <p>Il re mangiò lentamente. Poi guardò la donna e disse: «Sorella, perché non hai diviso il pane in due? Ne avresti avuto di più tu e tuo figlio.»</p>
+
+      <p>Il bambino, prima che la madre potesse rispondere, parlò con la voce dei bambini quando dicono cose che gli adulti non si aspettano: «<em>Perché tu sei venuto qui. Adesso sei dei nostri. Quando uno è dei nostri, mangia con noi.</em>»</p>
+
+      <p>Il re guardò il bambino a lungo. Sentì qualcosa che non sentiva da molto tempo. Disse: «Bambino, tu mi hai ricordato chi sono.»</p>
+
+      <p>La donna non capì. Mise da parte gli avanzi, fece dormire il vecchio sull'unico giaciglio della casa, e lei e il bambino dormirono per terra.</p>
+
+      <p>La mattina, all'alba, una grande polvere si alzò sul sentiero che portava al villaggio. Era un corteo del re. I servitori del palazzo, accortisi della scomparsa del sovrano, lo avevano cercato per giorni, e lo avevano finalmente rintracciato. Il corteo arrivò davanti alla piccola casa di fango. La donna e il bambino, terrorizzati, si affacciarono.</p>
+
+      <p>Il re uscì dalla casa. Si era lavato, ma indossava ancora gli stracci. Disse al capo dei servitori: «Portatemi le vesti.» Si vestì del leopardo e dell'avorio davanti a tutto il villaggio, che intanto si era radunato. Tutti capirono.</p>
+
+      <p>Il re si voltò verso la donna e il bambino. «Sorella, mi hai diviso il pane. Bambino, mi hai ricordato chi sono. Da oggi non vivrete più in questa casa. Vivrete con me, al palazzo. Tu, sorella, sarai sotto la mia protezione finché vivrai. E tu, bambino, sarai cresciuto come uno dei miei.»</p>
+
+      <p>La donna pianse. Il villaggio applaudì. Il bambino guardò il re con quegli occhi attenti e disse: «<em>Re, posso chiederti una cosa?</em>»</p>
+
+      <p>«Chiedi.»</p>
+
+      <p>«Il mercante e il guerriero che ti hanno respinto. Cosa farai di loro?»</p>
+
+      <p>Il re pensò. «Dovrebbero essere puniti. Hanno disonorato un viandante.»</p>
+
+      <p>Il bambino scosse la testa. «<em>Re, non punirli. Invitali al palazzo una volta al mese, e dividi con loro il pane alla tua tavola. Chi non ha mai diviso il pane non sa come si fa, e bisogna insegnargli</em>.»</p>
+
+      <p>Il re guardò il bambino, poi la madre, poi il bambino di nuovo. Si voltò ai servitori e disse: «Avete sentito. Si farà come dice il bambino.»</p>
+
+      <p>E così si fece. Per tutti gli anni che il vecchio re visse, una volta al mese il mercante e il guerriero salivano al palazzo, e mangiavano alla tavola del re, e il re tagliava il pane in pezzi uguali, e il bambino guardava. E si dice che, dopo molti anni, il mercante imparò a dividere il pane con i mendicanti che bussavano alla sua porta, e il guerriero imparò a salutare i viandanti con rispetto. Si dice anche che il bambino, cresciuto, divenne il re successivo, e fu ricordato come il <em>re del pane diviso</em>.</p>
+
+      <div class="closing-formula">
+        La storia è finita. Se è bella, è perché è stata raccontata bene. Se è brutta, è perché io l'ho raccontata male.
+        <span class="gloss">Una formula di chiusura xhosa modificata: il narratore prende su di sé i difetti della storia, restituisce alla tradizione i meriti.</span>
+      </div>
+    </div>
+
+    <div class="analysis">
+      <span class="analysis-label">Analisi mirata</span>
+      <h3>L'ubuntu come <em>pane diviso</em>, la giustizia come <em>insegnamento</em></h3>
+      <p>Questa storia mette in scena l'ubuntu non come slogan ma come gesto preciso. Tre dettagli vanno guardati uno per uno.</p>
+      <p>Il primo è il <strong>pane tagliato in tre</strong>. La donna non taglia in due (lei e il figlio) e poi divide. Taglia <em>direttamente in tre</em>. È un gesto piccolo ma rivela tutto: lo straniero è già dentro la famiglia prima ancora che si capisca chi sia. L'ospitalità non è un pensiero successivo, una decisione razionale dopo aver valutato il bisogno: è la struttura prima del pensiero. <strong>Si divide in tanti pezzi quante sono le persone presenti</strong>. La presenza obbliga.</p>
+      <p>Il secondo è la <strong>frase del bambino</strong>: «Tu sei venuto qui. Adesso sei dei nostri. Quando uno è dei nostri, mangia con noi.» Notiamo cosa fa questa frase. Non dice "sei nostro ospite". Non dice "ti dobbiamo accogliere". Dice qualcosa di più forte: <em>tu sei dei nostri</em>. Quella frase contiene un'ontologia: <strong>l'estraneità non è uno status stabile, è una condizione che si dissolve nel momento in cui qualcuno entra nello spazio del legame</strong>. Chi entra <em>è</em>. Non c'è gerarchia tra parente e ospite — c'è solo presenza, e la presenza fa parente. Questa è ubuntu pratica, non sentimentale: una proposizione ontologica.</p>
+      <p>Il terzo è la <strong>giustizia chiesta dal bambino</strong>. È la chiusura più sorprendente, ed è il vero scandalo della storia per un orecchio occidentale. Il mercante e il guerriero hanno fatto qualcosa di grave. La giustizia occidentale (e in larga parte mediorientale, indiana, cinese) saprebbe cosa farne: punizione, multa, esilio, eventualmente clemenza dopo punizione. Il bambino propone una cosa diversa: <em>insegnare</em>. Insegnare cosa? A dividere il pane. A loro, che il pane non l'hanno mai diviso, va insegnato il gesto. Non li si punisce per la loro avarizia: li si <em>integra a forza</em> nel cerchio in cui il gesto si fa, finché non lo imparano. <strong>La giustizia non è retributiva, è riparativa-pedagogica</strong>. Si riconnette il legame rotto facendo praticare a chi l'ha rotto il gesto che lo tesse.</p>
+      <p>Questa è una grammatica della giustizia che oggi, in Occidente, riscopriamo lentamente sotto il nome di "giustizia riparativa" — ma che in molte società africane è semplicemente <em>la</em> giustizia, dal sempre. La grande commissione "Verità e Riconciliazione" del Sudafrica post-apartheid, presieduta da Desmond Tutu, era esplicitamente fondata su ubuntu, e applicava su scala nazionale lo stesso principio del bambino della storia: <em>chi ha fatto male va riportato dentro il cerchio dove si fa bene</em>, non espulso da un cerchio in cui non era mai entrato davvero. La storia del bambino e del vecchio re è il microcosmo narrativo di una visione della giustizia che è una delle più profonde proposte filosofiche venute dall'Africa.</p>
+    </div>
+  </article>
+
+  <!-- ============================================ -->
+  <!-- SINTESI -->
+  <!-- ============================================ -->
+  <div class="synthesis">
+    <span class="synthesis-label">Sintesi delle quattro storie</span>
+    <h2>Cosa emerge guardandole <em>insieme</em></h2>
+
+    <p>Le quattro storie disegnano insieme un quadrato che è un'immagine in piccolo della cultura narrativa africana. Sull'asse verticale corre la <strong>scala</strong> del raccontare — dalla piccola favola della sera alla grande epopea genealogica. Sull'asse orizzontale corre il <strong>tema</strong> — dal raccontare stesso (le prime due storie, che parlano di chi fa la storia e da dove viene) al come si vive bene (le ultime due, che mettono in scena cosa fa la differenza tra una persona piena e una persona spezzata).</p>
+
+    <div class="square">
+      <div>
+        <span class="sq-label">Origine · Piccola scala</span>
+        <h4>I — Anansi</h4>
+        <p>Il trickster premiato. L'astuzia al servizio del legame. Le storie come dono cosmico strappato al cielo per gli umani.</p>
+      </div>
+      <div>
+        <span class="sq-label">Origine · Grande scala</span>
+        <h4>II — Sundiata</h4>
+        <p>Il griot come istituzione. L'oralità come tecnologia precisa di memoria storica. L'eroe come nodo di una rete di legami.</p>
+      </div>
+      <div>
+        <span class="sq-label">Vita · Piccola scala</span>
+        <h4>III — La tartaruga</h4>
+        <p>Il trickster punito. L'astuzia al servizio dell'ego. La morale relazionale come solitudine dell'avido — le ali tornano a chi le ha date.</p>
+      </div>
+      <div>
+        <span class="sq-label">Vita · Grande scala</span>
+        <h4>IV — Il vecchio re</h4>
+        <p>Ubuntu come pane diviso in tre. Lo straniero che entra è già dei nostri. La giustizia come insegnare a chi non sa, non come punire.</p>
+      </div>
+    </div>
+
+    <p>Tre cose emergono dal quadrato e attraversano tutte e quattro le storie, ed è da queste che bisognerà partire per il bambino.</p>
+
+    <p>La prima è la <strong>centralità del legame come metro morale</strong>. In nessuna delle quattro storie il giudizio si fa sul personaggio in astratto — si fa sui legami che tiene o che spezza. Anansi vince perché porta le storie agli umani (legame con la specie). Sundiata vince perché è ben circondato (legami molteplici). Mbe è punito perché ha ingannato gli amici che gli avevano regalato le piume (legame tradito). Il vecchio re ricompensa la donna che ha tagliato il pane in tre (legame creato col gesto). <em>La morale non sta nei personaggi: sta tra di loro.</em></p>
+
+    <p>La seconda è il <strong>proverbio o la formula condensata</strong> come dispositivo di senso. Ogni storia, nel modo orale tradizionale, contiene almeno una frase che il pubblico riconosce e ricorda. <em>"Se questa storia vi è piaciuta, prendetene un pezzo, e lasciatene un pezzo"</em> per Anansi. <em>"L'albero non dimentica le radici"</em> per Sundiata. <em>"Mbe ha mangiato il nostro nome"</em> nel canto degli uccelli. <em>"Quando uno è dei nostri, mangia con noi"</em> dal bambino del vecchio re. La morale in queste tradizioni non è una sentenza alla fine: è una <strong>frase ricorrente che il pubblico canta o ripete</strong>. La frase si fissa nella memoria attraverso il ritmo, e con la frase entra il senso.</p>
+
+    <p>La terza è la <strong>partecipazione del pubblico</strong> come elemento costitutivo. Tutte e quattro le storie aprono con una formula di apertura che richiede risposta, contengono punti in cui il pubblico canta o esclama, chiudono con una formula che restituisce la storia agli ascoltatori. La storia africana non è mai consegnata — è <em>condivisa</em> dall'inizio alla fine. Ed è qui che si gioca, per il narratore di un bambino piccolo, la traduzione più delicata e più feconda.</p>
+
+    <div class="bridge">
+      <span class="bridge-label">Ponte verso il Doc 3</span>
+      <p>Per un bambino di 2 o 3 anni, dei tre dispositivi che attraversano queste storie, due si trasferiscono molto bene e uno richiede una traduzione attenta.</p>
+      <p>Si trasferiscono benissimo la <strong>partecipazione</strong> (il bambino piccolo adora rispondere, ripetere, completare frasi che riconosce) e la <strong>frase ricorrente</strong> (la formula che torna due, tre, cinque volte nella storia diventa la sua firma, e il bambino la chiede di nuovo serata dopo serata). La canzone dentro la storia è il caso supremo di questi due dispositivi insieme: il bambino la canta con te, e la storia entra dentro di lui non come informazione ma come ritmo del corpo.</p>
+      <p>Richiede invece traduzione attenta il <strong>proverbio</strong> in senso pieno. Un bambino di 2-3 anni non ha il bagaglio per cogliere la condensazione di un proverbio — ma può cogliere benissimo la <em>versione concreta</em> di un proverbio: una frase semplice che torna, un'immagine ripetuta, un gesto che si fa ogni volta uguale. Il "tagliare il pane in tre" è infinitamente più trasferibile a un bambino piccolo del proverbio astratto sull'ospitalità, e però porta dentro lo stesso senso. Vedremo nel Doc 3 come questa traduzione possa funzionare.</p>
+    </div>
+  </div>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume V · Documento 2 di 4</span>
+    <span>Prossimo: La storia per bambini →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
