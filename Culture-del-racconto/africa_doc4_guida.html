@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa sub-sahariana · La guida pratica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ece1;
+    --paper-deep: #e8dfce;
+    --paper-warm: #ede3d1;
+    --ink: #1f1a16;
+    --ink-soft: #3a3027;
+    --ink-faint: #7a6a58;
+    --rule: #b8a48a;
+    --rust: #a8341e;
+    --rust-deep: #862818;
+    --ochre: #c89530;
+    --earth: #3a3027;
+    --highlight: #e6d4a8;
+    --green-leaf: #5a6f3a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 14% 10%, rgba(168, 52, 30, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 86% 88%, rgba(58, 48, 39, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(200, 149, 48, 0.025) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Cardo', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(58, 48, 39, 0.025) 2px,
+        rgba(58, 48, 39, 0.025) 3px
+      );
+    z-index: 1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header { padding: 4.5rem 0 2rem; }
+
+  .series-mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .symbol-mark {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Cardo', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TABS ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover { color: var(--ink); background: var(--paper-deep); }
+  nav.tabs a.active { color: var(--rust); background: var(--paper); }
+  nav.tabs a.active .tab-num { color: var(--rust); opacity: 0.8; }
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  h2 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .section-kicker {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  /* ===== LEZIONI ===== */
+  .lezioni {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin: 2rem 0;
+  }
+
+  .lezione {
+    padding: 1.8rem 1.6rem;
+    background: var(--paper);
+    position: relative;
+  }
+
+  .lezione-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.6rem;
+    font-weight: 500;
+  }
+
+  .lezione h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .lezione h3 em { font-style: italic; color: var(--rust); }
+
+  .lezione p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .lezione p strong { color: var(--ink); font-weight: 700; }
+  .lezione p em { font-style: italic; }
+
+  /* ===== FORMULA VISIVA ===== */
+  .formula {
+    margin: 4rem -1rem;
+    padding: 3rem 2rem 2.5rem;
+    background: linear-gradient(180deg, var(--paper-deep) 0%, var(--paper-warm) 100%);
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    text-align: center;
+  }
+
+  .formula-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .formula h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.7rem;
+    line-height: 1.2;
+    color: var(--ink);
+    margin-bottom: 2.5rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .formula h3 em { font-style: italic; color: var(--rust); }
+
+  .formula-svg {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+  }
+
+  .formula-caption {
+    margin-top: 2rem;
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ===== STEPS ===== */
+  .steps {
+    margin: 2rem 0;
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1.6rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .step:last-child { border-bottom: none; }
+
+  .step-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 2.6rem;
+    color: var(--rust);
+    line-height: 1;
+    text-align: center;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .step-content h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 0.7rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .step-content h3 em { font-style: italic; color: var(--rust); }
+
+  .step-content p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin-bottom: 0.7rem;
+  }
+
+  .step-content p:last-child { margin-bottom: 0; }
+  .step-content p strong { color: var(--ink); font-weight: 700; }
+  .step-content p em { font-style: italic; }
+
+  .step-example {
+    margin-top: 0.8rem;
+    padding: 0.9rem 1.1rem;
+    background: rgba(168, 52, 30, 0.05);
+    border-left: 2px solid var(--rust);
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .step-example strong {
+    font-style: normal;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    display: block;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+
+  /* ===== INCIPITS ===== */
+  .incipit {
+    margin: 1.8rem 0;
+    padding: 1.6rem 1.8rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+  }
+
+  .incipit-meta {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  .incipit-text {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--ink);
+  }
+
+  .incipit-text .role {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.6rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-right: 0.6rem;
+    vertical-align: middle;
+  }
+
+  .incipit-text .response {
+    color: var(--earth);
+  }
+
+  .incipit-text strong {
+    color: var(--ink);
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  /* ===== ERRORS ===== */
+  .error {
+    margin: 1.8rem 0;
+    padding: 1.6rem 1.8rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--rust-deep);
+  }
+
+  .error-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust-deep);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+
+  .error h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .error h3 em { font-style: italic; color: var(--rust-deep); }
+
+  .error p {
+    font-size: 0.93rem;
+    line-height: 1.65;
+    margin-bottom: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .error-fix {
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px dashed var(--rule);
+    font-size: 0.93rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  .error-fix strong {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--green-leaf);
+    margin-right: 0.5rem;
+    font-weight: 500;
+  }
+
+  /* ===== FINAL CARD ===== */
+  .final-card {
+    margin: 6rem 0 3rem;
+    padding: 4rem 2.4rem 3.5rem;
+    background: linear-gradient(180deg, var(--rust) 0%, var(--rust-deep) 100%);
+    color: var(--paper);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-card::before {
+    content: '';
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 50px;
+    border: 1.5px solid rgba(243, 236, 225, 0.4);
+    border-radius: 50%;
+    border-top-color: rgba(243, 236, 225, 0.9);
+  }
+
+  .final-card::after {
+    content: '';
+    position: absolute;
+    top: calc(1.5rem + 25px);
+    left: 0;
+    right: 0;
+    height: 1.5px;
+    background: rgba(243, 236, 225, 0.5);
+  }
+
+  .final-card-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(243, 236, 225, 0.7);
+    margin-top: 4rem;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    display: block;
+  }
+
+  .final-quote {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    line-height: 1.3;
+    color: var(--paper);
+    margin-bottom: 1.6rem;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  .final-attr {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: rgba(243, 236, 225, 0.7);
+    line-height: 1.5;
+  }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 4rem 0 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .lezioni { grid-template-columns: 1fr; gap: 1px; }
+    .formula { padding: 2rem 1rem 1.5rem; margin: 2.5rem 0; }
+    .step { grid-template-columns: 50px 1fr; gap: 1rem; padding: 1.4rem 0; }
+    .step-num { font-size: 2rem; }
+    .step-content h3 { font-size: 1.15rem; }
+    .final-card { padding: 3.5rem 1.4rem 3rem; }
+    .final-quote { font-size: 1.4rem; }
+    section { margin: 3.5rem 0; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, section, .final-card { animation: fadeUp 0.8s ease both; }
+  section:nth-of-type(1) { animation-delay: 0.15s; }
+  section:nth-of-type(2) { animation-delay: 0.2s; }
+  section:nth-of-type(3) { animation-delay: 0.25s; }
+  section:nth-of-type(4) { animation-delay: 0.3s; }
+  section:nth-of-type(5) { animation-delay: 0.35s; }
+  .final-card { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume V</div>
+    <svg class="symbol-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 32 6 A 26 26 0 1 1 18 9.5" fill="none" stroke="#a8341e" stroke-width="1.4" opacity="0.7" stroke-linecap="round"/>
+      <line x1="2" y1="32" x2="62" y2="32" stroke="#a8341e" stroke-width="1.4" opacity="0.85"/>
+      <circle cx="32" cy="32" r="3" fill="#a8341e" opacity="0.9"/>
+    </svg>
+    <h1 class="title">La guida pratica —<br><em>raccontare in cerchio</em></h1>
+    <p class="subtitle">Da consultare alle 20:25, prima di andare a raccontare. Le quattro lezioni che cambiano il modo, la formula visiva del Volume, i sei passi per costruire una storia, gli incipit pronti, gli errori da evitare. Operativo, non teorico.</p>
+    <div class="meta-row">
+      <span>Documento 4 di 4</span>
+      <span>Guida Pratica</span>
+      <span>Tono operativo</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="africa_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="africa_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="africa_doc3_bambini.html">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <!-- =================================================== -->
+  <!-- §01 — LE 4 LEZIONI -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — Le quattro lezioni</span>
+      <h2>Cosa cambia <em>nel modo di raccontare</em></h2>
+      <p class="section-kicker">Quattro idee centrali — non quattro tecniche, quattro spostamenti. Sono le cose che, una volta capite, cambiano per sempre come si racconta a un bambino.</p>
+    </div>
+
+    <div class="lezioni">
+      <div class="lezione">
+        <div class="lezione-num">Lezione I</div>
+        <h3>La storia <em>si fa con altri</em></h3>
+        <p>In Africa la storia non esiste prima del cerchio: <em>è</em> il cerchio. Il narratore apre, il pubblico risponde, e senza la risposta non si comincia. Per un bambino di 2-3 anni questo significa: <strong>dargli un ruolo dall'inizio</strong>. Non sei tu che racconti a lui; siete voi due che fate la storia. Cambia tutto: il suo ascolto, la sua memoria, la sua attenzione.</p>
+      </div>
+
+      <div class="lezione">
+        <div class="lezione-num">Lezione II</div>
+        <h3>La frase-formula <em>è la spina dorsale</em></h3>
+        <p>Non costruire la storia intorno a una trama. Costruiscila intorno a <strong>una frase che torna almeno tre volte</strong>. "Hai sete, fratellino? Bevi dal mio." Trovata la frase, la storia si organizza da sola: bastano tre situazioni in cui pronunciarla (o non pronunciarla). È il proverbio degli adulti africani tradotto in immagine bambina: una frase che si ripete, e che il bambino dirà con te dalla seconda volta.</p>
+      </div>
+
+      <div class="lezione">
+        <div class="lezione-num">Lezione III</div>
+        <h3>La morale <em>non si dichiara mai</em></h3>
+        <p>Niente "e così imparò che…". La morale entra incarnata nella scena: chi divide riceve, chi non divide resta solo. Il bambino la riceve nelle ossa molto prima che nei concetti. <strong>Mostra la conseguenza, non il giudizio</strong>. Lascia che la canzone, la frase ricorrente, l'immagine ripetuta facciano il lavoro che in altre culture fa il narratore con la sentenza.</p>
+      </div>
+
+      <div class="lezione">
+        <div class="lezione-num">Lezione IV</div>
+        <h3>La storia <em>si canta dentro</em></h3>
+        <p>Dentro ogni storia africana c'è almeno una piccola canzone — due frasi, due note, ripetute. Quando si arriva al climax, il narratore canta, e il pubblico riprende. Per il bambino piccolo è il dispositivo più potente in assoluto: <strong>ciò che si canta non si dimentica</strong>. La canzoncina che canti tu ed eventualmente lui diventa il battito cardiaco della storia.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §02 — LA FORMULA -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La formula</span>
+      <h2>La <em>geometria narrativa</em> di questa cultura</h2>
+      <p class="section-kicker">Le altre quattro culture della serie hanno avuto una loro geometria — la freccia, le quattro stanze, la scatola dentro la scatola, il cerchio col raggio. Per l'Africa la geometria è <em>la catena risuonante dentro il cerchio</em>: una sequenza di episodi tenuti insieme dalla frase-formula, e tutto avvolto dal pubblico che riprende.</p>
+    </div>
+
+    <div class="formula">
+      <span class="formula-label">Formula del Volume V</span>
+      <h3>La <em>catena risuonante</em> nel cerchio</h3>
+
+      <svg class="formula-svg" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="hatch" patternUnits="userSpaceOnUse" width="4" height="4" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="4" stroke="#b8a48a" stroke-width="0.4" opacity="0.5"/>
+          </pattern>
+        </defs>
+
+        <!-- Grande cerchio = il pubblico -->
+        <circle cx="300" cy="190" r="170" fill="none" stroke="#a8341e" stroke-width="1.4" opacity="0.85"/>
+
+        <!-- Etichetta del cerchio -->
+        <text x="300" y="35" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#a8341e" letter-spacing="2.5">IL PUBBLICO</text>
+
+        <!-- Piccoli cerchietti sul bordo: gli ascoltatori -->
+        <g opacity="0.55">
+          <circle cx="148" cy="115" r="3" fill="#a8341e"/>
+          <circle cx="130" cy="190" r="3" fill="#a8341e"/>
+          <circle cx="148" cy="265" r="3" fill="#a8341e"/>
+          <circle cx="195" cy="320" r="3" fill="#a8341e"/>
+          <circle cx="300" cy="358" r="3" fill="#a8341e"/>
+          <circle cx="405" cy="320" r="3" fill="#a8341e"/>
+          <circle cx="452" cy="265" r="3" fill="#a8341e"/>
+          <circle cx="470" cy="190" r="3" fill="#a8341e"/>
+          <circle cx="452" cy="115" r="3" fill="#a8341e"/>
+          <circle cx="405" cy="60" r="3" fill="#a8341e"/>
+          <circle cx="195" cy="60" r="3" fill="#a8341e"/>
+        </g>
+
+        <!-- LA CATENA al centro -->
+        <!-- Linea-base orizzontale -->
+        <line x1="150" y1="190" x2="450" y2="190" stroke="#3a3027" stroke-width="0.8" opacity="0.4"/>
+
+        <!-- Nodo 1: PROVERBIO/APERTURA -->
+        <circle cx="150" cy="190" r="14" fill="#a8341e"/>
+        <text x="150" y="194" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#f3ece1" font-weight="500">A</text>
+        <text x="150" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#3a3027" letter-spacing="1.5">APERTURA</text>
+
+        <!-- Nodo 2: EPISODIO 1 -->
+        <circle cx="225" cy="190" r="11" fill="#ede3d1" stroke="#3a3027" stroke-width="1"/>
+        <text x="225" y="194" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-style="italic" fill="#3a3027" font-weight="500">1</text>
+        <text x="225" y="222" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#3a3027" letter-spacing="1.5">EPISODIO</text>
+
+        <!-- Nodo 3: FORMULA RICORRENTE -->
+        <circle cx="300" cy="190" r="14" fill="#c89530"/>
+        <text x="300" y="194" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#f3ece1" font-weight="500">F</text>
+        <text x="300" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#3a3027" letter-spacing="1.5">FORMULA</text>
+
+        <!-- Nodo 4: EPISODIO 2 -->
+        <circle cx="375" cy="190" r="11" fill="#ede3d1" stroke="#3a3027" stroke-width="1"/>
+        <text x="375" y="194" text-anchor="middle" font-family="Fraunces, serif" font-size="11" font-style="italic" fill="#3a3027" font-weight="500">2</text>
+        <text x="375" y="222" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#3a3027" letter-spacing="1.5">EPISODIO</text>
+
+        <!-- Nodo 5: PROVERBIO/CHIUSURA -->
+        <circle cx="450" cy="190" r="14" fill="#a8341e"/>
+        <text x="450" y="194" text-anchor="middle" font-family="Fraunces, serif" font-size="13" font-style="italic" fill="#f3ece1" font-weight="500">C</text>
+        <text x="450" y="225" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#3a3027" letter-spacing="1.5">CHIUSURA</text>
+
+        <!-- Archetti di risonanza dalla FORMULA verso il pubblico -->
+        <path d="M 300 176 Q 280 140 200 100" fill="none" stroke="#c89530" stroke-width="1" opacity="0.7" stroke-dasharray="3,2"/>
+        <path d="M 300 176 Q 320 140 400 100" fill="none" stroke="#c89530" stroke-width="1" opacity="0.7" stroke-dasharray="3,2"/>
+        <path d="M 300 204 Q 280 240 200 280" fill="none" stroke="#c89530" stroke-width="1" opacity="0.7" stroke-dasharray="3,2"/>
+        <path d="M 300 204 Q 320 240 400 280" fill="none" stroke="#c89530" stroke-width="1" opacity="0.7" stroke-dasharray="3,2"/>
+
+        <!-- Archetti di apertura/chiusura: call-and-response -->
+        <path d="M 150 176 Q 130 130 100 90" fill="none" stroke="#a8341e" stroke-width="1.2" opacity="0.6"/>
+        <path d="M 100 90 L 105 95 M 100 90 L 95 96" stroke="#a8341e" stroke-width="1.2" opacity="0.6" fill="none"/>
+
+        <path d="M 450 176 Q 470 130 500 90" fill="none" stroke="#a8341e" stroke-width="1.2" opacity="0.6"/>
+        <path d="M 500 90 L 495 96 M 500 90 L 505 95" stroke="#a8341e" stroke-width="1.2" opacity="0.6" fill="none"/>
+
+        <!-- Note testuali a destra -->
+        <text x="115" y="78" text-anchor="middle" font-family="Cardo, serif" font-size="11" font-style="italic" fill="#a8341e">— sì raccontala!</text>
+        <text x="500" y="78" text-anchor="middle" font-family="Cardo, serif" font-size="11" font-style="italic" fill="#a8341e">— l'abbiamo presa!</text>
+
+        <!-- Etichetta della risonanza -->
+        <text x="300" y="368" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8" fill="#c89530" letter-spacing="1.5">RISONANZA · IL PUBBLICO RIPRENDE</text>
+      </svg>
+
+      <div class="formula-caption">
+        Una catena di nodi orizzontali — apertura, episodio, frase-formula, episodio, chiusura — al centro di un cerchio di ascoltatori. Dalla frase-formula partono linee che salgono verso il pubblico: <em>la frase è ciò che il pubblico riprende</em>. Apertura e chiusura sono dialogiche: hanno la freccia che esce verso l'alto perché aspettano la risposta. La struttura è semplice da leggere e potente da praticare: una storia africana è <em>una catena che risuona</em>.
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §03 — I 6 PASSI -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — I sei passi</span>
+      <h2>Costruire una storia, <em>passo per passo</em></h2>
+      <p class="section-kicker">Una sequenza ordinata da seguire prima di andare a raccontare. I primi due passi sono i più importanti — se sono fatti bene, il resto viene quasi da solo.</p>
+    </div>
+
+    <div class="steps">
+
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Trova prima <em>la frase-formula</em></h3>
+          <p>Non partire dalla trama. Parti dalla <strong>frase che vuoi che torni almeno tre volte</strong>. Deve essere semplice (cinque-otto parole), ritmica (con uno stacco interno), e contenere il senso della storia in forma concreta. È il punto da cui tutto il resto si svolge.</p>
+          <div class="step-example">
+            <strong>Esempi</strong>
+            "Hai sete, fratellino? Bevi dal mio." — "Aspetta, piccolino, faccio piano." — "Vieni qua, non c'è fretta." — "Tieni, ce n'è anche per te."
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Scegli <em>l'eziologia</em>: cosa spiega la storia?</h3>
+          <p>Ogni buona storia africana spiega <em>perché qualcosa è così com'è</em>. Per un bambino piccolo non serve un fatto cosmologico — basta un piccolo dettaglio del mondo che lui ha già notato o che noterà presto. <strong>Lega la storia a un oggetto reale</strong> che sopravvive nella vita del bambino: un albero, un animale, un fenomeno meteorologico. Quando lo rivedrà, ricorderà.</p>
+          <div class="step-example">
+            <strong>Esempi</strong>
+            Perché il baobab tiene l'acqua nel tronco. Perché la pintada ha le piume a pallini. Perché il cane abbaia quando arriva qualcuno. Perché la notte dopo la pioggia c'è odore di terra.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Costruisci <em>tre episodi paralleli</em></h3>
+          <p>Tre situazioni in cui un personaggio si trova davanti alla scelta che la frase-formula esprime. Il pattern più potente è <strong>positivo–negativo–positivo</strong>: due personaggi fanno la cosa giusta, uno no. Ma anche <strong>positivo–positivo–positivo</strong> funziona benissimo, soprattutto se ognuno fa la cosa giusta in scala diversa (più piccolo, ancora più piccolo, piccolissimo). Ogni episodio è autonomo, completo, breve.</p>
+          <div class="step-example">
+            <strong>Struttura</strong>
+            Episodio 1: situazione → frase-formula pronunciata → conseguenza positiva. Episodio 2: stessa situazione → frase-formula <em>non</em> pronunciata → conseguenza negativa. Episodio 3: situazione ancora più piccola → frase-formula pronunciata → conseguenza positiva.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Scrivi <em>la canzone del climax</em></h3>
+          <p>Dopo i tre episodi, qualcuno (un albero, un animale antico, una nonna) "canta" il senso. Due frasi, ritmiche, su due note. Cantate davvero — anche stonando. La canzone deve <strong>contenere la frase-formula</strong> in una forma allargata, e deve dire <em>perché</em> il fenomeno eziologico è quello che è.</p>
+          <div class="step-example">
+            <strong>Esempio</strong>
+            "Chi divide la goccia, divide il mondo. / Io tengo l'acqua per chi ha sete." → cattura senso, eziologia e frase-formula in quattro righe brevi.
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Costruisci <em>apertura e chiusura dialogiche</em></h3>
+          <p>Apri sempre con una formula a cui il bambino possa rispondere. Chiudi sempre con una formula a cui il bambino possa rispondere. Le formule devono essere <strong>identiche ogni sera</strong> — il loro potere è nella ripetizione. La prima sera dille tu intere; entro tre o quattro sere il bambino reciterà la sua parte.</p>
+          <div class="step-example">
+            <strong>Pattern fisso</strong>
+            Apertura: "Vi racconto una storia! — Sì, raccontala!". Chiusura: "La mia storia è finita. Adesso è vostra. — L'abbiamo presa!".
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Prova <em>la voce ad alta voce</em>, da solo</h3>
+          <p>Prima di raccontarla al bambino, dilla a te stesso ad alta voce, una volta intera. Trova le voci dei personaggi. Trova il ritmo della frase-formula. Trova la melodia della canzone (basta una qualunque, l'importante è che sia <em>quella</em>). Misura il tempo: una storia africana per 2-3 anni è 5-7 minuti. Se è più lunga, taglia un episodio. Se è troppo corta, allunga la canzone.</p>
+          <div class="step-example">
+            <strong>Test</strong>
+            La storia funziona se: (1) la frase-formula viene naturale, (2) la canzone si lascia cantare, (3) c'è una conseguenza che parla da sola, (4) la chiusura ti viene da dirla con calma — non con sollievo.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §04 — INCIPIT -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Quattro incipit pronti</span>
+      <h2>Aperture <em>già scritte, da personalizzare</em></h2>
+      <p class="section-kicker">Quattro modi diversi di iniziare una storia in stile africano. Ognuno ha la sua call-and-response, la sua frase-formula seminata fin dall'inizio, e suggerisce per dove la storia può andare.</p>
+    </div>
+
+    <div class="incipit">
+      <div class="incipit-meta">Incipit I · L'animale e il rifugio</div>
+      <div class="incipit-text">
+        <span class="role">Tu</span>Vi racconto una storia! <span class="response">— <span class="role response">Bambino</span>Sì, raccontala!</span><br><br>
+        Tanto tempo fa, in un grande prato, c'era un <strong>vecchio melo</strong>. Il vecchio melo era così vecchio che nessuno si ricordava chi lo avesse piantato. Sotto i suoi rami passavano tanti animali, ma il vecchio melo guardava tutti senza dire niente.<br><br>
+        Un giorno arrivò una piccola lepre, sotto la pioggia, tutta bagnata. Aveva trovato riparo sotto una foglia grande, e una farfalla era con lei, anche lei bagnatissima. La piccola lepre guardò la foglia, guardò la farfalla, e disse: <em>«Hai freddo, sorellina? Ripara con me.»</em>...
+      </div>
+    </div>
+
+    <div class="incipit">
+      <div class="incipit-meta">Incipit II · La cosa che si trova</div>
+      <div class="incipit-text">
+        <span class="role">Tu</span>Vi racconto una storia! <span class="response">— <span class="role response">Bambino</span>Sì, raccontala!</span><br><br>
+        Una volta, tanto tempo fa, sulla riva di un grande fiume, c'era un piccolo <strong>scoiattolo</strong>. Lo scoiattolo trovò per terra una <strong>nocciolina</strong>. Una sola nocciolina — non si trovavano facilmente in quella stagione.<br><br>
+        Mentre se la portava a casa felice, sentì una vocina dietro un sasso. Era un piccolo topolino, anche lui affamato. <em>«Scoiattolo... sono giorni che non trovo niente da mangiare...»</em><br><br>
+        Lo scoiattolo guardò la nocciolina, guardò il topolino, e disse: <em>«Tieni, piccolino, ce n'è anche per te.»</em>...
+      </div>
+    </div>
+
+    <div class="incipit">
+      <div class="incipit-meta">Incipit III · Il vecchio che ascolta</div>
+      <div class="incipit-text">
+        <span class="role">Tu</span>Vi racconto una storia! <span class="response">— <span class="role response">Bambino</span>Sì, raccontala!</span><br><br>
+        In un villaggio piccolo piccolo, in mezzo alle colline, viveva un <strong>vecchio nonno</strong>. Il vecchio nonno era così vecchio che la sua barba arrivava fino alle ginocchia. Stava seduto tutto il giorno davanti alla sua casa e <strong>ascoltava</strong>. Non parlava — ascoltava soltanto.<br><br>
+        Un giorno il vecchio nonno sentì passare due bambini. Uno aveva un pezzo di pane in mano. L'altro non aveva niente. Il primo si fermò, divise il pane, e disse: <em>«Tieni, fratellino, mangiamo insieme.»</em><br><br>
+        Il vecchio nonno sorrise, e quel sorriso lo sentì soltanto il vento...
+      </div>
+    </div>
+
+    <div class="incipit">
+      <div class="incipit-meta">Incipit IV · Il bambino al parco (Variante 3)</div>
+      <div class="incipit-text">
+        <span class="role">Tu</span>Vi racconto una storia di [nome del bambino]! <span class="response">— <span class="role response">Bambino</span>Sì, raccontala!</span><br><br>
+        Era un giorno di primavera. Al parco, [nome] aveva una <strong>piccola mela</strong> nello zaino. Era seduto sotto il grande pino del parco — quel pino vecchio vecchio, che secondo papà ha più di cento anni e ha visto tante cose.<br><br>
+        Arriva un altro bambino. Aveva fame, e non aveva niente. [nome] guardò la mela. Era una sola. Ma guardò il bambino, e gli venne da dire: <em>«Hai fame, amico? Ne mangiamo metà a testa.»</em><br><br>
+        E il pino vecchio vecchio, che ascolta, sentì...
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §05 — ERRORI -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 05 — Cinque errori da evitare</span>
+      <h2>Le trappole tipiche <em>del genitore colto occidentale</em></h2>
+      <p class="section-kicker">Sono gli errori che chi viene da una cultura del libro fa quasi automaticamente quando prova a raccontare in stile africano. Per ognuno, il <em>fix</em> concreto.</p>
+    </div>
+
+    <div class="error">
+      <div class="error-num">Errore 1</div>
+      <h3>Voler "fare l'esotico" — <em>tamburi, savane, nomi pittoreschi</em></h3>
+      <p>La tentazione del genitore occidentale colto è caricare la storia di elementi "atmosferici": il tamtam in lontananza, la savana del tramonto, nomi africani pittoreschi (Kofi, Asante, Adinkra) usati come decorazione. Il risultato è una storia che <em>evoca</em> l'Africa senza <em>essere</em> africana strutturalmente — folklore turistico, non grammatica narrativa.</p>
+      <div class="error-fix">
+        <strong>Fix</strong>
+        L'Africa è nel modo, non nello scenario. Una storia ambientata in una pineta italiana può essere strutturalmente più africana di una con baobab e tamburi. <strong>Concentrati sulla call-and-response, sulla frase-formula, sulla canzone — quelli sono i veri marcatori</strong>. Lo scenario può essere quello che vuoi.
+      </div>
+    </div>
+
+    <div class="error">
+      <div class="error-num">Errore 2</div>
+      <h3>Dichiarare la morale <em>alla fine</em></h3>
+      <p>L'istinto del genitore istruito è chiudere con "...e così imparò che bisogna sempre condividere". Sembra pedagogico — è il contrario di pedagogico in stile africano. Trasforma una storia che avrebbe lavorato per anni in una favoletta morale che si dimentica in un giorno. Il bambino registra il messaggio esplicito, dimentica la grammatica.</p>
+      <div class="error-fix">
+        <strong>Fix</strong>
+        Termina con un'<strong>immagine</strong>, non con una sentenza. <em>"E ancora oggi il baobab tiene l'acqua dentro il suo tronco"</em> è infinitamente più potente di <em>"e così imparò che è bello dividere"</em>. La morale entra dalla scena, non dalla didascalia. Se senti il bisogno di spiegare, non l'hai costruita bene.
+      </div>
+    </div>
+
+    <div class="error">
+      <div class="error-num">Errore 3</div>
+      <h3>Costruire <em>un grande arco unitario</em></h3>
+      <p>Il genitore cresciuto su <em>Pinocchio</em>, <em>Cappuccetto Rosso</em>, romanzi e sceneggiature pensa istintivamente alla storia come a un arco: tensione che cresce, climax, risoluzione. Ma in stile africano la storia è una <em>catena di episodi</em> ognuno completo in sé. Forzare l'arco unitario produce storie tese, lunghe, fastidiose per un bambino di 3 anni.</p>
+      <div class="error-fix">
+        <strong>Fix</strong>
+        Pensa a tre piccoli racconti paralleli che condividono la frase-formula. Ogni episodio è una piccola storia con il suo inizio e la sua fine. Il filo che li tiene insieme non è la trama: è la frase-formula che torna, e l'eziologia finale che li raccoglie. <strong>Pensa "perline su un filo", non "ascensore narrativo"</strong>.
+      </div>
+    </div>
+
+    <div class="error">
+      <div class="error-num">Errore 4</div>
+      <h3>Leggere <em>invece di performare</em></h3>
+      <p>L'istinto del genitore-lettore è leggere. Ma in stile africano la storia <em>si fa</em>: il narratore cambia voce per ogni personaggio, fa pause, abbassa la voce nei momenti gravi, accelera nei concitati, canta la canzone (anche stonando), ripete la frase-formula sempre con la stessa cadenza. Una storia africana letta in voce piatta non è una storia africana — è un articolo di antropologia.</p>
+      <div class="error-fix">
+        <strong>Fix</strong>
+        Considera la storia un piccolo monologo teatrale. <strong>Trova due-tre voci e tienile</strong> (la pintada acuta, l'elefante grave, il baobab lentissimo). Trova una melodia per la canzone — qualsiasi, anche elementare — e cantala davvero. Il bambino non giudica la performance: registra che <em>il papà fa la storia</em>. Quel "fa" è il punto.
+      </div>
+    </div>
+
+    <div class="error">
+      <div class="error-num">Errore 5</div>
+      <h3>Raccontare <em>al</em> bambino invece che <em>con</em> il bambino</h3>
+      <p>Il modello occidentale del libro della buonanotte è monodirezionale: l'adulto parla, il bambino ascolta. La call-and-response africana è un'altra cosa: il bambino ha un ruolo strutturale, non eventuale. Se non gli si dà spazio — se non lo si aspetta dopo la formula d'apertura, se non si pausa per fargli cantare la canzone — la grammatica non funziona. Il bambino diventa spettatore, e la storia perde metà del suo potere.</p>
+      <div class="error-fix">
+        <strong>Fix</strong>
+        <strong>Lascia silenzi attivi</strong>. Dopo "Vi racconto una storia!", aspetta. La prima sera lui non saprà cosa dire — dillo tu (<em>"Sì, raccontala!"</em>) e poi continua. La seconda sera lui sussurrerà qualcosa. La terza sera dirà la formula. Stesso meccanismo per la canzone (canta tu, fai una pausa nel ritornello, lascia che entri lui) e per la chiusura. <strong>Costruisci il suo turno, non glielo offrire come opzione</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- FINAL CARD -->
+  <!-- =================================================== -->
+  <div class="final-card">
+    <span class="final-card-label">Volume V · Africa sub-sahariana</span>
+    <p class="final-quote">Chi divide la goccia,<br>divide il mondo.</p>
+    <p class="final-attr">— canzone del baobab</p>
+  </div>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume V · Documento 4 di 4</span>
+    <span>Volume completato</span>
+  </footer>
+
+</div>
+
+</body>
+</html>

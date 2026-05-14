@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Africa sub-sahariana · La storia per bambini</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ece1;
+    --paper-deep: #e8dfce;
+    --paper-warm: #ede3d1;
+    --ink: #1f1a16;
+    --ink-soft: #3a3027;
+    --ink-faint: #7a6a58;
+    --rule: #b8a48a;
+    --rust: #a8341e;
+    --rust-deep: #862818;
+    --ochre: #c89530;
+    --earth: #3a3027;
+    --highlight: #e6d4a8;
+    --green-leaf: #5a6f3a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    background-image:
+      radial-gradient(circle at 14% 10%, rgba(168, 52, 30, 0.04) 0%, transparent 45%),
+      radial-gradient(circle at 86% 88%, rgba(58, 48, 39, 0.04) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(200, 149, 48, 0.025) 0%, transparent 60%);
+    color: var(--ink);
+    font-family: 'Cardo', 'Iowan Old Style', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.85;
+    font-weight: 400;
+    min-height: 100vh;
+    padding-bottom: 8rem;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent 0px,
+        transparent 2px,
+        rgba(58, 48, 39, 0.025) 2px,
+        rgba(58, 48, 39, 0.025) 3px
+      );
+    z-index: 1;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.92' numOctaves='2' seed='8'/%3E%3CfeColorMatrix values='0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 0 0.08 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ===== HEADER ===== */
+  header { padding: 4.5rem 0 2rem; }
+
+  .series-mark {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .symbol-mark {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1.8rem;
+  }
+
+  h1.title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.4rem;
+    font-variation-settings: "opsz" 144, "SOFT" 30;
+  }
+
+  h1.title em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .subtitle {
+    font-family: 'Cardo', serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 1.2rem;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  .meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2.2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 400;
+  }
+
+  /* ===== TABS ===== */
+  nav.tabs {
+    margin-top: 2.5rem;
+    border-top: 1px solid var(--rust);
+    border-bottom: 1px solid var(--rust);
+    display: flex;
+    gap: 0;
+    flex-wrap: wrap;
+    background: var(--paper-warm);
+  }
+
+  nav.tabs a {
+    flex: 1;
+    min-width: 130px;
+    padding: 1.1rem 0.8rem;
+    text-decoration: none;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--ink-faint);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.tabs a + a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    height: 56%;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  nav.tabs a .tab-num {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+    opacity: 0.65;
+    font-weight: 400;
+  }
+
+  nav.tabs a:hover { color: var(--ink); background: var(--paper-deep); }
+  nav.tabs a.active { color: var(--rust); background: var(--paper); }
+  nav.tabs a.active .tab-num { color: var(--rust); opacity: 0.8; }
+  nav.tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 30%;
+    right: 30%;
+    height: 2px;
+    background: var(--rust);
+  }
+
+  /* ===== INTRO LEAD ===== */
+  .lead {
+    margin: 4rem 0 3rem;
+    padding: 0 0 0 2rem;
+    border-left: 2px solid var(--rust);
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 1.55;
+    color: var(--ink);
+    max-width: 600px;
+  }
+
+  .lead p + p { margin-top: 1.2rem; }
+
+  /* ===== SECTIONS ===== */
+  section {
+    margin: 5rem 0;
+    scroll-margin-top: 2rem;
+  }
+
+  .section-header {
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .section-header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 80px;
+    height: 1px;
+    background: var(--rust);
+  }
+
+  .section-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+    font-weight: 400;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  h2 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+
+  .section-kicker {
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.05rem;
+    color: var(--ink-faint);
+    line-height: 1.5;
+    max-width: 600px;
+  }
+
+  section p {
+    margin-bottom: 1.4rem;
+    text-align: left;
+    hyphens: none;
+  }
+
+  section p strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  section p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* ===== TABLES (cosa funziona / adattare / lasciar perdere) ===== */
+  .traduzione-tables {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .trad-table {
+    border: 1px solid var(--rule);
+    background: var(--paper-warm);
+  }
+
+  .trad-table-header {
+    padding: 0.9rem 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .trad-table.funziona .trad-table-header {
+    color: var(--green-leaf);
+    background: rgba(90, 111, 58, 0.06);
+    border-bottom-color: var(--green-leaf);
+  }
+
+  .trad-table.adattare .trad-table-header {
+    color: var(--ochre);
+    background: rgba(200, 149, 48, 0.08);
+    border-bottom-color: var(--ochre);
+  }
+
+  .trad-table.lasciare .trad-table-header {
+    color: var(--rust-deep);
+    background: rgba(168, 52, 30, 0.06);
+    border-bottom-color: var(--rust-deep);
+  }
+
+  .trad-row {
+    padding: 1rem 1.4rem;
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 1.4rem;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+
+  .trad-row:last-child { border-bottom: none; }
+
+  .trad-cell-key {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 0.98rem;
+    color: var(--ink);
+  }
+
+  .trad-cell-val {
+    font-family: 'Cardo', serif;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* ===== STORY ===== */
+  .invented-story {
+    margin: 4rem 0;
+    padding: 3rem 2.4rem 2.6rem;
+    background: linear-gradient(180deg, var(--paper-deep) 0%, var(--paper-warm) 100%);
+    border: 1px solid var(--rust);
+    position: relative;
+  }
+
+  .story-meta {
+    text-align: center;
+    margin-bottom: 1.8rem;
+  }
+
+  .story-stage {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .invented-story h2.story-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 2.2rem;
+    line-height: 1.15;
+    color: var(--ink);
+    text-align: center;
+    margin-bottom: 0.6rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .invented-story h2.story-title em { font-style: italic; color: var(--rust); }
+
+  .story-time {
+    text-align: center;
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    margin-bottom: 2rem;
+  }
+
+  .opening-formula {
+    margin: 2rem 0;
+    padding: 1.4rem 1.6rem;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--rust);
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.55;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .opening-formula .role {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-right: 0.7rem;
+  }
+
+  .opening-formula .response {
+    color: var(--earth);
+  }
+
+  .invented-story .story-text p {
+    margin-bottom: 1.2rem;
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
+  .invented-story .story-text p strong {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .invented-story .story-text p em {
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  /* Frase-formula ripetuta — distinta dal song */
+  .formula-line {
+    margin: 1.5rem 0;
+    padding: 1rem 1.4rem;
+    text-align: center;
+    background: rgba(168, 52, 30, 0.06);
+    border-top: 1px dashed var(--rust);
+    border-bottom: 1px dashed var(--rust);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.1rem;
+    color: var(--rust);
+    line-height: 1.45;
+    font-variation-settings: "opsz" 72;
+  }
+
+  /* Canzone */
+  .song {
+    margin: 1.8rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(200, 149, 48, 0.1);
+    border-top: 1px solid var(--ochre);
+    border-bottom: 1px solid var(--ochre);
+    text-align: center;
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.08rem;
+    color: var(--ink);
+    line-height: 1.55;
+  }
+
+  .song-label {
+    display: block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    font-style: normal;
+    margin-bottom: 0.7rem;
+    font-weight: 500;
+  }
+
+  .closing-formula {
+    margin: 2rem 0 0;
+    padding: 1.2rem 1.4rem;
+    text-align: center;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--rust);
+    border-top: 1px dashed var(--rule);
+    border-bottom: 1px dashed var(--rule);
+    line-height: 1.5;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .closing-formula .role {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-right: 0.6rem;
+  }
+
+  .closing-formula .response { color: var(--earth); }
+
+  /* ===== ANALYSIS ===== */
+  .analysis-box {
+    margin: 3rem 0;
+    padding: 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--rust);
+  }
+
+  .analysis-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 1rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .analysis-box h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 1rem;
+    margin-top: 1.5rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .analysis-box h3:first-of-type { margin-top: 0; }
+  .analysis-box h3 em { font-style: italic; color: var(--rust); }
+
+  .analysis-box p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.9rem;
+    color: var(--ink-soft);
+  }
+
+  .analysis-box p:last-child { margin-bottom: 0; }
+  .analysis-box p strong { color: var(--ink); font-weight: 700; }
+  .analysis-box p em { font-style: italic; }
+
+  .analysis-box ul {
+    margin: 0.8rem 0 0.8rem 1.2rem;
+    padding: 0;
+  }
+
+  .analysis-box li {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ===== VARIANTS ===== */
+  .variant {
+    margin: 2.5rem 0;
+    padding: 1.8rem 2rem;
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--ochre);
+  }
+
+  .variant-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin-bottom: 0.6rem;
+    display: block;
+    font-weight: 500;
+  }
+
+  .variant h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 0.8rem;
+    font-variation-settings: "opsz" 72;
+  }
+
+  .variant h3 em { font-style: italic; color: var(--rust); }
+
+  .variant p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    color: var(--ink-soft);
+  }
+
+  .variant p:last-child { margin-bottom: 0; }
+  .variant p strong { color: var(--ink); font-weight: 700; }
+  .variant p em { font-style: italic; }
+
+  .variant.dist-3 { border-left-color: var(--rust); }
+
+  /* ===== END MARK ===== */
+  .end-mark {
+    text-align: center;
+    margin: 5rem 0 2rem;
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--rust);
+    font-size: 0.9rem;
+    letter-spacing: 0.6em;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--rule);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 640px) {
+    body { font-size: 16px; line-height: 1.75; }
+    .container { padding: 0 1.4rem; }
+    header { padding: 3rem 0 2rem; }
+    h1.title { font-size: 2.1rem; }
+    .subtitle { font-size: 1.05rem; }
+    .lead { font-size: 1.15rem; padding-left: 1.4rem; }
+    h2 { font-size: 1.6rem; }
+    nav.tabs a { min-width: 50%; flex: 0 0 50%; border-bottom: 1px solid var(--rule); }
+    nav.tabs a:nth-child(3)::before { display: none; }
+    .invented-story { padding: 2rem 1.4rem; }
+    .invented-story h2.story-title { font-size: 1.7rem; }
+    .trad-row { grid-template-columns: 1fr; gap: 0.4rem; }
+    .analysis-box, .variant { padding: 1.4rem; }
+    section { margin: 3.5rem 0; }
+    .formula-line { font-size: 1rem; padding: 0.9rem 1rem; }
+  }
+
+  /* ===== STAGGERED REVEAL ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  header, .lead, section { animation: fadeUp 0.8s ease both; }
+  .lead { animation-delay: 0.1s; }
+  section:nth-of-type(1) { animation-delay: 0.2s; }
+  section:nth-of-type(2) { animation-delay: 0.25s; }
+  section:nth-of-type(3) { animation-delay: 0.3s; }
+  section:nth-of-type(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="series-mark">Culture del racconto · Volume V</div>
+    <svg class="symbol-mark" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 32 6 A 26 26 0 1 1 18 9.5" fill="none" stroke="#a8341e" stroke-width="1.4" opacity="0.7" stroke-linecap="round"/>
+      <line x1="2" y1="32" x2="62" y2="32" stroke="#a8341e" stroke-width="1.4" opacity="0.85"/>
+      <circle cx="32" cy="32" r="3" fill="#a8341e" opacity="0.9"/>
+    </svg>
+    <h1 class="title">La storia per bambini —<br><em>il cerchio in miniatura</em></h1>
+    <p class="subtitle">Cosa di questa cultura passa intero a un bambino di 2-3 anni, cosa va tradotto, cosa va lasciato fuori. E poi una storia inventata, costruita per essere raccontata davvero alle 20:30 — non per evocare l'Africa ma per fare quello che l'Africa fa: tenere il cerchio.</p>
+    <div class="meta-row">
+      <span>Documento 3 di 4</span>
+      <span>Per Bambini</span>
+      <span>Tono creativo + pedagogico</span>
+    </div>
+
+    <nav class="tabs">
+      <a href="africa_doc1_cultura.html">
+        <span class="tab-num">01</span>
+        La Cultura
+      </a>
+      <a href="africa_doc2_storie.html">
+        <span class="tab-num">02</span>
+        Storie classiche
+      </a>
+      <a href="#" class="active">
+        <span class="tab-num">03</span>
+        Per bambini
+      </a>
+      <a href="africa_doc4_guida.html">
+        <span class="tab-num">04</span>
+        Guida pratica
+      </a>
+    </nav>
+  </header>
+
+  <div class="lead">
+    <p>Tra tutte le culture che abbiamo esplorato finora, l'Africa sub-sahariana è — paradossalmente — quella la cui <em>grammatica narrativa</em> si avvicina di più al modo naturale in cui un bambino di 2-3 anni vive il linguaggio.</p>
+    <p>Ripetizione, partecipazione, canzone, ritornello, frase che torna sempre uguale: i bambini piccoli vivono di queste cose, e i narratori africani le hanno fatte diventare arte. La sfida non è semplificare — è far crescere il narratore alla loro altezza.</p>
+  </div>
+
+  <!-- =================================================== -->
+  <!-- §01 — LA TRADUZIONE -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 01 — La traduzione</span>
+      <h2>Cosa <em>funziona</em>, cosa <em>va adattato</em>, cosa <em>va lasciato</em></h2>
+      <p class="section-kicker">Tre tabelle distinte per orientarsi onestamente. La cultura africana del racconto ha molti tratti che <em>già funzionano</em> per un bambino piccolo, ma alcuni richiedono lavoro e altri vanno semplicemente messi da parte fino a un'altra età.</p>
+    </div>
+
+    <div class="traduzione-tables">
+
+      <!-- TABELLA 1: COSA FUNZIONA -->
+      <div class="trad-table funziona">
+        <div class="trad-table-header">⊕ Cosa funziona già naturalmente</div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La call-and-response</div>
+          <div class="trad-cell-val">L'apertura "vi racconto questa storia / sì, raccontala!" è il dispositivo più immediatamente trasferibile. I bambini di 2-3 anni adorano avere un ruolo attivo: una formula d'apertura a cui rispondono diventa il loro modo di "accendere" la storia.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La canzone dentro la storia</div>
+          <div class="trad-cell-val">È il dispositivo africano per eccellenza, ed è oro per un bambino piccolo. Una canzoncina di tre o quattro parole, cantata su due note, ripetuta tre volte nella storia: il bambino la canta con te dalla seconda volta in poi, e da lì la storia gli appartiene.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La frase-formula ricorrente</div>
+          <div class="trad-cell-val">"Hai sete, fratellino? Bevi dal mio." Una frase semplice che torna sempre identica nei punti-chiave. Per il bambino diventa il battito ritmico della storia. Verso la terza volta la dirà con te, e poi prima di te.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La struttura episodica</div>
+          <div class="trad-cell-val">La cultura africana non costruisce grandi archi unitari ma catene di piccoli episodi. È esattamente la grammatica giusta per chi non ha ancora la memoria di lavoro per seguire trame lunghe. Tre episodi paralleli (tre animali, tre prove, tre incontri) sono la forma perfetta.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">Gli animali parlanti</div>
+          <div class="trad-cell-val">Il bestiario della savana e della foresta africana — elefante, scoiattolo, pintada, tartaruga, ragno — è popolato da personaggi con voci precise. Per un bambino piccolo questa è una porta d'ingresso naturale: gli animali sono i suoi pari.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La morale relazionale concreta</div>
+          <div class="trad-cell-val">Chi divide / chi non divide. Chi accoglie / chi respinge. Sono distinzioni che un bambino di 3 anni capisce <em>perfettamente</em> nel suo mondo (la merenda condivisa con un fratello, il bambino al parco che gioca con tutti). La grammatica africana parla la sua stessa lingua morale.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La storia eziologica semplice</div>
+          <div class="trad-cell-val">"Per questo il baobab tiene l'acqua nel tronco." "Per questo la pintada ha le piume a pallini." Il bambino piccolo adora le storie che spiegano <em>perché</em>: chiede sempre perché, ed eziologico è la sua forma mentis. È un dispositivo africano dominante che gli scivola dentro senza attrito.</div>
+        </div>
+      </div>
+
+      <!-- TABELLA 2: COSA VA ADATTATO -->
+      <div class="trad-table adattare">
+        <div class="trad-table-header">◐ Cosa va adattato</div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">Il proverbio</div>
+          <div class="trad-cell-val">Un proverbio africano vero condensa anni di esperienza in una metafora — è troppo astratto per un bambino di 2-3 anni. Va sostituito dalla sua <strong>versione concreta</strong>: invece di "chi non divide il pane non sa come si fa", l'immagine ripetuta del pane tagliato in tre pezzi visibili. La forma cambia, il senso resta.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">L'astuzia ambigua del trickster</div>
+          <div class="trad-cell-val">Anansi è insieme eroe e furbacchione, virtù e vizio, e questa ambiguità è il cuore del personaggio. Ma a 2-3 anni questa sottigliezza non si coglie. Va risolta in una direzione netta: o il trickster è chiaramente piccolo-e-buono che vince con la furbizia (Anansi-luminoso), o è chiaramente furbo-e-egoista che impara qualcosa (Tartaruga-attenuata, senza guscio rotto).</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La lunghezza</div>
+          <div class="trad-cell-val">Anche le storie africane "corte" durano dieci o quindici minuti nella performance orale. Per un bambino di 3 anni la durata giusta è 4-7 minuti. Si ottiene riducendo da quattro o cinque episodi a tre, accorciando la canzone, snellendo i dialoghi. La struttura resta intatta: cambia solo il numero di battute.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">Le formule di apertura/chiusura</div>
+          <div class="trad-cell-val">Le formule rituali africane (akan, mande, zulu) hanno parole in lingua originale. Va tenuto il dispositivo, va tradotto il contenuto: "Vi racconto una storia! — Sì, raccontala!" funziona benissimo in italiano. L'importante è che ci sia il rituale d'ingresso e d'uscita, e che il bambino sappia che ha un ruolo.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">Gli antenati</div>
+          <div class="trad-cell-val">L'idea forte dei "morti-viventi" (sasa/zamani) è troppo astratta. Ma la sua forma narrativa — qualcuno che è venuto prima e ci ha lasciato qualcosa — può diventare l'animale "molto vecchio" o l'albero "antico", che sa cose che gli altri non sanno. A 2-3 anni l'idea di "nonno" funziona molto bene come ponte.</div>
+        </div>
+      </div>
+
+      <!-- TABELLA 3: COSA LASCIARE -->
+      <div class="trad-table lasciare">
+        <div class="trad-table-header">⊖ Cosa va lasciato perdere (per ora)</div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">L'epopea genealogica</div>
+          <div class="trad-cell-val">Sundiata richiede memoria di trent'anni di una persona, di una rete di rapporti politici, di un contesto storico. È fuori portata fino a una certa adolescenza. Il modello dell'eroe-in-rete può comunque arrivare per altre vie più piccole.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La giustizia riparativa</div>
+          <div class="trad-cell-val">"Non punirli, insegnagli a dividere il pane" è una proposta etica raffinata, e uno dei lasciti più alti del pensiero africano. Ma a 2-3 anni la distinzione tra punire e insegnare è ancora troppo sottile. Tornerà più avanti, e tornerà bene.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">L'ubuntu come proposizione filosofica</div>
+          <div class="trad-cell-val">"La persona è persona attraverso le altre persone" è filosofia compiuta. Il bambino piccolo non la capisce come tesi, ma la <em>vive</em> ogni giorno: se la storia gli mostra il pane diviso, lui lo capirà nelle ossa molto prima che nei concetti. La filosofia tornerà; il gesto entra subito.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">La stregoneria, gli spiriti pericolosi</div>
+          <div class="trad-cell-val">Molte storie africane "vere" includono spiriti dei boschi, stregoni, esseri ambigui che possono fare paura. A 2-3 anni questa dimensione va lasciata fuori — non perché sbagliata, ma perché il bambino piccolo non ha ancora gli strumenti per gestire la paura simbolica. Gli animali parlanti bastano e avanzano.</div>
+        </div>
+
+        <div class="trad-row">
+          <div class="trad-cell-key">L'apparato del jeli</div>
+          <div class="trad-cell-val">La presentazione genealogica del narratore ("sono Djeli figlio di…"), la presentazione degli antenati del re, la lunga lista di nomi: è la forma più alta dell'oralità africana, ed è completamente inadatta a un bambino piccolo. La sostituiamo con qualcosa di minimale — un "vi racconto una storia" e basta.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §02 — LA STORIA INVENTATA -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 02 — La storia inventata</span>
+      <h2>Una storia <em>completa, pronta all'uso</em></h2>
+      <p class="section-kicker">Costruita secondo i principi culturali africani: tre animali, una frase-formula che torna tre volte, una canzone che il bambino canterà con te, una chiusura eziologica che spiega un fatto vero del mondo. Pensata per essere raccontata davvero alle 20:30 — non un esercizio teorico.</p>
+    </div>
+
+    <div class="invented-story">
+      <div class="story-meta">
+        <div class="story-stage">Storia originale · 2-3 anni · ~6 minuti</div>
+      </div>
+      <h2 class="story-title">Perché il baobab <em>tiene l'acqua dentro</em></h2>
+      <p class="story-time">Una storia per la sera</p>
+
+      <div class="opening-formula">
+        <span class="role">Tu</span>Vi racconto una storia!<br>
+        <span class="role response">Bambino</span><span class="response">Sì, raccontala!</span>
+      </div>
+
+      <div class="story-text">
+
+        <p>Tanto tempo fa, in una savana grande, c'era un baobab. Il baobab è quell'albero grosso grosso, con il tronco enorme, e i rami che vanno tutti per aria come radici. Il baobab era già vecchio quando il mondo era ancora giovane.</p>
+
+        <p>Un anno la pioggia non venne. Non venne in primavera, non venne in estate. Il sole bruciava ogni giorno. L'erba della savana diventò gialla, poi marrone, poi sparì. I fiumi si rimpicciolirono, e poi diventarono pozze, e poi le pozze si seccarono. Tutti gli animali avevano sete.</p>
+
+        <p>Un giorno arrivò sotto il baobab una <strong>pintada</strong>. La pintada è un uccello piccolo, con le piume tutte a pallini bianchi e neri, e cammina sempre in fretta sulle sue zampette. La pintada era stanca, e aveva tanta sete. Ma in mezzo alla terra secca aveva trovato una piccola pozza d'acqua, l'ultima rimasta nella savana, e teneva nel becco una grossa goccia per portarla ai suoi piccoli.</p>
+
+        <p>Mentre la pintada passava sotto il baobab, sentì una vocina debole debole. Era uno <strong>scoiattolo</strong>, piccolo, con la coda lunga, accasciato sotto una radice. Lo scoiattolo aveva tanta sete che non riusciva più a parlare bene.</p>
+
+        <p>«Pintada… ho sete… aiutami…»</p>
+
+        <p>La pintada si fermò. Guardò la goccia nel becco — era così poca, e i suoi piccoli avevano sete anche loro. Ma poi guardò lo scoiattolo, che era piccolo come lei, e disse:</p>
+
+        <div class="formula-line">«Hai sete, fratellino? Bevi dal mio.»</div>
+
+        <p>E divise la goccia in due. Una metà la diede allo scoiattolo, e l'altra metà la portò ai suoi piccoli. Lo scoiattolo bevve, e si rimise in piedi.</p>
+
+        <p>Il baobab, che è molto vecchio e ascolta tutto, sentì.</p>
+
+        <p>Passò ancora del tempo. La siccità non finiva. Sotto il baobab arrivò un giorno un grande <strong>elefante</strong>. L'elefante è grande, ha la proboscide lunga, ed è molto forte. Aveva trovato in una piega del terreno un piccolo specchio d'acqua — non tanta, ma un po' — e si stava abbassando per bere quando vide passare poco lontano una <strong>tartaruga</strong>, lentissima, con la lingua di fuori per la sete.</p>
+
+        <p>«Elefante… ho sete… aiutami…»</p>
+
+        <p>L'elefante guardò l'acqua, guardò la tartaruga. Pensò: <em>è poca, è mia, l'ho trovata io</em>. E disse: «Vai a cercartene tu, tartaruga. Io ho sete più di te.» E bevve tutta l'acqua, fino all'ultima goccia, e se ne andò.</p>
+
+        <p>Il baobab, che ascolta tutto, sentì anche questo.</p>
+
+        <p>Passò ancora qualche giorno. Sotto il baobab arrivò un piccolissimo <strong>topo dei campi</strong>. Il topo dei campi era così piccolo che si sarebbe potuto tenere in una mano. Aveva trovato — non si sa come — una goccia d'acqua sopra una foglia, e la stava portando con grande attenzione, in equilibrio, verso casa sua.</p>
+
+        <p>Mentre passava, sentì una vocina ancora più piccola della sua. Era una <strong>formica</strong>, ferma su un sasso, che non riusciva più ad andare avanti.</p>
+
+        <p>«Topolino… ho sete… aiutami…»</p>
+
+        <p>Il topo dei campi si fermò. Guardò la goccia: era l'unica cosa che aveva. Guardò la formica: era piccolissima. E disse:</p>
+
+        <div class="formula-line">«Hai sete, sorellina? Bevi dal mio.»</div>
+
+        <p>E inclinò la foglia. Una piccolissima parte della goccia colò sulla formica, che bevve e si rimise in marcia. Il resto, il topolino lo portò a casa.</p>
+
+        <p>Il baobab sentì anche questo. E adesso il baobab sapeva tutto.</p>
+
+        <p>Quella notte, quando la luna era alta e la savana era silenziosa, il baobab parlò. Non parlò a voce alta — gli alberi non parlano a voce alta. Parlò col vento, e il vento portò le sue parole a tutti gli animali della savana.</p>
+
+        <div class="song">
+          <span class="song-label">Canzone del baobab</span>
+          Chi divide la goccia,<br>
+          divide il mondo.<br>
+          Io tengo l'acqua per chi ha sete.<br>
+          Io tengo l'acqua per voi.
+        </div>
+
+        <p>E da quella notte il baobab cominciò a tenere l'acqua dentro il suo tronco grosso. Tutta l'acqua che riusciva a bere quando finalmente la pioggia tornava, la teneva dentro. Non se la beveva — la <em>conservava</em>. E ancora oggi, se vai nella savana e ti viene tanta sete, e c'è un baobab vicino, sappi che dentro quel tronco grosso c'è acqua. E i bambini delle pintada e dei topolini, e tutti gli animali piccoli che hanno imparato a dividere, sanno come chiederla.</p>
+
+        <p>Quanto al grande elefante, dicono che ancora oggi ha sempre tanta, tanta sete. Per questo va sempre a cercare l'acqua dei fiumi, e non gli basta mai. Chi non ha mai diviso, non sa mai quanto basta.</p>
+
+      </div>
+
+      <div class="closing-formula">
+        <span class="role">Tu</span>La mia storia è finita. Adesso è vostra.<br>
+        <span class="role response">Bambino</span><span class="response">L'abbiamo presa!</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §03 — ANALISI -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 03 — Analisi della storia</span>
+      <h2>Cosa è <em>rimasto</em>, cosa è stato <em>adattato</em>, dispositivi tecnici</h2>
+      <p class="section-kicker">Smontiamo la storia per capire come è stata costruita — non per esibirla, ma perché chi la racconta possa modificarla, allungarla, accorciarla, sostituire pezzi senza tradire la grammatica.</p>
+    </div>
+
+    <div class="analysis-box">
+      <span class="analysis-label">Cosa è rimasto intero della cultura africana</span>
+
+      <h3>1. La call-and-response come <em>cornice</em></h3>
+      <p>L'apertura "Vi racconto una storia! — Sì, raccontala!" e la chiusura "La mia storia è finita. Adesso è vostra. — L'abbiamo presa!" sono traduzioni dirette di formule reali (akan, igbo, zulu). Il dispositivo è intatto: la storia non comincia senza l'autorizzazione del pubblico, non finisce senza la sua presa. Per il bambino diventerà presto un rituale: lo riconosce, lo aspetta, lo usa.</p>
+
+      <h3>2. La frase-formula come <em>spina dorsale</em></h3>
+      <p>"Hai sete, fratellino? Bevi dal mio." Torna due volte (la pintada e il topolino), e il bambino dalla seconda volta la dice insieme. Nella terza volta — quella negativa dell'elefante — la frase <em>non c'è</em>: l'elefante dice qualcos'altro. La sua assenza è il suo spegnimento, ed è il modo africano di indicare che qualcosa non è andato come doveva. È il dispositivo del proverbio tradotto in immagine concreta: invece di una sentenza astratta, una frase che si dice <em>quando</em> il legame si tesse, e che <em>non si dice</em> quando si rompe.</p>
+
+      <h3>3. La canzone come <em>incoronazione del senso</em></h3>
+      <p>"Chi divide la goccia, divide il mondo. Io tengo l'acqua per chi ha sete. Io tengo l'acqua per voi." La canzone arriva al climax, è cantata dal baobab — il personaggio più antico della storia, l'antenato vegetale. Cattura il senso senza mai spiegarlo. Si canta su due note, lenta, mormorata. Il bambino la imparerà in qualche serata e la chiederà.</p>
+
+      <h3>4. La struttura episodica triplice</h3>
+      <p>Tre incontri, tre animali piccoli, tre piccole prove. Il primo positivo (pintada/scoiattolo), il secondo negativo (elefante/tartaruga), il terzo di nuovo positivo (topolino/formica). È la grammatica del "tre" universale nel folklore mondiale, ma in Africa ha una sfumatura specifica: ogni episodio è autonomo, completo, e l'unità non è data dall'arco — è data dall'<em>ascolto del baobab</em>, che è il vero centro narrativo.</p>
+
+      <h3>5. La morale relazionale, mai dichiarata</h3>
+      <p>Non si dice mai "bisogna dividere", "bisogna essere generosi", "non si deve essere egoisti". Si mostra solo: chi divide riceve, chi non divide resta sempre assetato. La distinzione tra il topolino che divide la sua goccia e l'elefante che si beve tutta l'acqua è <strong>strutturale, non morale</strong>: il giudizio è incarnato nella scena. Il bambino lo riceve nelle ossa.</p>
+
+      <h3>6. La chiusura eziologica</h3>
+      <p>"Per questo il baobab tiene l'acqua nel tronco." Aggancia la storia al mondo reale del bambino — e il fatto è vero: il baobab africano è un albero che immagazzina davvero migliaia di litri d'acqua nel tronco fibroso, e i popoli del Sahel lo chiamano "albero della vita" per questo. La storia <em>spiega</em> qualcosa che esiste, ed è un dispositivo africano dominante (la favola della tartaruga del guscio rotto fa lo stesso lavoro). Per il bambino è un piccolo regalo: <em>quando vedrai un baobab, saprai perché è così</em>.</p>
+    </div>
+
+    <div class="analysis-box">
+      <span class="analysis-label">Cosa è stato adattato</span>
+
+      <h3>Lunghezza</h3>
+      <p>La storia, raccontata in voce a un ritmo normale, dura circa sei minuti. Una performance africana adulta dello stesso materiale durerebbe venti o trenta minuti, con ripetizioni più lunghe, dialoghi più estesi, due o tre canzoni invece di una. È la scala adatta a un bambino di 3 anni — abbastanza lunga da costruire la ripetizione, abbastanza corta da non perderlo.</p>
+
+      <h3>Il personaggio negativo</h3>
+      <p>L'elefante è il "non-divisore". Ma <strong>non è punito</strong>. Non gli succede niente di spaventoso. Resta solo "sempre assetato". È una conseguenza naturale, non una pena inflitta. Questa attenuazione è importante: la versione adulta africana (Tartaruga col guscio rotto) include una caduta sulle pietre. Per un bambino piccolo questo livello di violenza non serve. La conseguenza è data, ma in forma di <em>solitudine perenne</em>, non di catastrofe.</p>
+
+      <h3>Il proverbio diventa frase concreta</h3>
+      <p>"Chi non ha mai diviso non sa mai quanto basta" è una frase finale che <em>suona</em> come proverbio ma <em>fa</em> il lavoro di un'immagine: l'elefante che gira sempre cercando acqua. È un'attenuazione dell'astrazione: il senso passa attraverso la scena, non attraverso la sentenza.</p>
+    </div>
+
+    <div class="analysis-box">
+      <span class="analysis-label">Dispositivi tecnici per il narratore</span>
+
+      <ul>
+        <li><strong>Voci diverse per ogni animale.</strong> La pintada veloce e acuta, lo scoiattolo affaticato, l'elefante grosso e sicuro, la tartaruga lentissima, il topolino piccolo e attento, la formica minuscola. Sono caratterizzazioni vocali che il bambino aspetta ogni volta uguali. Non improvvisare ogni sera nuove voci: <em>fissale</em> e ripetile.</li>
+        <li><strong>Ritmo della frase-formula.</strong> "Hai sete, <em>fratellino?</em> Bevi <em>dal mio</em>." Stacca dopo "fratellino" e dopo "mio". Il bambino imparerà esattamente quel ritmo, e dirà la frase con esattamente quelle pause.</li>
+        <li><strong>La canzone va davvero cantata.</strong> Non recitata. Anche stonando. Su due note basta. Se ne ricava un piccolo motivo personale e diventa <em>la canzone della storia</em>, riconoscibile.</li>
+        <li><strong>Pause prima delle scelte.</strong> Quando la pintada guarda la sua goccia, fai una pausa. Quando l'elefante decide di non condividere, fai una pausa più lunga e abbassa la voce. Il bambino sente che sta accadendo qualcosa.</li>
+        <li><strong>Il baobab "ascolta tutto" tre volte.</strong> Ogni volta che un episodio si chiude, ripeti: <em>"Il baobab, che ascolta tutto, sentì."</em> È il refrain narrativo che tiene insieme la struttura.</li>
+        <li><strong>Coinvolgi il bambino nella formula d'apertura.</strong> Se la prima sera è muto, dilla tu intera ("Vi racconto una storia… sì, raccontala!"). Dalla seconda gli arriverà che tocca a lui rispondere. Dalla terza la dirà spontaneamente. Non insistere — lascia che venga.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =================================================== -->
+  <!-- §04 — VARIANTI -->
+  <!-- =================================================== -->
+  <section>
+    <div class="section-header">
+      <span class="section-num">§ 04 — Varianti</span>
+      <h2>Tre modi per <em>raccontare diversamente</em></h2>
+      <p class="section-kicker">In ordine di distanza crescente dalla storia originale: la stessa struttura applicata a contesti via via più vicini al bambino. La grammatica resta africana, l'ambientazione si avvicina.</p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 1 · Distanza minima</span>
+      <h3>Cambiare gli animali, mantenere la savana</h3>
+      <p>La struttura resta intatta. Cambiano i protagonisti: al posto di pintada/scoiattolo si può mettere <strong>una scimmia e un cucciolo di leone</strong>; al posto di elefante/tartaruga, <strong>un grande coccodrillo e una rana</strong>; al posto di topolino/formica, <strong>un piccolo uccellino e una farfalla</strong>. La frase-formula resta: "Hai sete, fratellino? Bevi dal mio." La canzone del baobab resta. L'ambientazione resta la savana africana.</p>
+      <p>Quando usarla: dopo che il bambino ha sentito la versione originale almeno cinque o sei volte e la conosce a memoria, per dargli una variazione che non lo disorienta ma lo sorprende. <em>"Stasera è una versione diversa"</em>: lui adorerà notare le differenze.</p>
+    </div>
+
+    <div class="variant">
+      <span class="variant-num">Variante 2 · Distanza media</span>
+      <h3>Trasportare la storia <em>in un bosco vicino casa</em></h3>
+      <p>Stessa struttura, stessa frase-formula, stessa canzone. Ma l'ambientazione diventa un bosco familiare: c'è un <strong>vecchio quercia</strong> al posto del baobab, e i protagonisti diventano animali più conosciuti — <strong>un passerotto e uno scoiattolo</strong> (positivo), <strong>un cinghiale e una lucertola</strong> (negativo), <strong>una talpa e una coccinella</strong> (positivo). La siccità diventa "un'estate molto calda". La canzone della quercia: "<em>Chi divide la goccia, divide il bosco. Io tengo l'acqua per chi ha sete.</em>"</p>
+      <p>Quando usarla: questa è la variante che <strong>radica la grammatica africana nel paesaggio del bambino</strong>. Lui capisce che la struttura del racconto non è "esotica" — è una forma del raccontare che funziona ovunque. La cultura non sta nel paesaggio: sta nel modo. È un passo cruciale, e tutto sommato facile.</p>
+      <p>Variante interessante della variante: la chiusura eziologica diventa "<em>per questo le querce vecchie hanno un buco in cui c'è sempre un po' d'acqua, e gli scoiattoli ci vanno a bere quando hanno sete</em>". Inventata, naturalmente — ma i bambini di 3 anni adorano credere alle eziologie inventate del bosco accanto.</p>
+    </div>
+
+    <div class="variant dist-3">
+      <span class="variant-num">Variante 3 · Distanza massima</span>
+      <h3>Il <em>bambino reale</em> come protagonista, in un luogo reale</h3>
+      <p>La storia diventa quella del bambino e dei suoi compagni — ma costruita con la <strong>stessa identica grammatica africana</strong>. Si svolge al parco, all'asilo, al mare. Non ci sono animali parlanti: ci sono il bambino, gli altri bambini, magari un adulto.</p>
+      <p>Esempio: <em>Era un giorno molto caldo. Al parco, [nome del bambino] aveva una bottiglietta d'acqua, l'unica fresca. Era seduto sotto il grande pino del parco — quel pino vecchio vecchio, che secondo papà ha più di cento anni. Arriva un altro bambino, sudato. Dice: "Ho tanta sete." [nome] guarda la bottiglietta. È poca. Ma guarda il bambino, e gli viene da dire: "Hai sete, amico? Bevi dal mio." E divide. Poco dopo arriva un cane piccolissimo, con la lingua di fuori. Stessa scena. Poi arriva un altro bambino grande, prepotente, con una bottiglia tutta sua piena, che vede gli altri bambini con sete e si beve tutta la sua bottiglia da solo, e se ne va. E papà dice: "Sai una cosa? Quel pino vecchio vecchio del parco — secondo me ascolta. Ascolta da quando ero bambino io. E secondo me, di notte, quando non c'è nessuno, sussurra una canzone…"</em></p>
+      <p>Da qui — la canzone del pino del parco. È la stessa del baobab, in altra forma: "<em>Chi divide la goccia, divide il parco. Io tengo l'ombra per chi ha caldo.</em>"</p>
+      <p>Quando usarla: questa è la variante più potente, ma da fare quando il bambino conosce bene la struttura originale. Funziona per due motivi. Il primo è che <strong>lo rende protagonista in modo che riconosca la grammatica</strong>: capisce che la storia che gli abbiamo raccontato di pintada e baobab è la stessa cosa che potrebbe accadere a lui al parco. Il secondo è che <strong>le frasi-formula tornano nel suo mondo</strong>, e prima o poi lui stesso, al parco, incontrerà un altro bambino con sete e dirà — magari senza saperlo — "Hai sete, amico? Bevi dal mio." E in quel momento la cultura africana del racconto avrà fatto il suo lavoro: il cerchio si è esteso.</p>
+    </div>
+  </section>
+
+  <div class="end-mark">— · — · —</div>
+
+  <footer>
+    <span>Volume V · Documento 3 di 4</span>
+    <span>Prossimo: La guida pratica →</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
