@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Report 5 — Pratica: come strutturare la storia</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #fdf8f0;
+    --paper-deep: #f5ecd9;
+    --ink: #2a1a0e;
+    --ink-soft: #5a3e2b;
+    --ink-faint: #8a7560;
+    --rule: #d9c8a8;
+    --accent: #c4632e;
+    --accent-deep: #8a3f15;
+    --accent-soft: #f3e0cf;
+    --sage: #6b8a5f;
+    --sage-deep: #4a6740;
+    --sage-bg: #eef2e8;
+    --sage-soft: #dde6d3;
+    --slate: #4a5568;
+    --slate-bg: #e8ecf1;
+    --honey: #d4a017;
+    --honey-bg: #fbf3da;
+    --berry: #a83a52;
+    --berry-bg: #f7e4e8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-size: 17px;
+    line-height: 1.78;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(107,138,95,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(196,99,46,0.04) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page { position: relative; z-index: 1; }
+
+  /* HEADER — cambiato per applicativo: predominante sage */
+  .header {
+    padding: 80px 24px 60px;
+    text-align: center;
+    border-bottom: 1px solid var(--rule);
+    background: linear-gradient(180deg, var(--sage-bg) 0%, var(--paper) 100%);
+  }
+
+  .report-meta {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    margin-bottom: 18px;
+  }
+
+  .report-number {
+    display: inline-block;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 0.78rem;
+    letter-spacing: 0.25em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border: 1px solid var(--sage-deep);
+    border-radius: 2px;
+    margin-bottom: 16px;
+  }
+
+  .report-tag {
+    display: inline-block;
+    margin-left: 8px;
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: white;
+    background: var(--sage-deep);
+    padding: 6px 14px;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+
+  .header-tag-row {
+    margin-bottom: 28px;
+  }
+
+  .header h1 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: clamp(2rem, 5.5vw, 2.9rem);
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 18px;
+    letter-spacing: -0.01em;
+  }
+  .header h1 em { font-style: italic; color: var(--sage-deep); }
+
+  .header-sub {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .header-ornament {
+    margin: 28px auto 0;
+    width: 60px;
+    height: 1px;
+    background: var(--rule);
+    position: relative;
+  }
+  .header-ornament::before {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--paper);
+    padding: 0 10px;
+    color: var(--sage-deep);
+    font-size: 0.7rem;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* INTRO */
+  .intro {
+    padding: 50px 0 30px;
+    font-family: 'Fraunces', serif;
+    font-size: 1.18rem;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 50px;
+  }
+  .intro p { margin-bottom: 18px; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro .lead-cap {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 3.2rem;
+    line-height: 0.85;
+    float: left;
+    color: var(--sage-deep);
+    padding: 8px 12px 0 0;
+  }
+
+  /* SECTIONS */
+  .section { margin-bottom: 56px; }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--sage-deep);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.65rem;
+    color: var(--ink);
+    line-height: 1.25;
+    margin-bottom: 22px;
+    letter-spacing: -0.005em;
+  }
+
+  h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.18rem;
+    color: var(--ink);
+    margin: 32px 0 12px;
+    line-height: 1.35;
+  }
+
+  p { margin-bottom: 18px; }
+  p strong, .section strong { font-weight: 700; color: var(--ink); }
+  em { font-style: italic; }
+
+  /* PRINCIPLE BOX — i principi guida del report applicativo */
+  .principle {
+    background: white;
+    border: 1px solid var(--sage-soft);
+    border-left: 4px solid var(--sage-deep);
+    border-radius: 4px;
+    padding: 24px 28px;
+    margin: 28px 0;
+  }
+  .principle-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    color: var(--sage-deep);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .principle h4 {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 1.12rem;
+    color: var(--ink);
+    margin-bottom: 10px;
+    line-height: 1.35;
+  }
+  .principle p { font-size: 0.97rem; line-height: 1.65; margin-bottom: 10px; }
+  .principle p:last-child { margin-bottom: 0; }
+
+  /* EXAMPLE — esempi concreti di storie */
+  .example {
+    background: var(--paper-deep);
+    border-radius: 4px;
+    padding: 22px 26px;
+    margin: 22px 0;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.03rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .example::before {
+    content: 'ESEMPIO';
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .example p { margin-bottom: 10px; }
+  .example p:last-child { margin-bottom: 0; }
+  .example strong { color: var(--accent-deep); font-style: normal; }
+
+  /* COMPARISON — confronti tra "così no" / "così sì" */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .comparison > div {
+    padding: 18px 20px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+  }
+  .comparison .bad {
+    background: var(--berry-bg);
+    border-left: 3px solid var(--berry);
+  }
+  .comparison .good {
+    background: var(--sage-bg);
+    border-left: 3px solid var(--sage-deep);
+  }
+  .comparison .label {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    margin-bottom: 8px;
+  }
+  .comparison .bad .label { color: var(--berry); }
+  .comparison .good .label { color: var(--sage-deep); }
+
+  /* PULL QUOTE */
+  .pull-quote {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    line-height: 1.45;
+    color: var(--sage-deep);
+    text-align: left;
+    margin: 36px 0 36px 0;
+    padding: 0 0 0 28px;
+    border-left: 3px solid var(--sage-deep);
+  }
+
+  /* CALLOUT */
+  .callout {
+    border-left: 3px solid var(--honey);
+    background: var(--honey-bg);
+    padding: 18px 22px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.96rem;
+  }
+  .callout strong { color: var(--accent-deep); }
+
+  /* RECAP — il recap finale collega ai report teorici */
+  .recap {
+    background: var(--slate-bg);
+    border-radius: 6px;
+    padding: 32px 32px 28px;
+    margin: 50px 0 30px;
+    border-top: 4px solid var(--slate);
+  }
+  .recap-label {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.22em;
+    color: var(--slate);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .recap h3 { margin-top: 0; font-size: 1.4rem; color: var(--ink); }
+  .recap p { font-size: 0.97rem; }
+  .recap ul { margin: 18px 0 0 22px; line-height: 1.85; }
+  .recap ul li { margin-bottom: 10px; font-size: 0.97rem; }
+
+  ul.styled { margin: 0 0 22px 22px; line-height: 1.8; }
+  ul.styled li { margin-bottom: 8px; }
+
+  .divider {
+    text-align: center;
+    margin: 60px 0;
+    color: var(--ink-faint);
+    font-size: 1.2rem;
+    letter-spacing: 1em;
+  }
+
+  .closing {
+    margin-top: 70px;
+    padding-top: 40px;
+    border-top: 1px solid var(--rule);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+  .closing strong { color: var(--sage-deep); font-style: normal; font-weight: 600; }
+
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .header { padding: 50px 22px 42px; }
+    .container { padding: 0 22px 60px; }
+    .intro { font-size: 1.08rem; padding: 40px 0 24px; margin-bottom: 36px; }
+    .intro .lead-cap { font-size: 2.6rem; }
+    h2 { font-size: 1.45rem; }
+    h3 { font-size: 1.1rem; }
+    .pull-quote { font-size: 1.18rem; padding-left: 20px; margin: 28px 0; }
+    .principle, .recap { padding: 22px; }
+    .example { padding: 18px 22px; }
+    .comparison { grid-template-columns: 1fr; gap: 10px; }
+    .header-tag-row { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+    .report-tag { margin-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="report-meta">Percorso teorico — La mente del bambino a 2-3 anni</div>
+    <div class="header-tag-row">
+      <span class="report-number">Report 05 di 11</span>
+      <span class="report-tag">◆ Pratica</span>
+    </div>
+    <h1>Come <em>strutturare</em> la storia</h1>
+    <p class="header-sub">Il primo report applicativo — dove cognizione, linguaggio, pensiero simbolico e gestione della tensione diventano scelte concrete su come raccontare</p>
+    <div class="header-ornament"></div>
+  </header>
+
+  <main class="container">
+
+    <section class="intro">
+      <p><span class="lead-cap">A</span>bbiamo passato quattro report a costruire fondamenta. Adesso quelle fondamenta servono. Questo è il primo dei tre report applicativi del percorso — i punti in cui la teoria si traduce in tecnica, in scelta concreta, in cosa fai stasera quando ti siedi vicino al letto di tuo figlio e cominci a raccontare.</p>
+      <p>Una premessa importante: tu hai già un documento pratico molto buono sulle storie a 2-3 anni. Questo report non lo duplica. Quello ti ha dato <em>cosa fare</em>; questo ti dà <em>perché funziona</em>, e ti aggiunge alcuni principi e tecniche che richiedono, per essere davvero capiti, le fondamenta dei report precedenti. Quando senti un'eco con quello che già fai bene, è esattamente l'effetto che voglio: confermare con il fondamento le tue intuizioni, e renderle riproducibili anche nei momenti in cui l'intuizione viene meno.</p>
+      <p>Sette principi, in ordine di importanza decrescente. Tutti raccolgono fili dei report 1-4 e li intrecciano in scelte operative.</p>
+    </section>
+
+    <!-- SEZIONE 1: PRINCIPIO 1 — IL CORPO PRIMA DELLE PAROLE -->
+    <section class="section">
+      <div class="section-num">— Principio 1 —</div>
+      <h2>Prima il corpo, poi la trama</h2>
+
+      <p>Da Report 1 sappiamo che tuo figlio entra nella storia attraverso il canale emotivo-corporeo prima che attraverso quello logico. Lo dice il sistema limbico più maturo della corteccia prefrontale; lo dicono i neuroni specchio e la sintonizzazione affettiva; lo dice la teoria polivagale sulla voce come regolatore. Questo è il principio numero uno, e tutto il resto ne discende.</p>
+
+      <div class="principle">
+        <div class="principle-label">In pratica</div>
+        <h4>Decidi il <em>tono fisiologico</em> della storia prima della trama.</h4>
+        <p>Quando ti siedi a raccontare, prima ancora di sapere "cosa" racconti, decidi <em>per cosa</em> stai raccontando. Vuoi addormentarlo? Vuoi attivare il suo sistema dopo un pomeriggio piatto? Vuoi consolarlo dopo una giornata difficile? Vuoi farlo ridere? Sono quattro narrazioni completamente diverse a livello di voce, ritmo, struttura — anche se il contenuto può essere quasi lo stesso.</p>
+        <p>Il tono fisiologico è la cosa che lui registra <em>per prima</em>. Le parole arrivano dopo.</p>
+      </div>
+
+      <div class="comparison">
+        <div class="bad">
+          <span class="label">Inizio attivante</span>
+          "Allora! Ti dico io cosa è successo a un coniglio una mattina! Stava saltando, saltando…"
+        </div>
+        <div class="good">
+          <span class="label">Inizio di quiete</span>
+          "C'era una volta… un coniglio. Un coniglio piccolo. Che viveva… in una tana sotto un albero."
+        </div>
+      </div>
+
+      <p>Stesso personaggio, stesso "argomento". Due storie completamente diverse a livello di sistema nervoso. La prima è simpatica (attivazione, ritmo veloce, ascendente); la seconda è parasimpatica (rallentamento, pause, discesa). A 2-3 anni la differenza è enorme — quasi tutta la differenza, in realtà.</p>
+
+      <h3>La voce è il primo strumento di scrittura</h3>
+      <p>Conseguenza pratica: <strong>impara a usare la voce come si impara a scrivere</strong>. Non come "performance teatrale" — non serve essere attori — ma come <em>strumento di regolazione</em>. Cinque variabili che puoi controllare:</p>
+
+      <ul class="styled">
+        <li><strong>Velocità:</strong> più rallenti, più attivi il parasimpatico. Le storie della sera devono andare progressivamente più piano. Non poco più piano del normale: <em>molto</em> più piano.</li>
+        <li><strong>Volume:</strong> abbassarlo crea attenzione e quiete. Una storia sussurrata cattura più di una declamata.</li>
+        <li><strong>Tono (frequenza):</strong> tonalità basse calmano, tonalità alte attivano. La voce della sera è una voce che <em>scende</em> nella gamma.</li>
+        <li><strong>Pause:</strong> sono il vero strumento. Una pausa di due secondi prima di "…e poi" è uno spazio in cui il bambino entra nella storia. Una pausa di cinque secondi in un momento di tensione è quasi insostenibile (in senso buono).</li>
+        <li><strong>Respiro:</strong> il tuo. Se rallenti il tuo respiro, lui rallenta il suo. È co-regolazione, non metafora.</li>
+      </ul>
+
+      <p>Nessuna di queste cose richiede talento narrativo. Richiedono <em>presenza</em>. Se sei stanco e non riesci a fare il lavoro sulla voce, fai una storia più corta. Mai più ricca, mai più articolata: più corta. Una storia di tre minuti raccontata con voce piena vale dieci volte una di dieci minuti raccontata con voce assente.</p>
+    </section>
+
+    <!-- SEZIONE 2: PRINCIPIO 2 — STRUTTURA SINTATTICA -->
+    <section class="section">
+      <div class="section-num">— Principio 2 —</div>
+      <h2>Frasi brevi, paratattiche, collegate da "e poi"</h2>
+
+      <p>Da Report 2 sappiamo cosa il suo cervello può processare sintatticamente. Poco materiale per frase, poche subordinate, connettivi semplici. Il principio operativo è banale ma quasi tutti i genitori lo violano la prima volta che provano a raccontare bene.</p>
+
+      <div class="principle">
+        <div class="principle-label">In pratica</div>
+        <h4>Una frase = un'azione, un'immagine, un'emozione. Stop.</h4>
+        <p>Se ti senti incastrato in una subordinata complessa, fermati a metà e ricomincia. La storia non perde nulla; lui guadagna processabilità.</p>
+      </div>
+
+      <div class="comparison">
+        <div class="bad">
+          <span class="label">Sotto sforzo</span>
+          "Il coniglio, che aveva perso il suo cappello rosso che gli aveva regalato la nonna, decise di andare a cercarlo nel bosco anche se aveva un po' paura."
+        </div>
+        <div class="good">
+          <span class="label">Processabile</span>
+          "Il coniglio aveva perso il cappello. Era un cappello rosso. Glielo aveva regalato la nonna. Allora decise di cercarlo. Andò nel bosco. Aveva un po' paura, ma andò lo stesso."
+        </div>
+      </div>
+
+      <p>Stessa quantità di informazione. La prima è una frase di 28 parole con tre subordinate. La seconda è sei frasi semplici. Per te, da fuori, la seconda sembra "infantile". Ma non stai parlando con un adulto. Stai parlando con un cervello che ancora non ha la macchina sintattica per la prima.</p>
+
+      <h3>I connettivi giusti</h3>
+      <p>I connettivi che funzionano a 2-3 anni sono pochi e li hai già usati mille volte: <em>e poi, allora, così, ma</em>. Sono ritmici, semplici, sequenziali. Riempi la storia di questi. Evita: tuttavia, nonostante, sebbene, qualora, infatti, dunque. Non sono "parole difficili": sono <em>strutture cognitive</em> che il suo cervello non ha ancora.</p>
+
+      <h3>Lessico: ricco oltre quello che produce</h3>
+      <p>Sintassi semplice non significa lessico povero. Anzi. Sappiamo (Report 2) che la comprensione precede di molto la produzione. La storia è il luogo per eccellenza dove il bambino incontra parole nuove in un contesto che le rende comprensibili. <em>"Il bosco era silenzioso", "il coniglio era sgomento", "il vento sfiorava le foglie"</em> — sono parole che lui non userà ancora ma che capirà nel contesto, e dopo qualche ripetizione entreranno nel suo vocabolario passivo.</p>
+
+      <p>La regola: sintassi del suo livello, lessico un passo oltre. È una delle applicazioni più dirette della zona di sviluppo prossimale (Report 3).</p>
+    </section>
+
+    <!-- SEZIONE 3: PRINCIPIO 3 — UNA LINEA SOLA -->
+    <section class="section">
+      <div class="section-num">— Principio 3 —</div>
+      <h2>Una linea narrativa, lineare, con tre o quattro nodi</h2>
+
+      <p>Dal Report 3 sappiamo che la permanenza dell'oggetto gli permette di seguire personaggi che entrano ed escono di scena, ma la sua memoria di lavoro non gli permette ancora di tenere attive due trame in parallelo. Costruisci storie con <em>una</em> linea narrativa, anche attraversata da più personaggi e luoghi.</p>
+
+      <div class="principle">
+        <div class="principle-label">In pratica</div>
+        <h4>Una storia = una linea, con tre o quattro nodi.</h4>
+        <p>La struttura archetipica funzionante a quest'età ha quattro punti:</p>
+        <p><strong>1. Quiete iniziale</strong> (il personaggio nel suo mondo familiare) — <strong>2. Avvio</strong> (succede qualcosa, parte un'azione) — <strong>3. Picco</strong> (il momento di tensione o sorpresa) — <strong>4. Discesa</strong> (ritorno alla quiete, abbondante).</p>
+      </div>
+
+      <p>Da evitare a 2-3 anni:</p>
+
+      <ul class="styled">
+        <li><strong>Trame parallele.</strong> "Intanto, in un altro posto…" lo perde, perché richiede di tenere due linee simultaneamente attive.</li>
+        <li><strong>Flashback.</strong> "Ma per capire questo, dobbiamo tornare indietro…" lo confonde — il passato narrativo a 2-3 anni è un piano singolo, non si annida.</li>
+        <li><strong>Cliffhanger e continuazioni in puntate.</strong> Lui ha bisogno della discesa <em>questa sera</em>. Lasciare una storia "in sospeso da continuare domani" gli lascia il sistema nervoso attivato senza scioglimento.</li>
+        <li><strong>Personaggi troppi.</strong> Più di tre o quattro personaggi attivi e si perde. Le comparse sono ok (il vento, gli alberi, "tanti uccellini"); i personaggi attivi che fanno cose distinte vanno tenuti pochi.</li>
+      </ul>
+
+      <h3>I tre o quattro nodi non sono "trama complessa"</h3>
+      <p>"Tre o quattro nodi" non significa "trama articolata". Significa una semplicissima architettura: c'era un coniglio nella sua tana <em>(quiete)</em> — un giorno uscì perché aveva fame <em>(avvio)</em> — incontrò qualcosa nel bosco <em>(picco)</em> — tornò a casa e si addormentò <em>(discesa)</em>. È tutto. La storia funziona se questi quattro momenti sono fatti bene, non se ci sono colpi di scena.</p>
+
+      <div class="example">
+        <p><strong>Quiete:</strong> "C'era un coniglio. Si chiamava Tato. Viveva in una tana sotto un albero grande. Nella tana c'era il suo letto di foglie morbide, e una piccola finestra da cui guardava fuori."</p>
+        <p><strong>Avvio:</strong> "Una mattina Tato aprì gli occhi e disse: 'Ho fame'. Allora uscì dalla tana per cercare qualcosa di buono."</p>
+        <p><strong>Picco:</strong> "Camminò, camminò. Poi sentì un rumore tra le foglie. Si fermò. Il cuore gli batteva forte. Cosa era?"</p>
+        <p><strong>Discesa:</strong> "Era una piccola lumaca. Solo una piccola lumaca. Tato sorrise. Trovò una carota dolce sotto un cespuglio. La mangiò tutta. E poi tornò a casa, nella sua tana. Si stese sul letto di foglie morbide. Fuori il sole stava scendendo. Tato chiuse gli occhi. E si addormentò."</p>
+      </div>
+
+      <p>Conta le frasi. La quiete iniziale: 4 frasi. L'avvio: 2. Il picco: 4. La discesa: 9. Il rapporto della discesa rispetto al picco è più del doppio. Questo è il punto del prossimo principio.</p>
+    </section>
+
+    <!-- SEZIONE 4: PRINCIPIO 4 — LA DISCESA -->
+    <section class="section">
+      <div class="section-num">— Principio 4 —</div>
+      <h2>La discesa è più importante del picco</h2>
+
+      <p>Dal Report 4 sappiamo che a 2-3 anni il bambino è dentro la storia, non davanti, e che il suo sistema nervoso registra davvero l'attivazione narrativa. Il finale di una storia per quest'età non è il momento in cui si risolve il problema — è il momento in cui il sistema nervoso si è già calmato.</p>
+
+      <div class="principle">
+        <div class="principle-label">In pratica</div>
+        <h4>Per ogni minuto di tensione, dedica almeno due minuti alla discesa.</h4>
+        <p>È la regola pratica più potente di questo report. Probabilmente la userai tutte le sere.</p>
+      </div>
+
+      <p>Il momento di tensione (il "rumore tra le foglie", l'ombra che si avvicina, la sorpresa) è breve. Risolvi rapidamente: era solo una lumaca, era solo il vento, era solo un amico. Ma <em>dopo</em>, devi accompagnarlo a casa <strong>davvero</strong>. Non basta dire "tornò a casa". Devi:</p>
+
+      <ul class="styled">
+        <li>far rientrare il personaggio nel suo spazio familiare (la tana, la cuccia, il letto);</li>
+        <li>far accadere piccoli gesti di quiete (mangiare, asciugarsi, sentire un odore di casa, vedere la propria coperta);</li>
+        <li>nominare la sicurezza esplicitamente (era al sicuro, era a casa, era al caldo);</li>
+        <li>chiudere con un gesto di sonno o di pace (gli occhi si chiusero, sorrise, si addormentò, sognò dolce).</li>
+      </ul>
+
+      <p>Questa è la fase in cui il battito di tuo figlio rallenta, il suo respiro si distende, e quello che era partito come "storia con tensione" diventa esperienza di rientro. Se fai bene la discesa, anche una storia piuttosto carica si concluderà con lui calmo. Se fai male la discesa, anche una storia leggera lo lascerà attivato.</p>
+
+      <div class="callout">
+        <strong>Errore tipico.</strong> Quando il bambino è già stanco e tu vuoi finire in fretta, la tentazione è accelerare anche la discesa. È esattamente l'errore opposto. Quando lui è stanco, hai <em>più</em> bisogno di una discesa morbida, non meno. Una discesa frettolosa lo lascerà eccitato proprio nel momento in cui dovrebbe scivolare nel sonno.
+      </div>
+    </section>
+
+    <!-- SEZIONE 5: PRINCIPIO 5 — RIPETIZIONE -->
+    <section class="section">
+      <div class="section-num">— Principio 5 —</div>
+      <h2>La ripetizione è il motore, non un riempitivo</h2>
+
+      <p>Dai Report 1 (mielinizzazione, consolidamento) e 2 (acquisizione lessicale) sappiamo che la ripetizione, a quest'età, non è pigrizia narrativa: è nutrimento neurologico. Va sfruttata in due modi distinti.</p>
+
+      <h3>Ripetizione interna alla storia</h3>
+      <p>Le triplette ("una volta… due volte… tre volte…"), i ritornelli ("e il vento soffiava, soffiava, soffiava"), le strutture cumulative (la fiaba "La casa che Jack costruì"). Sono tutti dispositivi che funzionano per due motivi: ritmicamente sono parasimpatici (le ripetizioni rallentano e ipnotizzano), e cognitivamente confermano al bambino che sta seguendo (riconoscere è più facile che processare nuovo materiale).</p>
+
+      <div class="example">
+        <p>"Tato bussò alla prima porta. Toc toc. Nessuno. Tato bussò alla seconda porta. Toc toc. Nessuno. Tato bussò alla terza porta. Toc toc. <strong>Sì!</strong>"</p>
+      </div>
+
+      <p>La struttura "tre tentativi, il terzo riesce" è uno dei pattern più antichi e più funzionali della narrazione orale, e non a caso.</p>
+
+      <h3>Ripetizione tra storie diverse</h3>
+      <p>Quando lui ti chiede la stessa storia per la decima volta, non è "limitato di immaginazione". È il suo cervello che ti dice: <em>questa funziona, ne sto consolidando la struttura, voglio ancora</em>. È un segnale di successo, non un compito ripetitivo.</p>
+
+      <p>La regola pratica: <strong>raccontagliela uguale</strong>. Stessa apertura, stesse parole nei punti che lui aspetta, stesso finale. Questa è una delle differenze più grandi tra storia che funziona e storia che lo frustra: se cambi i punti che lui aspetta, lui te lo segnala (a volte ti corregge: "no, papà, doveva dire così"). Non è pignoleria: è il suo cervello che ti dice che si era costruito un'aspettativa precisa, e tu l'hai disattesa.</p>
+
+      <p>Concessioni utili: puoi cambiare <em>un dettaglio piccolo</em> a sera (un colore, un suono, un nome di un personaggio secondario) e osservare la sua reazione. Spesso noterà la differenza, e questo è un altro segnale di consolidamento riuscito. Ma il <em>nucleo</em> resta lo stesso.</p>
+    </section>
+
+    <!-- SEZIONE 6: PRINCIPIO 6 — INCORPORAZIONE -->
+    <section class="section">
+      <div class="section-num">— Principio 6 —</div>
+      <h2>Incorpora oggetti, persone, episodi della sua vita</h2>
+
+      <p>Dal Report 3 (gioco simbolico come ponte concreto-simbolico) e dal Report 2 (Bruner: il sé come narrazione) sappiamo che la storia funziona meglio quando ha aggancio nel suo mondo reale. Non come "didattica" ma come materiale per il pensiero simbolico.</p>
+
+      <div class="principle">
+        <div class="principle-label">In pratica</div>
+        <h4>Inserisci nella storia oggetti, persone, animali, episodi della sua vita reale — anche minuscoli.</h4>
+        <p>Non serve costruirci la trama. Basta inserirli come elementi della storia: il suo orsetto, la sua tazza, il nome del nonno, il nome del cane del vicino, la macchina rossa che ha visto in strada oggi.</p>
+      </div>
+
+      <p>Tre ragioni per cui funziona:</p>
+
+      <ul class="styled">
+        <li><strong>Aggancio simbolico:</strong> l'oggetto reale fa da ponte tra il piano concreto e il piano narrativo. Esercita la doppia tenuta che è il cuore del pensiero simbolico (Report 3).</li>
+        <li><strong>Identificazione facilitata:</strong> riconoscere un elemento del proprio mondo nella storia accelera l'ingresso nella narrazione. Non deve "immaginare" tutto da zero.</li>
+        <li><strong>Costruzione del Sé narrativo:</strong> sentirsi inserito in una storia (anche obliquamente, attraverso il suo orsetto o il suo nonno) è uno dei mattoni del Sé come narrazione (Report 2). Lui riceve, in forma di storia, un'eco di chi è.</li>
+      </ul>
+
+      <p>Cosa <em>non</em> fare: non trasformare la storia in cronaca. <em>"E poi il bambino — proprio come te! — ha mangiato la pasta — proprio come tu hai fatto a pranzo!"</em> è didattica frontale e perde il senso simbolico. Funziona meglio l'inserimento <em>obliquo</em>: il personaggio della storia ha un orsetto che si chiama come il suo, oppure beve da una tazza che, casualmente, è azzurra come la sua. Lui farà il collegamento da solo, e farlo da solo è esattamente il punto.</p>
+    </section>
+
+    <!-- SEZIONE 7: PRINCIPIO 7 — LO SPAZIO PER LUI -->
+    <section class="section">
+      <div class="section-num">— Principio 7 —</div>
+      <h2>Lascia spazio perché lui possa entrare</h2>
+
+      <p>Questo è il principio più sottile, e quello che torna nel Report 11 come tema centrale. Da tutto il percorso teorico sappiamo che a 2-3 anni il bambino non è spettatore: è coautore inconsapevole. La storia migliore non è la più ricca o la più sorprendente. <strong>È quella che gli lascia più spazio per essere dentro.</strong></p>
+
+      <div class="principle">
+        <div class="principle-label">In pratica</div>
+        <h4>Lascia buchi. Non descrivere tutto. Non chiudere tutto.</h4>
+        <p>Quando un dettaglio è sufficiente a far funzionare la scena, fermati lì. Non aggiungere il colore degli occhi del coniglio se la storia non lo richiede. Lascia che la sua immaginazione lo metta — sarà migliore di qualsiasi colore tu possa scegliere.</p>
+      </div>
+
+      <p>Tre forme concrete di "lasciare spazio":</p>
+
+      <h3>Pause</h3>
+      <p>Le pause non sono buchi nel racconto: sono i <em>punti di ingresso</em> per lui. Una pausa di tre secondi prima di una rivelazione gli dà il tempo di anticipare. Una pausa dopo un picco gli dà il tempo di sentire l'emozione. Una pausa nel mezzo di una descrizione gli dà il tempo di costruire l'immagine. Le storie raccontate male non hanno pause; le storie raccontate bene ne sono piene.</p>
+
+      <h3>Domande aperte non retoriche</h3>
+      <p><em>"Cosa pensi che ci fosse, dietro quella porta?"</em>. <em>"Sai cosa ha fatto il coniglio?"</em>. Non servono per "verificare la sua attenzione". Servono per <em>invitarlo dentro</em>. A 2-3 anni spesso non risponderà a parole, ma il suo cervello entrerà comunque in modalità attiva. Se risponde — anche una sola parola, anche un suono — accogli quello che dice e fallo entrare nella storia. Lui ha appena fatto l'unica cosa che conta: è diventato narratore con te.</p>
+
+      <h3>Accettazione delle interruzioni</h3>
+      <p>Quando ti porge l'orsetto a metà della storia, quando dice "anche orsetto", quando suggerisce un colore o un personaggio: <strong>accetta</strong>. Inserisci orsetto, usa il suo colore, fai entrare il personaggio. Non è interruzione, è co-costruzione. È la parte più importante della storia, anche se è la più disordinata.</p>
+
+      <p>Una storia che funziona perfettamente in monologo è una storia che lui ascolta. Una storia che si lascia interrompere, modificare, dirottare è una storia che lui <em>fa con te</em>. La seconda lascia tracce molto più profonde della prima.</p>
+
+      <div class="pull-quote">
+        La storia migliore non è quella più bella che riesci a raccontare.<br>
+        È quella che ha più spazi vuoti<br>
+        in cui lui possa entrare.
+      </div>
+    </section>
+
+    <div class="divider">· · ·</div>
+
+    <!-- RECAP -->
+    <section class="recap">
+      <div class="recap-label">In sintesi — i sette principi e i loro fondamenti</div>
+      <h3>Cosa portarsi nella prossima storia raccontata</h3>
+
+      <ul>
+        <li><strong>1. Prima il corpo, poi la trama.</strong> Voce, ritmo, respiro vengono prima del contenuto. (Fondamento: R1, neurobiologia e co-regolazione.)</li>
+        <li><strong>2. Frasi brevi, paratattiche, "e poi".</strong> Sintassi semplice, lessico ricco. (Fondamento: R2, linguaggio narrativo.)</li>
+        <li><strong>3. Una linea sola, tre-quattro nodi.</strong> Quiete iniziale, avvio, picco, discesa. Niente trame parallele. (Fondamento: R3, permanenza dell'oggetto e memoria di lavoro.)</li>
+        <li><strong>4. La discesa più importante del picco.</strong> Per ogni minuto di tensione, almeno due di scioglimento. (Fondamento: R4, identificazione totale e contenitore.)</li>
+        <li><strong>5. Ripetisci, ripeti, ripeti.</strong> Triplette interne, stesse storie tra le sere. (Fondamento: R1, mielinizzazione e consolidamento.)</li>
+        <li><strong>6. Incorpora la sua vita reale, obliquamente.</strong> Suoi oggetti, suoi familiari, suoi episodi. (Fondamento: R2 sé narrativo, R3 ponte simbolico-concreto.)</li>
+        <li><strong>7. Lascia spazio perché lui possa entrare.</strong> Pause, domande aperte, interruzioni accolte. (Fondamento: tutto il percorso, e R11.)</li>
+      </ul>
+
+      <p style="margin-top: 22px;">Sette principi non sono una checklist da seguire ogni sera. Sono un <em>modo di pensare la storia</em>, da cui poi le scelte concrete emergono spontaneamente. Se ne tieni a mente uno solo, il primo è il più importante: la voce, prima della trama. Il resto si costruisce su quello.</p>
+    </section>
+
+    <section class="closing">
+      <p>Tu non stai imparando a raccontare meglio.<br>
+      Stai imparando <strong>cosa stavi già facendo bene</strong>,<br>
+      <em>e come continuare a farlo anche nelle sere in cui sei stanco.</em></p>
+    </section>
+
+  </main>
+
+</div>
+
+</body>
+</html>

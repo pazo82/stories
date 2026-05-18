@@ -1,0 +1,82 @@
+{
+  "totalPlanned": 11,
+  "reports": [
+    {
+      "id": 1,
+      "titolo": "Il cervello e l'emozione: il substrato neurobiologico",
+      "descrizione": "Maturazione del sistema limbico, mielinizzazione, neuroni specchio e co-regolazione del sistema nervoso autonomo. Perché il bambino sente prima di pensare — e come la voce regola il suo corpo.",
+      "link": "report-1-cervello-emozione.html",
+      "tipologia": "teorico"
+    },
+    {
+      "id": 2,
+      "titolo": "Il linguaggio narrativo a 2–3 anni",
+      "descrizione": "Esplosione lessicale, sintassi processabile, comparsa del passato narrativo. Bruner e la mente che pensa per storie. Sezione sostanziosa sul bilinguismo: come funziona la mente bilingue e cosa significa per il padre italofono.",
+      "link": "report-2-linguaggio-narrativo.html",
+      "tipologia": "teorico"
+    },
+    {
+      "id": 3,
+      "titolo": "Il pensiero simbolico: gioco, finzione, rappresentazione",
+      "descrizione": "La funzione semiotica di Piaget, il gioco simbolico come prova della doppia realtà. Vygotsky e la zona di sviluppo prossimale applicata alla narrazione. Critiche post-piagetiane: il bambino può fare molto più di quanto si credeva.",
+      "link": "report-3-pensiero-simbolico.html",
+      "tipologia": "teorico"
+    },
+    {
+      "id": 4,
+      "titolo": "Realtà, fantasia e pensiero magico",
+      "descrizione": "Come i bambini distinguono fantasia e realtà (meglio di quanto si creda, ma con confini permeabili). Identificazione totale con il personaggio, gestione della paura, il narratore come contenitore della tensione.",
+      "link": "report-4-realta-fantasia.html",
+      "tipologia": "teorico"
+    },
+    {
+      "id": 5,
+      "titolo": "Pratica: come strutturare la storia",
+      "descrizione": "Lunghezza, ritmo, calibrazione sintattica. Ripetizione e triplette come tecnica neurologicamente fondata. Come incorporare oggetti reali, gestire il pensiero magico, calibrare paura e tensione, chiudere la storia in sicurezza.",
+      "link": "report-5-pratica-strutturare-storia.html",
+      "tipologia": "pratico"
+    },
+    {
+      "id": 6,
+      "titolo": "Emozione, temperamento e differenze individuali",
+      "descrizione": "Quali emozioni distingue a 2–3 anni. La storia come costruttore di vocabolario emotivo. Temperamento (Thomas, Chess, Kagan) e goodness of fit: la storia giusta non è quella oggettivamente migliore, è quella che combacia con questo bambino.",
+      "link": null,
+      "tipologia": "teorico"
+    },
+    {
+      "id": 7,
+      "titolo": "Mente altrui e senso morale: cosa il bambino già capisce",
+      "descrizione": "Teoria della Mente in costruzione: comprensione di desideri e intenzioni, ma non ancora di credenze false. Moralità precoce (Hamlin, Warneken, Tomasello): il bambino non è amorale — ha già una bussola primitiva.",
+      "link": null,
+      "tipologia": "teorico"
+    },
+    {
+      "id": 8,
+      "titolo": "Pratica: la storia come strumento emotivo, morale e relazionale",
+      "descrizione": "Nominare emozioni attraverso i personaggi. Costruire figure con desideri leggibili. Trappole comuni: morale esplicita, vergogna come leva. La logica narrativa estesa alla giornata: sportscasting, micro-storie sui conflitti, narrare a posteriori.",
+      "link": null,
+      "tipologia": "pratico"
+    },
+    {
+      "id": 9,
+      "titolo": "Attaccamento e mentalizzazione",
+      "descrizione": "Bowlby, Ainsworth, Fonagy e la funzione riflessiva. Winnicott e la storia come spazio transizionale. Il rituale narrativo come regolatore del sistema nervoso: struttura prevedibile, abbassamento dell'arousal, transizione verso il sonno.",
+      "link": null,
+      "tipologia": "teorico"
+    },
+    {
+      "id": 10,
+      "titolo": "Pratica: il rituale, la presenza, il rapporto",
+      "descrizione": "Come costruire un rituale robusto. Gestire le richieste di «ancora» e della storia ripetuta. La storia come riparazione dopo conflitti o assenze. La storia in italiano come territorio nitido di intimità padre-figlio in famiglia bilingue.",
+      "link": null,
+      "tipologia": "pratico"
+    },
+    {
+      "id": 11,
+      "titolo": "Sintesi: il bambino come coautore",
+      "descrizione": "Il principio del minimo finito: abbastanza chiuso da contenere, abbastanza aperto da continuare nella mente del bambino. Cosa cambia — e cosa non cambia — dopo aver letto i dieci report precedenti.",
+      "link": null,
+      "tipologia": "teorico"
+    }
+  ]
+}
