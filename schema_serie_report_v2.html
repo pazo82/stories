@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La mente di un bambino di 2-3 anni — Schema della serie · v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f5efe6;
+    --paper-deep: #ebe2d4;
+    --ink: #1f1a14;
+    --ink-soft: #4a3f30;
+    --ink-mute: #7a6d59;
+    --accent: #9c3f1d;
+    --accent-soft: #c47b4a;
+    --rule: #c9b99a;
+    --highlight: #f0e3c4;
+    --shadow: rgba(60, 40, 20, 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 400;
+    line-height: 1.65;
+    font-size: 18px;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(156, 63, 29, 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, rgba(196, 123, 74, 0.05) 0%, transparent 40%);
+    min-height: 100vh;
+  }
+
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.4;
+    z-index: 100;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.15'/%3E%3C/svg%3E");
+  }
+
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 80px 40px 120px;
+  }
+
+  /* HEADER */
+  header.masthead {
+    border-top: 3px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 24px 0 20px;
+    margin-bottom: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-soft);
+  }
+  header.masthead .vol { font-weight: 500; }
+  header.masthead .date { font-style: italic; font-family: 'Fraunces', serif; text-transform: none; letter-spacing: 0.02em; font-size: 14px; }
+
+  /* TITLE */
+  .title-block {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+  .eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.32em;
+    color: var(--accent);
+    margin-bottom: 28px;
+    font-weight: 500;
+  }
+  h1.main-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 300;
+    font-size: clamp(42px, 7vw, 78px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  h1.main-title em {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+  .subtitle {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--ink-soft);
+    max-width: 540px;
+    margin: 0 auto 40px;
+    line-height: 1.4;
+    font-weight: 300;
+  }
+  .ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    color: var(--accent-soft);
+    margin-top: 48px;
+  }
+  .ornament::before, .ornament::after {
+    content: '';
+    height: 1px;
+    width: 80px;
+    background: var(--rule);
+  }
+
+  /* INTRO */
+  .intro {
+    background: var(--paper-deep);
+    padding: 40px 48px;
+    margin-bottom: 80px;
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+  .intro::before {
+    content: '"';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    font-size: 80px;
+    color: var(--accent);
+    font-family: 'Fraunces', serif;
+    line-height: 1;
+    font-weight: 500;
+  }
+  .intro p {
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .intro p + p { margin-top: 18px; }
+
+  /* SECTION HEADERS */
+  h2.section-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    margin: 80px 0 32px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    font-variation-settings: "opsz" 144;
+  }
+  h2.section-title .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+  }
+
+  /* INSTRUCTIONS BLOCK */
+  .instructions-block {
+    background: var(--ink);
+    color: var(--paper-deep);
+    padding: 48px 52px;
+    margin-bottom: 80px;
+    position: relative;
+  }
+  .instructions-block::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+  }
+  .instructions-block .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--accent-soft);
+    margin-bottom: 18px;
+    display: block;
+  }
+  .instructions-block h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: 28px;
+    color: var(--paper);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  .instructions-block h4 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 19px;
+    color: var(--paper);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+  .instructions-block p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--paper-deep);
+    margin-bottom: 12px;
+  }
+  .instructions-block ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 8px;
+  }
+  .instructions-block li {
+    padding: 6px 0 6px 20px;
+    position: relative;
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--paper-deep);
+  }
+  .instructions-block li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent-soft);
+  }
+  .instructions-block strong {
+    color: var(--paper);
+    font-weight: 500;
+  }
+  .instructions-block .small-note {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--accent-soft);
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(196, 123, 74, 0.3);
+  }
+
+  /* REPORT CARDS */
+  .report {
+    margin-bottom: 56px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--rule);
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 36px;
+  }
+  .report:last-child { border-bottom: none; }
+
+  .report .number-col {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    line-height: 1.4;
+    padding-top: 6px;
+  }
+  .report .number-col .big-num {
+    display: block;
+    font-family: 'Fraunces', serif;
+    font-size: 56px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+    font-weight: 300;
+    font-variation-settings: "opsz" 144;
+  }
+  .report.pratico .number-col .big-num {
+    color: var(--ink);
+  }
+  .report .tag {
+    display: inline-block;
+    padding: 3px 10px;
+    background: var(--paper-deep);
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-soft);
+    font-weight: 500;
+    margin-top: 8px;
+  }
+  .report.pratico .tag {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .report.teorico .tag {
+    background: var(--accent);
+    color: var(--paper);
+  }
+  .report h3.report-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    font-variation-settings: "opsz" 144;
+  }
+  .report h3.report-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .report .summary {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin-bottom: 24px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  .report .meta-block {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  .report .meta-row {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 10px 0;
+    border-top: 1px dashed var(--rule);
+  }
+  .report .meta-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .report .meta-content {
+    font-size: 15.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .report .meta-content strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .report .meta-content ul {
+    list-style: none;
+    padding: 0;
+  }
+  .report .meta-content li {
+    padding: 3px 0 3px 16px;
+    position: relative;
+  }
+  .report .meta-content li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--accent-soft);
+  }
+
+  /* CLOSING NOTE */
+  .closing-note {
+    margin-top: 100px;
+    padding: 48px;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+  }
+  .closing-note h4 {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: var(--paper);
+  }
+  .closing-note p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--paper-deep);
+    margin-bottom: 14px;
+  }
+  .closing-note p:last-child { margin-bottom: 0; }
+
+  /* INDEX */
+  .index {
+    background: transparent;
+    border: 1px solid var(--rule);
+    padding: 36px 40px;
+    margin-bottom: 80px;
+  }
+  .index h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: var(--ink-mute);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+  .index ol {
+    list-style: none;
+    counter-reset: indexcounter;
+  }
+  .index li {
+    counter-increment: indexcounter;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--rule);
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    font-size: 15.5px;
+  }
+  .index li:last-child { border-bottom: none; }
+  .index li::before {
+    content: counter(indexcounter, decimal-leading-zero);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    color: var(--accent);
+    flex-shrink: 0;
+    width: 32px;
+  }
+  .index li .index-tag {
+    margin-left: auto;
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    padding: 2px 8px;
+    color: var(--ink-mute);
+    border: 1px solid var(--rule);
+    flex-shrink: 0;
+  }
+  .index li.pratico .index-tag {
+    color: var(--paper);
+    background: var(--ink);
+    border-color: var(--ink);
+  }
+  .index li.teorico .index-tag {
+    color: var(--paper);
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+  .index .part-heading {
+    border-bottom: none;
+    padding-top: 14px;
+    padding-bottom: 4px;
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-mute);
+    font-weight: 600;
+  }
+  .index .part-heading::before {
+    content: '';
+    width: 0;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .container { padding: 50px 22px 80px; }
+    body { font-size: 17px; }
+    h1.main-title { font-size: 44px; }
+    .subtitle { font-size: 18px; }
+    .intro { padding: 30px 24px; }
+    .instructions-block { padding: 32px 24px; }
+    .report { grid-template-columns: 1fr; gap: 16px; }
+    .report .number-col { display: flex; align-items: baseline; gap: 16px; padding-top: 0; }
+    .report .number-col .big-num { font-size: 38px; margin-bottom: 0; }
+    .report .meta-row { grid-template-columns: 1fr; gap: 4px; }
+    .report h3.report-title { font-size: 24px; }
+    .closing-note { padding: 32px 24px; }
+    header.masthead { flex-direction: column; gap: 8px; align-items: flex-start; }
+  }
+
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<div class="container">
+
+  <header class="masthead">
+    <span class="vol">Serie · Comunicare con un bambino di 2-3 anni</span>
+    <span class="date">Schema · versione 2</span>
+  </header>
+
+  <div class="title-block">
+    <div class="eyebrow">Schema della serie · 20 report</div>
+    <h1 class="main-title">La mente di un bambino<br><em>di due, tre anni</em></h1>
+    <p class="subtitle">Un percorso teorico-pratico per capire come pensa, come ascolta, come sente — e come arrivare davvero a lui.</p>
+    <div class="ornament">✦</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Questa serie parte da un'idea: <strong>per parlare bene a un bambino piccolo bisogna prima capire come è fatto dentro</strong>. Non per applicargli tecniche, ma per smettere di trattarlo come un adulto in miniatura — e cominciare a vederlo per quello che è: una persona con un cervello in piena costruzione, che vive il mondo in modo profondamente diverso dal nostro.</p>
+    <p>I report <strong>teorici</strong> spiegano <em>cosa succede</em> nella sua mente. I report <strong>pratici</strong>, intercalati, traducono quei concetti in cose che fai stasera, durante la cena o davanti al primo capriccio. Si possono leggere in ordine, oppure pescare quello che serve nel momento.</p>
+  </div>
+
+  <!-- ============ ISTRUZIONI DI PROGETTO ============ -->
+
+  <h2 class="section-title"><span class="num">PROJECT BRIEF</span> Istruzioni per chi scrive i report</h2>
+
+  <div class="instructions-block">
+    <span class="label">Project Brief · Da incollare a inizio di ogni nuova chat</span>
+    <h3>Manuale di stile e impostazione</h3>
+
+    <p>Questo blocco va passato come istruzione iniziale a Claude (o a qualsiasi assistente) quando si apre una nuova chat per scrivere uno dei report della serie. Serve a garantire continuità e coerenza editoriale tra tutti i report.</p>
+
+    <h4>Contesto del progetto</h4>
+    <p>Sto producendo una serie di <strong>20 report teorico-pratici</strong> sulla mente di un bambino di 2-3 anni, con focus sulla comunicazione. Obiettivo: migliorare il modo in cui comunico con lui, capendo profondamente il suo punto di vista. La serie alterna report <strong>teorici</strong> e <strong>pratici</strong>; questi ultimi traducono i concetti in strumenti applicabili da subito.</p>
+
+    <h4>Filosofia di fondo</h4>
+    <ul>
+      <li>Il bambino non è un adulto in miniatura. È una persona con un cervello in costruzione e un'esperienza del mondo radicalmente diversa.</li>
+      <li>Non si tratta di "applicare tecniche" ma di costruire una <strong>comprensione</strong> profonda che poi guidi le scelte.</li>
+      <li>Privilegiare <strong>il suo punto di vista</strong>: ogni volta che possibile, raccontare come lui probabilmente vive le cose, non come noi le vediamo.</li>
+      <li>Posizione di base: l'approccio della <strong>genitorialità autorevole</strong> con forte componente di co-regolazione, ma sempre presentando il dissenso scientifico dove esiste.</li>
+    </ul>
+
+    <h4>Approccio teorico</h4>
+    <ul>
+      <li>Privilegiare le <strong>ricerche recenti</strong> (neuroscienze affettive, parenting science, attaccamento moderno) ma con apertura ad approcci meno mainstream se ben fondati.</li>
+      <li>Citare gli autori principali in modo accessibile (Siegel & Bryson, Gopnik, Fonagy, Stern, Vygotskij, Gottman, Delahooke, Tomasello, Porges, Kagan, Thomas & Chess, Faber & Mazlish, Kohn, Aldort, RIE/Gerber, Winnicott, Neufeld, Bowlby, Ainsworth, Lisa Feldman Barrett).</li>
+      <li>Dove le scuole di pensiero <strong>divergono</strong>, segnalarlo esplicitamente invece di nascondere il dissenso.</li>
+      <li>Evitare il dogmatismo. Niente "il modo giusto è X". Piuttosto: "ecco cosa dicono le ricerche, ecco perché, ecco i limiti".</li>
+    </ul>
+
+    <h4>Tono e stile editoriale</h4>
+    <ul>
+      <li><strong>Tu</strong> al lettore (al genitore), non "voi" o "il genitore".</li>
+      <li>Il bambino è "lui" — singolo, concreto, non "il bambino" in astratto se non quando inevitabile.</li>
+      <li>Tono <strong>caldo ma rigoroso</strong>. Non paternalistico, non motivazionale, non da rivista di lifestyle.</li>
+      <li>Frasi mediamente brevi. Si può essere eleganti senza essere barocchi.</li>
+      <li>Niente bullet point come riempimento: si usano quando aiutano davvero la lettura, altrimenti si scrive in prosa.</li>
+      <li>Si possono usare metafore e immagini concrete (il "serbatoio" della connessione, la "tempesta" del meltdown).</li>
+      <li>Si può ammettere complessità e incertezza. Non bisogna far finta di avere risposte definitive dove non ce ne sono.</li>
+    </ul>
+
+    <h4>Struttura tipica di un report teorico</h4>
+    <ul>
+      <li><strong>Apertura</strong>: una scena, un esempio concreto, una domanda. Mai un'introduzione astratta.</li>
+      <li><strong>Il quadro</strong>: cosa dice la scienza, in modo accessibile ma preciso. Le voci principali, i punti di accordo, i punti di disaccordo.</li>
+      <li><strong>Il suo punto di vista</strong>: una sezione che prova a raccontare come <em>lui</em> vive quello di cui stiamo parlando.</li>
+      <li><strong>Implicazioni</strong>: cosa cambia nel modo in cui ci poniamo con lui. Anticipazione del pratico collegato.</li>
+      <li><strong>Punti chiave</strong>: 5-7 punti di sintesi alla fine.</li>
+      <li><strong>Per approfondire</strong>: 2-4 letture mirate, segnalando il livello (divulgativo / specialistico).</li>
+    </ul>
+
+    <h4>Struttura tipica di un report pratico</h4>
+    <ul>
+      <li><strong>A cosa serve</strong>: 2-3 righe di promessa concreta.</li>
+      <li><strong>Principi-guida</strong>: 3-5 principi che reggono tutto quello che segue. Brevi.</li>
+      <li><strong>Strumenti operativi</strong>: il cuore. Frasari, protocolli passo-passo, copioni, esempi prima/dopo, scenari concreti.</li>
+      <li><strong>Errori comuni</strong>: cosa evitare, e perché peggiora le cose.</li>
+      <li><strong>Esercizio/sperimentazione</strong>: una cosa concreta da provare nei giorni successivi.</li>
+      <li><strong>Checklist o cheat sheet</strong>: sintesi visiva finale, stampabile.</li>
+    </ul>
+
+    <h4>Formato di output</h4>
+    <ul>
+      <li>Ogni report è un file <strong>HTML autonomo</strong> con la stessa estetica del documento-schema (palette terrosa, tipografia Fraunces + Inter + JetBrains Mono, layout editoriale).</li>
+      <li>Lunghezza orientativa: i teorici 12-18 "pagine equivalenti", i pratici 8-12.</li>
+      <li>I report sono autonomi: ognuno può essere letto senza i precedenti, ma con riferimenti incrociati quando utile.</li>
+    </ul>
+
+    <h4>Cosa evitare sempre</h4>
+    <ul>
+      <li>Toni colpevolizzanti verso il genitore ("non dovresti mai...").</li>
+      <li>Linguaggio da self-help motivazionale.</li>
+      <li>Riduzionismi del tipo "basta fare X".</li>
+      <li>Citazioni di studi non verificate o "neuromiti" (cervello destro/sinistro come dicotomia rigida, "finestre critiche" assolutizzate, ecc.).</li>
+      <li>Ricette universali che ignorano il temperamento e il contesto specifico.</li>
+    </ul>
+
+    <p class="small-note">Quando si apre una nuova chat per scrivere un report, condividere questo blocco insieme alla richiesta del report specifico (numero, titolo, eventuali enfasi particolari).</p>
+  </div>
+
+  <!-- INDICE -->
+  <div class="index">
+    <h3>Indice della serie · 20 report</h3>
+    <ol>
+      <li class="part-heading">PARTE I · Le fondamenta</li>
+      <li class="teorico"><span>Come funziona la mente di un bambino di 2-3 anni</span><span class="index-tag">Teorico</span></li>
+      <li class="teorico"><span>Bisogni, motivazioni, priorità: cosa lo muove davvero</span><span class="index-tag">Teorico</span></li>
+      <li class="teorico"><span>Il mondo visto da lui: fenomenologia del bambino di 2-3 anni</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Mettersi nei suoi panni: esercizi di prospettiva quotidiana</span><span class="index-tag">Pratico</span></li>
+
+      <li class="part-heading">PARTE II · La sua comunicazione</li>
+      <li class="teorico"><span>Come lui comunica: i suoi messaggi, espliciti e nascosti</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Decifrarlo: trucchi per leggere quello che ti sta dicendo</span><span class="index-tag">Pratico</span></li>
+
+      <li class="part-heading">PARTE III · La tua comunicazione verso di lui</li>
+      <li class="teorico"><span>Come interpreta il linguaggio: cosa capisce, cosa fraintende</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Parlare in modo che ti capisca: frasi, lunghezza, ritmo</span><span class="index-tag">Pratico</span></li>
+      <li class="teorico"><span>I canali della comunicazione: tono, gesto, sguardo, parola</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Il corpo prima delle parole: postura, tono e contatto</span><span class="index-tag">Pratico</span></li>
+      <li class="teorico"><span>Voce autoritaria, voce consolatoria, voce della fiducia</span><span class="index-tag">Teorico</span></li>
+
+      <li class="part-heading">PARTE IV · Limiti, "no", severità</li>
+      <li class="teorico"><span>Dire "no", dire "basta": come lui percepisce i limiti</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Tecniche pratiche per i limiti: alternative al ricatto e all'urlo</span><span class="index-tag">Pratico</span></li>
+      <li class="teorico"><span>La severità: quando serve, quando danneggia, come dosarla</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Farsi prendere sul serio senza spaventare</span><span class="index-tag">Pratico</span></li>
+
+      <li class="part-heading">PARTE V · Ricettività, emozioni, tempesta</li>
+      <li class="teorico"><span>Quando ascolta davvero: ricettività e finestra di tolleranza</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Creare i momenti giusti: rituali, transizioni, anticipazioni</span><span class="index-tag">Pratico</span></li>
+      <li class="teorico"><span>Rabbia, frustrazione, capricci: cosa succede dentro di lui</span><span class="index-tag">Teorico</span></li>
+      <li class="teorico"><span>Le emozioni e la co-regolazione: come funziona davvero</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Aiutarlo a gestire le emozioni: strumenti quotidiani</span><span class="index-tag">Pratico</span></li>
+      <li class="pratico"><span>Sopravvivere alla tempesta: cosa dire (e non dire) in crisi</span><span class="index-tag">Pratico</span></li>
+
+      <li class="part-heading">PARTE VI · La cornice e la sintesi</li>
+      <li class="teorico"><span>Temperamento, attaccamento, gioco: la cornice che cambia tutto</span><span class="index-tag">Teorico</span></li>
+      <li class="pratico"><span>Compendio operativo: principi, frasari, errori da evitare</span><span class="index-tag">Pratico</span></li>
+    </ol>
+  </div>
+
+  <!-- ============ PARTE I ============ -->
+  <h2 class="section-title"><span class="num">PARTE I</span> Le fondamenta — come è fatto, cosa lo muove, come vede il mondo</h2>
+
+  <!-- REPORT 1 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">01</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Come funziona la mente <em>di un bambino di 2-3 anni</em></h3>
+      <p class="summary">Le basi neurocognitive: cosa può fare, cosa non può ancora fare, e perché.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Costruire un modello realistico della sua mente. Smontare l'illusione che "capisca ma faccia finta di niente".</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Sviluppo cerebrale: corteccia prefrontale immatura, sistema limbico già attivissimo</li>
+              <li>Memoria di lavoro: 1-2 elementi alla volta</li>
+              <li>Pensiero pre-operatorio (Piaget rivisto): egocentrismo cognitivo, animismo, pensiero magico</li>
+              <li>Teoria della mente in costruzione</li>
+              <li>L'emergere del "sé" e il famoso "no"</li>
+              <li>La percezione del tempo: niente "dopo", niente "tra cinque minuti"</li>
+              <li>Le neuroscienze recenti: il bambino come scienziato (Gopnik)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Piaget (riletto), Vygotskij, Gopnik, Siegel & Bryson, Stern</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 2 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">02</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Bisogni, motivazioni, priorità: <em>cosa lo muove davvero</em></h3>
+      <p class="summary">Dietro ogni comportamento c'è una motivazione. Riconoscerla è la chiave per non leggere male tutto.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Capire l'architettura motivazionale di un bambino a questa età. Smettere di interpretare il comportamento come "vuole sfidarti" e iniziare a chiedersi "quale bisogno sta cercando di soddisfare".</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>I <strong>bisogni primari</strong>: fame, sonno, sicurezza, contatto. La banalità che spiega l'80% delle crisi</li>
+              <li>I bisogni di <strong>connessione e prossimità</strong>: il "serbatoio dell'attaccamento" (Neufeld)</li>
+              <li>Il bisogno di <strong>autonomia e padronanza</strong>: l'età del "io da solo" (Erikson, autonomia vs vergogna)</li>
+              <li>Il bisogno di <strong>esplorare</strong>: la curiosità come motore biologico</li>
+              <li>Il bisogno di <strong>prevedibilità</strong>: perché i rituali lo calmano</li>
+              <li>Il bisogno di <strong>essere visto</strong>: contatto visivo, attenzione condivisa, conferma</li>
+              <li>La gerarchia in conflitto: quando i bisogni si scontrano (vuole esplorare ma ha sonno)</li>
+              <li>Come <strong>leggere i bisogni</strong> sotto i comportamenti difficili: una mini-mappa diagnostica</li>
+              <li>"Misbehavior" vs "stress behavior" (Mona Delahooke): un cambio di paradigma recente</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Maslow (riletto per l'infanzia), Erikson, Neufeld, Mona Delahooke (<em>Beyond Behaviors</em>), self-determination theory</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa porti a casa</span>
+          <div class="meta-content">Una lente nuova: davanti a un comportamento, prima di reagire ti chiedi "che bisogno?". Cambia tutto.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 3 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">03</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Il mondo visto da lui: <em>fenomenologia del bambino di 2-3 anni</em></h3>
+      <p class="summary">Una visita guidata dentro la sua esperienza. Come gli appaiono le cose, le persone, il tempo, te.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Provare a entrare nella sua esperienza in prima persona. Capire come gli appare la realtà, perché molte sue reazioni "irrazionali" sono perfettamente sensate dal suo interno.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Il <strong>presente espanso</strong>: vive nell'adesso. Il futuro è quasi inesistente, il passato evapora</li>
+              <li>L'<strong>intensità sensoriale</strong>: rumori, luci, tessuti, sapori — tutto è più forte</li>
+              <li>La <strong>scala</strong>: vive in un mondo di giganti. La fisica del suo spazio</li>
+              <li>Il <strong>pensiero magico</strong>: causa ed effetto sono ancora ballerini. Le ombre, il buio, i mostri</li>
+              <li>L'<strong>animismo</strong>: il peluche ha sentimenti, l'aspirapolvere è cattivo</li>
+              <li>Le <strong>persone come stati</strong>: mamma arrabbiata non è la stessa mamma di prima (oggetto buono e oggetto cattivo, Klein)</li>
+              <li>L'<strong>esperienza emotiva indifferenziata</strong>: non sa cosa sente, lo subisce</li>
+              <li>Il <strong>rapporto con gli altri bambini</strong>: parallel play, l'altro come oggetto non ancora come soggetto</li>
+              <li>Il <strong>rapporto con te</strong>: non sei una persona separata in modo stabile, sei parte del suo sé esteso (Winnicott)</li>
+              <li>Cosa significa tutto questo per la comunicazione</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Winnicott, Stern (<em>Il mondo interpersonale del bambino</em>), Klein, Piaget (animismo e pensiero magico), Gopnik (consapevolezza espansa)</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa porti a casa</span>
+          <div class="meta-content">Una comprensione viscerale del suo mondo. Smetti di pensare "che strano" e inizi a pensare "ah, ecco perché".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 4 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">04</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Mettersi nei suoi panni: <em>esercizi di prospettiva quotidiana</em></h3>
+      <p class="summary">Strumenti concreti per allenarti a vedere le situazioni dal suo punto di vista.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Trasformare la fenomenologia del report 3 in un'abitudine mentale quotidiana.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>La domanda magica</strong>: "Se fossi lui, cosa starei provando adesso?" — quando porsela</li>
+              <li><strong>L'esercizio del bisogno</strong>: davanti a un comportamento, mappare in 30 secondi i possibili bisogni sotto</li>
+              <li><strong>Riformulare i suoi "no"</strong>: tradurli come messaggi su autonomia, non come rifiuti</li>
+              <li><strong>Lo specchio fisico</strong>: abbassarsi alla sua altezza, vedere cosa vede</li>
+              <li><strong>Il diario del fraintendimento</strong>: registrare un fraintendimento al giorno per una settimana</li>
+              <li><strong>I 5 errori interpretativi più comuni</strong> ("lo fa apposta", "mi sfida", "vuole farmi arrabbiare") — antidoti</li>
+              <li><strong>Esempi prima/dopo</strong>: stessa scena letta dall'esterno e dal suo interno</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Formato</span>
+          <div class="meta-content">Esercizi giornalieri, schede di auto-osservazione, esempi narrativi.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PARTE II ============ -->
+  <h2 class="section-title"><span class="num">PARTE II</span> La sua comunicazione — leggere i suoi messaggi</h2>
+
+  <!-- REPORT 5 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">05</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Come lui comunica: <em>i suoi messaggi, espliciti e nascosti</em></h3>
+      <p class="summary">A questa età le parole non sono il canale principale nemmeno per lui. Imparare a leggere il resto.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Costruire una mappa completa dei suoi canali comunicativi. Capire che ogni comportamento, anche disturbante, è una comunicazione.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Il principio: <strong>tutto è comunicazione</strong>. Non c'è comportamento "senza messaggio" a questa età</li>
+              <li>I canali espliciti: parole, indicare, mostrare</li>
+              <li>I canali corporei: posture, tensione, vicinanza/distanza, contatto cercato o rifiutato</li>
+              <li>I canali emotivi: pianto (con le sue molte sfumature), risata, silenzio improvviso</li>
+              <li>I <strong>comportamenti come messaggi</strong>: il regresso, la ripetizione, l'aggressività, il rifiuto del cibo, i risvegli notturni</li>
+              <li>Il gioco come canale comunicativo: cosa rivela il gioco di un bambino</li>
+              <li>I "non detti": cosa cerca di dirti quando si nasconde, quando ti gira le spalle, quando ti picchia</li>
+              <li>L'<strong>iceberg</strong>: il comportamento visibile è la punta. Cosa c'è sotto</li>
+              <li>L'attaccamento e lo "stile comunicativo": il bambino sicuro vs ansioso vs evitante esprime diversamente lo stesso bisogno</li>
+              <li>Differenze individuali: bambini più espressivi vs bambini "che si tengono dentro"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Stern, Trevarthen, Magda Gerber (osservazione respectful), Delahooke, Brazelton (segnali e <em>touchpoints</em>)</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa porti a casa</span>
+          <div class="meta-content">Una nuova capacità: vedere comunicazione dove prima vedevi solo "comportamento da gestire".</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 6 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">06</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Decifrarlo: <em>trucchi per leggere quello che ti sta dicendo</em></h3>
+      <p class="summary">Un decoder pratico: dato un segnale, capire cosa probabilmente significa.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Avere strumenti operativi per interpretare i suoi segnali in tempo reale, anche quando sei stanco e di fretta.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Il dizionario dei pianti</strong>: pianto di stanchezza, di frustrazione, di fame, di dolore, di richiesta — come distinguerli</li>
+              <li><strong>Il vocabolario dei "no"</strong>: il "no" come affermazione di sé vs come vero rifiuto vs come gioco</li>
+              <li><strong>I segnali precoci di stanchezza, fame, sovrastimolazione</strong>: come riconoscerli prima della crisi</li>
+              <li><strong>Quando ti picchia/morde/tira i capelli</strong>: cosa sta cercando di dirti (e cosa fare)</li>
+              <li><strong>Il bambino che "fa il finto morto"</strong>: lo shutdown e i suoi segnali</li>
+              <li><strong>Quando regredisce</strong>: ricomincia a fare la pipì addosso, a parlare come un neonato — cosa significa</li>
+              <li><strong>Le richieste mascherate</strong>: "voglio l'acqua" che in realtà significa "ho bisogno di te"</li>
+              <li><strong>Esercizio dei tre perché</strong>: davanti a un comportamento, chiediti tre volte "perché?" prima di reagire</li>
+              <li><strong>Il taccuino dei pattern</strong>: tenere traccia per due settimane di cosa precede i suoi comportamenti difficili</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Formato</span>
+          <div class="meta-content">Tabelle "segnale → possibile significato → cosa provare", esercizi di osservazione, casi narrativi.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PARTE III ============ -->
+  <h2 class="section-title"><span class="num">PARTE III</span> La tua comunicazione — parlare in un modo che arrivi</h2>
+
+  <!-- REPORT 7 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">07</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Come interpreta il linguaggio: <em>cosa capisce, cosa fraintende</em></h3>
+      <p class="summary">Le parole sono solo la punta dell'iceberg. E spesso sono la parte che capisce meno.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Comprensione vs produzione: capisce più di quanto dica, ma meno di quanto pensi</li>
+              <li>I grandi inciampi: <strong>negazioni</strong> ("non correre" → "correre"), <strong>ipotetici</strong>, <strong>tempo futuro</strong>, <strong>astrazioni</strong></li>
+              <li>Pensiero concreto: perché funzionano le immagini e non i concetti</li>
+              <li>L'interpretazione letterale: "ti tiro le orecchie" preso sul serio</li>
+              <li>Sarcasmo, ironia, modi di dire: zona morta</li>
+              <li>Il <em>child-directed speech</em>: perché funziona davvero</li>
+              <li>Bilinguismo a questa età</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Tomasello, Bruner, <em>statistical learning</em>, Pinker (con caveat)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 8 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">08</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Parlare in modo che ti capisca: <em>frasi, lunghezza, ritmo</em></h3>
+      <p class="summary">Trucchi concreti per riformulare quello che dici. Da provare oggi stesso.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>La regola dell'età + uno</strong>: numero massimo di parole per istruzione</li>
+              <li><strong>Da negazioni a positivi</strong>: tabella con 30+ esempi</li>
+              <li><strong>Trucco del verbo all'inizio</strong></li>
+              <li><strong>Concretizzare il tempo</strong>: trasformare "dopo" e "tra poco" in cose visibili</li>
+              <li><strong>Scegliere tra due</strong>: il potere dell'opzione binaria</li>
+              <li><strong>Le frasi-jolly</strong>: 10 formule che funzionano quasi sempre</li>
+              <li><strong>Errori comuni</strong>: la spiegazione lunga, la domanda quando non c'è scelta</li>
+              <li><strong>Esercizio</strong>: registrarsi per un giorno e contare le negazioni</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 9 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">09</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">I canali della comunicazione: <em>tono, gesto, sguardo, parola</em></h3>
+      <p class="summary">A 2-3 anni le parole pesano forse il 20%. Il resto sei tu.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>La <strong>prosodia</strong>: ritmo, melodia, pause</li>
+              <li>L'<strong>espressione facciale</strong>: a 2 anni è un radar</li>
+              <li>Il <strong>contatto visivo</strong>: cosa attiva, quando cercarlo</li>
+              <li>La <strong>postura</strong>: altezza, apertura, orientamento</li>
+              <li>Il <strong>tocco</strong>: regolazione, conferma, contenimento</li>
+              <li>Il <strong>silenzio</strong>: il canale più sottovalutato</li>
+              <li>Quando i canali si contraddicono: a cosa crede</li>
+              <li>I "marker" che lo mettono in allerta</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Stern, Trevarthen, Porges, neuroscienze affettive</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 10 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">10</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Il corpo prima delle parole: <em>postura, tono e contatto</em></h3>
+      <p class="summary">Come usare il tuo corpo come strumento di comunicazione consapevole.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Abbassarsi al suo livello</strong>: il singolo gesto con maggior impatto</li>
+              <li><strong>Il respiro</strong>: rallentare il tuo respiro abbassa il suo arousal</li>
+              <li><strong>La voce sussurrata</strong>: paradossalmente più potente di quella alzata</li>
+              <li><strong>La mano sulla spalla</strong>: ancoraggio prima dell'istruzione</li>
+              <li><strong>Eye level senza forzare lo sguardo</strong></li>
+              <li><strong>Gestualità "pratica"</strong>: indicare, mimare, mostrare</li>
+              <li><strong>Il "freeze" giocoso</strong></li>
+              <li><strong>Quando il tuo corpo ti tradisce</strong>: accorgersene prima</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 11 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">11</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Voce autoritaria, voce consolatoria, <em>voce della fiducia</em></h3>
+      <p class="summary">Come decodifica le tue intenzioni, e perché "essere fermi" non è uguale a "essere severi".</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Autorevolezza vs autoritarismo dal suo punto di vista</li>
+              <li>Cosa succede dentro di lui quando alzi la voce</li>
+              <li>Il paradosso del consolare: quando consolare troppo presto chiude l'emozione</li>
+              <li>La "voce della fiducia": calma + sicura + chiara</li>
+              <li>Come legge l'intenzione: bluff vs decisione reale</li>
+              <li>Stili educativi (Baumrind): perché lo stile autorevole vince</li>
+              <li>Parenting science recente vs approcci tradizionali</li>
+              <li>Voci critiche: Kohn, Aldort</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Baumrind, Faber & Mazlish, Siegel, Kohn, Aldort, Gottman</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PARTE IV ============ -->
+  <h2 class="section-title"><span class="num">PARTE IV</span> Limiti, "no", severità</h2>
+
+  <!-- REPORT 12 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">12</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Dire "no", dire "basta": <em>come lui percepisce i limiti</em></h3>
+      <p class="summary">Il limite non è una negazione del bambino. È una delle cose di cui ha più bisogno. Ma deve essere dato bene.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Capire cosa significa "limite" dal suo punto di vista, perché ne ha bisogno, e cosa rende un limite efficace o controproducente.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Perché i limiti lo <strong>tranquillizzano</strong>: il bisogno di una "cornice" (Winnicott, holding)</li>
+              <li>La differenza tra <strong>limite</strong> (una sponda) e <strong>punizione</strong> (una conseguenza imposta)</li>
+              <li>Come <strong>vive</strong> un "no": frustrazione → rabbia → spesso meltdown. È normale, non un fallimento</li>
+              <li>Perché non capisce ancora il "non posso fare X perché Y": il ragionamento causale astratto non c'è ancora</li>
+              <li>La <strong>quantità</strong> di "no": troppi → diventano rumore di fondo. Pochi → non strutturano. La calibrazione</li>
+              <li>I limiti <strong>non negoziabili</strong> (sicurezza, rispetto altrui) vs i limiti <strong>negoziabili</strong> (preferenze, tempi)</li>
+              <li>Il <strong>ricatto</strong> ("se non fai X niente cartoni") — perché sembra funzionare ma a lungo termine peggiora tutto</li>
+              <li>Il <strong>premio</strong> come strumento di controllo (Kohn): la critica e i suoi limiti</li>
+              <li>Approcci a confronto: tradizionale (autorità), permissivo, autorevole, RIE, low-demand parenting</li>
+              <li>Le ultime ricerche sulla disciplina: cosa funziona davvero a lungo termine</li>
+              <li>Il principio chiave: <strong>"connessione + limite fermo + accoglienza dell'emozione"</strong></li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Winnicott (<em>holding</em>), Siegel & Bryson (<em>No-Drama Discipline</em>), Kohn (<em>Punished by Rewards</em>), Faber & Mazlish, Magda Gerber</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa porti a casa</span>
+          <div class="meta-content">Una visione nuova del "no": non è un atto di forza contro di lui, è un atto di cura per lui.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 13 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">13</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Tecniche pratiche per i limiti: <em>alternative al ricatto e all'urlo</em></h3>
+      <p class="summary">Frasari, strategie e copioni per situazioni precise. Come dire "basta TV", "basta biscotti", "non si fa".</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Avere un repertorio ricco di tecniche concrete che funzionano davvero — e capire quando ognuna è utile.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Il "no" empatico</strong>: la formula "capisco che vorresti X, però adesso Y" — come funziona, quando usarla</li>
+              <li><strong>Il limite preventivo</strong>: dire le regole prima del momento critico, non durante</li>
+              <li><strong>Il countdown visibile</strong>: "ancora due cartoni e basta" — funziona se fatto in un certo modo</li>
+              <li><strong>La distrazione e il reindirizzamento</strong>: lecito o no? Quando funziona</li>
+              <li><strong>Il gioco come ponte</strong>: trasformare il limite in qualcosa di ludico ("le scarpe stanno scappando, prendiamole!")</li>
+              <li><strong>La scelta dentro il limite</strong>: "non si guarda altra TV, vuoi leggere o disegnare?"</li>
+              <li><strong>Quando il "no" deve essere "no" secco</strong>: situazioni di sicurezza, il tono giusto</li>
+              <li><strong>Sopravvivere alla reazione</strong>: il pianto, la protesta, il "ma perché?" — come rispondere</li>
+              <li><strong>Frasari per scenari ricorrenti</strong>: TV, dolci, schermo, uscire dal parco, lavarsi i denti, fare la pipì sul vasino</li>
+              <li><strong>Cosa NON fare</strong>: ricatti ("se non fai X niente Y"), conteggi ("uno... due..."), confronti ("il tuo amico lo fa"), minacce a vuoto</li>
+              <li><strong>Quando tieni il punto vs quando puoi cedere</strong>: la differenza non è la fermezza, è la chiarezza</li>
+              <li><strong>Coerenza tra adulti</strong>: cosa fare quando l'altro genitore (o i nonni) dicono il contrario</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Formato</span>
+          <div class="meta-content">Scenari concreti con copioni alternativi, tabelle "se succede X fai Y", checklist dei limiti familiari.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 14 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">14</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">La severità: <em>quando serve, quando danneggia, come dosarla</em></h3>
+      <p class="summary">Forse il tema più controverso. Una zona dove dogmatismi opposti si fronteggiano e la realtà sta nel mezzo.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Smontare la falsa dicotomia "severo vs permissivo". Capire quando e come una postura più ferma è utile, quando invece danneggia. Soprattutto: distinguere severità dall'aggressività.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Cosa significa davvero "severo": fermezza vs durezza vs ostilità. Tre cose diverse</li>
+              <li>Il <strong>mito della severità necessaria</strong>: "ai miei tempi una sberla e via". Cosa dicono davvero gli studi longitudinali</li>
+              <li>Il <strong>mito opposto</strong>: "mai dire no, mai contraddire". Perché anche questo non funziona</li>
+              <li>I costi documentati della <strong>severità eccessiva</strong>: cortisolo cronico, attaccamento insicuro, peggior regolazione emotiva, comportamenti più problematici a lungo termine</li>
+              <li>Quando la <strong>fermezza è necessaria</strong>: sicurezza, rispetto degli altri, principi non negoziabili</li>
+              <li>La <strong>fermezza calma</strong>: dire "no" con voce ferma e corpo rilassato — sembra paradossale ma è la chiave</li>
+              <li>La sculacciata e le punizioni fisiche: dove c'è consenso scientifico (è dannosa, anche "leggera")</li>
+              <li>Il <strong>timeout</strong>: pro, contro, alternative recenti (time-in)</li>
+              <li>Come <strong>lui percepisce</strong> la severità: paura → shutdown → apprendimento esteriore (obbedisce ma non capisce) → erosione della fiducia</li>
+              <li>La differenza chiave: <strong>severità dei limiti</strong> (alta) vs <strong>severità del tono</strong> (bassa). Si può essere fermissimi e affettuosi insieme</li>
+              <li>Quanto puoi essere severo TU specificamente: dipende dal tuo temperamento, dal suo, dalla vostra relazione</li>
+              <li>I segnali che stai esagerando: lui si chiude, ti evita, mente, ha incubi, regredisce</li>
+              <li>Riparare dopo essere stato troppo severo: cosa dire, perché non è "perdere autorità"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Baumrind (parenting styles), Gershoff (meta-analisi sulle punizioni fisiche), Siegel & Bryson, ricerche longitudinali sull'attaccamento</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa porti a casa</span>
+          <div class="meta-content">Una posizione informata sulla severità, libera da slogan, calibrata sul tuo bambino e su di te.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 15 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">15</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Farsi prendere sul serio <em>senza spaventare</em></h3>
+      <p class="summary">Come segnalare "questo è serio" senza ricorrere a urla o paura.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Il "segnale di gravità"</strong>: marcare la differenza tra richieste normali e momenti seri</li>
+              <li><strong>L'effetto rarità</strong>: se sei sempre serio, niente è più serio</li>
+              <li><strong>Il nome + pausa + frase corta</strong>: la sequenza che cattura attenzione</li>
+              <li><strong>Stop fisico gentile</strong>: prendergli le mani, fermarlo, poi parlare</li>
+              <li><strong>La frase-soglia</strong>: una formula che usi solo per le cose davvero importanti</li>
+              <li><strong>Sicurezza vera</strong>: i casi in cui agire prima e parlare dopo</li>
+              <li><strong>Riparare quando perdi le staffe</strong>: cosa dirgli, perché è importante</li>
+              <li><strong>La voce ferma calma</strong>: esercizio per allenarla quando sei attivato</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PARTE V ============ -->
+  <h2 class="section-title"><span class="num">PARTE V</span> Ricettività, emozioni, tempesta</h2>
+
+  <!-- REPORT 16 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">16</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Quando ascolta davvero: <em>ricettività e finestra di tolleranza</em></h3>
+      <p class="summary">Non sempre è in grado di ascoltarti. Capire il perché è metà del lavoro.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>La <strong>finestra di tolleranza</strong> (Siegel): come si restringe, come si allarga</li>
+              <li>I tre stati base: iperattivazione, ipoattivazione, regolazione</li>
+              <li>Il ruolo del corpo: fame, stanchezza, banali ma decisivi</li>
+              <li>Le <strong>transizioni</strong>: i momenti più difficili</li>
+              <li>I segnali precoci di disregolazione</li>
+              <li>L'attenzione condivisa: il prerequisito di ogni comunicazione</li>
+              <li>L'ipotesi della "ricarica": vicinanza prima dell'autonomia</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Siegel & Bryson, Porges, Tomasello, Neufeld</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 17 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">17</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Creare i momenti giusti: <em>rituali, transizioni, anticipazioni</em></h3>
+      <p class="summary">Come ingegnerizzare la giornata per moltiplicare i momenti di vera connessione.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>I rituali ad alto valore</strong>: i 4-5 momenti della giornata che cambiano tutto</li>
+              <li><strong>Anticipare le transizioni</strong>: countdown visibili e narrazioni</li>
+              <li><strong>I 10 minuti speciali</strong>: il tempo dedicato che riempie il "serbatoio"</li>
+              <li><strong>La connessione prima della correzione</strong></li>
+              <li><strong>I momenti morti</strong>: usarli o lasciarli stare</li>
+              <li><strong>Il "no" preventivo</strong>: dire le regole prima, non durante</li>
+              <li><strong>Quando rinunciare</strong>: alcune battaglie non si combattono</li>
+              <li><strong>Mappa della tua giornata-tipo</strong>: esercizio di identificazione punti deboli</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 18 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">18</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Rabbia, frustrazione, capricci: <em>cosa succede dentro di lui</em></h3>
+      <p class="summary">Visto da dentro, non è un capriccio. È un terremoto che non sa gestire.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>Cosa succede nel cervello durante un meltdown: amigdala in fiamme, prefrontale offline</li>
+              <li>La differenza tra <strong>capriccio</strong> (manipolativo) e <strong>meltdown</strong> (sopraffazione). A 2-3 anni quasi tutto è meltdown</li>
+              <li>Perché spiegare durante la crisi non funziona</li>
+              <li>L'esperienza dal suo punto di vista: il corpo prende il sopravvento, non sceglie</li>
+              <li>Frustrazione + linguaggio insufficiente = esplosione</li>
+              <li>I trigger nascosti</li>
+              <li>Il ruolo della <em>co-regolazione</em>: prende in prestito il tuo sistema nervoso</li>
+              <li>"Connettiti prima di correggere"</li>
+              <li>Approcci a confronto: timeout, time-in, RIE, mentalizzazione</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Siegel & Bryson, Delahooke, Gerber, Fonagy</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 19 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">19</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Le emozioni e la co-regolazione: <em>come funziona davvero</em></h3>
+      <p class="summary">Prima di autoregolarsi devono regolarsi con te. Per anni.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li>L'emozione a 2-3 anni: <strong>è il corpo</strong>, non un pensiero</li>
+              <li>Alessitimia evolutiva: non sa cosa sente</li>
+              <li>Il ciclo della co-regolazione: lui dispiega → tu accogli → lui torna in regolazione</li>
+              <li>"Name it to tame it": nominare per gestire</li>
+              <li>L'autoregolazione si costruisce solo attraverso anni di co-regolazione</li>
+              <li>La <em>mentalizzazione</em> (Fonagy): trattarlo come una persona con una mente</li>
+              <li>Empatia ≠ assecondare: accogliere l'emozione e tenere il limite</li>
+              <li>La meta-emozione del genitore (Gottman): le tue emozioni sulle sue emozioni</li>
+              <li>Lisa Feldman Barrett: le emozioni come costruzioni, non come "cose pre-cablate"</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Gottman, Fonagy, Siegel, Lisa Feldman Barrett</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 20 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">20</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Aiutarlo a gestire le emozioni: <em>strumenti quotidiani</em></h3>
+      <p class="summary">Pratiche concrete per costruire, giorno dopo giorno, la sua intelligenza emotiva.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Obiettivo</span>
+          <div class="meta-content">Avere strumenti per accompagnarlo, fuori dalla crisi, nella costruzione progressiva della consapevolezza e regolazione emotiva.</div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Nominare le emozioni</strong>: il vocabolario emotivo a misura di 2-3 anni — quali parole introdurre, quando</li>
+              <li><strong>Lo specchio empatico</strong>: rimandargli quello che sembra provare ("sei arrabbiato perché...")</li>
+              <li><strong>Le emozioni nei libri e nel gioco</strong>: usare storie e pupazzi per parlare di sentimenti</li>
+              <li><strong>Il "tempo della pancia"</strong>: insegnargli a notare le sensazioni corporee delle emozioni</li>
+              <li><strong>Strumenti calming</strong>: respiro del fiore, abbracci forti, posti tranquilli — quali funzionano a questa età e quali no</li>
+              <li><strong>Validare senza assecondare</strong>: la formula "puoi essere arrabbiato, ma non puoi colpire"</li>
+              <li><strong>Le emozioni grandi e socialmente difficili</strong>: gelosia, invidia, vergogna — non liquidarle</li>
+              <li><strong>Le emozioni del genitore</strong>: tu sei il modello principale. Come mostrare le tue emozioni in modo regolato</li>
+              <li><strong>Quello che NON funziona</strong>: distrarre sistematicamente, minimizzare ("dai non è niente"), invalidare ("non c'è motivo di piangere")</li>
+              <li><strong>Costruire un "linguaggio emotivo familiare"</strong>: rituali, frasi, codici condivisi</li>
+              <li><strong>Esercizio</strong>: per una settimana, nominare un'emozione al giorno (la sua o la tua)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Formato</span>
+          <div class="meta-content">Vocabolario emotivo per età, scripts di validazione, esercizi giornalieri, libri consigliati.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 21 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">21</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Sopravvivere alla tempesta: <em>cosa dire (e non dire) in crisi</em></h3>
+      <p class="summary">Un manuale di emergenza, da rileggere prima del prossimo capriccio.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Le tre fasi</strong>: prevenzione, contenimento, riparazione</li>
+              <li><strong>Il protocollo del meltdown</strong>: sicurezza, presenza calma, nominare, contenere, capire (dopo)</li>
+              <li><strong>Frasi che funzionano</strong>: "vedo che sei arrabbiato", "sono qui", "è dura"</li>
+              <li><strong>Frasi che peggiorano</strong>: "smettila", "non c'è niente per cui piangere"</li>
+              <li><strong>Quando NON parlare</strong>: i primi 30-60 secondi sono solo presenza</li>
+              <li><strong>Il ritorno</strong>: come riprendere la conversazione dopo</li>
+              <li><strong>Crisi in pubblico</strong>: gestire lui + lo sguardo degli altri</li>
+              <li><strong>Quando sei tu a perdere il controllo</strong>: protocollo per il genitore</li>
+              <li><strong>La riparazione</strong>: come ricucire</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PARTE VI ============ -->
+  <h2 class="section-title"><span class="num">PARTE VI</span> La cornice e la sintesi</h2>
+
+  <!-- REPORT 22 -->
+  <div class="report teorico">
+    <div class="number-col">
+      <span class="big-num">22</span>
+      Teorico
+      <div class="tag">Teoria</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Temperamento, attaccamento, gioco: <em>la cornice che cambia tutto</em></h3>
+      <p class="summary">Non esiste un manuale universale. Esiste lui, e voi insieme.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Contenuti</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>Temperamento</strong>: Thomas & Chess, Kagan</li>
+              <li>Bambini intensi, riflessivi, prudenti, esuberanti: come adattare la comunicazione</li>
+              <li>L'<strong>attaccamento</strong> come matrice: sicuro, ansioso, evitante, disorganizzato</li>
+              <li>Il <strong>gioco</strong> come canale comunicativo privilegiato</li>
+              <li>Comunicare attraverso il gioco</li>
+              <li>Il gioco di finzione e il suo ruolo cognitivo</li>
+              <li>La <strong>relazione di coppia genitoriale</strong>: cosa percepisce</li>
+              <li>Coerenza tra adulti significativi</li>
+            </ul>
+          </div>
+        </div>
+        <div class="meta-row">
+          <span class="meta-label">Riferimenti</span>
+          <div class="meta-content">Thomas & Chess, Kagan, Bowlby, Ainsworth, Fonagy, Winnicott, Vygotskij, Stuart Brown</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REPORT 23 -->
+  <div class="report pratico">
+    <div class="number-col">
+      <span class="big-num">23</span>
+      Pratico
+      <div class="tag">Pratica</div>
+    </div>
+    <div class="content-col">
+      <h3 class="report-title">Compendio operativo: <em>principi, frasari, errori da evitare</em></h3>
+      <p class="summary">Tutto quello che serve, in un unico posto. Da tenere a portata di mano.</p>
+      <div class="meta-block">
+        <div class="meta-row">
+          <span class="meta-label">Cosa contiene</span>
+          <div class="meta-content">
+            <ul>
+              <li><strong>I 10 principi-guida</strong>: una pagina che riassume tutto</li>
+              <li><strong>Frasario completo</strong>: situazione → cosa dire → cosa evitare (50+ scenari)</li>
+              <li><strong>I 15 errori più comuni</strong> e come correggerli</li>
+              <li><strong>Cheat sheet stampabile</strong></li>
+              <li><strong>Auto-osservazione</strong>: domande per capire dove stai bene e dove fai fatica</li>
+              <li><strong>Cosa fare quando sbagli</strong>: la riparazione, il "good-enough parent"</li>
+              <li><strong>Letture, podcast, risorse</strong> per approfondire</li>
+              <li><strong>Quando chiedere aiuto a un professionista</strong>: campanelli d'allarme</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ CHIUSURA ============ -->
+  <div class="closing-note">
+    <h4>Nota di chiusura</h4>
+    <p>La numerazione totale arriva a 23 (perché le parti si sono allungate naturalmente), ma il senso resta lo stesso: <strong>20+ report autonomi</strong>, organizzati in 6 parti tematiche, che puoi seguire in ordine o pescare quando serve.</p>
+    <p>Su questi temi le scuole di pensiero non sono unanimi. Le neuroscienze affettive degli ultimi vent'anni hanno spostato l'ago della bilancia verso approcci di co-regolazione e mentalizzazione, ma c'è ancora dissenso su molti dettagli — e su alcuni punti grossi (timeout, ricompense, severità). In ogni report ti darò la posizione più supportata dalle ricerche recenti, segnalando dove c'è disaccordo e perché.</p>
+    <p style="font-style: italic; color: var(--accent-soft); margin-top: 28px;">Quando lo schema ti convince, possiamo partire con il Report 01. Il blocco "Istruzioni per chi scrive i report" qui sopra è pensato per essere copiato all'inizio di ogni nuova chat dedicata a un singolo report.</p>
+  </div>
+
+</div>
+
+</body>
+</html>
